@@ -1,0 +1,126 @@
+syntax = "proto3";
+package recorder;
+
+import "recorder/record.proto";
+
+message RecordResponse {
+
+  // 紀錄ID
+  string record_id = 1;
+  // 結果代碼
+  int64 code = 2;
+  // 結果訊息
+  string message = 3;
+
+}
+
+message RecordShuffleRequest {
+
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 洗牌類型
+  // key: 卡牌類型；value: 卡牌陣列
+  map<int64, CardList> cards = 6;
+
+}
+
+message RecordRoundStartRequest {
+
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;
+  // 使用洗牌ID
+  string shuffle_code = 5;
+  // 使用此洗牌第幾局，從1開始計算
+  int64 shuffle_round = 6;
+  // 遊戲版本
+  string game_version = 7;
+
+}
+
+message RecordRoundStepsRequest {
+
+  // 紀錄ID：此record_id為空字 串，則使用game_code, table_code, round_code決定紀錄
+  string record_id = 1;
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;  
+  // 步驟
+  repeated Step steps = 5;
+
+}
+
+message RecordRoundResultsRequest {
+
+  // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
+  string record_id = 1;
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;
+  // 判讀結果
+  repeated Result results = 5;
+  
+}
+
+message RecordRoundCancelRequest {
+
+  // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
+  string record_id = 1;
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;
+  // 取消原因代碼
+  int64 code = 5;
+  // 取消備註
+  string message = 6;
+
+}
+
+message RecordRoundFinishRequest {
+
+  // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
+  string record_id = 1;
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;
+
+}
+
+service RecorderService {
+  
+  // 洗牌
+  rpc RecordShuffle(RecordShuffleRequest) returns (RecordResponse);
+
+  // 開啟新局
+  rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordResponse);
+
+  // 記錄步驟
+  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (RecordResponse);
+
+  // 紀錄判讀
+  rpc RecordRoundResults(RecordRoundResultsRequest) returns (RecordResponse);
+
+  // 此局作廢
+  rpc RecordRoundCancel(RecordRoundCancelRequest) returns (RecordResponse);
+
+  // 結束此局
+  rpc RecordRoundFinish(RecordRoundFinishRequest) returns (RecordResponse);
+
+}

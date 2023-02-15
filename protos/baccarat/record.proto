@@ -1,0 +1,100 @@
+syntax = "proto3";
+package baccarat;
+
+// 使用卡牌種類
+enum CardTypeCode {
+
+  // 未指定
+  CARD_TYPE_CODE_UNSPECIFIED = 0;
+  // 撲克牌
+  CARD_TYPE_CODE_POKER = 1;
+  // 場控牌
+  CARD_TYPE_CODE_CONTROL = 9;
+
+}
+
+enum ResourceTypeCode {
+
+  // 未指定
+  RESOURCE_TYPE_CODE_UNSPECIFIED = 0;
+  // 手牌
+  RESOURCE_TYPE_CODE_HAND_CARD = 1;
+
+}
+
+// 動作代碼
+enum StepActionCode {
+
+  // 未指定
+  STEP_ACTION_CODE_UNSPECIFIED = 0;
+  // 派發閒家例牌
+  STEP_ACTION_CODE_DEAL_PLAYER_NORMAL = 1;
+  // 派發莊家例牌
+  STEP_ACTION_CODE_DEAL_BANKER_NORMAL = 2;
+  // 開閒家例牌
+  STEP_ACTION_CODE_SHOW_PLAYER_NORMAL = 3;
+  // 開莊家例牌
+  STEP_ACTION_CODE_SHOW_BANKER_NORMAL = 4;
+  // 補閒家
+  STEP_ACTION_CODE_DEAL_PLAYER_UNNORMAL = 5;
+  // 補莊家
+  STEP_ACTION_CODE_DEAL_BANKER_UNNORMAL = 6;
+  // PITBOSS
+  STEP_ACTION_CODE_PITBOSS_MODIFY = 9;
+
+}
+
+// 步驟代碼
+enum StepCode {
+
+  // 未指定
+  STEP_CODE_UNSPECIFIED = 0;
+  // 派發例牌
+  STEP_CODE_DEAL_NORMAL = 1;
+  // 開例牌
+  STEP_CODE_SHOW_NORMAL = 2;
+  // 補閒家
+  STEP_CODE_DEAL_PLAYER_UNNORMAL = 3;
+  // 補莊家
+  STEP_CODE_DEAL_BANKER_UNNORMAL= 4;
+  // PITBOSS
+  STEP_CODE_PITBOSS_MODIFY = 9;
+
+}
+
+// 座位功能代碼
+enum SeatCode {
+
+  // 未指定
+  SEAT_CODE_UNSPECIFIED = 0;
+  // 莊家
+  SEAT_CODE_SEAT_BANKER = 1;
+  // 閒家
+  SEAT_CODE_SEAT_PLAYER = 2;
+  // Dealer 
+  SEAT_CODE_SEAT_DEALER = 3;
+  // Pitboss
+  SEAT_CODE_SEAT_PITBOSS = 9;
+
+}
+
+// 結果紀錄類型代碼
+enum ResultRecordTypeCode {
+
+  // 未指定
+  RESULT_RECORD_TYPE_CODE_UNSPECIFIED = 0;
+  // 遊戲局結束
+  RESULT_RECORD_TYPE_CODE_ROUND_FINISH = 1;
+  // Pitboss 修正
+  RESULT_RECORD_TYPE_CODE_PITBOSS_JUDGEMENT = 2;
+
+}
+
+enum CancelReasonCode {
+
+  // 未指定，沒有取消
+  CANCEL_REASON_CODE_UNSPECIFIED = 0;
+  // 取消說明原因
+  CANCEL_REASON_CODE_NO_REASON = 1;
+  
+}

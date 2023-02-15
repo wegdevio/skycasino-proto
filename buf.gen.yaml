@@ -1,0 +1,17 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/sky-platform/skycasino-proto/go
+    except:
+      - buf.build/googleapis/googleapis
+plugins:
+  - plugin: buf.build/protocolbuffers/go
+    out: go
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/bufbuild/es
+    out: ts
+    opt:
+      - target=ts
+      - import_extension=none

@@ -1,2 +1,6 @@
 # skycasino-proto
-適用skybet的casino遊戲proto 
+
+## 說明
+
+定義Casino遊戲的紀錄以及推送到skybet的事件
+實作在skycasino

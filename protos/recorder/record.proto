@@ -1,0 +1,148 @@
+syntax = "proto3";
+package recorder;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+
+// 卡牌，代表在此局中使用的各類物品
+message Card {
+
+  int64 type = 1;
+  // 卡牌內容代碼：CardTypeCode。
+  int64 code = 2;
+  // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
+  int64 id = 3;
+  // 狀態：翻開、關起、橫放...
+  bool status = 4;
+
+}
+
+// 卡牌列表
+message CardList {
+
+  repeated Card list = 1;
+
+}
+
+// 動作類型
+enum StepActionType {
+
+  // 未指定
+  STEP_ACTION_TYPE_UNSPECIFIED = 0;
+  // 發牌
+  STEP_ACTION_TYPE_DEAL = 1;
+  // 移除場上
+  STEP_ACTION_TYPE_REMOVE = 2;
+  // 移轉
+  STEP_ACTION_TYPE_TRANSFER = 3;
+  // 狀態改變
+  STEP_ACTION_TYPE_STATUS = 4;
+
+}
+
+// 執行動作：對某些資源進行增、刪、移轉
+message StepAction {
+
+  reserved 2;
+  // 動作代碼：StepActionCode
+  int64 code = 1;
+  // 原資源擁有座位。
+  int64 source_seat = 3;
+  // 資源轉移目標座位。
+  repeated int64 target_seat = 4;
+  // 目標卡牌資源
+  // key: ResourceTypeCode, value: 卡牌陣列
+  map<int64, CardList> cards = 6;
+  // 目標分數資源
+  // key: ResourceTypeCode, value: 分數值。
+  map<int64, int64> scores = 7;
+  // 動作類型
+  StepActionType type = 8;
+  // （可選）附加資料
+  google.protobuf.Any data = 9;
+
+
+}
+
+// 遊戲步驟
+message Step {
+
+  reserved 2, 4, 7;
+  // 步驟代碼：StepCode
+  int64 code = 1;
+  // 玩家、執行者
+  int64 excuter = 3;
+  // 時間戳
+  google.protobuf.Timestamp timestamp = 5;
+  // 執行動作
+  repeated StepAction actions = 6;
+  // 是否是修正錯誤
+  bool modify = 8;
+
+}
+
+// 座位
+message Seats {
+
+  reserved 2 to 5;
+  // 座位功能代碼：SeatCode
+  int64 code = 1;
+  // 各類手牌
+  // key: ResourceTypeCode, value: 卡牌陣列
+  map<int64, CardList> cards = 6;
+  // 各類分數
+  // key: ResourceTypeCode, value: 分數值。
+  map<int64, int64> scores = 7;
+
+}
+
+// 記錄各座位狀態
+message Result {
+
+  reserved 2, 4;
+  // 判讀類型代碼：ResultRecordTypeCode
+  int64 code = 1;
+  // 紀錄者座位代碼
+  string by_seat = 3;
+  // 時間戳
+  google.protobuf.Timestamp timestamp = 5;
+  // 座位組
+  // key: SeatCode, value: Seat
+  map<int64, Seats> seats = 6;
+
+}
+
+// 紀錄
+message RoundRecord {
+
+  // 紀錄ID
+  string id = 1;
+  // 遊戲代碼
+  string game_code = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;
+  // 使用洗牌ID
+  string shuffle_code = 5;
+  // 使用此洗牌第幾局，從1開始計算
+  int64 shuffle_round = 6;
+  // 遊戲版本
+  string game_version = 7;
+
+  // 座位組
+  // key: SeatCode, value: Seat
+  map<int64, Seats> seats = 8;
+  // 玩家入座
+  // key: SeatCode, value: 玩家code。
+  map<int64, string> players = 9;
+  // 歷程
+  repeated Step process = 10;
+  // 判讀
+  repeated Result results = 11;
+  // 取消
+  bool cancel = 12;
+  // 取消代碼：CancelReasonCode
+  int64 cancel_code = 13;
+
+}
