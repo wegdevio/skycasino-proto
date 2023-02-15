@@ -10,6 +10,10 @@ plugins:
     out: go
     opt:
       - paths=source_relative
+  - plugin: buf.build/grpc/go
+    out: go
+    opt:
+      - paths=source_relative
   - plugin: buf.build/bufbuild/es
     out: ts
     opt:
