@@ -51,16 +51,24 @@ export enum ResourceTypeCode {
   UNSPECIFIED = 0,
 
   /**
-   * 手牌
+   * 例牌
    *
-   * @generated from enum value: RESOURCE_TYPE_CODE_HAND_CARD = 1;
+   * @generated from enum value: RESOURCE_TYPE_CODE_NORMAL_CARD = 1;
    */
-  HAND_CARD = 1,
+  NORMAL_CARD = 1,
+
+  /**
+   * 非例牌
+   *
+   * @generated from enum value: RESOURCE_TYPE_CODE_UNNORMAL_CARD = 2;
+   */
+  UNNORMAL_CARD = 2,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ResourceTypeCode)
 proto3.util.setEnumType(ResourceTypeCode, "baccarat.ResourceTypeCode", [
   { no: 0, name: "RESOURCE_TYPE_CODE_UNSPECIFIED" },
-  { no: 1, name: "RESOURCE_TYPE_CODE_HAND_CARD" },
+  { no: 1, name: "RESOURCE_TYPE_CODE_NORMAL_CARD" },
+  { no: 2, name: "RESOURCE_TYPE_CODE_UNNORMAL_CARD" },
 ]);
 
 /**
@@ -93,48 +101,64 @@ export enum StepActionCode {
   /**
    * 開閒家例牌
    *
-   * @generated from enum value: STEP_ACTION_CODE_SHOW_PLAYER_NORMAL = 3;
+   * @generated from enum value: STEP_ACTION_CODE_SHOW_PLAYER_NORMAL = 5;
    */
-  SHOW_PLAYER_NORMAL = 3,
+  SHOW_PLAYER_NORMAL = 5,
 
   /**
    * 開莊家例牌
    *
-   * @generated from enum value: STEP_ACTION_CODE_SHOW_BANKER_NORMAL = 4;
+   * @generated from enum value: STEP_ACTION_CODE_SHOW_BANKER_NORMAL = 6;
    */
-  SHOW_BANKER_NORMAL = 4,
+  SHOW_BANKER_NORMAL = 6,
 
   /**
    * 補閒家
    *
-   * @generated from enum value: STEP_ACTION_CODE_DEAL_PLAYER_UNNORMAL = 5;
+   * @generated from enum value: STEP_ACTION_CODE_DEAL_PLAYER_UNNORMAL = 9;
    */
-  DEAL_PLAYER_UNNORMAL = 5,
+  DEAL_PLAYER_UNNORMAL = 9,
 
   /**
    * 補莊家
    *
-   * @generated from enum value: STEP_ACTION_CODE_DEAL_BANKER_UNNORMAL = 6;
+   * @generated from enum value: STEP_ACTION_CODE_DEAL_BANKER_UNNORMAL = 10;
    */
-  DEAL_BANKER_UNNORMAL = 6,
+  DEAL_BANKER_UNNORMAL = 10,
+
+  /**
+   * 瞇牌閒家
+   *
+   * @generated from enum value: STEP_ACTION_CODE_PEEK_PLAYER = 13;
+   */
+  PEEK_PLAYER = 13,
+
+  /**
+   * 咪牌莊家
+   *
+   * @generated from enum value: STEP_ACTION_CODE_PEEK_BANKER = 14;
+   */
+  PEEK_BANKER = 14,
 
   /**
    * PITBOSS
    *
-   * @generated from enum value: STEP_ACTION_CODE_PITBOSS_MODIFY = 9;
+   * @generated from enum value: STEP_ACTION_CODE_PITBOSS_MODIFY = 16;
    */
-  PITBOSS_MODIFY = 9,
+  PITBOSS_MODIFY = 16,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StepActionCode)
 proto3.util.setEnumType(StepActionCode, "baccarat.StepActionCode", [
   { no: 0, name: "STEP_ACTION_CODE_UNSPECIFIED" },
   { no: 1, name: "STEP_ACTION_CODE_DEAL_PLAYER_NORMAL" },
   { no: 2, name: "STEP_ACTION_CODE_DEAL_BANKER_NORMAL" },
-  { no: 3, name: "STEP_ACTION_CODE_SHOW_PLAYER_NORMAL" },
-  { no: 4, name: "STEP_ACTION_CODE_SHOW_BANKER_NORMAL" },
-  { no: 5, name: "STEP_ACTION_CODE_DEAL_PLAYER_UNNORMAL" },
-  { no: 6, name: "STEP_ACTION_CODE_DEAL_BANKER_UNNORMAL" },
-  { no: 9, name: "STEP_ACTION_CODE_PITBOSS_MODIFY" },
+  { no: 5, name: "STEP_ACTION_CODE_SHOW_PLAYER_NORMAL" },
+  { no: 6, name: "STEP_ACTION_CODE_SHOW_BANKER_NORMAL" },
+  { no: 9, name: "STEP_ACTION_CODE_DEAL_PLAYER_UNNORMAL" },
+  { no: 10, name: "STEP_ACTION_CODE_DEAL_BANKER_UNNORMAL" },
+  { no: 13, name: "STEP_ACTION_CODE_PEEK_PLAYER" },
+  { no: 14, name: "STEP_ACTION_CODE_PEEK_BANKER" },
+  { no: 16, name: "STEP_ACTION_CODE_PITBOSS_MODIFY" },
 ]);
 
 /**
@@ -158,41 +182,97 @@ export enum StepCode {
   DEAL_NORMAL = 1,
 
   /**
+   * 開放下注
+   *
+   * @generated from enum value: STEP_CODE_OPEN_FOR_BETTING = 2;
+   */
+  OPEN_FOR_BETTING = 2,
+
+  /**
    * 開例牌
    *
-   * @generated from enum value: STEP_CODE_SHOW_NORMAL = 2;
+   * @generated from enum value: STEP_CODE_SHOW_NORMAL = 4;
    */
-  SHOW_NORMAL = 2,
+  SHOW_NORMAL = 4,
+
+  /**
+   * 開閒家例牌
+   *
+   * @generated from enum value: STEP_CODE_SHOW_PLAYER_NORMAL = 5;
+   */
+  SHOW_PLAYER_NORMAL = 5,
+
+  /**
+   * 開莊家例牌
+   *
+   * @generated from enum value: STEP_CODE_SHOW_BANKER_NORMAL = 6;
+   */
+  SHOW_BANKER_NORMAL = 6,
+
+  /**
+   * 補牌
+   *
+   * @generated from enum value: STEP_CODE_DEAL_UNNORMAL = 8;
+   */
+  DEAL_UNNORMAL = 8,
 
   /**
    * 補閒家
    *
-   * @generated from enum value: STEP_CODE_DEAL_PLAYER_UNNORMAL = 3;
+   * @generated from enum value: STEP_CODE_DEAL_PLAYER_UNNORMAL = 9;
    */
-  DEAL_PLAYER_UNNORMAL = 3,
+  DEAL_PLAYER_UNNORMAL = 9,
 
   /**
    * 補莊家
    *
-   * @generated from enum value: STEP_CODE_DEAL_BANKER_UNNORMAL = 4;
+   * @generated from enum value: STEP_CODE_DEAL_BANKER_UNNORMAL = 10;
    */
-  DEAL_BANKER_UNNORMAL = 4,
+  DEAL_BANKER_UNNORMAL = 10,
+
+  /**
+   * 瞇牌
+   *
+   * @generated from enum value: STEP_CODE_PEEK = 12;
+   */
+  PEEK = 12,
+
+  /**
+   * 瞇牌閒家
+   *
+   * @generated from enum value: STEP_CODE_PEEK_PLAYER = 13;
+   */
+  PEEK_PLAYER = 13,
+
+  /**
+   * 咪牌莊家
+   *
+   * @generated from enum value: STEP_CODE_PEEK_BANKER = 14;
+   */
+  PEEK_BANKER = 14,
 
   /**
    * PITBOSS
    *
-   * @generated from enum value: STEP_CODE_PITBOSS_MODIFY = 9;
+   * @generated from enum value: STEP_CODE_PITBOSS_MODIFY = 16;
    */
-  PITBOSS_MODIFY = 9,
+  PITBOSS_MODIFY = 16,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StepCode)
 proto3.util.setEnumType(StepCode, "baccarat.StepCode", [
   { no: 0, name: "STEP_CODE_UNSPECIFIED" },
   { no: 1, name: "STEP_CODE_DEAL_NORMAL" },
-  { no: 2, name: "STEP_CODE_SHOW_NORMAL" },
-  { no: 3, name: "STEP_CODE_DEAL_PLAYER_UNNORMAL" },
-  { no: 4, name: "STEP_CODE_DEAL_BANKER_UNNORMAL" },
-  { no: 9, name: "STEP_CODE_PITBOSS_MODIFY" },
+  { no: 2, name: "STEP_CODE_OPEN_FOR_BETTING" },
+  { no: 4, name: "STEP_CODE_SHOW_NORMAL" },
+  { no: 5, name: "STEP_CODE_SHOW_PLAYER_NORMAL" },
+  { no: 6, name: "STEP_CODE_SHOW_BANKER_NORMAL" },
+  { no: 8, name: "STEP_CODE_DEAL_UNNORMAL" },
+  { no: 9, name: "STEP_CODE_DEAL_PLAYER_UNNORMAL" },
+  { no: 10, name: "STEP_CODE_DEAL_BANKER_UNNORMAL" },
+  { no: 12, name: "STEP_CODE_PEEK" },
+  { no: 13, name: "STEP_CODE_PEEK_PLAYER" },
+  { no: 14, name: "STEP_CODE_PEEK_BANKER" },
+  { no: 16, name: "STEP_CODE_PITBOSS_MODIFY" },
 ]);
 
 /**
@@ -211,23 +291,30 @@ export enum SeatCode {
   /**
    * 莊家
    *
-   * @generated from enum value: SEAT_CODE_SEAT_BANKER = 1;
+   * @generated from enum value: SEAT_CODE_BANKER = 1;
    */
-  SEAT_BANKER = 1,
+  BANKER = 1,
 
   /**
    * 閒家
    *
-   * @generated from enum value: SEAT_CODE_SEAT_PLAYER = 2;
+   * @generated from enum value: SEAT_CODE_PLAYER = 2;
    */
-  SEAT_PLAYER = 2,
+  PLAYER = 2,
 
   /**
    * Dealer 
    *
-   * @generated from enum value: SEAT_CODE_SEAT_DEALER = 3;
+   * @generated from enum value: SEAT_CODE_DEALER = 3;
    */
-  SEAT_DEALER = 3,
+  DEALER = 3,
+
+  /**
+   * 瞇牌者
+   *
+   * @generated from enum value: SEAT_CODE_PEEK = 4;
+   */
+  PEEK = 4,
 
   /**
    * Pitboss
@@ -239,9 +326,10 @@ export enum SeatCode {
 // Retrieve enum metadata with: proto3.getEnumType(SeatCode)
 proto3.util.setEnumType(SeatCode, "baccarat.SeatCode", [
   { no: 0, name: "SEAT_CODE_UNSPECIFIED" },
-  { no: 1, name: "SEAT_CODE_SEAT_BANKER" },
-  { no: 2, name: "SEAT_CODE_SEAT_PLAYER" },
-  { no: 3, name: "SEAT_CODE_SEAT_DEALER" },
+  { no: 1, name: "SEAT_CODE_BANKER" },
+  { no: 2, name: "SEAT_CODE_PLAYER" },
+  { no: 3, name: "SEAT_CODE_DEALER" },
+  { no: 4, name: "SEAT_CODE_PEEK" },
   { no: 9, name: "SEAT_CODE_SEAT_PITBOSS" },
 ]);
 

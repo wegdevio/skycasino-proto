@@ -263,11 +263,11 @@ export class Step extends Message<Step> {
   code = protoInt64.zero;
 
   /**
-   * 玩家、執行者
+   * 玩家、執行者：SeatCode
    *
-   * @generated from field: int64 excuter = 3;
+   * @generated from field: int64 seat = 3;
    */
-  excuter = protoInt64.zero;
+  seat = protoInt64.zero;
 
   /**
    * 時間戳
@@ -299,7 +299,7 @@ export class Step extends Message<Step> {
   static readonly typeName = "recorder.Step";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 3, name: "excuter", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "seat", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 5, name: "timestamp", kind: "message", T: Timestamp },
     { no: 6, name: "actions", kind: "message", T: StepAction, repeated: true },
     { no: 8, name: "modify", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
