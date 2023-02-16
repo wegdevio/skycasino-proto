@@ -70,8 +70,8 @@ message Step {
   reserved 2, 4, 7;
   // 步驟代碼：StepCode
   int64 code = 1;
-  // 玩家、執行者
-  int64 excuter = 3;
+  // 玩家、執行者：SeatCode
+  int64 seat = 3;
   // 時間戳
   google.protobuf.Timestamp timestamp = 5;
   // 執行動作
