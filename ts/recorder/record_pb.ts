@@ -63,16 +63,16 @@ proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
  */
 export class Card extends Message<Card> {
   /**
-   * @generated from field: int64 type = 1;
+   * @generated from field: int32 type = 1;
    */
-  type = protoInt64.zero;
+  type = 0;
 
   /**
    * 卡牌內容代碼：CardTypeCode。
    *
-   * @generated from field: int64 code = 2;
+   * @generated from field: int32 code = 2;
    */
-  code = protoInt64.zero;
+  code = 0;
 
   /**
    * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
@@ -96,8 +96,8 @@ export class Card extends Message<Card> {
   static readonly runtime = proto3;
   static readonly typeName = "recorder.Card";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "type", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 2, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: "type", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 2, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 4, name: "status", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
@@ -167,39 +167,39 @@ export class StepAction extends Message<StepAction> {
   /**
    * 動作代碼：StepActionCode
    *
-   * @generated from field: int64 code = 1;
+   * @generated from field: int32 code = 1;
    */
-  code = protoInt64.zero;
+  code = 0;
 
   /**
    * 原資源擁有座位。
    *
-   * @generated from field: int64 source_seat = 3;
+   * @generated from field: int32 source_seat = 3;
    */
-  sourceSeat = protoInt64.zero;
+  sourceSeat = 0;
 
   /**
    * 資源轉移目標座位。
    *
-   * @generated from field: repeated int64 target_seat = 4;
+   * @generated from field: repeated int32 target_seat = 4;
    */
-  targetSeat: bigint[] = [];
+  targetSeat: number[] = [];
 
   /**
    * 目標卡牌資源
    * key: ResourceTypeCode, value: 卡牌陣列
    *
-   * @generated from field: map<int64, recorder.CardList> cards = 6;
+   * @generated from field: map<int32, recorder.CardList> cards = 6;
    */
-  cards: { [key: string]: CardList } = {};
+  cards: { [key: number]: CardList } = {};
 
   /**
    * 目標分數資源
    * key: ResourceTypeCode, value: 分數值。
    *
-   * @generated from field: map<int64, int64> scores = 7;
+   * @generated from field: map<int32, int64> scores = 7;
    */
-  scores: { [key: string]: bigint } = {};
+  scores: { [key: number]: bigint } = {};
 
   /**
    * 動作類型
@@ -230,11 +230,11 @@ export class StepAction extends Message<StepAction> {
   static readonly runtime = proto3;
   static readonly typeName = "recorder.StepAction";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 3, name: "source_seat", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 4, name: "target_seat", kind: "scalar", T: 3 /* ScalarType.INT64 */, repeated: true },
-    { no: 6, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
-    { no: 7, name: "scores", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
+    { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "source_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 4, name: "target_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */, repeated: true },
+    { no: 6, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
+    { no: 7, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(StepActionType) },
     { no: 9, name: "data", kind: "message", T: Any },
     { no: 10, name: "duration", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
@@ -266,16 +266,16 @@ export class Step extends Message<Step> {
   /**
    * 步驟代碼：StepCode
    *
-   * @generated from field: int64 code = 1;
+   * @generated from field: int32 code = 1;
    */
-  code = protoInt64.zero;
+  code = 0;
 
   /**
    * 玩家、執行者：SeatCode
    *
-   * @generated from field: int64 seat = 3;
+   * @generated from field: int32 seat = 3;
    */
-  seat = protoInt64.zero;
+  seat = 0;
 
   /**
    * 時間戳
@@ -306,8 +306,8 @@ export class Step extends Message<Step> {
   static readonly runtime = proto3;
   static readonly typeName = "recorder.Step";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 3, name: "seat", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 5, name: "timestamp", kind: "message", T: Timestamp },
     { no: 6, name: "actions", kind: "message", T: StepAction, repeated: true },
     { no: 8, name: "modify", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
@@ -339,25 +339,25 @@ export class Seats extends Message<Seats> {
   /**
    * 座位功能代碼：SeatCode
    *
-   * @generated from field: int64 code = 1;
+   * @generated from field: int32 code = 1;
    */
-  code = protoInt64.zero;
+  code = 0;
 
   /**
    * 各類手牌
    * key: ResourceTypeCode, value: 卡牌陣列
    *
-   * @generated from field: map<int64, recorder.CardList> cards = 6;
+   * @generated from field: map<int32, recorder.CardList> cards = 6;
    */
-  cards: { [key: string]: CardList } = {};
+  cards: { [key: number]: CardList } = {};
 
   /**
    * 各類分數
    * key: ResourceTypeCode, value: 分數值。
    *
-   * @generated from field: map<int64, int64> scores = 7;
+   * @generated from field: map<int32, int64> scores = 7;
    */
-  scores: { [key: string]: bigint } = {};
+  scores: { [key: number]: bigint } = {};
 
   constructor(data?: PartialMessage<Seats>) {
     super();
@@ -367,9 +367,9 @@ export class Seats extends Message<Seats> {
   static readonly runtime = proto3;
   static readonly typeName = "recorder.Seats";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 6, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
-    { no: 7, name: "scores", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
+    { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 6, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
+    { no: 7, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Seats {
@@ -398,9 +398,9 @@ export class Result extends Message<Result> {
   /**
    * 判讀類型代碼：ResultRecordTypeCode
    *
-   * @generated from field: int64 code = 1;
+   * @generated from field: int32 code = 1;
    */
-  code = protoInt64.zero;
+  code = 0;
 
   /**
    * 紀錄者座位代碼
@@ -420,9 +420,9 @@ export class Result extends Message<Result> {
    * 座位組
    * key: SeatCode, value: Seat
    *
-   * @generated from field: map<int64, recorder.Seats> seats = 6;
+   * @generated from field: map<int32, recorder.Seats> seats = 6;
    */
-  seats: { [key: string]: Seats } = {};
+  seats: { [key: number]: Seats } = {};
 
   constructor(data?: PartialMessage<Result>) {
     super();
@@ -432,10 +432,10 @@ export class Result extends Message<Result> {
   static readonly runtime = proto3;
   static readonly typeName = "recorder.Result";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "by_seat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "timestamp", kind: "message", T: Timestamp },
-    { no: 6, name: "seats", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: Seats} },
+    { no: 6, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seats} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Result {
@@ -514,17 +514,17 @@ export class RoundRecord extends Message<RoundRecord> {
    * 座位組
    * key: SeatCode, value: Seat
    *
-   * @generated from field: map<int64, recorder.Seats> seats = 8;
+   * @generated from field: map<int32, recorder.Seats> seats = 8;
    */
-  seats: { [key: string]: Seats } = {};
+  seats: { [key: number]: Seats } = {};
 
   /**
    * 玩家入座
    * key: SeatCode, value: 玩家code。
    *
-   * @generated from field: map<int64, string> players = 9;
+   * @generated from field: map<int32, string> players = 9;
    */
-  players: { [key: string]: string } = {};
+  players: { [key: number]: string } = {};
 
   /**
    * 歷程
@@ -550,9 +550,9 @@ export class RoundRecord extends Message<RoundRecord> {
   /**
    * 取消代碼：CancelReasonCode
    *
-   * @generated from field: int64 cancel_code = 13;
+   * @generated from field: int32 cancel_code = 13;
    */
-  cancelCode = protoInt64.zero;
+  cancelCode = 0;
 
   constructor(data?: PartialMessage<RoundRecord>) {
     super();
@@ -569,12 +569,12 @@ export class RoundRecord extends Message<RoundRecord> {
     { no: 5, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 7, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "seats", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: Seats} },
-    { no: 9, name: "players", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 8, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seats} },
+    { no: 9, name: "players", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 10, name: "process", kind: "message", T: Step, repeated: true },
     { no: 11, name: "results", kind: "message", T: Result, repeated: true },
     { no: 12, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 13, name: "cancel_code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 13, name: "cancel_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RoundRecord {
