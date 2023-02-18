@@ -102,9 +102,9 @@ export class Card extends Message<Card> {
   /**
    * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
    *
-   * @generated from field: int64 id = 2;
+   * @generated from field: string id = 2;
    */
-  id = protoInt64.zero;
+  id = "";
 
   /**
    * 狀態：翻開、關起、橫放...
@@ -122,7 +122,7 @@ export class Card extends Message<Card> {
   static readonly typeName = "recorder.Card";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 2, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
 

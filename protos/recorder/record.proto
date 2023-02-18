@@ -9,7 +9,7 @@ message Card {
 
   int32 code = 1;
   // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
-  int64 id = 2;
+  string id = 2;
   // 狀態：翻開、關起、橫放...
   int32 status = 3;
 
