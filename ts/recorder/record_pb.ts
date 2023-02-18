@@ -20,40 +20,72 @@ export enum StepActionType {
   STEP_ACTION_TYPE_UNSPECIFIED = 0,
 
   /**
-   * 發牌
+   * 派發資源
    *
-   * @generated from enum value: DEAL = 1;
+   * @generated from enum value: ADD = 1;
    */
-  DEAL = 1,
+  ADD = 1,
 
   /**
-   * 移除場上
+   * 設定指定資源
    *
-   * @generated from enum value: REMOVE = 2;
+   * @generated from enum value: SET = 2;
    */
-  REMOVE = 2,
+  SET = 2,
 
   /**
-   * 移轉
+   * 改寫全部資源;
    *
-   * @generated from enum value: TRANSFER = 3;
+   * @generated from enum value: SETALL = 3;
    */
-  TRANSFER = 3,
+  SETALL = 3,
 
   /**
-   * 狀態改變
+   * 將資源從場上移除
    *
-   * @generated from enum value: STATUS = 4;
+   * @generated from enum value: REMOVE = 4;
    */
-  STATUS = 4,
+  REMOVE = 4,
+
+  /**
+   * 讀取卡牌資料
+   *
+   * @generated from enum value: READ = 5;
+   */
+  READ = 5,
+
+  /**
+   * 移轉資源
+   *
+   * @generated from enum value: TRANSFER = 6;
+   */
+  TRANSFER = 6,
+
+  /**
+   * 卡牌狀態改變
+   *
+   * @generated from enum value: STATUS = 7;
+   */
+  STATUS = 7,
+
+  /**
+   * 此步驟不須修改資源
+   *
+   * @generated from enum value: NONE = 8;
+   */
+  NONE = 8,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StepActionType)
 proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
   { no: 0, name: "STEP_ACTION_TYPE_UNSPECIFIED" },
-  { no: 1, name: "DEAL" },
-  { no: 2, name: "REMOVE" },
-  { no: 3, name: "TRANSFER" },
-  { no: 4, name: "STATUS" },
+  { no: 1, name: "ADD" },
+  { no: 2, name: "SET" },
+  { no: 3, name: "SETALL" },
+  { no: 4, name: "REMOVE" },
+  { no: 5, name: "READ" },
+  { no: 6, name: "TRANSFER" },
+  { no: 7, name: "STATUS" },
+  { no: 8, name: "NONE" },
 ]);
 
 /**
@@ -63,30 +95,23 @@ proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
  */
 export class Card extends Message<Card> {
   /**
-   * @generated from field: int32 type = 1;
-   */
-  type = 0;
-
-  /**
-   * 卡牌內容代碼：CardTypeCode。
-   *
-   * @generated from field: int32 code = 2;
+   * @generated from field: int32 code = 1;
    */
   code = 0;
 
   /**
    * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
    *
-   * @generated from field: int64 id = 3;
+   * @generated from field: int64 id = 2;
    */
   id = protoInt64.zero;
 
   /**
    * 狀態：翻開、關起、橫放...
    *
-   * @generated from field: bool status = 4;
+   * @generated from field: int32 status = 3;
    */
-  status = false;
+  status = 0;
 
   constructor(data?: PartialMessage<Card>) {
     super();
@@ -96,10 +121,9 @@ export class Card extends Message<Card> {
   static readonly runtime = proto3;
   static readonly typeName = "recorder.Card";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "type", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 2, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 3, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 4, name: "status", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 2, name: "id", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Card {
@@ -165,14 +189,14 @@ export class CardList extends Message<CardList> {
  */
 export class StepAction extends Message<StepAction> {
   /**
-   * 動作代碼：StepActionCode
+   * 行為說明代碼：StepActionCode
    *
    * @generated from field: int32 code = 1;
    */
   code = 0;
 
   /**
-   * 原資源擁有座位。
+   * 資源擁有座位。
    *
    * @generated from field: int32 source_seat = 3;
    */
@@ -181,9 +205,9 @@ export class StepAction extends Message<StepAction> {
   /**
    * 資源轉移目標座位。
    *
-   * @generated from field: repeated int32 target_seat = 4;
+   * @generated from field: int32 target_seat = 4;
    */
-  targetSeat: number[] = [];
+  targetSeat = 0;
 
   /**
    * 目標卡牌資源
@@ -232,7 +256,7 @@ export class StepAction extends Message<StepAction> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "source_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 4, name: "target_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */, repeated: true },
+    { no: 4, name: "target_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 6, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
     { no: 7, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(StepActionType) },
@@ -352,10 +376,18 @@ export class Seats extends Message<Seats> {
   cards: { [key: number]: CardList } = {};
 
   /**
+   * 各類手牌使用牌類型
+   * key: ResourceTypeCode, value: CardTypeCode
+   *
+   * @generated from field: map<int32, int32> card_types = 7;
+   */
+  cardTypes: { [key: number]: number } = {};
+
+  /**
    * 各類分數
    * key: ResourceTypeCode, value: 分數值。
    *
-   * @generated from field: map<int32, int64> scores = 7;
+   * @generated from field: map<int32, int64> scores = 8;
    */
   scores: { [key: number]: bigint } = {};
 
@@ -369,7 +401,8 @@ export class Seats extends Message<Seats> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 6, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
-    { no: 7, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
+    { no: 7, name: "card_types", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 5 /* ScalarType.INT32 */} },
+    { no: 8, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Seats {

@@ -1,6 +1,15 @@
 syntax = "proto3";
 package baccarat;
 
+enum CardStatus {
+  
+  // 未指定
+  CARD_STATUS_UNSPECIFIED = 0;
+  // 翻開
+  CARD_OPENED = 1;
+
+}
+
 // 使用卡牌種類
 enum CardType {
 
@@ -8,8 +17,6 @@ enum CardType {
   CARD_TYPE_UNSPECIFIED = 0;
   // 撲克牌
   POKER = 1;
-  // 場控牌
-  CONTROL = 9;
 
 }
 
@@ -21,22 +28,6 @@ enum ResourceType {
   NORMAL = 1;
   // 非例牌
   EXTRA = 2;
-
-}
-
-// 動作代碼
-enum Action {
-
-  // 未指定
-  STEP_ACTION_UNSPECIFIED = 0;
-  // 派發例牌
-  OVERRIDE_CARD = 1;
-  // 咪牌
-  PEEK_CARD = 2;
-  // 開例牌
-  SHOW_CARD = 3;
-  // 等待
-  WAIT = 4;
 
 }
 
@@ -61,12 +52,10 @@ enum Step {
   // 派發莊家例牌2
   DEAL_BANKER_2 = 7;
 
-  // 派發例牌
-  DEAL_NORMAL = 8;
   // 開放下注
-  OPEN_FOR_BETTING = 9;
+  OPEN_FOR_BETTING = 8;
   // 停止下注
-  CLOSE_THE_BETTING = 10;
+  CLOSE_THE_BETTING = 9;
 
   // 非瞇牌開例牌
   SHOW_NORMAL = 12;
@@ -109,8 +98,6 @@ enum Seat {
   PLAYER = 2;
   // Dealer 
   DEALER = 3;
-  // 瞇牌者
-  PEEKER = 4;
   // Pitboss
   SEAT_PITBOSS = 9;
 

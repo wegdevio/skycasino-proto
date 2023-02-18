@@ -7,13 +7,11 @@ import "google/protobuf/timestamp.proto";
 // 卡牌，代表在此局中使用的各類物品
 message Card {
 
-  int32 type = 1;
-  // 卡牌內容代碼：CardTypeCode。
-  int32 code = 2;
+  int32 code = 1;
   // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
-  int64 id = 3;
+  int64 id = 2;
   // 狀態：翻開、關起、橫放...
-  bool status = 4;
+  int32 status = 3;
 
 }
 
@@ -29,14 +27,22 @@ enum StepActionType {
 
   // 未指定
   STEP_ACTION_TYPE_UNSPECIFIED = 0;
-  // 發牌
-  DEAL = 1;
-  // 移除場上
-  REMOVE = 2;
-  // 移轉
-  TRANSFER = 3;
-  // 狀態改變
-  STATUS = 4;
+  // 派發資源
+  ADD = 1;
+  // 設定指定資源
+  SET = 2;
+  // 改寫全部資源;
+  SETALL = 3;
+  // 將資源從場上移除
+  REMOVE = 4;
+  // 讀取卡牌資料
+  READ = 5;
+  // 移轉資源
+  TRANSFER = 6;
+  // 卡牌狀態改變
+  STATUS = 7;
+  // 此步驟不須修改資源
+  NONE = 8;
 
 }
 
@@ -44,12 +50,12 @@ enum StepActionType {
 message StepAction {
 
   reserved 2;
-  // 動作代碼：StepActionCode
+  // 行為說明代碼：StepActionCode
   int32 code = 1;
-  // 原資源擁有座位。
+  // 資源擁有座位。
   int32 source_seat = 3;
   // 資源轉移目標座位。
-  repeated int32 target_seat = 4;
+  int32 target_seat = 4;
   // 目標卡牌資源
   // key: ResourceTypeCode, value: 卡牌陣列
   map<int32, CardList> cards = 6;
@@ -91,9 +97,12 @@ message Seats {
   // 各類手牌
   // key: ResourceTypeCode, value: 卡牌陣列
   map<int32, CardList> cards = 6;
+  // 各類手牌使用牌類型
+  // key: ResourceTypeCode, value: CardTypeCode
+  map<int32, int32> card_types = 7;
   // 各類分數
   // key: ResourceTypeCode, value: 分數值。
-  map<int32, int64> scores = 7;
+  map<int32, int64> scores = 8;
 
 }
 
