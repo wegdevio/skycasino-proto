@@ -215,6 +215,13 @@ export class StepAction extends Message<StepAction> {
    */
   data?: Any;
 
+  /**
+   * 分配秒數
+   *
+   * @generated from field: int64 duration = 10;
+   */
+  duration = protoInt64.zero;
+
   constructor(data?: PartialMessage<StepAction>) {
     super();
     proto3.util.initPartial(data, this);
@@ -230,6 +237,7 @@ export class StepAction extends Message<StepAction> {
     { no: 7, name: "scores", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(StepActionType) },
     { no: 9, name: "data", kind: "message", T: Any },
+    { no: 10, name: "duration", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StepAction {
