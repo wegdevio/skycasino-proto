@@ -405,9 +405,9 @@ export class Result extends Message<Result> {
   /**
    * 紀錄者座位代碼
    *
-   * @generated from field: string by_seat = 3;
+   * @generated from field: int32 by_seat = 3;
    */
-  bySeat = "";
+  bySeat = 0;
 
   /**
    * 時間戳
@@ -433,7 +433,7 @@ export class Result extends Message<Result> {
   static readonly typeName = "recorder.Result";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 3, name: "by_seat", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "by_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 5, name: "timestamp", kind: "message", T: Timestamp },
     { no: 6, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seats} },
   ]);

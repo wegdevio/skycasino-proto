@@ -104,7 +104,7 @@ message Result {
   // 判讀類型代碼：ResultRecordTypeCode
   int32 code = 1;
   // 紀錄者座位代碼
-  string by_seat = 3;
+  int32 by_seat = 3;
   // 時間戳
   google.protobuf.Timestamp timestamp = 5;
   // 座位組
