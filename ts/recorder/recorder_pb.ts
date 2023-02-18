@@ -374,9 +374,9 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
   /**
    * 取消原因代碼
    *
-   * @generated from field: int64 code = 5;
+   * @generated from field: int64 reason = 5;
    */
-  code = protoInt64.zero;
+  reason = protoInt64.zero;
 
   /**
    * 取消備註
@@ -397,7 +397,7 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 5, name: "reason", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 6, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 

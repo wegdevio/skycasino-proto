@@ -2,123 +2,136 @@ syntax = "proto3";
 package baccarat;
 
 // 使用卡牌種類
-enum CardTypeCode {
+enum CardType {
 
   // 未指定
-  CARD_TYPE_CODE_UNSPECIFIED = 0;
+  CARD_TYPE_UNSPECIFIED = 0;
   // 撲克牌
-  CARD_TYPE_CODE_POKER = 1;
+  POKER = 1;
   // 場控牌
-  CARD_TYPE_CODE_CONTROL = 9;
+  CONTROL = 9;
 
 }
 
-enum ResourceTypeCode {
+enum ResourceType {
 
   // 未指定
-  RESOURCE_TYPE_CODE_UNSPECIFIED = 0;
+  RESOURCE_TYPE_UNSPECIFIED = 0;
   // 例牌
-  RESOURCE_TYPE_CODE_NORMAL_CARD = 1;
+  NORMAL = 1;
   // 非例牌
-  RESOURCE_TYPE_CODE_UNNORMAL_CARD = 2;
+  EXTRA = 2;
 
 }
 
 // 動作代碼
-enum StepActionCode {
+enum Action {
 
   // 未指定
-  STEP_ACTION_CODE_UNSPECIFIED = 0;
-  // 派發閒家例牌
-  STEP_ACTION_CODE_DEAL_PLAYER_NORMAL = 1;
-  // 派發莊家例牌
-  STEP_ACTION_CODE_DEAL_BANKER_NORMAL = 2;
-  // 開閒家例牌
-  STEP_ACTION_CODE_SHOW_PLAYER_NORMAL = 5;
-  // 開莊家例牌
-  STEP_ACTION_CODE_SHOW_BANKER_NORMAL = 6;
-  // 補閒家
-  STEP_ACTION_CODE_DEAL_PLAYER_UNNORMAL = 9;
-  // 補莊家
-  STEP_ACTION_CODE_DEAL_BANKER_UNNORMAL = 10;
-  // 瞇牌閒家
-  STEP_ACTION_CODE_PEEK_PLAYER = 13;
-  // 咪牌莊家
-  STEP_ACTION_CODE_PEEK_BANKER = 14;
-  // PITBOSS
-  STEP_ACTION_CODE_PITBOSS_MODIFY = 16;
+  STEP_ACTION_UNSPECIFIED = 0;
+  // 派發例牌
+  OVERRIDE_CARD = 1;
+  // 咪牌
+  PEEK_CARD = 2;
+  // 開例牌
+  SHOW_CARD = 3;
+  // 等待
+  WAIT = 4;
 
 }
 
-// 步驟代碼
-enum StepCode {
+// 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
+enum Step {
 
   // 未指定
-  STEP_CODE_UNSPECIFIED = 0;
-  // 派發例牌
-  STEP_CODE_DEAL_NORMAL = 1;
+  STEP_UNSPECIFIED = 0;
+  // 本局開始
+  ROUND_START = 1;
+  // 本局完成
+  ROUND_FINISHED = 2;
+  // 本局取消
+  ROUND_CANCELED = 3;
+
+  // 派發閒家例牌1
+  DEAL_PLAYER_1 = 4;
+  // 派發莊家例牌1
+  DEAL_BANKER_1 = 5;
+  // 派發閒家例牌2
+  DEAL_PLAYER_2 = 6;
+  // 派發莊家例牌2
+  DEAL_BANKER_2 = 7;
+
   // 開放下注
-  STEP_CODE_OPEN_FOR_BETTING = 2;
-  // 開例牌
-  STEP_CODE_SHOW_NORMAL = 4;
-  // 開閒家例牌
-  STEP_CODE_SHOW_PLAYER_NORMAL = 5;
-  // 開莊家例牌
-  STEP_CODE_SHOW_BANKER_NORMAL = 6;
-  // 補牌
-  STEP_CODE_DEAL_UNNORMAL = 8;
-  // 補閒家
-  STEP_CODE_DEAL_PLAYER_UNNORMAL = 9;
-  // 補莊家
-  STEP_CODE_DEAL_BANKER_UNNORMAL= 10;
+  OPEN_FOR_BETTING = 8;
+  // 停止下注
+  CLOSE_THE_BETTING = 9;
 
-  // 瞇牌
-  STEP_CODE_PEEK = 12;
-  // 瞇牌閒家
-  STEP_CODE_PEEK_PLAYER = 13;
-  // 咪牌莊家
-  STEP_CODE_PEEK_BANKER = 14;
+  // 非瞇牌開例牌
+  SHOW_NORMAL = 12;
+  // 瞇牌例牌
+  PEEK_NORMAL = 13;
+  // 瞇牌公布例牌
+  PEEK_SHOW_NORMAL = 14;
 
-  // PITBOSS
-  STEP_CODE_PITBOSS_MODIFY = 16;
+  // 非瞇牌補閒家牌
+  DEAL_PLAYER_EXTRA = 16;
+  // 瞇牌閒家補牌
+  PEEK_DEAL_PLAYER_EXTRA = 17;
+  // 瞇牌公布閒家補牌
+  PEEK_SHOW_PLAYER_EXTRA = 18;
 
+  // 非瞇牌補莊家牌
+  DEAL_BANKER_EXTRA = 20;
+  // 瞇牌莊家補牌
+  PEEK_DEAL_BANKER_EXTRA= 21;
+  // 瞇牌公布莊家補牌
+  PEEK_SHOW_BANKER_EXTRA= 22;
+
+  // PITBOSS 修改派發例牌
+  PITBOSS_MODIFY_NORMAL = 24;
+  // PITBOSS 修改派發閒家補牌
+  PITBOSS_MODIFY_PLAYER_EXTRA = 25;
+  // PITBOSS 修改派發莊家補牌
+  PITBOSS_MODIFY_BANKER_EXTRA = 26;
+  
 }
 
 // 座位功能代碼
-enum SeatCode {
+enum Seat {
 
   // 未指定
-  SEAT_CODE_UNSPECIFIED = 0;
+  SEAT_UNSPECIFIED = 0;
   // 莊家
-  SEAT_CODE_BANKER = 1;
+  BANKER = 1;
   // 閒家
-  SEAT_CODE_PLAYER = 2;
+  PLAYER = 2;
   // Dealer 
-  SEAT_CODE_DEALER = 3;
+  DEALER = 3;
   // 瞇牌者
-  SEAT_CODE_PEEK = 4;
+  PEEKER = 4;
   // Pitboss
-  SEAT_CODE_SEAT_PITBOSS = 9;
+  SEAT_PITBOSS = 9;
 
 }
 
 // 結果紀錄類型代碼
-enum ResultRecordTypeCode {
+enum ResultRecordType {
 
   // 未指定
-  RESULT_RECORD_TYPE_CODE_UNSPECIFIED = 0;
+  RESULT_RECORD_TYPE_UNSPECIFIED = 0;
   // 遊戲局結束
-  RESULT_RECORD_TYPE_CODE_ROUND_FINISH = 1;
+  ROUND_FINISH = 1;
   // Pitboss 修正
-  RESULT_RECORD_TYPE_CODE_PITBOSS_JUDGEMENT = 2;
+  PITBOSS_MODIFY_RESULT = 2;
 
 }
 
-enum CancelReasonCode {
+// 取消原因
+enum CancelReason {
 
   // 未指定，沒有取消
-  CANCEL_REASON_CODE_UNSPECIFIED = 0;
+  CANCEL_REASON_UNSPECIFIED = 0;
   // 取消說明原因
-  CANCEL_REASON_CODE_NO_REASON = 1;
+  NO_REASON = 1;
   
 }

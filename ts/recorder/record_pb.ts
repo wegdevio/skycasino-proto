@@ -17,43 +17,43 @@ export enum StepActionType {
    *
    * @generated from enum value: STEP_ACTION_TYPE_UNSPECIFIED = 0;
    */
-  UNSPECIFIED = 0,
+  STEP_ACTION_TYPE_UNSPECIFIED = 0,
 
   /**
    * 發牌
    *
-   * @generated from enum value: STEP_ACTION_TYPE_DEAL = 1;
+   * @generated from enum value: DEAL = 1;
    */
   DEAL = 1,
 
   /**
    * 移除場上
    *
-   * @generated from enum value: STEP_ACTION_TYPE_REMOVE = 2;
+   * @generated from enum value: REMOVE = 2;
    */
   REMOVE = 2,
 
   /**
    * 移轉
    *
-   * @generated from enum value: STEP_ACTION_TYPE_TRANSFER = 3;
+   * @generated from enum value: TRANSFER = 3;
    */
   TRANSFER = 3,
 
   /**
    * 狀態改變
    *
-   * @generated from enum value: STEP_ACTION_TYPE_STATUS = 4;
+   * @generated from enum value: STATUS = 4;
    */
   STATUS = 4,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StepActionType)
 proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
   { no: 0, name: "STEP_ACTION_TYPE_UNSPECIFIED" },
-  { no: 1, name: "STEP_ACTION_TYPE_DEAL" },
-  { no: 2, name: "STEP_ACTION_TYPE_REMOVE" },
-  { no: 3, name: "STEP_ACTION_TYPE_TRANSFER" },
-  { no: 4, name: "STEP_ACTION_TYPE_STATUS" },
+  { no: 1, name: "DEAL" },
+  { no: 2, name: "REMOVE" },
+  { no: 3, name: "TRANSFER" },
+  { no: 4, name: "STATUS" },
 ]);
 
 /**
@@ -206,7 +206,7 @@ export class StepAction extends Message<StepAction> {
    *
    * @generated from field: recorder.StepActionType type = 8;
    */
-  type = StepActionType.UNSPECIFIED;
+  type = StepActionType.STEP_ACTION_TYPE_UNSPECIFIED;
 
   /**
    * （可選）附加資料

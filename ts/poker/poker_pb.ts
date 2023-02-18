@@ -8,456 +8,456 @@ import { proto3 } from "@bufbuild/protobuf";
 /**
  * 撲克牌代碼
  *
- * @generated from enum poker.PokerCardCode
+ * @generated from enum poker.PokerCard
  */
-export enum PokerCardCode {
+export enum PokerCard {
   /**
    * 未指定
    *
-   * @generated from enum value: POKER_CARD_CODE_UNSPECIFIED = 0;
+   * @generated from enum value: POKER_CARD_UNSPECIFIED = 0;
    */
-  UNSPECIFIED = 0,
+  POKER_CARD_UNSPECIFIED = 0,
 
   /**
    * 未指定花色
    *
-   * @generated from enum value: POKER_CARD_CODE_ANY_A = 1;
+   * @generated from enum value: ANY_A = 1;
    */
   ANY_A = 1,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_2 = 2;
+   * @generated from enum value: ANY_2 = 2;
    */
   ANY_2 = 2,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_3 = 3;
+   * @generated from enum value: ANY_3 = 3;
    */
   ANY_3 = 3,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_4 = 4;
+   * @generated from enum value: ANY_4 = 4;
    */
   ANY_4 = 4,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_5 = 5;
+   * @generated from enum value: ANY_5 = 5;
    */
   ANY_5 = 5,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_6 = 6;
+   * @generated from enum value: ANY_6 = 6;
    */
   ANY_6 = 6,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_7 = 7;
+   * @generated from enum value: ANY_7 = 7;
    */
   ANY_7 = 7,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_8 = 8;
+   * @generated from enum value: ANY_8 = 8;
    */
   ANY_8 = 8,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_9 = 9;
+   * @generated from enum value: ANY_9 = 9;
    */
   ANY_9 = 9,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_10 = 10;
+   * @generated from enum value: ANY_10 = 10;
    */
   ANY_10 = 10,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_J = 11;
+   * @generated from enum value: ANY_J = 11;
    */
   ANY_J = 11,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_Q = 12;
+   * @generated from enum value: ANY_Q = 12;
    */
   ANY_Q = 12,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_ANY_K = 13;
+   * @generated from enum value: ANY_K = 13;
    */
   ANY_K = 13,
 
   /**
    * 黑桃
    *
-   * @generated from enum value: POKER_CARD_CODE_SPADE_ANY = 16;
+   * @generated from enum value: SPADE_ANY = 16;
    */
   SPADE_ANY = 16,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_A = 17;
+   * @generated from enum value: SPADE_A = 17;
    */
   SPADE_A = 17,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_2 = 18;
+   * @generated from enum value: SPADE_2 = 18;
    */
   SPADE_2 = 18,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_3 = 19;
+   * @generated from enum value: SPADE_3 = 19;
    */
   SPADE_3 = 19,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_4 = 20;
+   * @generated from enum value: SPADE_4 = 20;
    */
   SPADE_4 = 20,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_5 = 21;
+   * @generated from enum value: SPADE_5 = 21;
    */
   SPADE_5 = 21,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_6 = 22;
+   * @generated from enum value: SPADE_6 = 22;
    */
   SPADE_6 = 22,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_7 = 23;
+   * @generated from enum value: SPADE_7 = 23;
    */
   SPADE_7 = 23,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_8 = 24;
+   * @generated from enum value: SPADE_8 = 24;
    */
   SPADE_8 = 24,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_9 = 25;
+   * @generated from enum value: SPADE_9 = 25;
    */
   SPADE_9 = 25,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_10 = 26;
+   * @generated from enum value: SPADE_10 = 26;
    */
   SPADE_10 = 26,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_J = 27;
+   * @generated from enum value: SPADE_J = 27;
    */
   SPADE_J = 27,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_Q = 28;
+   * @generated from enum value: SPADE_Q = 28;
    */
   SPADE_Q = 28,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_SPADE_K = 29;
+   * @generated from enum value: SPADE_K = 29;
    */
   SPADE_K = 29,
 
   /**
    * 愛心
    *
-   * @generated from enum value: POKER_CARD_CODE_HEART_ANY = 32;
+   * @generated from enum value: HEART_ANY = 32;
    */
   HEART_ANY = 32,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_A = 33;
+   * @generated from enum value: HEART_A = 33;
    */
   HEART_A = 33,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_2 = 34;
+   * @generated from enum value: HEART_2 = 34;
    */
   HEART_2 = 34,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_3 = 35;
+   * @generated from enum value: HEART_3 = 35;
    */
   HEART_3 = 35,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_4 = 36;
+   * @generated from enum value: HEART_4 = 36;
    */
   HEART_4 = 36,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_5 = 37;
+   * @generated from enum value: HEART_5 = 37;
    */
   HEART_5 = 37,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_6 = 38;
+   * @generated from enum value: HEART_6 = 38;
    */
   HEART_6 = 38,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_7 = 39;
+   * @generated from enum value: HEART_7 = 39;
    */
   HEART_7 = 39,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_8 = 40;
+   * @generated from enum value: HEART_8 = 40;
    */
   HEART_8 = 40,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_9 = 41;
+   * @generated from enum value: HEART_9 = 41;
    */
   HEART_9 = 41,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_10 = 42;
+   * @generated from enum value: HEART_10 = 42;
    */
   HEART_10 = 42,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_J = 43;
+   * @generated from enum value: HEART_J = 43;
    */
   HEART_J = 43,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_Q = 44;
+   * @generated from enum value: HEART_Q = 44;
    */
   HEART_Q = 44,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_HEART_K = 45;
+   * @generated from enum value: HEART_K = 45;
    */
   HEART_K = 45,
 
   /**
    * 鑽石
    *
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_ANY = 48;
+   * @generated from enum value: DIAMOND_ANY = 48;
    */
   DIAMOND_ANY = 48,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_A = 49;
+   * @generated from enum value: DIAMOND_A = 49;
    */
   DIAMOND_A = 49,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_2 = 50;
+   * @generated from enum value: DIAMOND_2 = 50;
    */
   DIAMOND_2 = 50,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_3 = 51;
+   * @generated from enum value: DIAMOND_3 = 51;
    */
   DIAMOND_3 = 51,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_4 = 52;
+   * @generated from enum value: DIAMOND_4 = 52;
    */
   DIAMOND_4 = 52,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_5 = 53;
+   * @generated from enum value: DIAMOND_5 = 53;
    */
   DIAMOND_5 = 53,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_6 = 54;
+   * @generated from enum value: DIAMOND_6 = 54;
    */
   DIAMOND_6 = 54,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_7 = 55;
+   * @generated from enum value: DIAMOND_7 = 55;
    */
   DIAMOND_7 = 55,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_8 = 56;
+   * @generated from enum value: DIAMOND_8 = 56;
    */
   DIAMOND_8 = 56,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_9 = 57;
+   * @generated from enum value: DIAMOND_9 = 57;
    */
   DIAMOND_9 = 57,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_10 = 58;
+   * @generated from enum value: DIAMOND_10 = 58;
    */
   DIAMOND_10 = 58,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_J = 59;
+   * @generated from enum value: DIAMOND_J = 59;
    */
   DIAMOND_J = 59,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_Q = 60;
+   * @generated from enum value: DIAMOND_Q = 60;
    */
   DIAMOND_Q = 60,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_DIAMOND_K = 61;
+   * @generated from enum value: DIAMOND_K = 61;
    */
   DIAMOND_K = 61,
 
   /**
    * 梅花
    *
-   * @generated from enum value: POKER_CARD_CODE_CLUB_ANY = 64;
+   * @generated from enum value: CLUB_ANY = 64;
    */
   CLUB_ANY = 64,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_A = 65;
+   * @generated from enum value: CLUB_A = 65;
    */
   CLUB_A = 65,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_2 = 66;
+   * @generated from enum value: CLUB_2 = 66;
    */
   CLUB_2 = 66,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_3 = 67;
+   * @generated from enum value: CLUB_3 = 67;
    */
   CLUB_3 = 67,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_4 = 68;
+   * @generated from enum value: CLUB_4 = 68;
    */
   CLUB_4 = 68,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_5 = 69;
+   * @generated from enum value: CLUB_5 = 69;
    */
   CLUB_5 = 69,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_6 = 70;
+   * @generated from enum value: CLUB_6 = 70;
    */
   CLUB_6 = 70,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_7 = 71;
+   * @generated from enum value: CLUB_7 = 71;
    */
   CLUB_7 = 71,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_8 = 72;
+   * @generated from enum value: CLUB_8 = 72;
    */
   CLUB_8 = 72,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_9 = 73;
+   * @generated from enum value: CLUB_9 = 73;
    */
   CLUB_9 = 73,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_10 = 74;
+   * @generated from enum value: CLUB_10 = 74;
    */
   CLUB_10 = 74,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_J = 75;
+   * @generated from enum value: CLUB_J = 75;
    */
   CLUB_J = 75,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_Q = 76;
+   * @generated from enum value: CLUB_Q = 76;
    */
   CLUB_Q = 76,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_CLUB_K = 77;
+   * @generated from enum value: CLUB_K = 77;
    */
   CLUB_K = 77,
 
   /**
    * 鬼牌
    *
-   * @generated from enum value: POKER_CARD_CODE_JOKER_COLOR = 94;
+   * @generated from enum value: JOKER_COLOR = 94;
    */
   JOKER_COLOR = 94,
 
   /**
-   * @generated from enum value: POKER_CARD_CODE_JOKER_BLACK = 95;
+   * @generated from enum value: JOKER_BLACK = 95;
    */
   JOKER_BLACK = 95,
 }
-// Retrieve enum metadata with: proto3.getEnumType(PokerCardCode)
-proto3.util.setEnumType(PokerCardCode, "poker.PokerCardCode", [
-  { no: 0, name: "POKER_CARD_CODE_UNSPECIFIED" },
-  { no: 1, name: "POKER_CARD_CODE_ANY_A" },
-  { no: 2, name: "POKER_CARD_CODE_ANY_2" },
-  { no: 3, name: "POKER_CARD_CODE_ANY_3" },
-  { no: 4, name: "POKER_CARD_CODE_ANY_4" },
-  { no: 5, name: "POKER_CARD_CODE_ANY_5" },
-  { no: 6, name: "POKER_CARD_CODE_ANY_6" },
-  { no: 7, name: "POKER_CARD_CODE_ANY_7" },
-  { no: 8, name: "POKER_CARD_CODE_ANY_8" },
-  { no: 9, name: "POKER_CARD_CODE_ANY_9" },
-  { no: 10, name: "POKER_CARD_CODE_ANY_10" },
-  { no: 11, name: "POKER_CARD_CODE_ANY_J" },
-  { no: 12, name: "POKER_CARD_CODE_ANY_Q" },
-  { no: 13, name: "POKER_CARD_CODE_ANY_K" },
-  { no: 16, name: "POKER_CARD_CODE_SPADE_ANY" },
-  { no: 17, name: "POKER_CARD_CODE_SPADE_A" },
-  { no: 18, name: "POKER_CARD_CODE_SPADE_2" },
-  { no: 19, name: "POKER_CARD_CODE_SPADE_3" },
-  { no: 20, name: "POKER_CARD_CODE_SPADE_4" },
-  { no: 21, name: "POKER_CARD_CODE_SPADE_5" },
-  { no: 22, name: "POKER_CARD_CODE_SPADE_6" },
-  { no: 23, name: "POKER_CARD_CODE_SPADE_7" },
-  { no: 24, name: "POKER_CARD_CODE_SPADE_8" },
-  { no: 25, name: "POKER_CARD_CODE_SPADE_9" },
-  { no: 26, name: "POKER_CARD_CODE_SPADE_10" },
-  { no: 27, name: "POKER_CARD_CODE_SPADE_J" },
-  { no: 28, name: "POKER_CARD_CODE_SPADE_Q" },
-  { no: 29, name: "POKER_CARD_CODE_SPADE_K" },
-  { no: 32, name: "POKER_CARD_CODE_HEART_ANY" },
-  { no: 33, name: "POKER_CARD_CODE_HEART_A" },
-  { no: 34, name: "POKER_CARD_CODE_HEART_2" },
-  { no: 35, name: "POKER_CARD_CODE_HEART_3" },
-  { no: 36, name: "POKER_CARD_CODE_HEART_4" },
-  { no: 37, name: "POKER_CARD_CODE_HEART_5" },
-  { no: 38, name: "POKER_CARD_CODE_HEART_6" },
-  { no: 39, name: "POKER_CARD_CODE_HEART_7" },
-  { no: 40, name: "POKER_CARD_CODE_HEART_8" },
-  { no: 41, name: "POKER_CARD_CODE_HEART_9" },
-  { no: 42, name: "POKER_CARD_CODE_HEART_10" },
-  { no: 43, name: "POKER_CARD_CODE_HEART_J" },
-  { no: 44, name: "POKER_CARD_CODE_HEART_Q" },
-  { no: 45, name: "POKER_CARD_CODE_HEART_K" },
-  { no: 48, name: "POKER_CARD_CODE_DIAMOND_ANY" },
-  { no: 49, name: "POKER_CARD_CODE_DIAMOND_A" },
-  { no: 50, name: "POKER_CARD_CODE_DIAMOND_2" },
-  { no: 51, name: "POKER_CARD_CODE_DIAMOND_3" },
-  { no: 52, name: "POKER_CARD_CODE_DIAMOND_4" },
-  { no: 53, name: "POKER_CARD_CODE_DIAMOND_5" },
-  { no: 54, name: "POKER_CARD_CODE_DIAMOND_6" },
-  { no: 55, name: "POKER_CARD_CODE_DIAMOND_7" },
-  { no: 56, name: "POKER_CARD_CODE_DIAMOND_8" },
-  { no: 57, name: "POKER_CARD_CODE_DIAMOND_9" },
-  { no: 58, name: "POKER_CARD_CODE_DIAMOND_10" },
-  { no: 59, name: "POKER_CARD_CODE_DIAMOND_J" },
-  { no: 60, name: "POKER_CARD_CODE_DIAMOND_Q" },
-  { no: 61, name: "POKER_CARD_CODE_DIAMOND_K" },
-  { no: 64, name: "POKER_CARD_CODE_CLUB_ANY" },
-  { no: 65, name: "POKER_CARD_CODE_CLUB_A" },
-  { no: 66, name: "POKER_CARD_CODE_CLUB_2" },
-  { no: 67, name: "POKER_CARD_CODE_CLUB_3" },
-  { no: 68, name: "POKER_CARD_CODE_CLUB_4" },
-  { no: 69, name: "POKER_CARD_CODE_CLUB_5" },
-  { no: 70, name: "POKER_CARD_CODE_CLUB_6" },
-  { no: 71, name: "POKER_CARD_CODE_CLUB_7" },
-  { no: 72, name: "POKER_CARD_CODE_CLUB_8" },
-  { no: 73, name: "POKER_CARD_CODE_CLUB_9" },
-  { no: 74, name: "POKER_CARD_CODE_CLUB_10" },
-  { no: 75, name: "POKER_CARD_CODE_CLUB_J" },
-  { no: 76, name: "POKER_CARD_CODE_CLUB_Q" },
-  { no: 77, name: "POKER_CARD_CODE_CLUB_K" },
-  { no: 94, name: "POKER_CARD_CODE_JOKER_COLOR" },
-  { no: 95, name: "POKER_CARD_CODE_JOKER_BLACK" },
+// Retrieve enum metadata with: proto3.getEnumType(PokerCard)
+proto3.util.setEnumType(PokerCard, "poker.PokerCard", [
+  { no: 0, name: "POKER_CARD_UNSPECIFIED" },
+  { no: 1, name: "ANY_A" },
+  { no: 2, name: "ANY_2" },
+  { no: 3, name: "ANY_3" },
+  { no: 4, name: "ANY_4" },
+  { no: 5, name: "ANY_5" },
+  { no: 6, name: "ANY_6" },
+  { no: 7, name: "ANY_7" },
+  { no: 8, name: "ANY_8" },
+  { no: 9, name: "ANY_9" },
+  { no: 10, name: "ANY_10" },
+  { no: 11, name: "ANY_J" },
+  { no: 12, name: "ANY_Q" },
+  { no: 13, name: "ANY_K" },
+  { no: 16, name: "SPADE_ANY" },
+  { no: 17, name: "SPADE_A" },
+  { no: 18, name: "SPADE_2" },
+  { no: 19, name: "SPADE_3" },
+  { no: 20, name: "SPADE_4" },
+  { no: 21, name: "SPADE_5" },
+  { no: 22, name: "SPADE_6" },
+  { no: 23, name: "SPADE_7" },
+  { no: 24, name: "SPADE_8" },
+  { no: 25, name: "SPADE_9" },
+  { no: 26, name: "SPADE_10" },
+  { no: 27, name: "SPADE_J" },
+  { no: 28, name: "SPADE_Q" },
+  { no: 29, name: "SPADE_K" },
+  { no: 32, name: "HEART_ANY" },
+  { no: 33, name: "HEART_A" },
+  { no: 34, name: "HEART_2" },
+  { no: 35, name: "HEART_3" },
+  { no: 36, name: "HEART_4" },
+  { no: 37, name: "HEART_5" },
+  { no: 38, name: "HEART_6" },
+  { no: 39, name: "HEART_7" },
+  { no: 40, name: "HEART_8" },
+  { no: 41, name: "HEART_9" },
+  { no: 42, name: "HEART_10" },
+  { no: 43, name: "HEART_J" },
+  { no: 44, name: "HEART_Q" },
+  { no: 45, name: "HEART_K" },
+  { no: 48, name: "DIAMOND_ANY" },
+  { no: 49, name: "DIAMOND_A" },
+  { no: 50, name: "DIAMOND_2" },
+  { no: 51, name: "DIAMOND_3" },
+  { no: 52, name: "DIAMOND_4" },
+  { no: 53, name: "DIAMOND_5" },
+  { no: 54, name: "DIAMOND_6" },
+  { no: 55, name: "DIAMOND_7" },
+  { no: 56, name: "DIAMOND_8" },
+  { no: 57, name: "DIAMOND_9" },
+  { no: 58, name: "DIAMOND_10" },
+  { no: 59, name: "DIAMOND_J" },
+  { no: 60, name: "DIAMOND_Q" },
+  { no: 61, name: "DIAMOND_K" },
+  { no: 64, name: "CLUB_ANY" },
+  { no: 65, name: "CLUB_A" },
+  { no: 66, name: "CLUB_2" },
+  { no: 67, name: "CLUB_3" },
+  { no: 68, name: "CLUB_4" },
+  { no: 69, name: "CLUB_5" },
+  { no: 70, name: "CLUB_6" },
+  { no: 71, name: "CLUB_7" },
+  { no: 72, name: "CLUB_8" },
+  { no: 73, name: "CLUB_9" },
+  { no: 74, name: "CLUB_10" },
+  { no: 75, name: "CLUB_J" },
+  { no: 76, name: "CLUB_Q" },
+  { no: 77, name: "CLUB_K" },
+  { no: 94, name: "JOKER_COLOR" },
+  { no: 95, name: "JOKER_BLACK" },
 ]);
 

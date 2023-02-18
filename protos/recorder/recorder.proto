@@ -84,7 +84,7 @@ message RecordRoundCancelRequest {
   // 局代碼
   string round_code = 4;
   // 取消原因代碼
-  int64 code = 5;
+  int64 reason = 5;
   // 取消備註
   string message = 6;
 

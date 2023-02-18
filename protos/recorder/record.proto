@@ -30,13 +30,13 @@ enum StepActionType {
   // 未指定
   STEP_ACTION_TYPE_UNSPECIFIED = 0;
   // 發牌
-  STEP_ACTION_TYPE_DEAL = 1;
+  DEAL = 1;
   // 移除場上
-  STEP_ACTION_TYPE_REMOVE = 2;
+  REMOVE = 2;
   // 移轉
-  STEP_ACTION_TYPE_TRANSFER = 3;
+  TRANSFER = 3;
   // 狀態改變
-  STEP_ACTION_TYPE_STATUS = 4;
+  STATUS = 4;
 
 }
 
@@ -60,7 +60,6 @@ message StepAction {
   StepActionType type = 8;
   // （可選）附加資料
   google.protobuf.Any data = 9;
-
 
 }
 
