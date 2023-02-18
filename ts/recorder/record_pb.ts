@@ -216,7 +216,7 @@ export class StepAction extends Message<StepAction> {
   data?: Any;
 
   /**
-   * 分配秒數
+   * 分配毫秒數
    *
    * @generated from field: int64 duration = 10;
    */

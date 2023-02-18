@@ -61,10 +61,12 @@ enum Step {
   // 派發莊家例牌2
   DEAL_BANKER_2 = 7;
 
+  // 派發例牌
+  DEAL_NORMAL = 8;
   // 開放下注
-  OPEN_FOR_BETTING = 8;
+  OPEN_FOR_BETTING = 9;
   // 停止下注
-  CLOSE_THE_BETTING = 9;
+  CLOSE_THE_BETTING = 10;
 
   // 非瞇牌開例牌
   SHOW_NORMAL = 12;

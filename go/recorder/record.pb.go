@@ -228,7 +228,7 @@ type StepAction struct {
 	Type StepActionType `protobuf:"varint,8,opt,name=type,proto3,enum=recorder.StepActionType" json:"type,omitempty"`
 	// （可選）附加資料
 	Data *anypb.Any `protobuf:"bytes,9,opt,name=data,proto3" json:"data,omitempty"`
-	// 分配秒數
+	// 分配毫秒數
 	Duration int64 `protobuf:"varint,10,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 

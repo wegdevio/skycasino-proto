@@ -184,18 +184,25 @@ export enum Step {
   DEAL_BANKER_2 = 7,
 
   /**
+   * 派發例牌
+   *
+   * @generated from enum value: DEAL_NORMAL = 8;
+   */
+  DEAL_NORMAL = 8,
+
+  /**
    * 開放下注
    *
-   * @generated from enum value: OPEN_FOR_BETTING = 8;
+   * @generated from enum value: OPEN_FOR_BETTING = 9;
    */
-  OPEN_FOR_BETTING = 8,
+  OPEN_FOR_BETTING = 9,
 
   /**
    * 停止下注
    *
-   * @generated from enum value: CLOSE_THE_BETTING = 9;
+   * @generated from enum value: CLOSE_THE_BETTING = 10;
    */
-  CLOSE_THE_BETTING = 9,
+  CLOSE_THE_BETTING = 10,
 
   /**
    * 非瞇牌開例牌
@@ -291,8 +298,9 @@ proto3.util.setEnumType(Step, "baccarat.Step", [
   { no: 5, name: "DEAL_BANKER_1" },
   { no: 6, name: "DEAL_PLAYER_2" },
   { no: 7, name: "DEAL_BANKER_2" },
-  { no: 8, name: "OPEN_FOR_BETTING" },
-  { no: 9, name: "CLOSE_THE_BETTING" },
+  { no: 8, name: "DEAL_NORMAL" },
+  { no: 9, name: "OPEN_FOR_BETTING" },
+  { no: 10, name: "CLOSE_THE_BETTING" },
   { no: 12, name: "SHOW_NORMAL" },
   { no: 13, name: "PEEK_NORMAL" },
   { no: 14, name: "PEEK_SHOW_NORMAL" },
