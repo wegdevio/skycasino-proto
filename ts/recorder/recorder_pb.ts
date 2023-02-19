@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { CardList, Result, Step } from "./record_pb";
 
 /**
@@ -63,9 +63,9 @@ export class RecordResponse extends Message<RecordResponse> {
 }
 
 /**
- * @generated from message recorder.RecordShuffleRequest
+ * @generated from message recorder.RecordShuffleStartedRequest
  */
-export class RecordShuffleRequest extends Message<RecordShuffleRequest> {
+export class RecordShuffleStartedRequest extends Message<RecordShuffleStartedRequest> {
   /**
    * 遊戲代碼
    *
@@ -81,6 +81,68 @@ export class RecordShuffleRequest extends Message<RecordShuffleRequest> {
   tableCode = "";
 
   /**
+   * 時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_start = 5;
+   */
+  tsStart?: Timestamp;
+
+  constructor(data?: PartialMessage<RecordShuffleStartedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime = proto3;
+  static readonly typeName = "recorder.RecordShuffleStartedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "ts_start", kind: "message", T: Timestamp },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShuffleStartedRequest {
+    return new RecordShuffleStartedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShuffleStartedRequest {
+    return new RecordShuffleStartedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShuffleStartedRequest {
+    return new RecordShuffleStartedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RecordShuffleStartedRequest | PlainMessage<RecordShuffleStartedRequest> | undefined, b: RecordShuffleStartedRequest | PlainMessage<RecordShuffleStartedRequest> | undefined): boolean {
+    return proto3.util.equals(RecordShuffleStartedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.RecordShuffleDoneRequest
+ */
+export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> {
+  /**
+   * 遊戲代碼
+   *
+   * @generated from field: string game_code = 2;
+   */
+  gameCode = "";
+
+  /**
+   * 桌代碼
+   *
+   * @generated from field: string table_code = 3;
+   */
+  tableCode = "";
+
+  /**
+   * 時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_start = 5;
+   */
+  tsStart?: Timestamp;
+
+  /**
    * 洗牌類型
    * key: 卡牌類型；value: 卡牌陣列
    *
@@ -88,33 +150,34 @@ export class RecordShuffleRequest extends Message<RecordShuffleRequest> {
    */
   cards: { [key: string]: CardList } = {};
 
-  constructor(data?: PartialMessage<RecordShuffleRequest>) {
+  constructor(data?: PartialMessage<RecordShuffleDoneRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "recorder.RecordShuffleRequest";
+  static readonly typeName = "recorder.RecordShuffleDoneRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "ts_start", kind: "message", T: Timestamp },
     { no: 6, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShuffleRequest {
-    return new RecordShuffleRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShuffleDoneRequest {
+    return new RecordShuffleDoneRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShuffleRequest {
-    return new RecordShuffleRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShuffleDoneRequest {
+    return new RecordShuffleDoneRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShuffleRequest {
-    return new RecordShuffleRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShuffleDoneRequest {
+    return new RecordShuffleDoneRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: RecordShuffleRequest | PlainMessage<RecordShuffleRequest> | undefined, b: RecordShuffleRequest | PlainMessage<RecordShuffleRequest> | undefined): boolean {
-    return proto3.util.equals(RecordShuffleRequest, a, b);
+  static equals(a: RecordShuffleDoneRequest | PlainMessage<RecordShuffleDoneRequest> | undefined, b: RecordShuffleDoneRequest | PlainMessage<RecordShuffleDoneRequest> | undefined): boolean {
+    return proto3.util.equals(RecordShuffleDoneRequest, a, b);
   }
 }
 
