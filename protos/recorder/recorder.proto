@@ -9,7 +9,7 @@ message RecordResponse {
   // 紀錄ID
   string record_id = 1;
   // 結果代碼
-  int64 code = 2;
+  int32 code = 2;
   // 結果訊息
   string message = 3;
 
@@ -38,7 +38,7 @@ message RecordShuffleDoneRequest {
   google.protobuf.Timestamp ts_done = 5;
   // 洗牌類型
   // key: CardTypeCode；value: 卡牌陣列
-  map<int64, CardList> cards = 7;
+  map<int32, CardList> cards = 7;
 
 }
 
@@ -100,7 +100,7 @@ message RecordRoundCancelRequest {
   // 局代碼
   string round_code = 4;
   // 取消原因代碼
-  int64 reason = 5;
+  int32 reason = 5;
   // 取消備註
   string message = 6;
 

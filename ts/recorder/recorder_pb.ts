@@ -21,9 +21,9 @@ export class RecordResponse extends Message<RecordResponse> {
   /**
    * 結果代碼
    *
-   * @generated from field: int64 code = 2;
+   * @generated from field: int32 code = 2;
    */
-  code = protoInt64.zero;
+  code = 0;
 
   /**
    * 結果訊息
@@ -41,7 +41,7 @@ export class RecordResponse extends Message<RecordResponse> {
   static readonly typeName = "recorder.RecordResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "code", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 2, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
@@ -153,9 +153,9 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
    * 洗牌類型
    * key: CardTypeCode；value: 卡牌陣列
    *
-   * @generated from field: map<int64, recorder.CardList> cards = 7;
+   * @generated from field: map<int32, recorder.CardList> cards = 7;
    */
-  cards: { [key: string]: CardList } = {};
+  cards: { [key: number]: CardList } = {};
 
   constructor(data?: PartialMessage<RecordShuffleDoneRequest>) {
     super();
@@ -169,7 +169,7 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "ts_done", kind: "message", T: Timestamp },
-    { no: 7, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
+    { no: 7, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShuffleDoneRequest {
@@ -445,9 +445,9 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
   /**
    * 取消原因代碼
    *
-   * @generated from field: int64 reason = 5;
+   * @generated from field: int32 reason = 5;
    */
-  reason = protoInt64.zero;
+  reason = 0;
 
   /**
    * 取消備註
@@ -468,7 +468,7 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "reason", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 5, name: "reason", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 6, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
