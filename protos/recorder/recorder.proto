@@ -35,7 +35,7 @@ message RecordShuffleDoneRequest {
   // 使用洗牌代碼
   string shuffle_code = 4;  
   // 時間
-  google.protobuf.Timestamp ts_start = 5;
+  google.protobuf.Timestamp ts_done = 5;
   // 洗牌類型
   // key: CardTypeCode；value: 卡牌陣列
   map<int64, CardList> cards = 7;

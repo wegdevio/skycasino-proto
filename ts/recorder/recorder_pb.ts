@@ -145,9 +145,9 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   /**
    * 時間
    *
-   * @generated from field: google.protobuf.Timestamp ts_start = 5;
+   * @generated from field: google.protobuf.Timestamp ts_done = 5;
    */
-  tsStart?: Timestamp;
+  tsDone?: Timestamp;
 
   /**
    * 洗牌類型
@@ -168,7 +168,7 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "ts_start", kind: "message", T: Timestamp },
+    { no: 5, name: "ts_done", kind: "message", T: Timestamp },
     { no: 7, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
   ]);
 
