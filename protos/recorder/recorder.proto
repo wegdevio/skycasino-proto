@@ -32,14 +32,15 @@ message RecordShuffleDoneRequest {
   string game_code = 2;
   // 桌代碼
   string table_code = 3;
+  // 使用洗牌代碼
+  string shuffle_code = 4;  
   // 時間
   google.protobuf.Timestamp ts_start = 5;
   // 洗牌類型
-  // key: 卡牌類型；value: 卡牌陣列
-  map<int64, CardList> cards = 6;
+  // key: CardTypeCode；value: 卡牌陣列
+  map<int64, CardList> cards = 7;
 
 }
-
 
 message RecordRoundStartRequest {
 

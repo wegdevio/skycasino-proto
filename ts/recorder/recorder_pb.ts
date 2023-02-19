@@ -136,6 +136,13 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   tableCode = "";
 
   /**
+   * 使用洗牌代碼
+   *
+   * @generated from field: string shuffle_code = 4;
+   */
+  shuffleCode = "";
+
+  /**
    * 時間
    *
    * @generated from field: google.protobuf.Timestamp ts_start = 5;
@@ -144,9 +151,9 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
 
   /**
    * 洗牌類型
-   * key: 卡牌類型；value: 卡牌陣列
+   * key: CardTypeCode；value: 卡牌陣列
    *
-   * @generated from field: map<int64, recorder.CardList> cards = 6;
+   * @generated from field: map<int64, recorder.CardList> cards = 7;
    */
   cards: { [key: string]: CardList } = {};
 
@@ -160,8 +167,9 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "ts_start", kind: "message", T: Timestamp },
-    { no: 6, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
+    { no: 7, name: "cards", kind: "map", K: 3 /* ScalarType.INT64 */, V: {kind: "message", T: CardList} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShuffleDoneRequest {
