@@ -89,7 +89,7 @@ message Step {
 }
 
 // 座位
-message Seats {
+message Seat {
 
   reserved 2 to 5;
   // 座位功能代碼：SeatCode
@@ -118,7 +118,7 @@ message Result {
   google.protobuf.Timestamp timestamp = 5;
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seats> seats = 6;
+  map<int32, Seat> seats = 6;
 
 }
 
@@ -142,7 +142,7 @@ message RoundRecord {
 
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seats> seats = 8;
+  map<int32, Seat> seats = 8;
   // 玩家入座
   // key: SeatCode, value: 玩家code。
   map<int32, string> players = 9;

@@ -357,9 +357,9 @@ export class Step extends Message<Step> {
 /**
  * 座位
  *
- * @generated from message recorder.Seats
+ * @generated from message recorder.Seat
  */
-export class Seats extends Message<Seats> {
+export class Seat extends Message<Seat> {
   /**
    * 座位功能代碼：SeatCode
    *
@@ -391,13 +391,13 @@ export class Seats extends Message<Seats> {
    */
   scores: { [key: number]: bigint } = {};
 
-  constructor(data?: PartialMessage<Seats>) {
+  constructor(data?: PartialMessage<Seat>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime = proto3;
-  static readonly typeName = "recorder.Seats";
+  static readonly typeName = "recorder.Seat";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 6, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
@@ -405,20 +405,20 @@ export class Seats extends Message<Seats> {
     { no: 8, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Seats {
-    return new Seats().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Seat {
+    return new Seat().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Seats {
-    return new Seats().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Seat {
+    return new Seat().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Seats {
-    return new Seats().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Seat {
+    return new Seat().fromJsonString(jsonString, options);
   }
 
-  static equals(a: Seats | PlainMessage<Seats> | undefined, b: Seats | PlainMessage<Seats> | undefined): boolean {
-    return proto3.util.equals(Seats, a, b);
+  static equals(a: Seat | PlainMessage<Seat> | undefined, b: Seat | PlainMessage<Seat> | undefined): boolean {
+    return proto3.util.equals(Seat, a, b);
   }
 }
 
@@ -453,9 +453,9 @@ export class Result extends Message<Result> {
    * 座位組
    * key: SeatCode, value: Seat
    *
-   * @generated from field: map<int32, recorder.Seats> seats = 6;
+   * @generated from field: map<int32, recorder.Seat> seats = 6;
    */
-  seats: { [key: number]: Seats } = {};
+  seats: { [key: number]: Seat } = {};
 
   constructor(data?: PartialMessage<Result>) {
     super();
@@ -468,7 +468,7 @@ export class Result extends Message<Result> {
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "by_seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 5, name: "timestamp", kind: "message", T: Timestamp },
-    { no: 6, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seats} },
+    { no: 6, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seat} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Result {
@@ -547,9 +547,9 @@ export class RoundRecord extends Message<RoundRecord> {
    * 座位組
    * key: SeatCode, value: Seat
    *
-   * @generated from field: map<int32, recorder.Seats> seats = 8;
+   * @generated from field: map<int32, recorder.Seat> seats = 8;
    */
-  seats: { [key: number]: Seats } = {};
+  seats: { [key: number]: Seat } = {};
 
   /**
    * 玩家入座
@@ -602,7 +602,7 @@ export class RoundRecord extends Message<RoundRecord> {
     { no: 5, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 7, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seats} },
+    { no: 8, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Seat} },
     { no: 9, name: "players", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 10, name: "process", kind: "message", T: Step, repeated: true },
     { no: 11, name: "results", kind: "message", T: Result, repeated: true },
