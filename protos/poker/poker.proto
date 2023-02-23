@@ -19,6 +19,7 @@ enum PokerCard {
   ANY_J = 11;
   ANY_Q = 12;
   ANY_K = 13;
+  MASK = 15;
   // 黑桃
   SPADE_ANY = 16;
   SPADE_A = 17;

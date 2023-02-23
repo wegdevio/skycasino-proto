@@ -86,6 +86,11 @@ export enum PokerCard {
   ANY_K = 13,
 
   /**
+   * @generated from enum value: MASK = 15;
+   */
+  MASK = 15,
+
+  /**
    * 黑桃
    *
    * @generated from enum value: SPADE_ANY = 16;
@@ -401,6 +406,7 @@ proto3.util.setEnumType(PokerCard, "poker.PokerCard", [
   { no: 11, name: "ANY_J" },
   { no: 12, name: "ANY_Q" },
   { no: 13, name: "ANY_K" },
+  { no: 15, name: "MASK" },
   { no: 16, name: "SPADE_ANY" },
   { no: 17, name: "SPADE_A" },
   { no: 18, name: "SPADE_2" },
