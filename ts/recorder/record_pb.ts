@@ -316,11 +316,18 @@ export class Step extends Message<Step> {
   actions: StepAction[] = [];
 
   /**
-   * 是否是修正錯誤
+   * 執行錯誤
    *
-   * @generated from field: bool modify = 8;
+   * @generated from field: string error = 8;
    */
-  modify = false;
+  error = "";
+
+  /**
+   * 取消
+   *
+   * @generated from field: bool cancel = 9;
+   */
+  cancel = false;
 
   constructor(data?: PartialMessage<Step>) {
     super();
@@ -334,7 +341,8 @@ export class Step extends Message<Step> {
     { no: 3, name: "seat", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 5, name: "timestamp", kind: "message", T: Timestamp },
     { no: 6, name: "actions", kind: "message", T: StepAction, repeated: true },
-    { no: 8, name: "modify", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 8, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Step {

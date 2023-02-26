@@ -83,8 +83,10 @@ message Step {
   google.protobuf.Timestamp timestamp = 5;
   // 執行動作
   repeated StepAction actions = 6;
-  // 是否是修正錯誤
-  bool modify = 8;
+  // 執行錯誤
+  string error = 8;
+  // 取消
+  bool cancel = 9;
 
 }
 
