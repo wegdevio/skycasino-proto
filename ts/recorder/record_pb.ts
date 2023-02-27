@@ -591,9 +591,9 @@ export class RoundRecord extends Message<RoundRecord> {
   /**
    * 取消代碼：CancelReasonCode
    *
-   * @generated from field: int32 cancel_code = 13;
+   * @generated from field: string cancel_code = 13;
    */
-  cancelCode = 0;
+  cancelCode = "";
 
   constructor(data?: PartialMessage<RoundRecord>) {
     super();
@@ -615,7 +615,7 @@ export class RoundRecord extends Message<RoundRecord> {
     { no: 10, name: "process", kind: "message", T: Step, repeated: true },
     { no: 11, name: "results", kind: "message", T: Result, repeated: true },
     { no: 12, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 13, name: "cancel_code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 13, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RoundRecord {

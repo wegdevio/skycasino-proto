@@ -155,6 +155,6 @@ message RoundRecord {
   // 取消
   bool cancel = 12;
   // 取消代碼：CancelReasonCode
-  int32 cancel_code = 13;
+  string cancel_code = 13;
 
 }

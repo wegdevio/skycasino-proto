@@ -310,9 +310,9 @@ export enum Seat {
   /**
    * Pitboss
    *
-   * @generated from enum value: SEAT_PITBOSS = 9;
+   * @generated from enum value: PITBOSS = 9;
    */
-  SEAT_PITBOSS = 9,
+  PITBOSS = 9,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Seat)
 proto3.util.setEnumType(Seat, "baccarat.Seat", [
@@ -320,7 +320,7 @@ proto3.util.setEnumType(Seat, "baccarat.Seat", [
   { no: 1, name: "BANKER" },
   { no: 2, name: "PLAYER" },
   { no: 3, name: "DEALER" },
-  { no: 9, name: "SEAT_PITBOSS" },
+  { no: 9, name: "PITBOSS" },
 ]);
 
 /**

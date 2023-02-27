@@ -99,7 +99,7 @@ enum Seat {
   // Dealer 
   DEALER = 3;
   // Pitboss
-  SEAT_PITBOSS = 9;
+  PITBOSS = 9;
 
 }
 
