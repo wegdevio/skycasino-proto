@@ -156,5 +156,10 @@ message RoundRecord {
   bool cancel = 12;
   // 取消代碼：CancelReasonCode
   string cancel_code = 13;
+  // 取消備註
+  string cancel_message = 14;
+
+  // 標籤
+  map<string, string> tags = 15;
 
 }

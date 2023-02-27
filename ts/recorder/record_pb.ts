@@ -595,6 +595,20 @@ export class RoundRecord extends Message<RoundRecord> {
    */
   cancelCode = "";
 
+  /**
+   * 取消備註
+   *
+   * @generated from field: string cancel_message = 14;
+   */
+  cancelMessage = "";
+
+  /**
+   * 標籤
+   *
+   * @generated from field: map<string, string> tags = 15;
+   */
+  tags: { [key: string]: string } = {};
+
   constructor(data?: PartialMessage<RoundRecord>) {
     super();
     proto3.util.initPartial(data, this);
@@ -616,6 +630,8 @@ export class RoundRecord extends Message<RoundRecord> {
     { no: 11, name: "results", kind: "message", T: Result, repeated: true },
     { no: 12, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 13, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 15, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RoundRecord {

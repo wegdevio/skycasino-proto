@@ -443,18 +443,18 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
   roundCode = "";
 
   /**
-   * 取消原因代碼
+   * 取消代碼
    *
-   * @generated from field: int32 reason = 5;
+   * @generated from field: string cancel_code = 5;
    */
-  reason = 0;
+  cancelCode = "";
 
   /**
    * 取消備註
    *
-   * @generated from field: string message = 6;
+   * @generated from field: string cancel_message = 6;
    */
-  message = "";
+  cancelMessage = "";
 
   constructor(data?: PartialMessage<RecordRoundCancelRequest>) {
     super();
@@ -468,8 +468,8 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "reason", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
-    { no: 6, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundCancelRequest {

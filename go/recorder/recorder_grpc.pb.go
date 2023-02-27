@@ -30,7 +30,7 @@ type RecorderServiceClient interface {
 	RecordRoundStart(ctx context.Context, in *RecordRoundStartRequest, opts ...grpc.CallOption) (*RecordResponse, error)
 	// 記錄步驟
 	RecordRoundSteps(ctx context.Context, in *RecordRoundStepsRequest, opts ...grpc.CallOption) (*RecordResponse, error)
-	// 紀錄判讀
+	// 紀錄結果
 	RecordRoundResults(ctx context.Context, in *RecordRoundResultsRequest, opts ...grpc.CallOption) (*RecordResponse, error)
 	// 此局作廢
 	RecordRoundCancel(ctx context.Context, in *RecordRoundCancelRequest, opts ...grpc.CallOption) (*RecordResponse, error)
@@ -121,7 +121,7 @@ type RecorderServiceServer interface {
 	RecordRoundStart(context.Context, *RecordRoundStartRequest) (*RecordResponse, error)
 	// 記錄步驟
 	RecordRoundSteps(context.Context, *RecordRoundStepsRequest) (*RecordResponse, error)
-	// 紀錄判讀
+	// 紀錄結果
 	RecordRoundResults(context.Context, *RecordRoundResultsRequest) (*RecordResponse, error)
 	// 此局作廢
 	RecordRoundCancel(context.Context, *RecordRoundCancelRequest) (*RecordResponse, error)

@@ -99,10 +99,10 @@ message RecordRoundCancelRequest {
   string table_code = 3;
   // 局代碼
   string round_code = 4;
-  // 取消原因代碼
-  int32 reason = 5;
+  // 取消代碼
+  string cancel_code = 5;
   // 取消備註
-  string message = 6;
+  string cancel_message = 6;
 
 }
 
@@ -133,7 +133,7 @@ service RecorderService {
   // 記錄步驟
   rpc RecordRoundSteps(RecordRoundStepsRequest) returns (RecordResponse);
 
-  // 紀錄判讀
+  // 紀錄結果
   rpc RecordRoundResults(RecordRoundResultsRequest) returns (RecordResponse);
 
   // 此局作廢
