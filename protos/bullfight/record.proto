@@ -1,5 +1,5 @@
 syntax = "proto3";
-package thebigbattle;
+package bullfight;
 
 enum CardStatus {
   
@@ -41,15 +41,30 @@ enum Step {
   // 本局取消
   ROUND_CANCELED = 3;
 
-  // 派發龍例牌
-  DEAL_DRAGON_1 = 4;
-  // 派發虎例牌
-  DEAL_TIGER_1 = 5;
- 
+  // 派發起始位子牌(決定順位)
+  DEAL_FIRSTCARD = 4;
+  // 派發莊例牌
+  DEAL_BANKER_1 = 5;
+  // 派發玩家1例牌
+  DEAL_PLAYER_1 = 6;
+  // 派發玩家2例牌
+  DEAL_PLAYER_2 = 7;
+  // 派發玩家3例牌
+  DEAL_PLAYER_3 = 8;
+
   // 開放下注
   OPEN_FOR_BETTING = 9;
   // 停止下注
   CLOSE_THE_BETTING = 10;
+
+  // 開莊家例牌
+  SHOW_BANKER_1 = 12;
+  // 開玩家1例牌
+  SHOW_PLAYER_1 = 13;
+  // 開玩家2例牌
+  SHOW_PLAYER_2 = 14;
+  // 開玩家3例牌
+  SHOW_PLAYER_3 = 15;
 
   // PITBOSS 修改派發例牌
   PITBOSS_MODIFY_NORMAL = 24;
@@ -60,12 +75,16 @@ enum Seat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
-  // 龍
-  DRAGON = 1;
-  // 虎
-  TIGER = 2;
+  // 莊家
+  BANKER = 1;
+  // 玩家1
+  PLAYER1 = 2;
+  // 玩家2
+  PLAYER2 = 3;
+  // 玩家3
+  PLAYER3 = 4;
   // Dealer 
-  DEALER = 3;
+  DEALER = 5;
   // Pitboss
   PITBOSS = 9;
 
