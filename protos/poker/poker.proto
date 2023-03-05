@@ -85,6 +85,3 @@ enum PokerCard {
   JOKER_COLOR = 94;
   JOKER_BLACK = 95;
 }
-
-
-
