@@ -14,7 +14,7 @@ message Card {
   // 驗整
   string secret = 3;
   // 順序
-  string index = 4;
+  int64 index = 4;
   // 狀態：翻開、關起、橫放...
   int32 status = 5;
 

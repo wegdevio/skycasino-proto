@@ -118,9 +118,9 @@ export class Card extends Message<Card> {
   /**
    * 順序
    *
-   * @generated from field: string index = 4;
+   * @generated from field: int64 index = 4;
    */
-  index = "";
+  index = protoInt64.zero;
 
   /**
    * 狀態：翻開、關起、橫放...
@@ -140,7 +140,7 @@ export class Card extends Message<Card> {
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "index", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 5, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
 
