@@ -84,4 +84,7 @@ enum PokerCard {
   // 鬼牌
   JOKER_COLOR = 94;
   JOKER_BLACK = 95;
+
+  // 花色遮罩
+  SUIT_MASK = 112;
 }

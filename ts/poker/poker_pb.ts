@@ -389,6 +389,13 @@ export enum PokerCard {
    * @generated from enum value: JOKER_BLACK = 95;
    */
   JOKER_BLACK = 95,
+
+  /**
+   * 花色遮罩
+   *
+   * @generated from enum value: SUIT_MASK = 112;
+   */
+  SUIT_MASK = 112,
 }
 // Retrieve enum metadata with: proto3.getEnumType(PokerCard)
 proto3.util.setEnumType(PokerCard, "poker.PokerCard", [
@@ -465,5 +472,6 @@ proto3.util.setEnumType(PokerCard, "poker.PokerCard", [
   { no: 77, name: "CLUB_K" },
   { no: 94, name: "JOKER_COLOR" },
   { no: 95, name: "JOKER_BLACK" },
+  { no: 112, name: "SUIT_MASK" },
 ]);
 
