@@ -136,18 +136,18 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   tableCode = "";
 
   /**
-   * 使用洗牌代碼
-   *
-   * @generated from field: string shuffle_code = 4;
-   */
-  shuffleCode = "";
-
-  /**
    * 時間
    *
    * @generated from field: google.protobuf.Timestamp ts_done = 5;
    */
   tsDone?: Timestamp;
+
+  /**
+   * 使用洗牌代碼
+   *
+   * @generated from field: string shuffle_code = 6;
+   */
+  shuffleCode = "";
 
   /**
    * 洗牌類型
@@ -167,8 +167,8 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "ts_done", kind: "message", T: Timestamp },
+    { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
   ]);
 
@@ -215,23 +215,30 @@ export class RecordRoundStartRequest extends Message<RecordRoundStartRequest> {
   roundCode = "";
 
   /**
-   * 使用洗牌ID
+   * 時間
    *
-   * @generated from field: string shuffle_code = 5;
+   * @generated from field: google.protobuf.Timestamp ts_start = 5;
+   */
+  tsStart?: Timestamp;
+
+  /**
+   * 使用洗牌代碼
+   *
+   * @generated from field: string shuffle_code = 6;
    */
   shuffleCode = "";
 
   /**
    * 使用此洗牌第幾局，從1開始計算
    *
-   * @generated from field: int64 shuffle_round = 6;
+   * @generated from field: int64 shuffle_round = 7;
    */
   shuffleRound = protoInt64.zero;
 
   /**
    * 遊戲版本
    *
-   * @generated from field: string game_version = 7;
+   * @generated from field: string game_version = 8;
    */
   gameVersion = "";
 
@@ -246,9 +253,10 @@ export class RecordRoundStartRequest extends Message<RecordRoundStartRequest> {
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 7, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "ts_start", kind: "message", T: Timestamp },
+    { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 8, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundStartRequest {
@@ -374,7 +382,7 @@ export class RecordRoundResultsRequest extends Message<RecordRoundResultsRequest
   /**
    * 判讀結果
    *
-   * @generated from field: repeated recorder.Result results = 5;
+   * @generated from field: repeated recorder.Result results = 6;
    */
   results: Result[] = [];
 
@@ -390,7 +398,7 @@ export class RecordRoundResultsRequest extends Message<RecordRoundResultsRequest
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "results", kind: "message", T: Result, repeated: true },
+    { no: 6, name: "results", kind: "message", T: Result, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundResultsRequest {
@@ -443,16 +451,23 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
   roundCode = "";
 
   /**
+   * 時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_cancel = 5;
+   */
+  tsCancel?: Timestamp;
+
+  /**
    * 取消代碼
    *
-   * @generated from field: string cancel_code = 5;
+   * @generated from field: string cancel_code = 6;
    */
   cancelCode = "";
 
   /**
    * 取消備註
    *
-   * @generated from field: string cancel_message = 6;
+   * @generated from field: string cancel_message = 7;
    */
   cancelMessage = "";
 
@@ -468,8 +483,9 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "ts_cancel", kind: "message", T: Timestamp },
+    { no: 6, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundCancelRequest {
@@ -521,6 +537,13 @@ export class RecordRoundFinishRequest extends Message<RecordRoundFinishRequest> 
    */
   roundCode = "";
 
+  /**
+   * 時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_finish = 5;
+   */
+  tsFinish?: Timestamp;
+
   constructor(data?: PartialMessage<RecordRoundFinishRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -533,6 +556,7 @@ export class RecordRoundFinishRequest extends Message<RecordRoundFinishRequest> 
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "ts_finish", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundFinishRequest {

@@ -32,10 +32,10 @@ message RecordShuffleDoneRequest {
   string game_code = 2;
   // 桌代碼
   string table_code = 3;
-  // 使用洗牌代碼
-  string shuffle_code = 4;  
   // 時間
   google.protobuf.Timestamp ts_done = 5;
+  // 使用洗牌代碼
+  string shuffle_code = 6;  
   // 洗牌類型
   // key: CardTypeCode；value: 卡牌陣列
   map<int32, CardList> cards = 7;
@@ -50,12 +50,14 @@ message RecordRoundStartRequest {
   string table_code = 3;
   // 局代碼
   string round_code = 4;
-  // 使用洗牌ID
-  string shuffle_code = 5;
+  // 時間
+  google.protobuf.Timestamp ts_start = 5;
+  // 使用洗牌代碼
+  string shuffle_code = 6;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 6;
+  int64 shuffle_round = 7;
   // 遊戲版本
-  string game_version = 7;
+  string game_version = 8;
 
 }
 
@@ -85,7 +87,7 @@ message RecordRoundResultsRequest {
   // 局代碼
   string round_code = 4;
   // 判讀結果
-  repeated Result results = 5;
+  repeated Result results = 6;
   
 }
 
@@ -99,10 +101,12 @@ message RecordRoundCancelRequest {
   string table_code = 3;
   // 局代碼
   string round_code = 4;
+  // 時間
+  google.protobuf.Timestamp ts_cancel = 5;
   // 取消代碼
-  string cancel_code = 5;
+  string cancel_code = 6;
   // 取消備註
-  string cancel_message = 6;
+  string cancel_message = 7;
 
 }
 
@@ -116,6 +120,8 @@ message RecordRoundFinishRequest {
   string table_code = 3;
   // 局代碼
   string round_code = 4;
+  // 時間
+  google.protobuf.Timestamp ts_finish = 5;
 
 }
 
