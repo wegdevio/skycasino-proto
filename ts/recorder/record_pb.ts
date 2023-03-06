@@ -627,6 +627,20 @@ export class RoundRecord extends Message<RoundRecord> {
    */
   tags: { [key: string]: string } = {};
 
+  /**
+   * 開始時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_start = 16;
+   */
+  tsStart?: Timestamp;
+
+  /**
+   * 結束時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_end = 17;
+   */
+  tsEnd?: Timestamp;
+
   constructor(data?: PartialMessage<RoundRecord>) {
     super();
     proto3.util.initPartial(data, this);
@@ -650,6 +664,8 @@ export class RoundRecord extends Message<RoundRecord> {
     { no: 13, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 14, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 15, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 16, name: "ts_start", kind: "message", T: Timestamp },
+    { no: 17, name: "ts_end", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RoundRecord {

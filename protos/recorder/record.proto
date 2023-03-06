@@ -167,4 +167,8 @@ message RoundRecord {
   // 標籤
   map<string, string> tags = 15;
 
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 16;
+  // 結束時間
+  google.protobuf.Timestamp ts_end = 17;
 }
