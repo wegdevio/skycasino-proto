@@ -142,6 +142,13 @@ export enum Step {
   CLOSE_THE_BETTING = 10,
 
   /**
+   * 開例牌
+   *
+   * @generated from enum value: SHOW_NORMAL = 12;
+   */
+  SHOW_NORMAL = 12,
+
+  /**
    * PITBOSS 修改派發例牌
    *
    * @generated from enum value: PITBOSS_MODIFY_NORMAL = 24;
@@ -158,6 +165,7 @@ proto3.util.setEnumType(Step, "thebigbattle.Step", [
   { no: 5, name: "DEAL_TIGER_1" },
   { no: 9, name: "OPEN_FOR_BETTING" },
   { no: 10, name: "CLOSE_THE_BETTING" },
+  { no: 12, name: "SHOW_NORMAL" },
   { no: 24, name: "PITBOSS_MODIFY_NORMAL" },
 ]);
 
