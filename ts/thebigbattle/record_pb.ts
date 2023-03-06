@@ -114,18 +114,25 @@ export enum Step {
   ROUND_CANCELED = 3,
 
   /**
+   * 捨牌1
+   *
+   * @generated from enum value: DEAL_DISCARD_1 = 4;
+   */
+  DEAL_DISCARD_1 = 4,
+
+  /**
    * 派發龍例牌
    *
-   * @generated from enum value: DEAL_DRAGON_1 = 4;
+   * @generated from enum value: DEAL_DRAGON_1 = 5;
    */
-  DEAL_DRAGON_1 = 4,
+  DEAL_DRAGON_1 = 5,
 
   /**
    * 派發虎例牌
    *
-   * @generated from enum value: DEAL_TIGER_1 = 5;
+   * @generated from enum value: DEAL_TIGER_1 = 6;
    */
-  DEAL_TIGER_1 = 5,
+  DEAL_TIGER_1 = 6,
 
   /**
    * 開放下注
@@ -161,8 +168,9 @@ proto3.util.setEnumType(Step, "thebigbattle.Step", [
   { no: 1, name: "ROUND_START" },
   { no: 2, name: "ROUND_FINISHED" },
   { no: 3, name: "ROUND_CANCELED" },
-  { no: 4, name: "DEAL_DRAGON_1" },
-  { no: 5, name: "DEAL_TIGER_1" },
+  { no: 4, name: "DEAL_DISCARD_1" },
+  { no: 5, name: "DEAL_DRAGON_1" },
+  { no: 6, name: "DEAL_TIGER_1" },
   { no: 9, name: "OPEN_FOR_BETTING" },
   { no: 10, name: "CLOSE_THE_BETTING" },
   { no: 12, name: "SHOW_NORMAL" },

@@ -41,10 +41,12 @@ enum Step {
   // 本局取消
   ROUND_CANCELED = 3;
 
+  // 捨牌1
+  DEAL_DISCARD_1 = 4;
   // 派發龍例牌
-  DEAL_DRAGON_1 = 4;
+  DEAL_DRAGON_1 = 5;
   // 派發虎例牌
-  DEAL_TIGER_1 = 5;
+  DEAL_TIGER_1 = 6;
  
   // 開放下注
   OPEN_FOR_BETTING = 9;
