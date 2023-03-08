@@ -257,13 +257,6 @@ export class StepAction extends Message<StepAction> {
    */
   data?: Any;
 
-  /**
-   * 分配毫秒數
-   *
-   * @generated from field: int64 duration = 10;
-   */
-  duration = protoInt64.zero;
-
   constructor(data?: PartialMessage<StepAction>) {
     super();
     proto3.util.initPartial(data, this);
@@ -279,7 +272,6 @@ export class StepAction extends Message<StepAction> {
     { no: 7, name: "scores", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "scalar", T: 3 /* ScalarType.INT64 */} },
     { no: 8, name: "type", kind: "enum", T: proto3.getEnumType(StepActionType) },
     { no: 9, name: "data", kind: "message", T: Any },
-    { no: 10, name: "duration", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StepAction {
@@ -347,6 +339,13 @@ export class Step extends Message<Step> {
    */
   cancel = false;
 
+  /**
+   * 分配毫秒數
+   *
+   * @generated from field: int64 duration = 10;
+   */
+  duration = protoInt64.zero;
+
   constructor(data?: PartialMessage<Step>) {
     super();
     proto3.util.initPartial(data, this);
@@ -361,6 +360,7 @@ export class Step extends Message<Step> {
     { no: 6, name: "actions", kind: "message", T: StepAction, repeated: true },
     { no: 8, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 10, name: "duration", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Step {

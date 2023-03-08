@@ -71,8 +71,6 @@ message StepAction {
   StepActionType type = 8;
   // （可選）附加資料
   google.protobuf.Any data = 9;
-  // 分配毫秒數
-  int64 duration = 10;
 
 }
 
@@ -92,7 +90,8 @@ message Step {
   string error = 8;
   // 取消
   bool cancel = 9;
-
+  // 分配毫秒數
+  int64 duration = 10;
 }
 
 // 座位
