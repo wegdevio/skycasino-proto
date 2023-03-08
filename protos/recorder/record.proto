@@ -44,14 +44,16 @@ enum StepActionType {
   REMOVE = 4;
   // 讀取卡牌資料
   READ = 5;
+  // 讀卡但不可見
+  READ_UNVISIBLE = 6;
   // 移轉資源
-  TRANSFER = 6;
+  TRANSFER = 7;
   // 卡片正反面
-  VISIBLE = 7;
+  VISIBLE = 8;
   // 卡牌狀態改變
-  STATUS = 8;
+  STATUS = 9;
   // 此步驟不須修改資源
-  NONE = 9;
+  NONE = 10;
 
 }
 

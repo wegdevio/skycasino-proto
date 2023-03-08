@@ -55,32 +55,39 @@ export enum StepActionType {
   READ = 5,
 
   /**
+   * 讀卡但不可見
+   *
+   * @generated from enum value: READ_UNVISIBLE = 6;
+   */
+  READ_UNVISIBLE = 6,
+
+  /**
    * 移轉資源
    *
-   * @generated from enum value: TRANSFER = 6;
+   * @generated from enum value: TRANSFER = 7;
    */
-  TRANSFER = 6,
+  TRANSFER = 7,
 
   /**
    * 卡片正反面
    *
-   * @generated from enum value: VISIBLE = 7;
+   * @generated from enum value: VISIBLE = 8;
    */
-  VISIBLE = 7,
+  VISIBLE = 8,
 
   /**
    * 卡牌狀態改變
    *
-   * @generated from enum value: STATUS = 8;
+   * @generated from enum value: STATUS = 9;
    */
-  STATUS = 8,
+  STATUS = 9,
 
   /**
    * 此步驟不須修改資源
    *
-   * @generated from enum value: NONE = 9;
+   * @generated from enum value: NONE = 10;
    */
-  NONE = 9,
+  NONE = 10,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StepActionType)
 proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
@@ -90,10 +97,11 @@ proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
   { no: 3, name: "SETALL" },
   { no: 4, name: "REMOVE" },
   { no: 5, name: "READ" },
-  { no: 6, name: "TRANSFER" },
-  { no: 7, name: "VISIBLE" },
-  { no: 8, name: "STATUS" },
-  { no: 9, name: "NONE" },
+  { no: 6, name: "READ_UNVISIBLE" },
+  { no: 7, name: "TRANSFER" },
+  { no: 8, name: "VISIBLE" },
+  { no: 9, name: "STATUS" },
+  { no: 10, name: "NONE" },
 ]);
 
 /**
