@@ -62,18 +62,25 @@ export enum StepActionType {
   TRANSFER = 6,
 
   /**
+   * 卡片正反面
+   *
+   * @generated from enum value: VISIBLE = 7;
+   */
+  VISIBLE = 7,
+
+  /**
    * 卡牌狀態改變
    *
-   * @generated from enum value: STATUS = 7;
+   * @generated from enum value: STATUS = 8;
    */
-  STATUS = 7,
+  STATUS = 8,
 
   /**
    * 此步驟不須修改資源
    *
-   * @generated from enum value: NONE = 8;
+   * @generated from enum value: NONE = 9;
    */
-  NONE = 8,
+  NONE = 9,
 }
 // Retrieve enum metadata with: proto3.getEnumType(StepActionType)
 proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
@@ -84,8 +91,9 @@ proto3.util.setEnumType(StepActionType, "recorder.StepActionType", [
   { no: 4, name: "REMOVE" },
   { no: 5, name: "READ" },
   { no: 6, name: "TRANSFER" },
-  { no: 7, name: "STATUS" },
-  { no: 8, name: "NONE" },
+  { no: 7, name: "VISIBLE" },
+  { no: 8, name: "STATUS" },
+  { no: 9, name: "NONE" },
 ]);
 
 /**
@@ -123,9 +131,16 @@ export class Card extends Message<Card> {
   index = protoInt64.zero;
 
   /**
-   * 狀態：翻開、關起、橫放...
+   * 可見
    *
-   * @generated from field: int32 status = 5;
+   * @generated from field: bool visible = 5;
+   */
+  visible = false;
+
+  /**
+   * 橫放、直放...
+   *
+   * @generated from field: int32 status = 6;
    */
   status = 0;
 
@@ -141,7 +156,8 @@ export class Card extends Message<Card> {
     { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 5, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 5, name: "visible", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 6, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Card {
