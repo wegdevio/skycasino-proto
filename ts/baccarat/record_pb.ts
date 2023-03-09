@@ -6,30 +6,6 @@
 import { proto3 } from "@bufbuild/protobuf";
 
 /**
- * @generated from enum baccarat.CardStatus
- */
-export enum CardStatus {
-  /**
-   * 未指定
-   *
-   * @generated from enum value: CARD_STATUS_UNSPECIFIED = 0;
-   */
-  CARD_STATUS_UNSPECIFIED = 0,
-
-  /**
-   * 翻開
-   *
-   * @generated from enum value: CARD_OPENED = 1;
-   */
-  CARD_OPENED = 1,
-}
-// Retrieve enum metadata with: proto3.getEnumType(CardStatus)
-proto3.util.setEnumType(CardStatus, "baccarat.CardStatus", [
-  { no: 0, name: "CARD_STATUS_UNSPECIFIED" },
-  { no: 1, name: "CARD_OPENED" },
-]);
-
-/**
  * 使用卡牌種類
  *
  * @generated from enum baccarat.CardType
@@ -287,11 +263,11 @@ export enum Seat {
   SEAT_UNSPECIFIED = 0,
 
   /**
-   * 莊家
+   * Dealer 
    *
-   * @generated from enum value: BANKER = 1;
+   * @generated from enum value: DEALER = 1;
    */
-  BANKER = 1,
+  DEALER = 1,
 
   /**
    * 閒家
@@ -301,11 +277,11 @@ export enum Seat {
   PLAYER = 2,
 
   /**
-   * Dealer 
+   * 莊家
    *
-   * @generated from enum value: DEALER = 3;
+   * @generated from enum value: BANKER = 3;
    */
-  DEALER = 3,
+  BANKER = 3,
 
   /**
    * Pitboss
@@ -317,9 +293,9 @@ export enum Seat {
 // Retrieve enum metadata with: proto3.getEnumType(Seat)
 proto3.util.setEnumType(Seat, "baccarat.Seat", [
   { no: 0, name: "SEAT_UNSPECIFIED" },
-  { no: 1, name: "BANKER" },
+  { no: 1, name: "DEALER" },
   { no: 2, name: "PLAYER" },
-  { no: 3, name: "DEALER" },
+  { no: 3, name: "BANKER" },
   { no: 9, name: "PITBOSS" },
 ]);
 

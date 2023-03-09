@@ -3,4 +3,5 @@ go 1.19
 use ./go/recorder
 use ./go/poker
 use ./go/baccarat
+use ./go/thebigbattle
 

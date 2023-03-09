@@ -192,6 +192,22 @@ export class Card extends Message<Card> {
  */
 export class CardList extends Message<CardList> {
   /**
+   * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
+   *
+   * @generated from field: string id = 2;
+   */
+  id = "";
+
+  /**
+   * 驗整
+   *
+   * @generated from field: string secret = 3;
+   */
+  secret = "";
+
+  /**
+   * 列表
+   *
    * @generated from field: repeated recorder.Card list = 1;
    */
   list: Card[] = [];
@@ -204,6 +220,8 @@ export class CardList extends Message<CardList> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.CardList";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 1, name: "list", kind: "message", T: Card, repeated: true },
   ]);
 
