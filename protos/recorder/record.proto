@@ -12,8 +12,9 @@ message Card {
   // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
   string id = 2;
   // 驗整
-  string secret = 3;
-
+  string secret = 3; 
+  // 順序
+  int64 index = 4;
   // 可見
   bool visible = 5;
   // 橫放、直放...

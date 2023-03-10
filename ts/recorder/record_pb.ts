@@ -132,6 +132,13 @@ export class Card extends Message<Card> {
   secret = "";
 
   /**
+   * 順序
+   *
+   * @generated from field: int64 index = 4;
+   */
+  index = protoInt64.zero;
+
+  /**
    * 可見
    *
    * @generated from field: bool visible = 5;
@@ -156,6 +163,7 @@ export class Card extends Message<Card> {
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 5, name: "visible", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 6, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
