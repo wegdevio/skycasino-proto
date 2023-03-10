@@ -113,9 +113,9 @@ export class Card extends Message<Card> {
   /**
    * 卡牌代碼
    *
-   * @generated from field: int32 code = 1;
+   * @generated from field: string code = 1;
    */
-  code = 0;
+  code = "";
 
   /**
    * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
@@ -160,7 +160,7 @@ export class Card extends Message<Card> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.Card";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 1, name: "code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
@@ -198,27 +198,6 @@ export class CardList extends Message<CardList> {
    */
   list: Card[] = [];
 
-  /**
-   * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
-   *
-   * @generated from field: string id = 2;
-   */
-  id = "";
-
-  /**
-   * 驗整
-   *
-   * @generated from field: string secret = 3;
-   */
-  secret = "";
-
-  /**
-   * 順序
-   *
-   * @generated from field: int64 index = 4;
-   */
-  index = protoInt64.zero;
-
   constructor(data?: PartialMessage<CardList>) {
     super();
     proto3.util.initPartial(data, this);
@@ -228,9 +207,6 @@ export class CardList extends Message<CardList> {
   static readonly typeName = "recorder.CardList";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "list", kind: "message", T: Card, repeated: true },
-    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CardList {
