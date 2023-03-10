@@ -71,6 +71,8 @@ enum Seat {
   TIGER = 2;
   // Dealer 
   DEALER = 3;
+  // Discard
+  DISCARD = 4;
   // Pitboss
   PITBOSS = 9;
 

@@ -212,6 +212,13 @@ export enum Seat {
   DEALER = 3,
 
   /**
+   * Discard
+   *
+   * @generated from enum value: DISCARD = 4;
+   */
+  DISCARD = 4,
+
+  /**
    * Pitboss
    *
    * @generated from enum value: PITBOSS = 9;
@@ -224,6 +231,7 @@ proto3.util.setEnumType(Seat, "thebigbattle.Seat", [
   { no: 1, name: "DRAGON" },
   { no: 2, name: "TIGER" },
   { no: 3, name: "DEALER" },
+  { no: 4, name: "DISCARD" },
   { no: 9, name: "PITBOSS" },
 ]);
 
