@@ -132,13 +132,6 @@ export class Card extends Message<Card> {
   secret = "";
 
   /**
-   * 順序
-   *
-   * @generated from field: int64 index = 4;
-   */
-  index = protoInt64.zero;
-
-  /**
    * 可見
    *
    * @generated from field: bool visible = 5;
@@ -163,7 +156,6 @@ export class Card extends Message<Card> {
     { no: 1, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     { no: 5, name: "visible", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 6, name: "status", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
   ]);
@@ -192,6 +184,13 @@ export class Card extends Message<Card> {
  */
 export class CardList extends Message<CardList> {
   /**
+   * 列表
+   *
+   * @generated from field: repeated recorder.Card list = 1;
+   */
+  list: Card[] = [];
+
+  /**
    * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
    *
    * @generated from field: string id = 2;
@@ -206,11 +205,11 @@ export class CardList extends Message<CardList> {
   secret = "";
 
   /**
-   * 列表
+   * 順序
    *
-   * @generated from field: repeated recorder.Card list = 1;
+   * @generated from field: int64 index = 4;
    */
-  list: Card[] = [];
+  index = protoInt64.zero;
 
   constructor(data?: PartialMessage<CardList>) {
     super();
@@ -220,9 +219,10 @@ export class CardList extends Message<CardList> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.CardList";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "list", kind: "message", T: Card, repeated: true },
     { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "secret", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 1, name: "list", kind: "message", T: Card, repeated: true },
+    { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CardList {
