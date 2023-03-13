@@ -121,32 +121,32 @@ export enum Step {
   DEAL_FIRSTCARD = 4,
 
   /**
-   * 派發莊例牌
+   * 派發順位1例牌
    *
-   * @generated from enum value: DEAL_BANKER_1 = 5;
+   * @generated from enum value: DEAL_SEAT_1 = 5;
    */
-  DEAL_BANKER_1 = 5,
+  DEAL_SEAT_1 = 5,
 
   /**
-   * 派發玩家1例牌
+   * 派發順位2例牌
    *
-   * @generated from enum value: DEAL_PLAYER_1 = 6;
+   * @generated from enum value: DEAL_SEAT_2 = 6;
    */
-  DEAL_PLAYER_1 = 6,
+  DEAL_SEAT_2 = 6,
 
   /**
-   * 派發玩家2例牌
+   * 派發順位3例牌
    *
-   * @generated from enum value: DEAL_PLAYER_2 = 7;
+   * @generated from enum value: DEAL_SEAT_3 = 7;
    */
-  DEAL_PLAYER_2 = 7,
+  DEAL_SEAT_3 = 7,
 
   /**
-   * 派發玩家3例牌
+   * 派發順位4例牌
    *
-   * @generated from enum value: DEAL_PLAYER_3 = 8;
+   * @generated from enum value: DEAL_SEAT_4 = 8;
    */
-  DEAL_PLAYER_3 = 8,
+  DEAL_SEAT_4 = 8,
 
   /**
    * 開放下注
@@ -163,32 +163,32 @@ export enum Step {
   CLOSE_THE_BETTING = 10,
 
   /**
-   * 開莊家例牌
+   * 開順位1例牌
    *
-   * @generated from enum value: SHOW_BANKER_1 = 12;
+   * @generated from enum value: SHOW_SEAT_1 = 12;
    */
-  SHOW_BANKER_1 = 12,
+  SHOW_SEAT_1 = 12,
 
   /**
    * 開玩家1例牌
    *
-   * @generated from enum value: SHOW_PLAYER_1 = 13;
+   * @generated from enum value: SHOW_SEAT_2 = 13;
    */
-  SHOW_PLAYER_1 = 13,
+  SHOW_SEAT_2 = 13,
 
   /**
    * 開玩家2例牌
    *
-   * @generated from enum value: SHOW_PLAYER_2 = 14;
+   * @generated from enum value: SHOW_SEAT_3 = 14;
    */
-  SHOW_PLAYER_2 = 14,
+  SHOW_SEAT_3 = 14,
 
   /**
    * 開玩家3例牌
    *
-   * @generated from enum value: SHOW_PLAYER_3 = 15;
+   * @generated from enum value: SHOW_SEAT_4 = 15;
    */
-  SHOW_PLAYER_3 = 15,
+  SHOW_SEAT_4 = 15,
 
   /**
    * PITBOSS 修改派發例牌
@@ -204,16 +204,16 @@ proto3.util.setEnumType(Step, "bullfight.Step", [
   { no: 2, name: "ROUND_FINISHED" },
   { no: 3, name: "ROUND_CANCELED" },
   { no: 4, name: "DEAL_FIRSTCARD" },
-  { no: 5, name: "DEAL_BANKER_1" },
-  { no: 6, name: "DEAL_PLAYER_1" },
-  { no: 7, name: "DEAL_PLAYER_2" },
-  { no: 8, name: "DEAL_PLAYER_3" },
+  { no: 5, name: "DEAL_SEAT_1" },
+  { no: 6, name: "DEAL_SEAT_2" },
+  { no: 7, name: "DEAL_SEAT_3" },
+  { no: 8, name: "DEAL_SEAT_4" },
   { no: 9, name: "OPEN_FOR_BETTING" },
   { no: 10, name: "CLOSE_THE_BETTING" },
-  { no: 12, name: "SHOW_BANKER_1" },
-  { no: 13, name: "SHOW_PLAYER_1" },
-  { no: 14, name: "SHOW_PLAYER_2" },
-  { no: 15, name: "SHOW_PLAYER_3" },
+  { no: 12, name: "SHOW_SEAT_1" },
+  { no: 13, name: "SHOW_SEAT_2" },
+  { no: 14, name: "SHOW_SEAT_3" },
+  { no: 15, name: "SHOW_SEAT_4" },
   { no: 24, name: "PITBOSS_MODIFY_NORMAL" },
 ]);
 
@@ -231,39 +231,46 @@ export enum Seat {
   SEAT_UNSPECIFIED = 0,
 
   /**
+   * 起始牌
+   *
+   * @generated from enum value: FISRTCARD = 1;
+   */
+  FISRTCARD = 1,
+
+  /**
    * 莊家
    *
-   * @generated from enum value: BANKER = 1;
+   * @generated from enum value: BANKER = 2;
    */
-  BANKER = 1,
+  BANKER = 2,
 
   /**
    * 玩家1
    *
-   * @generated from enum value: PLAYER1 = 2;
+   * @generated from enum value: PLAYER1 = 3;
    */
-  PLAYER1 = 2,
+  PLAYER1 = 3,
 
   /**
    * 玩家2
    *
-   * @generated from enum value: PLAYER2 = 3;
+   * @generated from enum value: PLAYER2 = 4;
    */
-  PLAYER2 = 3,
+  PLAYER2 = 4,
 
   /**
    * 玩家3
    *
-   * @generated from enum value: PLAYER3 = 4;
+   * @generated from enum value: PLAYER3 = 5;
    */
-  PLAYER3 = 4,
+  PLAYER3 = 5,
 
   /**
    * Dealer 
    *
-   * @generated from enum value: DEALER = 5;
+   * @generated from enum value: DEALER = 6;
    */
-  DEALER = 5,
+  DEALER = 6,
 
   /**
    * Pitboss
@@ -275,11 +282,12 @@ export enum Seat {
 // Retrieve enum metadata with: proto3.getEnumType(Seat)
 proto3.util.setEnumType(Seat, "bullfight.Seat", [
   { no: 0, name: "SEAT_UNSPECIFIED" },
-  { no: 1, name: "BANKER" },
-  { no: 2, name: "PLAYER1" },
-  { no: 3, name: "PLAYER2" },
-  { no: 4, name: "PLAYER3" },
-  { no: 5, name: "DEALER" },
+  { no: 1, name: "FISRTCARD" },
+  { no: 2, name: "BANKER" },
+  { no: 3, name: "PLAYER1" },
+  { no: 4, name: "PLAYER2" },
+  { no: 5, name: "PLAYER3" },
+  { no: 6, name: "DEALER" },
   { no: 9, name: "PITBOSS" },
 ]);
 
