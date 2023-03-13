@@ -60,7 +60,7 @@ enum Step {
   // 開莊家1例牌
   SHOW_BANKER_1 = 12;
   // 開玩家1例牌
-  SHOW_PALYER_1 = 13;
+  SHOW_PLAYER_1 = 13;
   // 開玩家2例牌
   SHOW_PLAYER_2 = 14;
   // 開玩家3例牌
@@ -69,7 +69,7 @@ enum Step {
   // PITBOSS 修改派發例牌
   PITBOSS_MODIFY_BANKER_1 = 24;
   PITBOSS_MODIFY_PLAYER_1 = 25;
-  PITBOSS_MODIFY_PALYER_2 = 26;
+  PITBOSS_MODIFY_PLAYER_2 = 26;
   PITBOSS_MODIFY_PLAYER_3 = 27;
 
 }

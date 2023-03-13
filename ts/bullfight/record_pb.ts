@@ -172,9 +172,9 @@ export enum Step {
   /**
    * 開玩家1例牌
    *
-   * @generated from enum value: SHOW_PALYER_1 = 13;
+   * @generated from enum value: SHOW_PLAYER_1 = 13;
    */
-  SHOW_PALYER_1 = 13,
+  SHOW_PLAYER_1 = 13,
 
   /**
    * 開玩家2例牌
@@ -203,9 +203,9 @@ export enum Step {
   PITBOSS_MODIFY_PLAYER_1 = 25,
 
   /**
-   * @generated from enum value: PITBOSS_MODIFY_PALYER_2 = 26;
+   * @generated from enum value: PITBOSS_MODIFY_PLAYER_2 = 26;
    */
-  PITBOSS_MODIFY_PALYER_2 = 26,
+  PITBOSS_MODIFY_PLAYER_2 = 26,
 
   /**
    * @generated from enum value: PITBOSS_MODIFY_PLAYER_3 = 27;
@@ -226,12 +226,12 @@ proto3.util.setEnumType(Step, "bullfight.Step", [
   { no: 9, name: "OPEN_FOR_BETTING" },
   { no: 10, name: "CLOSE_THE_BETTING" },
   { no: 12, name: "SHOW_BANKER_1" },
-  { no: 13, name: "SHOW_PALYER_1" },
+  { no: 13, name: "SHOW_PLAYER_1" },
   { no: 14, name: "SHOW_PLAYER_2" },
   { no: 15, name: "SHOW_PLAYER_3" },
   { no: 24, name: "PITBOSS_MODIFY_BANKER_1" },
   { no: 25, name: "PITBOSS_MODIFY_PLAYER_1" },
-  { no: 26, name: "PITBOSS_MODIFY_PALYER_2" },
+  { no: 26, name: "PITBOSS_MODIFY_PLAYER_2" },
   { no: 27, name: "PITBOSS_MODIFY_PLAYER_3" },
 ]);
 
