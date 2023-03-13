@@ -43,34 +43,34 @@ enum Step {
 
   // 派發起始位子牌(決定順位)
   DEAL_FIRSTCARD = 4;
-  // 派發順位1例牌
-  DEAL_SEAT_1 = 5;
-  // 派發順位2例牌
-  DEAL_SEAT_2 = 6;
-  // 派發順位3例牌
-  DEAL_SEAT_3 = 7;
-  // 派發順位4例牌
-  DEAL_SEAT_4 = 8;
+  // 派發莊家例牌
+  DEAL_BANKER_1 = 5;
+  // 派發玩家1例牌
+  DEAL_PLAYER_1 = 6;
+  // 派發玩家2例牌
+  DEAL_PLAYER_2 = 7;
+  // 派發玩家3例牌
+  DEAL_PLAYER_3 = 8;
 
   // 開放下注
   OPEN_FOR_BETTING = 9;
   // 停止下注
   CLOSE_THE_BETTING = 10;
 
-  // 開順位1例牌
-  SHOW_SEAT_1 = 12;
+  // 開莊家1例牌
+  SHOW_BANKER_1 = 12;
   // 開玩家1例牌
-  SHOW_SEAT_2 = 13;
+  SHOW_PALYER_1 = 13;
   // 開玩家2例牌
-  SHOW_SEAT_3 = 14;
+  SHOW_PLAYER_2 = 14;
   // 開玩家3例牌
-  SHOW_SEAT_4 = 15;
+  SHOW_PLAYER_3 = 15;
 
   // PITBOSS 修改派發例牌
-  PITBOSS_MODIFY_SEAT_1 = 24;
-  PITBOSS_MODIFY_SEAT_2 = 25;
-  PITBOSS_MODIFY_SEAT_3 = 26;
-  PITBOSS_MODIFY_SEAT_4 = 27;
+  PITBOSS_MODIFY_BANKER_1 = 24;
+  PITBOSS_MODIFY_PLAYER_1 = 25;
+  PITBOSS_MODIFY_PALYER_2 = 26;
+  PITBOSS_MODIFY_PLAYER_3 = 27;
 
 }
 

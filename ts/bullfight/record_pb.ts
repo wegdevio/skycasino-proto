@@ -121,32 +121,32 @@ export enum Step {
   DEAL_FIRSTCARD = 4,
 
   /**
-   * 派發順位1例牌
+   * 派發莊家例牌
    *
-   * @generated from enum value: DEAL_SEAT_1 = 5;
+   * @generated from enum value: DEAL_BANKER_1 = 5;
    */
-  DEAL_SEAT_1 = 5,
+  DEAL_BANKER_1 = 5,
 
   /**
-   * 派發順位2例牌
+   * 派發玩家1例牌
    *
-   * @generated from enum value: DEAL_SEAT_2 = 6;
+   * @generated from enum value: DEAL_PLAYER_1 = 6;
    */
-  DEAL_SEAT_2 = 6,
+  DEAL_PLAYER_1 = 6,
 
   /**
-   * 派發順位3例牌
+   * 派發玩家2例牌
    *
-   * @generated from enum value: DEAL_SEAT_3 = 7;
+   * @generated from enum value: DEAL_PLAYER_2 = 7;
    */
-  DEAL_SEAT_3 = 7,
+  DEAL_PLAYER_2 = 7,
 
   /**
-   * 派發順位4例牌
+   * 派發玩家3例牌
    *
-   * @generated from enum value: DEAL_SEAT_4 = 8;
+   * @generated from enum value: DEAL_PLAYER_3 = 8;
    */
-  DEAL_SEAT_4 = 8,
+  DEAL_PLAYER_3 = 8,
 
   /**
    * 開放下注
@@ -163,54 +163,54 @@ export enum Step {
   CLOSE_THE_BETTING = 10,
 
   /**
-   * 開順位1例牌
+   * 開莊家1例牌
    *
-   * @generated from enum value: SHOW_SEAT_1 = 12;
+   * @generated from enum value: SHOW_BANKER_1 = 12;
    */
-  SHOW_SEAT_1 = 12,
+  SHOW_BANKER_1 = 12,
 
   /**
    * 開玩家1例牌
    *
-   * @generated from enum value: SHOW_SEAT_2 = 13;
+   * @generated from enum value: SHOW_PALYER_1 = 13;
    */
-  SHOW_SEAT_2 = 13,
+  SHOW_PALYER_1 = 13,
 
   /**
    * 開玩家2例牌
    *
-   * @generated from enum value: SHOW_SEAT_3 = 14;
+   * @generated from enum value: SHOW_PLAYER_2 = 14;
    */
-  SHOW_SEAT_3 = 14,
+  SHOW_PLAYER_2 = 14,
 
   /**
    * 開玩家3例牌
    *
-   * @generated from enum value: SHOW_SEAT_4 = 15;
+   * @generated from enum value: SHOW_PLAYER_3 = 15;
    */
-  SHOW_SEAT_4 = 15,
+  SHOW_PLAYER_3 = 15,
 
   /**
    * PITBOSS 修改派發例牌
    *
-   * @generated from enum value: PITBOSS_MODIFY_SEAT_1 = 24;
+   * @generated from enum value: PITBOSS_MODIFY_BANKER_1 = 24;
    */
-  PITBOSS_MODIFY_SEAT_1 = 24,
+  PITBOSS_MODIFY_BANKER_1 = 24,
 
   /**
-   * @generated from enum value: PITBOSS_MODIFY_SEAT_2 = 25;
+   * @generated from enum value: PITBOSS_MODIFY_PLAYER_1 = 25;
    */
-  PITBOSS_MODIFY_SEAT_2 = 25,
+  PITBOSS_MODIFY_PLAYER_1 = 25,
 
   /**
-   * @generated from enum value: PITBOSS_MODIFY_SEAT_3 = 26;
+   * @generated from enum value: PITBOSS_MODIFY_PALYER_2 = 26;
    */
-  PITBOSS_MODIFY_SEAT_3 = 26,
+  PITBOSS_MODIFY_PALYER_2 = 26,
 
   /**
-   * @generated from enum value: PITBOSS_MODIFY_SEAT_4 = 27;
+   * @generated from enum value: PITBOSS_MODIFY_PLAYER_3 = 27;
    */
-  PITBOSS_MODIFY_SEAT_4 = 27,
+  PITBOSS_MODIFY_PLAYER_3 = 27,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Step)
 proto3.util.setEnumType(Step, "bullfight.Step", [
@@ -219,20 +219,20 @@ proto3.util.setEnumType(Step, "bullfight.Step", [
   { no: 2, name: "ROUND_FINISHED" },
   { no: 3, name: "ROUND_CANCELED" },
   { no: 4, name: "DEAL_FIRSTCARD" },
-  { no: 5, name: "DEAL_SEAT_1" },
-  { no: 6, name: "DEAL_SEAT_2" },
-  { no: 7, name: "DEAL_SEAT_3" },
-  { no: 8, name: "DEAL_SEAT_4" },
+  { no: 5, name: "DEAL_BANKER_1" },
+  { no: 6, name: "DEAL_PLAYER_1" },
+  { no: 7, name: "DEAL_PLAYER_2" },
+  { no: 8, name: "DEAL_PLAYER_3" },
   { no: 9, name: "OPEN_FOR_BETTING" },
   { no: 10, name: "CLOSE_THE_BETTING" },
-  { no: 12, name: "SHOW_SEAT_1" },
-  { no: 13, name: "SHOW_SEAT_2" },
-  { no: 14, name: "SHOW_SEAT_3" },
-  { no: 15, name: "SHOW_SEAT_4" },
-  { no: 24, name: "PITBOSS_MODIFY_SEAT_1" },
-  { no: 25, name: "PITBOSS_MODIFY_SEAT_2" },
-  { no: 26, name: "PITBOSS_MODIFY_SEAT_3" },
-  { no: 27, name: "PITBOSS_MODIFY_SEAT_4" },
+  { no: 12, name: "SHOW_BANKER_1" },
+  { no: 13, name: "SHOW_PALYER_1" },
+  { no: 14, name: "SHOW_PLAYER_2" },
+  { no: 15, name: "SHOW_PLAYER_3" },
+  { no: 24, name: "PITBOSS_MODIFY_BANKER_1" },
+  { no: 25, name: "PITBOSS_MODIFY_PLAYER_1" },
+  { no: 26, name: "PITBOSS_MODIFY_PALYER_2" },
+  { no: 27, name: "PITBOSS_MODIFY_PLAYER_3" },
 ]);
 
 /**
