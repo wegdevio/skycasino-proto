@@ -193,9 +193,24 @@ export enum Step {
   /**
    * PITBOSS 修改派發例牌
    *
-   * @generated from enum value: PITBOSS_MODIFY_NORMAL = 24;
+   * @generated from enum value: PITBOSS_MODIFY_SEAT_1 = 24;
    */
-  PITBOSS_MODIFY_NORMAL = 24,
+  PITBOSS_MODIFY_SEAT_1 = 24,
+
+  /**
+   * @generated from enum value: PITBOSS_MODIFY_SEAT_2 = 25;
+   */
+  PITBOSS_MODIFY_SEAT_2 = 25,
+
+  /**
+   * @generated from enum value: PITBOSS_MODIFY_SEAT_3 = 26;
+   */
+  PITBOSS_MODIFY_SEAT_3 = 26,
+
+  /**
+   * @generated from enum value: PITBOSS_MODIFY_SEAT_4 = 27;
+   */
+  PITBOSS_MODIFY_SEAT_4 = 27,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Step)
 proto3.util.setEnumType(Step, "bullfight.Step", [
@@ -214,7 +229,10 @@ proto3.util.setEnumType(Step, "bullfight.Step", [
   { no: 13, name: "SHOW_SEAT_2" },
   { no: 14, name: "SHOW_SEAT_3" },
   { no: 15, name: "SHOW_SEAT_4" },
-  { no: 24, name: "PITBOSS_MODIFY_NORMAL" },
+  { no: 24, name: "PITBOSS_MODIFY_SEAT_1" },
+  { no: 25, name: "PITBOSS_MODIFY_SEAT_2" },
+  { no: 26, name: "PITBOSS_MODIFY_SEAT_3" },
+  { no: 27, name: "PITBOSS_MODIFY_SEAT_4" },
 ]);
 
 /**
