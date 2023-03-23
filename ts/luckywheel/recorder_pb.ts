@@ -111,6 +111,13 @@ export enum Step {
   SPIN_WHEEL = 8,
 
   /**
+   * 公布結果
+   *
+   * @generated from enum value: SHOW_RESULT = 9;
+   */
+  SHOW_RESULT = 9,
+
+  /**
    * PITBOSS 修改骰點
    *
    * @generated from enum value: PITBOSS_MODIFY_BOWL = 16;
@@ -126,6 +133,7 @@ proto3.util.setEnumType(Step, "luckywheel.Step", [
   { no: 4, name: "OPEN_FOR_BETTING" },
   { no: 5, name: "CLOSE_THE_BETTING" },
   { no: 8, name: "SPIN_WHEEL" },
+  { no: 9, name: "SHOW_RESULT" },
   { no: 16, name: "PITBOSS_MODIFY_BOWL" },
 ]);
 
