@@ -39,8 +39,6 @@ enum Step {
 
   // 轉盤
   SPIN_WHEEL = 8;
-  // 公布結果
-  SHOW_RESULT = 9;
 
   // PITBOSS 修改骰點
   PITBOSS_MODIFY_BOWL = 16;
