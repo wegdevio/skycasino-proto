@@ -5,6 +5,7 @@ managed:
     default: github.com/sky-platform/skycasino-proto/go
     except:
       - buf.build/googleapis/googleapis
+      - buf.build/srikrsna/protoc-gen-gotag
 plugins:
   - plugin: buf.build/protocolbuffers/go
     out: go

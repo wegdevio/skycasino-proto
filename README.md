@@ -8,4 +8,8 @@
 ## gen proto
 install buf
 define the flow in buf.gen.yaml
+
 buf generate
+
+生成 tag 需在執行 generate 後跑
+buf generate --template buf.gen.tag.yaml

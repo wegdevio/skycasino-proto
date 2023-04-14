@@ -1,0 +1,7 @@
+version: v1
+plugins:  
+  - name: gotag
+    out: .
+    opt: 
+      - outdir=go
+      - paths=source_relative

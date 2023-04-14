@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
-import { CardList, Result, Step } from "./record_pb";
+import { CardList, Result, RoundRecord, ShuffleRecord, Step } from "./record_pb";
 
 /**
  * @generated from message recorder.RecordResponse
@@ -573,6 +573,142 @@ export class RecordRoundFinishRequest extends Message<RecordRoundFinishRequest> 
 
   static equals(a: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined, b: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined): boolean {
     return proto3.util.equals(RecordRoundFinishRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.FetchRecordShuffleRequest
+ */
+export class FetchRecordShuffleRequest extends Message<FetchRecordShuffleRequest> {
+  constructor(data?: PartialMessage<FetchRecordShuffleRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.FetchRecordShuffleRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordShuffleRequest {
+    return new FetchRecordShuffleRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRecordShuffleRequest {
+    return new FetchRecordShuffleRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRecordShuffleRequest {
+    return new FetchRecordShuffleRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FetchRecordShuffleRequest | PlainMessage<FetchRecordShuffleRequest> | undefined, b: FetchRecordShuffleRequest | PlainMessage<FetchRecordShuffleRequest> | undefined): boolean {
+    return proto3.util.equals(FetchRecordShuffleRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.FetchRecordShuffleResponse
+ */
+export class FetchRecordShuffleResponse extends Message<FetchRecordShuffleResponse> {
+  /**
+   * @generated from field: repeated recorder.ShuffleRecord shuffleRecord = 1;
+   */
+  shuffleRecord: ShuffleRecord[] = [];
+
+  constructor(data?: PartialMessage<FetchRecordShuffleResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.FetchRecordShuffleResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "shuffleRecord", kind: "message", T: ShuffleRecord, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordShuffleResponse {
+    return new FetchRecordShuffleResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRecordShuffleResponse {
+    return new FetchRecordShuffleResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRecordShuffleResponse {
+    return new FetchRecordShuffleResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FetchRecordShuffleResponse | PlainMessage<FetchRecordShuffleResponse> | undefined, b: FetchRecordShuffleResponse | PlainMessage<FetchRecordShuffleResponse> | undefined): boolean {
+    return proto3.util.equals(FetchRecordShuffleResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.FetchRecordRoundRequest
+ */
+export class FetchRecordRoundRequest extends Message<FetchRecordRoundRequest> {
+  constructor(data?: PartialMessage<FetchRecordRoundRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.FetchRecordRoundRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordRoundRequest {
+    return new FetchRecordRoundRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRecordRoundRequest {
+    return new FetchRecordRoundRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRecordRoundRequest {
+    return new FetchRecordRoundRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FetchRecordRoundRequest | PlainMessage<FetchRecordRoundRequest> | undefined, b: FetchRecordRoundRequest | PlainMessage<FetchRecordRoundRequest> | undefined): boolean {
+    return proto3.util.equals(FetchRecordRoundRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.FetchRecordRoundResponse
+ */
+export class FetchRecordRoundResponse extends Message<FetchRecordRoundResponse> {
+  /**
+   * @generated from field: repeated recorder.RoundRecord roundRecord = 1;
+   */
+  roundRecord: RoundRecord[] = [];
+
+  constructor(data?: PartialMessage<FetchRecordRoundResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.FetchRecordRoundResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "roundRecord", kind: "message", T: RoundRecord, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordRoundResponse {
+    return new FetchRecordRoundResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRecordRoundResponse {
+    return new FetchRecordRoundResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRecordRoundResponse {
+    return new FetchRecordRoundResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FetchRecordRoundResponse | PlainMessage<FetchRecordRoundResponse> | undefined, b: FetchRecordRoundResponse | PlainMessage<FetchRecordRoundResponse> | undefined): boolean {
+    return proto3.util.equals(FetchRecordRoundResponse, a, b);
   }
 }
 

@@ -3,6 +3,7 @@ module github.com/sky-platform/skycasino-proto/go/recorder
 go 1.20
 
 require (
+	github.com/srikrsna/protoc-gen-gotag v0.6.2
 	google.golang.org/grpc v1.53.0
 	google.golang.org/protobuf v1.29.0
 )

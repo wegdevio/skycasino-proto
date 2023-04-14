@@ -343,3 +343,134 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "recorder/recorder.proto",
 }
+
+const (
+	RecorderReadService_FetchRecordShuffle_FullMethodName = "/recorder.RecorderReadService/FetchRecordShuffle"
+	RecorderReadService_FetchRecordRound_FullMethodName   = "/recorder.RecorderReadService/FetchRecordRound"
+)
+
+// RecorderReadServiceClient is the client API for RecorderReadService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RecorderReadServiceClient interface {
+	// 讀洗牌紀錄
+	FetchRecordShuffle(ctx context.Context, in *FetchRecordShuffleRequest, opts ...grpc.CallOption) (*FetchRecordShuffleResponse, error)
+	// 讀遊戲局號紀錄
+	FetchRecordRound(ctx context.Context, in *FetchRecordRoundRequest, opts ...grpc.CallOption) (*FetchRecordRoundResponse, error)
+}
+
+type recorderReadServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRecorderReadServiceClient(cc grpc.ClientConnInterface) RecorderReadServiceClient {
+	return &recorderReadServiceClient{cc}
+}
+
+func (c *recorderReadServiceClient) FetchRecordShuffle(ctx context.Context, in *FetchRecordShuffleRequest, opts ...grpc.CallOption) (*FetchRecordShuffleResponse, error) {
+	out := new(FetchRecordShuffleResponse)
+	err := c.cc.Invoke(ctx, RecorderReadService_FetchRecordShuffle_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *recorderReadServiceClient) FetchRecordRound(ctx context.Context, in *FetchRecordRoundRequest, opts ...grpc.CallOption) (*FetchRecordRoundResponse, error) {
+	out := new(FetchRecordRoundResponse)
+	err := c.cc.Invoke(ctx, RecorderReadService_FetchRecordRound_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RecorderReadServiceServer is the server API for RecorderReadService service.
+// All implementations must embed UnimplementedRecorderReadServiceServer
+// for forward compatibility
+type RecorderReadServiceServer interface {
+	// 讀洗牌紀錄
+	FetchRecordShuffle(context.Context, *FetchRecordShuffleRequest) (*FetchRecordShuffleResponse, error)
+	// 讀遊戲局號紀錄
+	FetchRecordRound(context.Context, *FetchRecordRoundRequest) (*FetchRecordRoundResponse, error)
+	mustEmbedUnimplementedRecorderReadServiceServer()
+}
+
+// UnimplementedRecorderReadServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedRecorderReadServiceServer struct {
+}
+
+func (UnimplementedRecorderReadServiceServer) FetchRecordShuffle(context.Context, *FetchRecordShuffleRequest) (*FetchRecordShuffleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchRecordShuffle not implemented")
+}
+func (UnimplementedRecorderReadServiceServer) FetchRecordRound(context.Context, *FetchRecordRoundRequest) (*FetchRecordRoundResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchRecordRound not implemented")
+}
+func (UnimplementedRecorderReadServiceServer) mustEmbedUnimplementedRecorderReadServiceServer() {}
+
+// UnsafeRecorderReadServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RecorderReadServiceServer will
+// result in compilation errors.
+type UnsafeRecorderReadServiceServer interface {
+	mustEmbedUnimplementedRecorderReadServiceServer()
+}
+
+func RegisterRecorderReadServiceServer(s grpc.ServiceRegistrar, srv RecorderReadServiceServer) {
+	s.RegisterService(&RecorderReadService_ServiceDesc, srv)
+}
+
+func _RecorderReadService_FetchRecordShuffle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchRecordShuffleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderReadServiceServer).FetchRecordShuffle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderReadService_FetchRecordShuffle_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderReadServiceServer).FetchRecordShuffle(ctx, req.(*FetchRecordShuffleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RecorderReadService_FetchRecordRound_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchRecordRoundRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderReadServiceServer).FetchRecordRound(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderReadService_FetchRecordRound_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderReadServiceServer).FetchRecordRound(ctx, req.(*FetchRecordRoundRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RecorderReadService_ServiceDesc is the grpc.ServiceDesc for RecorderReadService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RecorderReadService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "recorder.RecorderReadService",
+	HandlerType: (*RecorderReadServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "FetchRecordShuffle",
+			Handler:    _RecorderReadService_FetchRecordShuffle_Handler,
+		},
+		{
+			MethodName: "FetchRecordRound",
+			Handler:    _RecorderReadService_FetchRecordRound_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "recorder/recorder.proto",
+}
