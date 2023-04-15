@@ -195,5 +195,5 @@ message ShuffleRecord{
   // 結束洗牌時間
   google.protobuf.Timestamp ts_end = 6  [(tagger.tags) = "bson:\"ts_end\"" ];
   // cardList
-  repeated CardList card_list = 7 [(tagger.tags) = "bson:\"card_list\"" ];
+  map<int32, CardList> card_list = 7 [(tagger.tags) = "bson:\"card_list\"" ];
 }

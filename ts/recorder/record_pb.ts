@@ -762,9 +762,9 @@ export class ShuffleRecord extends Message<ShuffleRecord> {
   /**
    * cardList
    *
-   * @generated from field: repeated recorder.CardList card_list = 7;
+   * @generated from field: map<int32, recorder.CardList> card_list = 7;
    */
-  cardList: CardList[] = [];
+  cardList: { [key: number]: CardList } = {};
 
   constructor(data?: PartialMessage<ShuffleRecord>) {
     super();
@@ -780,7 +780,7 @@ export class ShuffleRecord extends Message<ShuffleRecord> {
     { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "ts_start", kind: "message", T: Timestamp },
     { no: 6, name: "ts_end", kind: "message", T: Timestamp },
-    { no: 7, name: "card_list", kind: "message", T: CardList, repeated: true },
+    { no: 7, name: "card_list", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ShuffleRecord {
