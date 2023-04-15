@@ -8,121 +8,123 @@ import "tagger/tagger.proto";
 message RecordResponse {
 
   // 紀錄ID
-  string record_id = 1 [(tagger.tags) = "bson:\"record_id\"" ];
+  string record_id = 1;
   // 結果代碼
-  int32 code = 2 [(tagger.tags) = "bson:\"code\"" ];
+  int32 code = 2;
   // 結果訊息
-  string message = 3 [(tagger.tags) = "bson:\"message\"" ];
+  string message = 3;
 
 }
 
 message RecordShuffleStartedRequest {
 
   // 遊戲代碼
-  string game_code = 2 [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3 [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 時間
-  google.protobuf.Timestamp ts_start = 5 [(tagger.tags) = "bson:\"ts_start\"" ];
+  google.protobuf.Timestamp ts_start = 5;
 
 }
 
 message RecordShuffleDoneRequest {
 
+  // 紀錄ID
+  string record_id = 1;
   // 遊戲代碼
-  string game_code = 2 [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3 [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 時間
-  google.protobuf.Timestamp ts_done = 5 [(tagger.tags) = "bson:\"ts_done\"" ];
+  google.protobuf.Timestamp ts_done = 5;
   // 使用洗牌代碼
-  string shuffle_code = 6 [(tagger.tags) = "bson:\"shuffle_code\"" ];
+  string shuffle_code = 6;
   // 洗牌類型
   // key: CardTypeCode；value: 卡牌陣列
-  map<int32, CardList> cards = 7 [(tagger.tags) = "bson:\"cards\"" ];
+  map<int32, CardList> cards = 7;
 
 }
 
 message RecordRoundStartRequest {
 
   // 遊戲代碼
-  string game_code = 2 [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3 [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 局代碼
-  string round_code = 4 [(tagger.tags) = "bson:\"round_code\"" ];
+  string round_code = 4;
   // 時間
-  google.protobuf.Timestamp ts_start = 5 [(tagger.tags) = "bson:\"ts_start\"" ];
+  google.protobuf.Timestamp ts_start = 5;
   // 使用洗牌代碼
-  string shuffle_code = 6 [(tagger.tags) = "bson:\"shuffle_code\"" ];
+  string shuffle_code = 6;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 7 [(tagger.tags) = "bson:\"shuffle_round\"" ];
+  int64 shuffle_round = 7;
   // 遊戲版本
-  string game_version = 8 [(tagger.tags) = "bson:\"game_version\"" ];
+  string game_version = 8;
 
 }
 
 message RecordRoundStepsRequest {
 
   // 紀錄ID：此record_id為空字 串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1  [(tagger.tags) = "bson:\"record_id\"" ];
+  string record_id = 1;
   // 遊戲代碼
-  string game_code = 2  [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3  [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 局代碼
-  string round_code = 4  [(tagger.tags) = "bson:\"round_code\"" ];
+  string round_code = 4;
   // 步驟
-  repeated Step steps = 5  [(tagger.tags) = "bson:\"steps\"" ];
+  repeated Step steps = 5;
 
 }
 
 message RecordRoundResultsRequest {
 
   // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1  [(tagger.tags) = "bson:\"record_id\"" ];
+  string record_id = 1;
   // 遊戲代碼
-  string game_code = 2  [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3  [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 局代碼
-  string round_code = 4  [(tagger.tags) = "bson:\"round_code\"" ];
+  string round_code = 4;
   // 判讀結果
-  repeated Result results = 6  [(tagger.tags) = "bson:\"results\"" ];
+  repeated Result results = 6;
   
 }
 
 message RecordRoundCancelRequest {
 
   // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1  [(tagger.tags) = "bson:\"record_id\"" ];
+  string record_id = 1;
   // 遊戲代碼
-  string game_code = 2  [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3  [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 局代碼
-  string round_code = 4  [(tagger.tags) = "bson:\"round_code\"" ];
+  string round_code = 4;
   // 時間
-  google.protobuf.Timestamp ts_cancel = 5  [(tagger.tags) = "bson:\"ts_cancel\"" ];
+  google.protobuf.Timestamp ts_cancel = 5;
   // 取消代碼
-  string cancel_code = 6  [(tagger.tags) = "bson:\"cancel_code\"" ];
+  string cancel_code = 6;
   // 取消備註
-  string cancel_message = 7  [(tagger.tags) = "bson:\"cancel_message\"" ];
+  string cancel_message = 7;
 
 }
 
 message RecordRoundFinishRequest {
 
   // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1  [(tagger.tags) = "bson:\"record_id\"" ];
+  string record_id = 1;
   // 遊戲代碼
-  string game_code = 2  [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3  [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 局代碼
-  string round_code = 4  [(tagger.tags) = "bson:\"round_code\"" ];
+  string round_code = 4;
   // 時間
-  google.protobuf.Timestamp ts_finish = 5   [(tagger.tags) = "bson:\"ts_finish\"" ];
+  google.protobuf.Timestamp ts_finish = 5;
 
 }
 
@@ -132,7 +134,7 @@ message FetchRecordShuffleRequest {
 }
 
 message FetchRecordShuffleResponse {
-  repeated ShuffleRecord shuffleRecord = 1  [(tagger.tags) = "bson:\"shuffleRecord\"" ];
+  repeated ShuffleRecord shuffleRecord = 1;
 }
 
 message FetchRecordRoundRequest {
@@ -140,7 +142,7 @@ message FetchRecordRoundRequest {
 }
 
 message FetchRecordRoundResponse {
-  repeated RoundRecord roundRecord = 1  [(tagger.tags) = "bson:\"roundRecord\"" ];
+  repeated RoundRecord roundRecord = 1;
 }
 
 service RecorderService {

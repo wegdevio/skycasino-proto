@@ -122,6 +122,13 @@ export class RecordShuffleStartedRequest extends Message<RecordShuffleStartedReq
  */
 export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> {
   /**
+   * 紀錄ID
+   *
+   * @generated from field: string record_id = 1;
+   */
+  recordId = "";
+
+  /**
    * 遊戲代碼
    *
    * @generated from field: string game_code = 2;
@@ -165,6 +172,7 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordShuffleDoneRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "ts_done", kind: "message", T: Timestamp },
