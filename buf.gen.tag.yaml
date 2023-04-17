@@ -5,3 +5,4 @@ plugins:
     opt: 
       - outdir=go
       - paths=source_relative
+      - auto=yaml-as-camel+bson-as-camel+json-as-camel

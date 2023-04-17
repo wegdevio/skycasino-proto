@@ -9,17 +9,17 @@ import "tagger/tagger.proto";
 message Card {
 
   // 卡牌代碼
-  string code = 1 [(tagger.tags) = "bson:\"code\"" ];
+  string code = 1;
   // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
-  string id = 2 [(tagger.tags) = "bson:\"id\"" ];
+  string id = 2;
   // 驗整
-  string secret = 3 [(tagger.tags) = "bson:\"secret\"" ];
+  string secret = 3;
   // 順序
-  int64 index = 4 [(tagger.tags) = "bson:\"index\"" ];
+  int64 index = 4;
   // 可見
-  bool visible = 5 [(tagger.tags) = "bson:\"visible\"" ];
+  bool visible = 5;
   // 橫放、直放...
-  int32 status = 6 [(tagger.tags) = "bson:\"status\"" ];
+  int32 status = 6;
 
 }
 
@@ -27,7 +27,7 @@ message Card {
 message CardList {
 
   // 列表
-  repeated Card list = 1 [(tagger.tags) = "bson:\"list\"" ];
+  repeated Card list = 1;
 
 }
 
@@ -64,21 +64,21 @@ message StepAction {
 
   reserved 2;
   // 行為說明代碼：StepActionCode
-  int32 code = 1 [(tagger.tags) = "bson:\"code\"" ];
+  int32 code = 1;
   // 資源擁有座位。
-  int32 source_seat = 3  [(tagger.tags) = "bson:\"source_seat\"" ];
+  int32 source_seat = 3;
   // 資源轉移目標座位。
-  int32 target_seat = 4  [(tagger.tags) = "bson:\"target_seat\"" ];
+  int32 target_seat = 4;
   // 目標卡牌資源
   // key: ResourceTypeCode, value: 卡牌陣列
-  map<int32, CardList> cards = 6  [(tagger.tags) = "bson:\"cards\"" ];
+  map<int32, CardList> cards = 6;
   // 目標分數資源
   // key: ResourceTypeCode, value: 分數值。
-  map<int32, int64> scores = 7  [(tagger.tags) = "bson:\"scores\"" ];
+  map<int32, int64> scores = 7;
   // 動作類型
-  StepActionType type = 8  [(tagger.tags) = "bson:\"type\"" ];
+  StepActionType type = 8;
   // （可選）附加資料
-  google.protobuf.Any data = 9  [(tagger.tags) = "bson:\"data\"" ];
+  google.protobuf.Any data = 9;
 
 }
 
@@ -87,19 +87,19 @@ message Step {
 
   reserved 2, 4, 7;
   // 步驟代碼：StepCode
-  int32 code = 1  [(tagger.tags) = "bson:\"code\"" ];
+  int32 code = 1;
   // 玩家、執行者：SeatCode
-  int32 seat = 3  [(tagger.tags) = "bson:\"seat\"" ];
+  int32 seat = 3;
   // 時間戳
-  google.protobuf.Timestamp timestamp = 5  [(tagger.tags) = "bson:\"timestamp\"" ];
+  google.protobuf.Timestamp timestamp = 5;
   // 執行動作
-  repeated StepAction actions = 6  [(tagger.tags) = "bson:\"actions\"" ];
+  repeated StepAction actions = 6;
   // 執行錯誤
-  string error = 8  [(tagger.tags) = "bson:\"error\"" ];
+  string error = 8;
   // 取消
-  bool cancel = 9  [(tagger.tags) = "bson:\"cancel\"" ];
+  bool cancel = 9;
   // 分配毫秒數
-  int64 duration = 10  [(tagger.tags) = "bson:\"duration\"" ];
+  int64 duration = 10;
 }
 
 // 座位
@@ -107,16 +107,16 @@ message Seat {
 
   reserved 2 to 5;
   // 座位功能代碼：SeatCode
-  int32 code = 1 [(tagger.tags) = "bson:\"code\"" ];
+  int32 code = 1;
   // 各類手牌
   // key: ResourceTypeCode, value: 卡牌陣列
-  map<int32, CardList> cards = 6 [(tagger.tags) = "bson:\"cards\"" ];
+  map<int32, CardList> cards = 6;
   // 各類手牌使用牌類型
   // key: ResourceTypeCode, value: CardTypeCode
-  map<int32, int32> card_types = 7 [(tagger.tags) = "bson:\"card_types\"" ];
+  map<int32, int32> card_types = 7;
   // 各類分數
   // key: ResourceTypeCode, value: 分數值。
-  map<int32, int64> scores = 8 [(tagger.tags) = "bson:\"scores\"" ];
+  map<int32, int64> scores = 8;
 
 }
 
@@ -125,14 +125,14 @@ message Result {
 
   reserved 2, 4;
   // 判讀類型代碼：ResultRecordTypeCode
-  int32 code = 1  [(tagger.tags) = "bson:\"code\"" ];
+  int32 code = 1;
   // 紀錄者座位代碼
-  int32 by_seat = 3  [(tagger.tags) = "bson:\"by_seat\"" ];
+  int32 by_seat = 3;
   // 時間戳
-  google.protobuf.Timestamp timestamp = 5  [(tagger.tags) = "bson:\"timestamp\"" ];
+  google.protobuf.Timestamp timestamp = 5;
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 6  [(tagger.tags) = "bson:\"seats\"" ];
+  map<int32, Seat> seats = 6;
 
 }
 
@@ -142,42 +142,42 @@ message RoundRecord {
   // 紀錄ID
   string id = 1  [(tagger.tags) = "bson:\"_id\"" ];
   // 遊戲代碼
-  string game_code = 2  [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3  [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 局代碼
-  string round_code = 4  [(tagger.tags) = "bson:\"round_code\"" ];
+  string round_code = 4;
   // 使用洗牌ID
-  string shuffle_code = 5  [(tagger.tags) = "bson:\"shuffle_code\"" ];
+  string shuffle_code = 5;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 6  [(tagger.tags) = "bson:\"shuffle_round\"" ];
+  int64 shuffle_round = 6;
   // 遊戲版本
-  string game_version = 7  [(tagger.tags) = "bson:\"game_version\"" ];
+  string game_version = 7;
 
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 8  [(tagger.tags) = "bson:\"seats\"" ];
+  map<int32, Seat> seats = 8;
   // 玩家入座
   // key: SeatCode, value: 玩家code。
-  map<int32, string> players = 9  [(tagger.tags) = "bson:\"players\"" ];
+  map<int32, string> players = 9;
   // 歷程
-  repeated Step process = 10  [(tagger.tags) = "bson:\"process\"" ];
+  repeated Step process = 10;
   // 判讀
-  repeated Result results = 11  [(tagger.tags) = "bson:\"results\"" ];
+  repeated Result results = 11;
   // 取消
-  bool cancel = 12  [(tagger.tags) = "bson:\"cancel\"" ];
+  bool cancel = 12;
   // 取消代碼：CancelReasonCode
-  string cancel_code = 13  [(tagger.tags) = "bson:\"cancel_code\"" ];
+  string cancel_code = 13;
   // 取消備註
-  string cancel_message = 14  [(tagger.tags) = "bson:\"cancel_message\"" ];
+  string cancel_message = 14;
 
   // 標籤
-  map<string, string> tags = 15  [(tagger.tags) = "bson:\"tags\"" ];
+  map<string, string> tags = 15;
 
   // 開始時間
-  google.protobuf.Timestamp ts_start = 16  [(tagger.tags) = "bson:\"ts_start\"" ];
+  google.protobuf.Timestamp ts_start = 16;
   // 結束時間
-  google.protobuf.Timestamp ts_end = 17  [(tagger.tags) = "bson:\"ts_end\"" ];
+  google.protobuf.Timestamp ts_end = 17;
 }
 
 // 洗牌紀錄
@@ -185,15 +185,15 @@ message ShuffleRecord{
   // 紀錄ID
   string id = 1  [(tagger.tags) = "bson:\"_id\"" ];
   // 遊戲代碼
-  string game_code = 2  [(tagger.tags) = "bson:\"game_code\"" ];
+  string game_code = 2;
   // 桌代碼
-  string table_code = 3  [(tagger.tags) = "bson:\"table_code\"" ];
+  string table_code = 3;
   // 使用洗牌ID
-  string shuffle_code = 4  [(tagger.tags) = "bson:\"shuffle_code\"" ];
+  string shuffle_code = 4;
   // 開始洗牌時間
-  google.protobuf.Timestamp ts_start = 5  [(tagger.tags) = "bson:\"ts_start\"" ];
+  google.protobuf.Timestamp ts_start = 5;
   // 結束洗牌時間
-  google.protobuf.Timestamp ts_end = 6  [(tagger.tags) = "bson:\"ts_end\"" ];
+  google.protobuf.Timestamp ts_end = 6;
   // cardList
-  map<int32, CardList> card_list = 7 [(tagger.tags) = "bson:\"card_list\"" ];
+  map<int32, CardList> card_list = 7;
 }
