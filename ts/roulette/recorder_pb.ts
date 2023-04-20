@@ -16,19 +16,19 @@ export enum CardType {
    *
    * @generated from enum value: CARD_TYPE_UNSPECIFIED = 0;
    */
-  CARD_TYPE_UNSPECIFIED = 0,
+  UNSPECIFIED = 0,
 
   /**
    * 類骰子類型
    *
-   * @generated from enum value: DICE = 1;
+   * @generated from enum value: CARD_TYPE_ROULETTE = 1;
    */
-  DICE = 1,
+  ROULETTE = 1,
 }
 // Retrieve enum metadata with: proto3.getEnumType(CardType)
 proto3.util.setEnumType(CardType, "roulette.CardType", [
   { no: 0, name: "CARD_TYPE_UNSPECIFIED" },
-  { no: 1, name: "DICE" },
+  { no: 1, name: "CARD_TYPE_ROULETTE" },
 ]);
 
 /**
@@ -45,14 +45,14 @@ export enum ResourceType {
   /**
    * 輪盤
    *
-   * @generated from enum value: WHEEL = 1;
+   * @generated from enum value: ROULETTE = 1;
    */
-  WHEEL = 1,
+  ROULETTE = 1,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "roulette.ResourceType", [
   { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-  { no: 1, name: "WHEEL" },
+  { no: 1, name: "ROULETTE" },
 ]);
 
 /**

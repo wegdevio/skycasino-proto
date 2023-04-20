@@ -16,19 +16,19 @@ export enum CardType {
    *
    * @generated from enum value: CARD_TYPE_UNSPECIFIED = 0;
    */
-  CARD_TYPE_UNSPECIFIED = 0,
+  UNSPECIFIED = 0,
 
   /**
    * 類骰子類型
    *
-   * @generated from enum value: DICE = 1;
+   * @generated from enum value: CARD_TYPE_LUCKYWHEEL = 1;
    */
-  DICE = 1,
+  LUCKYWHEEL = 1,
 }
 // Retrieve enum metadata with: proto3.getEnumType(CardType)
 proto3.util.setEnumType(CardType, "luckywheel.CardType", [
   { no: 0, name: "CARD_TYPE_UNSPECIFIED" },
-  { no: 1, name: "DICE" },
+  { no: 1, name: "CARD_TYPE_LUCKYWHEEL" },
 ]);
 
 /**

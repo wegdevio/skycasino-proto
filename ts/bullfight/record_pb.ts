@@ -6,30 +6,6 @@
 import { proto3 } from "@bufbuild/protobuf";
 
 /**
- * @generated from enum bullfight.CardStatus
- */
-export enum CardStatus {
-  /**
-   * 未指定
-   *
-   * @generated from enum value: CARD_STATUS_UNSPECIFIED = 0;
-   */
-  CARD_STATUS_UNSPECIFIED = 0,
-
-  /**
-   * 翻開
-   *
-   * @generated from enum value: CARD_OPENED = 1;
-   */
-  CARD_OPENED = 1,
-}
-// Retrieve enum metadata with: proto3.getEnumType(CardStatus)
-proto3.util.setEnumType(CardStatus, "bullfight.CardStatus", [
-  { no: 0, name: "CARD_STATUS_UNSPECIFIED" },
-  { no: 1, name: "CARD_OPENED" },
-]);
-
-/**
  * 使用卡牌種類
  *
  * @generated from enum bullfight.CardType
