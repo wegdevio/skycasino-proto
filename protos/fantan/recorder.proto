@@ -7,7 +7,7 @@ enum CardType {
   // 未指定
   CARD_TYPE_UNSPECIFIED = 0;
   // 類骰子類型
-  DICE = 1;
+  CARD_TYPE_INT = 1;
 
 }
 

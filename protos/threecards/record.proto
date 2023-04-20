@@ -1,5 +1,5 @@
 syntax = "proto3";
-package goldenflower;
+package threecards;
 
 // 使用卡牌種類
 enum CardType {

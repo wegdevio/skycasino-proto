@@ -1,5 +1,5 @@
 syntax = "proto3";
-package dice;
+package sicbo;
 
 // 使用卡牌種類
 enum CardType {

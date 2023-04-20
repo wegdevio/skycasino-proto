@@ -7,7 +7,7 @@ enum CardType {
   // 未指定
   CARD_TYPE_UNSPECIFIED = 0;
   // 類骰子類型
-  DICE = 1;
+  CARD_TYPE_ROULETTE = 1;
 
 }
 
@@ -16,7 +16,7 @@ enum ResourceType {
   // 未指定
   RESOURCE_TYPE_UNSPECIFIED = 0;
   // 輪盤
-  WHEEL = 1;
+  ROULETTE = 1;
 
 }
 
