@@ -1,0 +1,37 @@
+name: Publish package to GitHub Packages
+
+on: 
+  workflow_call:
+    inputs:
+      main-dir-path:
+        required: true
+        type: string
+
+jobs:
+  publish-pbts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+
+      # Setup .npmrc file to publish to GitHub Packages
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@sky-platform'
+ 
+      - name: NPM Install
+        run: npm install
+        working-directory: ${{ inputs.main-dir-path }}
+
+      - name: NPM Publish
+        run: npm publish
+        working-directory: ${{ inputs.main-dir-path }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

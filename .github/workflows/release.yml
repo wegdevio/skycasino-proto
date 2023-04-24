@@ -1,0 +1,18 @@
+name: 發佈
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+
+  publish-pbts:
+    uses: ./.github/workflows/reuse-publish_npm_package.yml
+    secrets: inherit
+    permissions:
+      packages: write # This is required for publish package to github package
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+    with:
+      main-dir-path: ts

@@ -620,7 +620,7 @@ export class FetchRecordShuffleRequest extends Message<FetchRecordShuffleRequest
  */
 export class FetchRecordShuffleResponse extends Message<FetchRecordShuffleResponse> {
   /**
-   * @generated from field: repeated recorder.ShuffleRecord shuffleRecord = 1;
+   * @generated from field: repeated recorder.ShuffleRecord shuffle_record = 1;
    */
   shuffleRecord: ShuffleRecord[] = [];
 
@@ -632,7 +632,7 @@ export class FetchRecordShuffleResponse extends Message<FetchRecordShuffleRespon
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.FetchRecordShuffleResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "shuffleRecord", kind: "message", T: ShuffleRecord, repeated: true },
+    { no: 1, name: "shuffle_record", kind: "message", T: ShuffleRecord, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordShuffleResponse {
@@ -688,7 +688,7 @@ export class FetchRecordRoundRequest extends Message<FetchRecordRoundRequest> {
  */
 export class FetchRecordRoundResponse extends Message<FetchRecordRoundResponse> {
   /**
-   * @generated from field: repeated recorder.RoundRecord roundRecord = 1;
+   * @generated from field: repeated recorder.RoundRecord round_record = 1;
    */
   roundRecord: RoundRecord[] = [];
 
@@ -700,7 +700,7 @@ export class FetchRecordRoundResponse extends Message<FetchRecordRoundResponse> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.FetchRecordRoundResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "roundRecord", kind: "message", T: RoundRecord, repeated: true },
+    { no: 1, name: "round_record", kind: "message", T: RoundRecord, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordRoundResponse {

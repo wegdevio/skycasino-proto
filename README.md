@@ -6,6 +6,7 @@
 實作在skycasino
 
 ## gen proto
+
 install buf
 define the flow in buf.gen.yaml
 

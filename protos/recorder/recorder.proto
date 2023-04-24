@@ -3,7 +3,6 @@ package recorder;
 
 import "recorder/record.proto";
 import "google/protobuf/timestamp.proto";
-import "tagger/tagger.proto";
 
 message RecordResponse {
 
@@ -134,7 +133,7 @@ message FetchRecordShuffleRequest {
 }
 
 message FetchRecordShuffleResponse {
-  repeated ShuffleRecord shuffleRecord = 1;
+  repeated ShuffleRecord shuffle_record = 1;
 }
 
 message FetchRecordRoundRequest {
@@ -142,7 +141,7 @@ message FetchRecordRoundRequest {
 }
 
 message FetchRecordRoundResponse {
-  repeated RoundRecord roundRecord = 1;
+  repeated RoundRecord round_record = 1;
 }
 
 service RecorderService {
