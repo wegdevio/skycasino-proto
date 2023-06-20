@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 message RecordResponse {
 
   // 紀錄ID
-  string record_id = 1;
+  bytes record_id = 1;
   // 結果代碼
   int32 code = 2;
   // 結果訊息
@@ -29,7 +29,7 @@ message RecordShuffleStartedRequest {
 message RecordShuffleDoneRequest {
 
   // 紀錄ID
-  string record_id = 1;
+  bytes record_id = 1;
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼
@@ -66,7 +66,7 @@ message RecordRoundStartRequest {
 message RecordRoundStepsRequest {
 
   // 紀錄ID：此record_id為空字 串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1;
+  bytes record_id = 1;
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼
@@ -81,7 +81,7 @@ message RecordRoundStepsRequest {
 message RecordRoundResultsRequest {
 
   // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1;
+  bytes record_id = 1;
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼
@@ -96,7 +96,7 @@ message RecordRoundResultsRequest {
 message RecordRoundCancelRequest {
 
   // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1;
+  bytes record_id = 1;
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼
@@ -115,7 +115,7 @@ message RecordRoundCancelRequest {
 message RecordRoundFinishRequest {
 
   // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
-  string record_id = 1;
+  bytes record_id = 1;
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼

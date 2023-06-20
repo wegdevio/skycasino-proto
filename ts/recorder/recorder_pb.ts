@@ -14,9 +14,9 @@ export class RecordResponse extends Message<RecordResponse> {
   /**
    * 紀錄ID
    *
-   * @generated from field: string record_id = 1;
+   * @generated from field: bytes record_id = 1;
    */
-  recordId = "";
+  recordId = new Uint8Array(0);
 
   /**
    * 結果代碼
@@ -40,7 +40,7 @@ export class RecordResponse extends Message<RecordResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "code", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
@@ -124,9 +124,9 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   /**
    * 紀錄ID
    *
-   * @generated from field: string record_id = 1;
+   * @generated from field: bytes record_id = 1;
    */
-  recordId = "";
+  recordId = new Uint8Array(0);
 
   /**
    * 遊戲代碼
@@ -172,7 +172,7 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordShuffleDoneRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "ts_done", kind: "message", T: Timestamp },
@@ -291,9 +291,9 @@ export class RecordRoundStepsRequest extends Message<RecordRoundStepsRequest> {
   /**
    * 紀錄ID：此record_id為空字 串，則使用game_code, table_code, round_code決定紀錄
    *
-   * @generated from field: string record_id = 1;
+   * @generated from field: bytes record_id = 1;
    */
-  recordId = "";
+  recordId = new Uint8Array(0);
 
   /**
    * 遊戲代碼
@@ -331,7 +331,7 @@ export class RecordRoundStepsRequest extends Message<RecordRoundStepsRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordRoundStepsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
@@ -362,9 +362,9 @@ export class RecordRoundResultsRequest extends Message<RecordRoundResultsRequest
   /**
    * 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
    *
-   * @generated from field: string record_id = 1;
+   * @generated from field: bytes record_id = 1;
    */
-  recordId = "";
+  recordId = new Uint8Array(0);
 
   /**
    * 遊戲代碼
@@ -402,7 +402,7 @@ export class RecordRoundResultsRequest extends Message<RecordRoundResultsRequest
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordRoundResultsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
@@ -433,9 +433,9 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
   /**
    * 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
    *
-   * @generated from field: string record_id = 1;
+   * @generated from field: bytes record_id = 1;
    */
-  recordId = "";
+  recordId = new Uint8Array(0);
 
   /**
    * 遊戲代碼
@@ -487,7 +487,7 @@ export class RecordRoundCancelRequest extends Message<RecordRoundCancelRequest> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordRoundCancelRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
@@ -520,9 +520,9 @@ export class RecordRoundFinishRequest extends Message<RecordRoundFinishRequest> 
   /**
    * 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
    *
-   * @generated from field: string record_id = 1;
+   * @generated from field: bytes record_id = 1;
    */
-  recordId = "";
+  recordId = new Uint8Array(0);
 
   /**
    * 遊戲代碼
@@ -560,7 +560,7 @@ export class RecordRoundFinishRequest extends Message<RecordRoundFinishRequest> 
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.RecordRoundFinishRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
