@@ -140,7 +140,7 @@ message Result {
 message RoundRecord {
 
   // 紀錄ID
-  string id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
+  bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼
@@ -183,7 +183,7 @@ message RoundRecord {
 // 洗牌紀錄
 message ShuffleRecord{
   // 紀錄ID
-  string id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
+  bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲代碼
   string game_code = 2;
   // 桌代碼
