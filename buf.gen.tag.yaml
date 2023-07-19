@@ -3,6 +3,6 @@ plugins:
   - name: gotag
     out: .
     opt: 
-      - outdir=go
+      - outdir=pbgo
       - paths=source_relative
-      - auto=yaml-as-camel+bson-as-camel+json-as-camel
+      - auto=bson-as-camel+yaml-as-camel+json-as-camel

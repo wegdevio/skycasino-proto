@@ -1,0 +1,19 @@
+version: v1
+
+managed:
+  enabled: true
+
+plugins:
+
+  - plugin: buf.build/bufbuild/connect-es:v0.9.1
+    out: es/src/pb
+
+  - plugin: buf.build/bufbuild/connect-es:v0.9.1
+    out: es/lib/pb
+
+  # dependencies
+  - plugin: buf.build/bufbuild/es
+    out: es/src/pb
+    opt:
+      - target=ts
+      - import_extension=none

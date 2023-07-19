@@ -12,20 +12,27 @@ message Card {
   string code = 1;
   // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
   string id = 2;
-  // 驗整
-  string secret = 3;
+
+  // 明文
+  string plain_text = 4;
+  // 簽章
+  string signature = 5;
+  // 簽章方法
+  string sign_method = 6;
+
   // 順序
-  int64 index = 4;
+  int64 index = 8;
   // 可見
-  bool visible = 5;
+  bool visible = 9;
   // 橫放、直放...
-  int32 status = 6;
+  int32 status = 10;
 
 }
 
 // 卡牌列表
 message CardList {
 
+  string card_type = 7;
   // 列表
   repeated Card list = 1;
 
@@ -111,9 +118,6 @@ message Seat {
   // 各類手牌
   // key: ResourceTypeCode, value: 卡牌陣列
   map<int32, CardList> cards = 6;
-  // 各類手牌使用牌類型
-  // key: ResourceTypeCode, value: CardTypeCode
-  map<int32, int32> card_types = 7;
   // 各類分數
   // key: ResourceTypeCode, value: 分數值。
   map<int32, int64> scores = 8;
@@ -147,7 +151,7 @@ message RoundRecord {
   string table_code = 3;
   // 局代碼
   string round_code = 4;
-  // 使用洗牌ID
+  // 使用牌靴
   string shuffle_code = 5;
   // 使用此洗牌第幾局，從1開始計算
   int64 shuffle_round = 6;
@@ -185,7 +189,7 @@ message ShuffleRecord{
   // 紀錄ID
   bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲代碼
-  string game_code = 2;
+  string game_type = 2;
   // 桌代碼
   string table_code = 3;
   // 使用洗牌ID

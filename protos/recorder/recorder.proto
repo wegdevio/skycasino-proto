@@ -3,24 +3,23 @@ package recorder;
 
 import "recorder/record.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
-message RecordResponse {
+message RecordIDResponse {
 
   // 紀錄ID
   bytes record_id = 1;
-  // 結果代碼
-  int32 code = 2;
-  // 結果訊息
-  string message = 3;
 
 }
 
 message RecordShuffleStartedRequest {
 
-  // 遊戲代碼
-  string game_code = 2;
+  // 遊戲類型
+  string game_type = 2;
   // 桌代碼
   string table_code = 3;
+  // 洗牌代碼
+  string shuffle_code = 4;
   // 時間
   google.protobuf.Timestamp ts_start = 5;
 
@@ -30,24 +29,20 @@ message RecordShuffleDoneRequest {
 
   // 紀錄ID
   bytes record_id = 1;
-  // 遊戲代碼
-  string game_code = 2;
-  // 桌代碼
-  string table_code = 3;
   // 時間
   google.protobuf.Timestamp ts_done = 5;
   // 使用洗牌代碼
   string shuffle_code = 6;
   // 洗牌類型
-  // key: CardTypeCode；value: 卡牌陣列
+  // key: ResourceTypeCode；value: 卡牌陣列
   map<int32, CardList> cards = 7;
 
 }
 
 message RecordRoundStartRequest {
 
-  // 遊戲代碼
-  string game_code = 2;
+  // 遊戲類型
+  string game_type = 2;
   // 桌代碼
   string table_code = 3;
   // 局代碼
@@ -65,14 +60,8 @@ message RecordRoundStartRequest {
 
 message RecordRoundStepsRequest {
 
-  // 紀錄ID：此record_id為空字 串，則使用game_code, table_code, round_code決定紀錄
+  // 紀錄ID
   bytes record_id = 1;
-  // 遊戲代碼
-  string game_code = 2;
-  // 桌代碼
-  string table_code = 3;
-  // 局代碼
-  string round_code = 4;
   // 步驟
   repeated Step steps = 5;
 
@@ -80,14 +69,8 @@ message RecordRoundStepsRequest {
 
 message RecordRoundResultsRequest {
 
-  // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
+  // 紀錄ID
   bytes record_id = 1;
-  // 遊戲代碼
-  string game_code = 2;
-  // 桌代碼
-  string table_code = 3;
-  // 局代碼
-  string round_code = 4;
   // 判讀結果
   repeated Result results = 6;
   
@@ -95,14 +78,8 @@ message RecordRoundResultsRequest {
 
 message RecordRoundCancelRequest {
 
-  // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
+  // 紀錄ID
   bytes record_id = 1;
-  // 遊戲代碼
-  string game_code = 2;
-  // 桌代碼
-  string table_code = 3;
-  // 局代碼
-  string round_code = 4;
   // 時間
   google.protobuf.Timestamp ts_cancel = 5;
   // 取消代碼
@@ -114,68 +91,116 @@ message RecordRoundCancelRequest {
 
 message RecordRoundFinishRequest {
 
-  // 紀錄ID：此record_id為空字串，則使用game_code, table_code, round_code決定紀錄
+  // 紀錄ID
   bytes record_id = 1;
-  // 遊戲代碼
-  string game_code = 2;
-  // 桌代碼
-  string table_code = 3;
-  // 局代碼
-  string round_code = 4;
   // 時間
   google.protobuf.Timestamp ts_finish = 5;
 
 }
 
-
-message FetchRecordShuffleRequest {
+service RecorderService {
   
+  // 開始更換牌組
+  rpc RecordShuffleStarted(RecordShuffleStartedRequest) returns (RecordIDResponse);
+
+  // 更換牌組完畢
+  rpc RecordShuffleDone(RecordShuffleDoneRequest) returns (google.protobuf.Empty);
+
+  // 開啟新局
+  rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordIDResponse);
+
+  // 記錄步驟
+  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (google.protobuf.Empty);
+
+  // 紀錄結果
+  rpc RecordRoundResults(RecordRoundResultsRequest) returns (google.protobuf.Empty);
+
+  // 此局作廢
+  rpc RecordRoundCancel(RecordRoundCancelRequest) returns (google.protobuf.Empty);
+
+  // 結束此局
+  rpc RecordRoundFinish(RecordRoundFinishRequest) returns (google.protobuf.Empty);
+
+}
+
+message RecordQuery {
+
+  // 查詢起時
+  google.protobuf.Timestamp ts_from = 1;
+  // 查詢終時
+  google.protobuf.Timestamp ts_to = 2;
+
+  // 筆數
+  int64 limit = 3;
+  // 頁面
+  int64 page = 4;
+
+}
+
+message FetchShuffleRecordRequest {
+
+  // 紀錄ID
+  bytes record_id = 1;
+  // 遊戲類型
+  string game_type = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 洗牌代碼
+  string shuffle_code = 4;
+
+  // 允許的紀錄ID
+  repeated bytes record_ids = 5;
+  // 允許的遊戲類型
+  repeated string game_types = 6;
+  // 允許的桌代碼
+  repeated string table_codes = 7;
+  // 允許的洗牌代碼
+  repeated string shuffle_codes = 8;
+
+  // 查詢限制
+  RecordQuery query = 9;
+
 }
 
 message FetchRecordShuffleResponse {
   repeated ShuffleRecord shuffle_record = 1;
 }
 
-message FetchRecordRoundRequest {
+message FetchRoundRecordRequest {
+
+  // 紀錄ID
+  bytes record_id = 1;
+  // 遊戲類型
+  string game_type = 2;
+  // 桌代碼
+  string table_code = 3;
+  // 局代碼
+  string round_code = 4;
+
+  // 允許的紀錄ID
+  repeated bytes record_ids = 5;
+  // 允許的遊戲類型
+  repeated string game_types = 6;
+  // 允許的桌代碼
+  repeated string table_codes = 7;
+  // 允許的局代碼
+  repeated string round_codes = 8;
+
+  // 查詢限制
+  RecordQuery query = 9;
 
 }
 
-message FetchRecordRoundResponse {
+message FetchRoundRecordResponse {
   repeated RoundRecord round_record = 1;
 }
-
-service RecorderService {
-  
-  // 開始更換牌組
-  rpc RecordShuffleStarted(RecordShuffleStartedRequest) returns (RecordResponse);
-
-  // 更換牌組完畢
-  rpc RecordShuffleDone(RecordShuffleDoneRequest) returns (RecordResponse);
-
-  // 開啟新局
-  rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordResponse);
-
-  // 記錄步驟
-  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (RecordResponse);
-
-  // 紀錄結果
-  rpc RecordRoundResults(RecordRoundResultsRequest) returns (RecordResponse);
-
-  // 此局作廢
-  rpc RecordRoundCancel(RecordRoundCancelRequest) returns (RecordResponse);
-
-  // 結束此局
-  rpc RecordRoundFinish(RecordRoundFinishRequest) returns (RecordResponse);
-
-}
-
 
 service RecorderReadService {
   
   // 讀洗牌紀錄
-  rpc FetchRecordShuffle(FetchRecordShuffleRequest) returns (FetchRecordShuffleResponse);
+  rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchRecordShuffleResponse);
 
   // 讀遊戲局號紀錄
-  rpc FetchRecordRound(FetchRecordRoundRequest) returns (FetchRecordRoundResponse);
+  rpc FetchRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
 
 }

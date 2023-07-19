@@ -1,0 +1,92 @@
+syntax = "proto3";
+package games.thebigbattle;
+
+// 使用卡牌種類
+enum CardType {
+
+  // 未指定
+  CARD_TYPE_UNSPECIFIED = 0;
+  // 撲克牌
+  POKER = 1;
+
+}
+
+enum ResourceType {
+
+  // 未指定
+  RESOURCE_TYPE_UNSPECIFIED = 0;
+  // 例牌
+  NORMAL = 1;
+
+}
+
+// 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
+enum Step {
+
+  // 未指定
+  STEP_UNSPECIFIED = 0;
+  // 本局開始
+  ROUND_START = 1;
+  // 本局完成
+  ROUND_FINISHED = 2;
+  // 本局取消
+  ROUND_CANCELED = 3;
+
+  // 捨牌1
+  DEAL_DISCARD_1 = 4;
+  // 派發龍例牌
+  DEAL_DRAGON_1 = 5;
+  // 派發虎例牌
+  DEAL_TIGER_1 = 6;
+ 
+  // 開放下注
+  OPEN_FOR_BETTING = 9;
+  // 停止下注
+  CLOSE_THE_BETTING = 10;
+
+  // 開例牌
+  SHOW_NORMAL = 12;
+
+  // PITBOSS 修改派發例牌
+  PITBOSS_MODIFY_NORMAL = 24;
+}
+
+// 座位功能代碼
+enum Seat {
+
+  // 未指定
+  SEAT_UNSPECIFIED = 0;
+  // 龍
+  DRAGON = 1;
+  // 虎
+  TIGER = 2;
+  // Dealer 
+  DEALER = 3;
+  // Discard
+  DISCARD = 4;
+  // Pitboss
+  PITBOSS = 9;
+
+}
+
+// 結果紀錄類型代碼
+enum ResultRecordType {
+
+  // 未指定
+  RESULT_RECORD_TYPE_UNSPECIFIED = 0;
+  // 遊戲局結束
+  ROUND_FINISH = 1;
+  // Pitboss 修正
+  PITBOSS_MODIFY_RESULT = 2;
+
+}
+
+// 取消原因
+enum CancelReason {
+
+  // 未指定，沒有取消
+  CANCEL_REASON_UNSPECIFIED = 0;
+  // 取消說明原因
+  NO_REASON = 1;
+  
+}

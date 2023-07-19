@@ -1,0 +1,10 @@
+*.env
+
+*.local
+.local
+*.local.yaml
+*.local.yml
+
+main
+
+node_modules

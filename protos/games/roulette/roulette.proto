@@ -1,0 +1,49 @@
+syntax = "proto3";
+package games.roulette;
+
+
+// 輪盤
+enum Roulette {
+
+  // 未指定
+  DICE_CARD_UNSPECIFIED = 0;
+  
+  DICE_0 = 99;
+  DICE_1 = 1;
+  DICE_2 = 2;
+  DICE_3 = 3;
+  DICE_4 = 4;
+  DICE_5 = 5;
+  DICE_6 = 6;
+  DICE_7 = 7;
+  DICE_8 = 8;
+  DICE_9 = 9;
+  DICE_10 = 10;
+  DICE_11 = 11;
+  DICE_12 = 12;
+  DICE_13 = 13;
+  DICE_14 = 14;
+  DICE_15 = 15;
+  DICE_16 = 16;
+  DICE_17 = 17;
+  DICE_18 = 18;
+  DICE_19 = 19;
+  DICE_20 = 20;
+  DICE_21 = 21;
+  DICE_22 = 22;
+  DICE_23 = 23;
+  DICE_24 = 24;
+  DICE_25 = 25;
+  DICE_26 = 26;
+  DICE_27 = 27;
+  DICE_28 = 28;
+  DICE_29 = 29;
+  DICE_30 = 30;
+  DICE_31 = 31;
+  DICE_32 = 32;
+  DICE_33 = 33;
+  DICE_34 = 34;
+  DICE_35 = 35;
+  DICE_36 = 36;
+
+}
