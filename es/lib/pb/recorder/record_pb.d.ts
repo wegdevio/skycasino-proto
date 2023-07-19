@@ -375,11 +375,11 @@ export declare class RoundRecord extends Message<RoundRecord> {
      */
     id: Uint8Array;
     /**
-     * 遊戲代碼
+     * 遊戲類型
      *
-     * @generated from field: string game_code = 2;
+     * @generated from field: string game_type = 2;
      */
-    gameCode: string;
+    gameType: string;
     /**
      * 桌代碼
      *
@@ -500,7 +500,7 @@ export declare class ShuffleRecord extends Message<ShuffleRecord> {
      */
     id: Uint8Array;
     /**
-     * 遊戲代碼
+     * 遊戲類型
      *
      * @generated from field: string game_type = 2;
      */

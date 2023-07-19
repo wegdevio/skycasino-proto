@@ -567,11 +567,11 @@ export class RoundRecord extends Message<RoundRecord> {
   id = new Uint8Array(0);
 
   /**
-   * 遊戲代碼
+   * 遊戲類型
    *
-   * @generated from field: string game_code = 2;
+   * @generated from field: string game_type = 2;
    */
-  gameCode = "";
+  gameType = "";
 
   /**
    * 桌代碼
@@ -689,7 +689,7 @@ export class RoundRecord extends Message<RoundRecord> {
   static readonly typeName = "recorder.RoundRecord";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
@@ -738,7 +738,7 @@ export class ShuffleRecord extends Message<ShuffleRecord> {
   id = new Uint8Array(0);
 
   /**
-   * 遊戲代碼
+   * 遊戲類型
    *
    * @generated from field: string game_type = 2;
    */
