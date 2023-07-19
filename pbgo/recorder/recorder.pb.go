@@ -28,7 +28,7 @@ type RecordIDResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 }
 
 func (x *RecordIDResponse) Reset() {
@@ -80,7 +80,7 @@ type RecordShuffleStartedRequest struct {
 	// 桌代碼
 	TableCode string `protobuf:"bytes,3,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 洗牌代碼
-	ShuffleCode string `protobuf:"bytes,4,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" yaml:"shuffleCode" bson:"shuffleCode"`
+	ShuffleCode string `protobuf:"bytes,4,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 }
@@ -153,7 +153,7 @@ type RecordShuffleDoneRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
-	TsDone *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_done,json=tsDone,proto3" json:"tsDone" bson:"tsDone" yaml:"tsDone"`
+	TsDone *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_done,json=tsDone,proto3" json:"tsDone" yaml:"tsDone" bson:"tsDone"`
 	// 使用洗牌代碼
 	ShuffleCode string `protobuf:"bytes,6,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 洗牌類型
@@ -443,11 +443,11 @@ type RecordRoundCancelRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 時間
 	TsCancel *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_cancel,json=tsCancel,proto3" json:"tsCancel" bson:"tsCancel" yaml:"tsCancel"`
 	// 取消代碼
-	CancelCode string `protobuf:"bytes,6,opt,name=cancel_code,json=cancelCode,proto3" json:"cancelCode" bson:"cancelCode" yaml:"cancelCode"`
+	CancelCode string `protobuf:"bytes,6,opt,name=cancel_code,json=cancelCode,proto3" json:"cancelCode" yaml:"cancelCode" bson:"cancelCode"`
 	// 取消備註
 	CancelMessage string `protobuf:"bytes,7,opt,name=cancel_message,json=cancelMessage,proto3" json:"cancelMessage" bson:"cancelMessage" yaml:"cancelMessage"`
 }
@@ -577,7 +577,7 @@ type RecordQuery struct {
 	// 查詢起時
 	TsFrom *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=ts_from,json=tsFrom,proto3" json:"tsFrom" bson:"tsFrom" yaml:"tsFrom"`
 	// 查詢終時
-	TsTo *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=ts_to,json=tsTo,proto3" json:"tsTo" bson:"tsTo" yaml:"tsTo"`
+	TsTo *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=ts_to,json=tsTo,proto3" json:"tsTo" yaml:"tsTo" bson:"tsTo"`
 	// 筆數
 	Limit int64 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit" bson:"limit" yaml:"limit"`
 	// 頁面
@@ -650,9 +650,9 @@ type FetchShuffleRecordRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 遊戲類型
-	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
+	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" yaml:"gameType" bson:"gameType"`
 	// 桌代碼
 	TableCode string `protobuf:"bytes,3,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 洗牌代碼
@@ -764,7 +764,7 @@ func (x *FetchShuffleRecordRequest) GetQuery() *RecordQuery {
 	return nil
 }
 
-type FetchRecordShuffleResponse struct {
+type FetchShuffleRecordResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -772,8 +772,8 @@ type FetchRecordShuffleResponse struct {
 	ShuffleRecord []*ShuffleRecord `protobuf:"bytes,1,rep,name=shuffle_record,json=shuffleRecord,proto3" json:"shuffleRecord" bson:"shuffleRecord" yaml:"shuffleRecord"`
 }
 
-func (x *FetchRecordShuffleResponse) Reset() {
-	*x = FetchRecordShuffleResponse{}
+func (x *FetchShuffleRecordResponse) Reset() {
+	*x = FetchShuffleRecordResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_recorder_recorder_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -781,13 +781,13 @@ func (x *FetchRecordShuffleResponse) Reset() {
 	}
 }
 
-func (x *FetchRecordShuffleResponse) String() string {
+func (x *FetchShuffleRecordResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*FetchRecordShuffleResponse) ProtoMessage() {}
+func (*FetchShuffleRecordResponse) ProtoMessage() {}
 
-func (x *FetchRecordShuffleResponse) ProtoReflect() protoreflect.Message {
+func (x *FetchShuffleRecordResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_recorder_recorder_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -799,12 +799,12 @@ func (x *FetchRecordShuffleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use FetchRecordShuffleResponse.ProtoReflect.Descriptor instead.
-func (*FetchRecordShuffleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use FetchShuffleRecordResponse.ProtoReflect.Descriptor instead.
+func (*FetchShuffleRecordResponse) Descriptor() ([]byte, []int) {
 	return file_recorder_recorder_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *FetchRecordShuffleResponse) GetShuffleRecord() []*ShuffleRecord {
+func (x *FetchShuffleRecordResponse) GetShuffleRecord() []*ShuffleRecord {
 	if x != nil {
 		return x.ShuffleRecord
 	}
@@ -827,7 +827,7 @@ type FetchRoundRecordRequest struct {
 	// 允許的紀錄ID
 	RecordIds [][]byte `protobuf:"bytes,5,rep,name=record_ids,json=recordIds,proto3" json:"recordIds" bson:"recordIds" yaml:"recordIds"`
 	// 允許的遊戲類型
-	GameTypes []string `protobuf:"bytes,6,rep,name=game_types,json=gameTypes,proto3" json:"gameTypes" yaml:"gameTypes" bson:"gameTypes"`
+	GameTypes []string `protobuf:"bytes,6,rep,name=game_types,json=gameTypes,proto3" json:"gameTypes" bson:"gameTypes" yaml:"gameTypes"`
 	// 允許的桌代碼
 	TableCodes []string `protobuf:"bytes,7,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" bson:"tableCodes" yaml:"tableCodes"`
 	// 允許的局代碼
@@ -1101,7 +1101,7 @@ var file_recorder_recorder_proto_rawDesc = []byte{
 	0x71, 0x75, 0x65, 0x72, 0x79, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x72, 0x65,
 	0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x51, 0x75, 0x65,
 	0x72, 0x79, 0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x22, 0x5c, 0x0a, 0x1a, 0x46, 0x65, 0x74,
-	0x63, 0x68, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x53, 0x68, 0x75, 0x66, 0x66, 0x6c, 0x65, 0x52,
+	0x63, 0x68, 0x53, 0x68, 0x75, 0x66, 0x66, 0x6c, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3e, 0x0a, 0x0e, 0x73, 0x68, 0x75, 0x66, 0x66,
 	0x6c, 0x65, 0x5f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
 	0x17, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x53, 0x68, 0x75, 0x66, 0x66,
@@ -1175,8 +1175,8 @@ var file_recorder_recorder_proto_rawDesc = []byte{
 	0x6f, 0x72, 0x64, 0x12, 0x23, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x46,
 	0x65, 0x74, 0x63, 0x68, 0x53, 0x68, 0x75, 0x66, 0x66, 0x6c, 0x65, 0x52, 0x65, 0x63, 0x6f, 0x72,
 	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x24, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72,
-	0x64, 0x65, 0x72, 0x2e, 0x46, 0x65, 0x74, 0x63, 0x68, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x53,
-	0x68, 0x75, 0x66, 0x66, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x59,
+	0x64, 0x65, 0x72, 0x2e, 0x46, 0x65, 0x74, 0x63, 0x68, 0x53, 0x68, 0x75, 0x66, 0x66, 0x6c, 0x65,
+	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x59,
 	0x0a, 0x10, 0x46, 0x65, 0x74, 0x63, 0x68, 0x52, 0x6f, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x6f,
 	0x72, 0x64, 0x12, 0x21, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x46, 0x65,
 	0x74, 0x63, 0x68, 0x52, 0x6f, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x65,
@@ -1219,7 +1219,7 @@ var file_recorder_recorder_proto_goTypes = []interface{}{
 	(*RecordRoundFinishRequest)(nil),    // 7: recorder.RecordRoundFinishRequest
 	(*RecordQuery)(nil),                 // 8: recorder.RecordQuery
 	(*FetchShuffleRecordRequest)(nil),   // 9: recorder.FetchShuffleRecordRequest
-	(*FetchRecordShuffleResponse)(nil),  // 10: recorder.FetchRecordShuffleResponse
+	(*FetchShuffleRecordResponse)(nil),  // 10: recorder.FetchShuffleRecordResponse
 	(*FetchRoundRecordRequest)(nil),     // 11: recorder.FetchRoundRecordRequest
 	(*FetchRoundRecordResponse)(nil),    // 12: recorder.FetchRoundRecordResponse
 	nil,                                 // 13: recorder.RecordShuffleDoneRequest.CardsEntry
@@ -1243,7 +1243,7 @@ var file_recorder_recorder_proto_depIdxs = []int32{
 	14, // 8: recorder.RecordQuery.ts_from:type_name -> google.protobuf.Timestamp
 	14, // 9: recorder.RecordQuery.ts_to:type_name -> google.protobuf.Timestamp
 	8,  // 10: recorder.FetchShuffleRecordRequest.query:type_name -> recorder.RecordQuery
-	17, // 11: recorder.FetchRecordShuffleResponse.shuffle_record:type_name -> recorder.ShuffleRecord
+	17, // 11: recorder.FetchShuffleRecordResponse.shuffle_record:type_name -> recorder.ShuffleRecord
 	8,  // 12: recorder.FetchRoundRecordRequest.query:type_name -> recorder.RecordQuery
 	18, // 13: recorder.FetchRoundRecordResponse.round_record:type_name -> recorder.RoundRecord
 	19, // 14: recorder.RecordShuffleDoneRequest.CardsEntry.value:type_name -> recorder.CardList
@@ -1263,7 +1263,7 @@ var file_recorder_recorder_proto_depIdxs = []int32{
 	20, // 28: recorder.RecorderService.RecordRoundResults:output_type -> google.protobuf.Empty
 	20, // 29: recorder.RecorderService.RecordRoundCancel:output_type -> google.protobuf.Empty
 	20, // 30: recorder.RecorderService.RecordRoundFinish:output_type -> google.protobuf.Empty
-	10, // 31: recorder.RecorderReadService.FetchShuffleRecord:output_type -> recorder.FetchRecordShuffleResponse
+	10, // 31: recorder.RecorderReadService.FetchShuffleRecord:output_type -> recorder.FetchShuffleRecordResponse
 	12, // 32: recorder.RecorderReadService.FetchRoundRecord:output_type -> recorder.FetchRoundRecordResponse
 	24, // [24:33] is the sub-list for method output_type
 	15, // [15:24] is the sub-list for method input_type
@@ -1400,7 +1400,7 @@ func file_recorder_recorder_proto_init() {
 			}
 		}
 		file_recorder_recorder_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FetchRecordShuffleResponse); i {
+			switch v := v.(*FetchShuffleRecordResponse); i {
 			case 0:
 				return &v.state
 			case 1:

@@ -369,21 +369,21 @@ export declare class FetchShuffleRecordRequest extends Message<FetchShuffleRecor
     static equals(a: FetchShuffleRecordRequest | PlainMessage<FetchShuffleRecordRequest> | undefined, b: FetchShuffleRecordRequest | PlainMessage<FetchShuffleRecordRequest> | undefined): boolean;
 }
 /**
- * @generated from message recorder.FetchRecordShuffleResponse
+ * @generated from message recorder.FetchShuffleRecordResponse
  */
-export declare class FetchRecordShuffleResponse extends Message<FetchRecordShuffleResponse> {
+export declare class FetchShuffleRecordResponse extends Message<FetchShuffleRecordResponse> {
     /**
      * @generated from field: repeated recorder.ShuffleRecord shuffle_record = 1;
      */
     shuffleRecord: ShuffleRecord[];
-    constructor(data?: PartialMessage<FetchRecordShuffleResponse>);
+    constructor(data?: PartialMessage<FetchShuffleRecordResponse>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "recorder.FetchRecordShuffleResponse";
+    static readonly typeName = "recorder.FetchShuffleRecordResponse";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordShuffleResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRecordShuffleResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRecordShuffleResponse;
-    static equals(a: FetchRecordShuffleResponse | PlainMessage<FetchRecordShuffleResponse> | undefined, b: FetchRecordShuffleResponse | PlainMessage<FetchRecordShuffleResponse> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShuffleRecordResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchShuffleRecordResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchShuffleRecordResponse;
+    static equals(a: FetchShuffleRecordResponse | PlainMessage<FetchShuffleRecordResponse> | undefined, b: FetchShuffleRecordResponse | PlainMessage<FetchShuffleRecordResponse> | undefined): boolean;
 }
 /**
  * @generated from message recorder.FetchRoundRecordRequest

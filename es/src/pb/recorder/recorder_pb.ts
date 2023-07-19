@@ -631,39 +631,39 @@ export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest
 }
 
 /**
- * @generated from message recorder.FetchRecordShuffleResponse
+ * @generated from message recorder.FetchShuffleRecordResponse
  */
-export class FetchRecordShuffleResponse extends Message<FetchRecordShuffleResponse> {
+export class FetchShuffleRecordResponse extends Message<FetchShuffleRecordResponse> {
   /**
    * @generated from field: repeated recorder.ShuffleRecord shuffle_record = 1;
    */
   shuffleRecord: ShuffleRecord[] = [];
 
-  constructor(data?: PartialMessage<FetchRecordShuffleResponse>) {
+  constructor(data?: PartialMessage<FetchShuffleRecordResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.FetchRecordShuffleResponse";
+  static readonly typeName = "recorder.FetchShuffleRecordResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "shuffle_record", kind: "message", T: ShuffleRecord, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRecordShuffleResponse {
-    return new FetchRecordShuffleResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShuffleRecordResponse {
+    return new FetchShuffleRecordResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRecordShuffleResponse {
-    return new FetchRecordShuffleResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchShuffleRecordResponse {
+    return new FetchShuffleRecordResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRecordShuffleResponse {
-    return new FetchRecordShuffleResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchShuffleRecordResponse {
+    return new FetchShuffleRecordResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: FetchRecordShuffleResponse | PlainMessage<FetchRecordShuffleResponse> | undefined, b: FetchRecordShuffleResponse | PlainMessage<FetchRecordShuffleResponse> | undefined): boolean {
-    return proto3.util.equals(FetchRecordShuffleResponse, a, b);
+  static equals(a: FetchShuffleRecordResponse | PlainMessage<FetchShuffleRecordResponse> | undefined, b: FetchShuffleRecordResponse | PlainMessage<FetchShuffleRecordResponse> | undefined): boolean {
+    return proto3.util.equals(FetchShuffleRecordResponse, a, b);
   }
 }
 

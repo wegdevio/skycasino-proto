@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { FetchRecordShuffleResponse, FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShuffleRecordRequest, RecordIDResponse, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
+import { FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShuffleRecordRequest, FetchShuffleRecordResponse, RecordIDResponse, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
 import { Empty, MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -106,7 +106,7 @@ export declare const RecorderReadService: {
     readonly fetchShuffleRecord: {
       readonly name: "FetchShuffleRecord",
       readonly I: typeof FetchShuffleRecordRequest,
-      readonly O: typeof FetchRecordShuffleResponse,
+      readonly O: typeof FetchShuffleRecordResponse,
       readonly kind: MethodKind.Unary,
     },
     /**

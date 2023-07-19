@@ -529,9 +529,9 @@ export class FetchShuffleRecordRequest extends Message {
     }
 }
 /**
- * @generated from message recorder.FetchRecordShuffleResponse
+ * @generated from message recorder.FetchShuffleRecordResponse
  */
-export class FetchRecordShuffleResponse extends Message {
+export class FetchShuffleRecordResponse extends Message {
     /**
      * @generated from field: repeated recorder.ShuffleRecord shuffle_record = 1;
      */
@@ -541,21 +541,21 @@ export class FetchRecordShuffleResponse extends Message {
         proto3.util.initPartial(data, this);
     }
     static runtime = proto3;
-    static typeName = "recorder.FetchRecordShuffleResponse";
+    static typeName = "recorder.FetchShuffleRecordResponse";
     static fields = proto3.util.newFieldList(() => [
         { no: 1, name: "shuffle_record", kind: "message", T: ShuffleRecord, repeated: true },
     ]);
     static fromBinary(bytes, options) {
-        return new FetchRecordShuffleResponse().fromBinary(bytes, options);
+        return new FetchShuffleRecordResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new FetchRecordShuffleResponse().fromJson(jsonValue, options);
+        return new FetchShuffleRecordResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new FetchRecordShuffleResponse().fromJsonString(jsonString, options);
+        return new FetchShuffleRecordResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return proto3.util.equals(FetchRecordShuffleResponse, a, b);
+        return proto3.util.equals(FetchShuffleRecordResponse, a, b);
     }
 }
 /**

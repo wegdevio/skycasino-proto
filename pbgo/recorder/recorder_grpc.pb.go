@@ -355,7 +355,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RecorderReadServiceClient interface {
 	// 讀洗牌紀錄
-	FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchRecordShuffleResponse, error)
+	FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchShuffleRecordResponse, error)
 	// 讀遊戲局號紀錄
 	FetchRoundRecord(ctx context.Context, in *FetchRoundRecordRequest, opts ...grpc.CallOption) (*FetchRoundRecordResponse, error)
 }
@@ -368,8 +368,8 @@ func NewRecorderReadServiceClient(cc grpc.ClientConnInterface) RecorderReadServi
 	return &recorderReadServiceClient{cc}
 }
 
-func (c *recorderReadServiceClient) FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchRecordShuffleResponse, error) {
-	out := new(FetchRecordShuffleResponse)
+func (c *recorderReadServiceClient) FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchShuffleRecordResponse, error) {
+	out := new(FetchShuffleRecordResponse)
 	err := c.cc.Invoke(ctx, RecorderReadService_FetchShuffleRecord_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -391,7 +391,7 @@ func (c *recorderReadServiceClient) FetchRoundRecord(ctx context.Context, in *Fe
 // for forward compatibility
 type RecorderReadServiceServer interface {
 	// 讀洗牌紀錄
-	FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchRecordShuffleResponse, error)
+	FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchShuffleRecordResponse, error)
 	// 讀遊戲局號紀錄
 	FetchRoundRecord(context.Context, *FetchRoundRecordRequest) (*FetchRoundRecordResponse, error)
 	mustEmbedUnimplementedRecorderReadServiceServer()
@@ -401,7 +401,7 @@ type RecorderReadServiceServer interface {
 type UnimplementedRecorderReadServiceServer struct {
 }
 
-func (UnimplementedRecorderReadServiceServer) FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchRecordShuffleResponse, error) {
+func (UnimplementedRecorderReadServiceServer) FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchShuffleRecordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchShuffleRecord not implemented")
 }
 func (UnimplementedRecorderReadServiceServer) FetchRoundRecord(context.Context, *FetchRoundRecordRequest) (*FetchRoundRecordResponse, error) {

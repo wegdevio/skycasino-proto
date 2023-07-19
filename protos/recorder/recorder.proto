@@ -162,7 +162,7 @@ message FetchShuffleRecordRequest {
 
 }
 
-message FetchRecordShuffleResponse {
+message FetchShuffleRecordResponse {
   repeated ShuffleRecord shuffle_record = 1;
 }
 
@@ -198,7 +198,7 @@ message FetchRoundRecordResponse {
 service RecorderReadService {
   
   // 讀洗牌紀錄
-  rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchRecordShuffleResponse);
+  rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchShuffleRecordResponse);
 
   // 讀遊戲局號紀錄
   rpc FetchRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
