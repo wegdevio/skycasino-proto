@@ -147,41 +147,43 @@ message RoundRecord {
   bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲類型
   string game_type = 2;
-  // 桌代碼
-  string table_code = 3;
-  // 局代碼
-  string round_code = 4;
-  // 使用牌靴
-  string shuffle_code = 5;
-  // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 6;
+  // 遊戲子類型
+  string game_subtype = 3;
   // 遊戲版本
-  string game_version = 7;
+  string game_version = 4;
+  // 桌代碼
+  string table_code = 5;
+  // 局代碼
+  string round_code = 6;
+  // 使用牌靴
+  string shuffle_code = 7;
+  // 使用此洗牌第幾局，從1開始計算
+  int64 shuffle_round = 8;
 
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 8;
+  map<int32, Seat> seats = 10;
   // 玩家入座
   // key: SeatCode, value: 玩家code。
-  map<int32, string> players = 9;
+  map<int32, string> players = 11;
   // 歷程
-  repeated Step process = 10;
+  repeated Step process = 12;
   // 判讀
-  repeated Result results = 11;
+  repeated Result results = 13;
   // 取消
-  bool cancel = 12;
+  bool cancel = 14;
   // 取消代碼：CancelReasonCode
-  string cancel_code = 13;
+  string cancel_code = 15;
   // 取消備註
-  string cancel_message = 14;
+  string cancel_message = 16;
 
   // 標籤
-  map<string, string> tags = 15;
+  map<string, string> tags = 17;
 
   // 開始時間
-  google.protobuf.Timestamp ts_start = 16;
+  google.protobuf.Timestamp ts_start = 18;
   // 結束時間
-  google.protobuf.Timestamp ts_end = 17;
+  google.protobuf.Timestamp ts_end = 19;
 }
 
 // 洗牌紀錄
@@ -190,14 +192,18 @@ message ShuffleRecord{
   bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲類型
   string game_type = 2;
+  // 遊戲子類型
+  string game_subtype = 3;
+  // 遊戲版本
+  string game_version = 4;
   // 桌代碼
-  string table_code = 3;
+  string table_code = 5;
   // 使用洗牌ID
-  string shuffle_code = 4;
+  string shuffle_code = 6;
   // 開始洗牌時間
-  google.protobuf.Timestamp ts_start = 5;
+  google.protobuf.Timestamp ts_start = 7;
   // 結束洗牌時間
-  google.protobuf.Timestamp ts_end = 6;
+  google.protobuf.Timestamp ts_end = 8;
   // cardList
-  map<int32, CardList> card_list = 7;
+  map<int32, CardList> card_list = 9;
 }

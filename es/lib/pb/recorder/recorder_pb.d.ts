@@ -31,21 +31,33 @@ export declare class RecordShuffleStartedRequest extends Message<RecordShuffleSt
      */
     gameType: string;
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype: string;
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode: string;
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 4;
+     * @generated from field: string shuffle_code = 6;
      */
     shuffleCode: string;
     /**
      * 時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 5;
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
      */
     tsStart?: Timestamp;
     constructor(data?: PartialMessage<RecordShuffleStartedRequest>);
@@ -108,41 +120,47 @@ export declare class RecordRoundStartRequest extends Message<RecordRoundStartReq
      */
     gameType: string;
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype: string;
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode: string;
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 4;
+     * @generated from field: string round_code = 6;
      */
     roundCode: string;
     /**
      * 時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 5;
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
      */
     tsStart?: Timestamp;
     /**
      * 使用洗牌代碼
      *
-     * @generated from field: string shuffle_code = 6;
+     * @generated from field: string shuffle_code = 8;
      */
     shuffleCode: string;
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 7;
+     * @generated from field: int64 shuffle_round = 9;
      */
     shuffleRound: bigint;
-    /**
-     * 遊戲版本
-     *
-     * @generated from field: string game_version = 8;
-     */
-    gameVersion: string;
     constructor(data?: PartialMessage<RecordRoundStartRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RecordRoundStartRequest";
@@ -318,45 +336,69 @@ export declare class FetchShuffleRecordRequest extends Message<FetchShuffleRecor
      */
     gameType: string;
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype: string;
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode: string;
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 4;
+     * @generated from field: string shuffle_code = 6;
      */
     shuffleCode: string;
     /**
      * 允許的紀錄ID
      *
-     * @generated from field: repeated bytes record_ids = 5;
+     * @generated from field: repeated bytes record_ids = 9;
      */
     recordIds: Uint8Array[];
     /**
      * 允許的遊戲類型
      *
-     * @generated from field: repeated string game_types = 6;
+     * @generated from field: repeated string game_types = 10;
      */
     gameTypes: string[];
     /**
+     * 允許的遊戲子類型
+     *
+     * @generated from field: repeated string game_subtypes = 11;
+     */
+    gameSubtypes: string[];
+    /**
+     * 允許的遊戲版本
+     *
+     * @generated from field: repeated string game_versions = 12;
+     */
+    gameVersions: string[];
+    /**
      * 允許的桌代碼
      *
-     * @generated from field: repeated string table_codes = 7;
+     * @generated from field: repeated string table_codes = 13;
      */
     tableCodes: string[];
     /**
      * 允許的洗牌代碼
      *
-     * @generated from field: repeated string shuffle_codes = 8;
+     * @generated from field: repeated string shuffle_codes = 14;
      */
     shuffleCodes: string[];
     /**
      * 查詢限制
      *
-     * @generated from field: recorder.RecordQuery query = 9;
+     * @generated from field: recorder.RecordQuery query = 16;
      */
     query?: RecordQuery;
     constructor(data?: PartialMessage<FetchShuffleRecordRequest>);
@@ -402,45 +444,69 @@ export declare class FetchRoundRecordRequest extends Message<FetchRoundRecordReq
      */
     gameType: string;
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype: string;
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode: string;
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 4;
+     * @generated from field: string round_code = 6;
      */
     roundCode: string;
     /**
      * 允許的紀錄ID
      *
-     * @generated from field: repeated bytes record_ids = 5;
+     * @generated from field: repeated bytes record_ids = 9;
      */
     recordIds: Uint8Array[];
     /**
      * 允許的遊戲類型
      *
-     * @generated from field: repeated string game_types = 6;
+     * @generated from field: repeated string game_types = 10;
      */
     gameTypes: string[];
     /**
+     * 允許的遊戲子類型
+     *
+     * @generated from field: repeated string game_subtypes = 11;
+     */
+    gameSubtypes: string[];
+    /**
+     * 允許的遊戲版本
+     *
+     * @generated from field: repeated string game_versions = 12;
+     */
+    gameVersions: string[];
+    /**
      * 允許的桌代碼
      *
-     * @generated from field: repeated string table_codes = 7;
+     * @generated from field: repeated string table_codes = 13;
      */
     tableCodes: string[];
     /**
      * 允許的局代碼
      *
-     * @generated from field: repeated string round_codes = 8;
+     * @generated from field: repeated string round_codes = 14;
      */
     roundCodes: string[];
     /**
      * 查詢限制
      *
-     * @generated from field: recorder.RecordQuery query = 9;
+     * @generated from field: recorder.RecordQuery query = 16;
      */
     query?: RecordQuery;
     constructor(data?: PartialMessage<FetchRoundRecordRequest>);

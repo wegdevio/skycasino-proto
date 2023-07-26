@@ -47,21 +47,33 @@ export class RecordShuffleStartedRequest extends Message {
      */
     gameType = "";
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode = "";
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 4;
+     * @generated from field: string shuffle_code = 6;
      */
     shuffleCode = "";
     /**
      * 時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 5;
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
      */
     tsStart;
     constructor(data) {
@@ -72,9 +84,11 @@ export class RecordShuffleStartedRequest extends Message {
     static typeName = "recorder.RecordShuffleStartedRequest";
     static fields = proto3.util.newFieldList(() => [
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 7, name: "ts_start", kind: "message", T: Timestamp },
     ]);
     static fromBinary(bytes, options) {
         return new RecordShuffleStartedRequest().fromBinary(bytes, options);
@@ -154,41 +168,47 @@ export class RecordRoundStartRequest extends Message {
      */
     gameType = "";
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode = "";
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 4;
+     * @generated from field: string round_code = 6;
      */
     roundCode = "";
     /**
      * 時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 5;
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
      */
     tsStart;
     /**
      * 使用洗牌代碼
      *
-     * @generated from field: string shuffle_code = 6;
+     * @generated from field: string shuffle_code = 8;
      */
     shuffleCode = "";
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 7;
+     * @generated from field: int64 shuffle_round = 9;
      */
     shuffleRound = protoInt64.zero;
-    /**
-     * 遊戲版本
-     *
-     * @generated from field: string game_version = 8;
-     */
-    gameVersion = "";
     constructor(data) {
         super();
         proto3.util.initPartial(data, this);
@@ -197,12 +217,13 @@ export class RecordRoundStartRequest extends Message {
     static typeName = "recorder.RecordRoundStartRequest";
     static fields = proto3.util.newFieldList(() => [
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "ts_start", kind: "message", T: Timestamp },
-        { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 7, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-        { no: 8, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 7, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 8, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 9, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     ]);
     static fromBinary(bytes, options) {
         return new RecordRoundStartRequest().fromBinary(bytes, options);
@@ -457,45 +478,69 @@ export class FetchShuffleRecordRequest extends Message {
      */
     gameType = "";
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode = "";
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 4;
+     * @generated from field: string shuffle_code = 6;
      */
     shuffleCode = "";
     /**
      * 允許的紀錄ID
      *
-     * @generated from field: repeated bytes record_ids = 5;
+     * @generated from field: repeated bytes record_ids = 9;
      */
     recordIds = [];
     /**
      * 允許的遊戲類型
      *
-     * @generated from field: repeated string game_types = 6;
+     * @generated from field: repeated string game_types = 10;
      */
     gameTypes = [];
     /**
+     * 允許的遊戲子類型
+     *
+     * @generated from field: repeated string game_subtypes = 11;
+     */
+    gameSubtypes = [];
+    /**
+     * 允許的遊戲版本
+     *
+     * @generated from field: repeated string game_versions = 12;
+     */
+    gameVersions = [];
+    /**
      * 允許的桌代碼
      *
-     * @generated from field: repeated string table_codes = 7;
+     * @generated from field: repeated string table_codes = 13;
      */
     tableCodes = [];
     /**
      * 允許的洗牌代碼
      *
-     * @generated from field: repeated string shuffle_codes = 8;
+     * @generated from field: repeated string shuffle_codes = 14;
      */
     shuffleCodes = [];
     /**
      * 查詢限制
      *
-     * @generated from field: recorder.RecordQuery query = 9;
+     * @generated from field: recorder.RecordQuery query = 16;
      */
     query;
     constructor(data) {
@@ -507,13 +552,17 @@ export class FetchShuffleRecordRequest extends Message {
     static fields = proto3.util.newFieldList(() => [
         { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
-        { no: 6, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-        { no: 7, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-        { no: 8, name: "shuffle_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-        { no: 9, name: "query", kind: "message", T: RecordQuery },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+        { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 12, name: "game_versions", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 13, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 14, name: "shuffle_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 16, name: "query", kind: "message", T: RecordQuery },
     ]);
     static fromBinary(bytes, options) {
         return new FetchShuffleRecordRequest().fromBinary(bytes, options);
@@ -575,45 +624,69 @@ export class FetchRoundRecordRequest extends Message {
      */
     gameType = "";
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode = "";
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 4;
+     * @generated from field: string round_code = 6;
      */
     roundCode = "";
     /**
      * 允許的紀錄ID
      *
-     * @generated from field: repeated bytes record_ids = 5;
+     * @generated from field: repeated bytes record_ids = 9;
      */
     recordIds = [];
     /**
      * 允許的遊戲類型
      *
-     * @generated from field: repeated string game_types = 6;
+     * @generated from field: repeated string game_types = 10;
      */
     gameTypes = [];
     /**
+     * 允許的遊戲子類型
+     *
+     * @generated from field: repeated string game_subtypes = 11;
+     */
+    gameSubtypes = [];
+    /**
+     * 允許的遊戲版本
+     *
+     * @generated from field: repeated string game_versions = 12;
+     */
+    gameVersions = [];
+    /**
      * 允許的桌代碼
      *
-     * @generated from field: repeated string table_codes = 7;
+     * @generated from field: repeated string table_codes = 13;
      */
     tableCodes = [];
     /**
      * 允許的局代碼
      *
-     * @generated from field: repeated string round_codes = 8;
+     * @generated from field: repeated string round_codes = 14;
      */
     roundCodes = [];
     /**
      * 查詢限制
      *
-     * @generated from field: recorder.RecordQuery query = 9;
+     * @generated from field: recorder.RecordQuery query = 16;
      */
     query;
     constructor(data) {
@@ -625,13 +698,17 @@ export class FetchRoundRecordRequest extends Message {
     static fields = proto3.util.newFieldList(() => [
         { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
-        { no: 6, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-        { no: 7, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-        { no: 8, name: "round_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-        { no: 9, name: "query", kind: "message", T: RecordQuery },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+        { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 12, name: "game_versions", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 13, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 14, name: "round_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 16, name: "query", kind: "message", T: RecordQuery },
     ]);
     static fromBinary(bytes, options) {
         return new FetchRoundRecordRequest().fromBinary(bytes, options);

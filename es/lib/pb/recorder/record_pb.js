@@ -492,95 +492,101 @@ export class RoundRecord extends Message {
      */
     gameType = "";
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode = "";
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 4;
+     * @generated from field: string round_code = 6;
      */
     roundCode = "";
     /**
      * 使用牌靴
      *
-     * @generated from field: string shuffle_code = 5;
+     * @generated from field: string shuffle_code = 7;
      */
     shuffleCode = "";
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 6;
+     * @generated from field: int64 shuffle_round = 8;
      */
     shuffleRound = protoInt64.zero;
-    /**
-     * 遊戲版本
-     *
-     * @generated from field: string game_version = 7;
-     */
-    gameVersion = "";
     /**
      * 座位組
      * key: SeatCode, value: Seat
      *
-     * @generated from field: map<int32, recorder.Seat> seats = 8;
+     * @generated from field: map<int32, recorder.Seat> seats = 10;
      */
     seats = {};
     /**
      * 玩家入座
      * key: SeatCode, value: 玩家code。
      *
-     * @generated from field: map<int32, string> players = 9;
+     * @generated from field: map<int32, string> players = 11;
      */
     players = {};
     /**
      * 歷程
      *
-     * @generated from field: repeated recorder.Step process = 10;
+     * @generated from field: repeated recorder.Step process = 12;
      */
     process = [];
     /**
      * 判讀
      *
-     * @generated from field: repeated recorder.Result results = 11;
+     * @generated from field: repeated recorder.Result results = 13;
      */
     results = [];
     /**
      * 取消
      *
-     * @generated from field: bool cancel = 12;
+     * @generated from field: bool cancel = 14;
      */
     cancel = false;
     /**
      * 取消代碼：CancelReasonCode
      *
-     * @generated from field: string cancel_code = 13;
+     * @generated from field: string cancel_code = 15;
      */
     cancelCode = "";
     /**
      * 取消備註
      *
-     * @generated from field: string cancel_message = 14;
+     * @generated from field: string cancel_message = 16;
      */
     cancelMessage = "";
     /**
      * 標籤
      *
-     * @generated from field: map<string, string> tags = 15;
+     * @generated from field: map<string, string> tags = 17;
      */
     tags = {};
     /**
      * 開始時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 16;
+     * @generated from field: google.protobuf.Timestamp ts_start = 18;
      */
     tsStart;
     /**
      * 結束時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_end = 17;
+     * @generated from field: google.protobuf.Timestamp ts_end = 19;
      */
     tsEnd;
     constructor(data) {
@@ -592,21 +598,22 @@ export class RoundRecord extends Message {
     static fields = proto3.util.newFieldList(() => [
         { no: 1, name: "id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 6, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-        { no: 7, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 8, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: Seat } },
-        { no: 9, name: "players", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
-        { no: 10, name: "process", kind: "message", T: Step, repeated: true },
-        { no: 11, name: "results", kind: "message", T: Result, repeated: true },
-        { no: 12, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-        { no: 13, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 14, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 15, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
-        { no: 16, name: "ts_start", kind: "message", T: Timestamp },
-        { no: 17, name: "ts_end", kind: "message", T: Timestamp },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 7, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 8, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+        { no: 10, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: Seat } },
+        { no: 11, name: "players", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
+        { no: 12, name: "process", kind: "message", T: Step, repeated: true },
+        { no: 13, name: "results", kind: "message", T: Result, repeated: true },
+        { no: 14, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+        { no: 15, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 16, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 17, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
+        { no: 18, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 19, name: "ts_end", kind: "message", T: Timestamp },
     ]);
     static fromBinary(bytes, options) {
         return new RoundRecord().fromBinary(bytes, options);
@@ -640,33 +647,45 @@ export class ShuffleRecord extends Message {
      */
     gameType = "";
     /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 3;
+     * @generated from field: string table_code = 5;
      */
     tableCode = "";
     /**
      * 使用洗牌ID
      *
-     * @generated from field: string shuffle_code = 4;
+     * @generated from field: string shuffle_code = 6;
      */
     shuffleCode = "";
     /**
      * 開始洗牌時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 5;
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
      */
     tsStart;
     /**
      * 結束洗牌時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_end = 6;
+     * @generated from field: google.protobuf.Timestamp ts_end = 8;
      */
     tsEnd;
     /**
      * cardList
      *
-     * @generated from field: map<int32, recorder.CardList> card_list = 7;
+     * @generated from field: map<int32, recorder.CardList> card_list = 9;
      */
     cardList = {};
     constructor(data) {
@@ -678,11 +697,13 @@ export class ShuffleRecord extends Message {
     static fields = proto3.util.newFieldList(() => [
         { no: 1, name: "id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 3, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 4, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "ts_start", kind: "message", T: Timestamp },
-        { no: 6, name: "ts_end", kind: "message", T: Timestamp },
-        { no: 7, name: "card_list", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: CardList } },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 7, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 8, name: "ts_end", kind: "message", T: Timestamp },
+        { no: 9, name: "card_list", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: CardList } },
     ]);
     static fromBinary(bytes, options) {
         return new ShuffleRecord().fromBinary(bytes, options);
