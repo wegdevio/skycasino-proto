@@ -184,10 +184,12 @@ message RoundRecord {
   google.protobuf.Timestamp ts_start = 18;
   // 結束時間
   google.protobuf.Timestamp ts_end = 19;
+
 }
 
 // 洗牌紀錄
 message ShuffleRecord{
+
   // 紀錄ID
   bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲類型
@@ -204,6 +206,11 @@ message ShuffleRecord{
   google.protobuf.Timestamp ts_start = 7;
   // 結束洗牌時間
   google.protobuf.Timestamp ts_end = 8;
+  // 起始位置（削牌後）
+  int64 start_index = 9;
+  // 切牌位置
+  int64 cut_index = 10;
   // cardList
-  map<int32, CardList> card_list = 9;
+  map<int32, CardList> card_list = 11;
+
 }
