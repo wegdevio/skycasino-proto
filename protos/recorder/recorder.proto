@@ -40,6 +40,10 @@ message RecordShuffleDoneRequest {
   // 洗牌類型
   // key: ResourceTypeCode；value: 卡牌陣列
   map<int32, CardList> cards = 7;
+  // 起始位置（削牌後）
+  int64 start_index = 9;
+  // 切牌位置
+  int64 cut_index = 10;
 
 }
 

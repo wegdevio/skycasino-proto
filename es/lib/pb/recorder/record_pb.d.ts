@@ -548,9 +548,21 @@ export declare class ShuffleRecord extends Message<ShuffleRecord> {
      */
     tsEnd?: Timestamp;
     /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 9;
+     */
+    startIndex: bigint;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 10;
+     */
+    cutIndex: bigint;
+    /**
      * cardList
      *
-     * @generated from field: map<int32, recorder.CardList> card_list = 9;
+     * @generated from field: map<int32, recorder.CardList> card_list = 11;
      */
     cardList: {
         [key: number]: CardList;

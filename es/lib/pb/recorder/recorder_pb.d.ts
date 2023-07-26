@@ -100,6 +100,18 @@ export declare class RecordShuffleDoneRequest extends Message<RecordShuffleDoneR
     cards: {
         [key: number]: CardList;
     };
+    /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 9;
+     */
+    startIndex: bigint;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 10;
+     */
+    cutIndex: bigint;
     constructor(data?: PartialMessage<RecordShuffleDoneRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RecordShuffleDoneRequest";

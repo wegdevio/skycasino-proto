@@ -132,6 +132,18 @@ export class RecordShuffleDoneRequest extends Message {
      * @generated from field: map<int32, recorder.CardList> cards = 7;
      */
     cards = {};
+    /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 9;
+     */
+    startIndex = protoInt64.zero;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 10;
+     */
+    cutIndex = protoInt64.zero;
     constructor(data) {
         super();
         proto3.util.initPartial(data, this);
@@ -143,6 +155,8 @@ export class RecordShuffleDoneRequest extends Message {
         { no: 5, name: "ts_done", kind: "message", T: Timestamp },
         { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 7, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: CardList } },
+        { no: 9, name: "start_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+        { no: 10, name: "cut_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     ]);
     static fromBinary(bytes, options) {
         return new RecordShuffleDoneRequest().fromBinary(bytes, options);

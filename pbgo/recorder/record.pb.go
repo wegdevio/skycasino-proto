@@ -119,11 +119,11 @@ type Card struct {
 	// 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
 	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id" bson:"id" yaml:"id"`
 	// 明文
-	PlainText string `protobuf:"bytes,4,opt,name=plain_text,json=plainText,proto3" json:"plainText" yaml:"plainText" bson:"plainText"`
+	PlainText string `protobuf:"bytes,4,opt,name=plain_text,json=plainText,proto3" json:"plainText" bson:"plainText" yaml:"plainText"`
 	// 簽章
 	Signature string `protobuf:"bytes,5,opt,name=signature,proto3" json:"signature" bson:"signature" yaml:"signature"`
 	// 簽章方法
-	SignMethod string `protobuf:"bytes,6,opt,name=sign_method,json=signMethod,proto3" json:"signMethod" yaml:"signMethod" bson:"signMethod"`
+	SignMethod string `protobuf:"bytes,6,opt,name=sign_method,json=signMethod,proto3" json:"signMethod" bson:"signMethod" yaml:"signMethod"`
 	// 順序
 	Index int64 `protobuf:"varint,8,opt,name=index,proto3" json:"index" bson:"index" yaml:"index"`
 	// 可見
@@ -286,7 +286,7 @@ type StepAction struct {
 	// 行為說明代碼：StepActionCode
 	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code" bson:"code" yaml:"code"`
 	// 資源擁有座位。
-	SourceSeat int32 `protobuf:"varint,3,opt,name=source_seat,json=sourceSeat,proto3" json:"sourceSeat" yaml:"sourceSeat" bson:"sourceSeat"`
+	SourceSeat int32 `protobuf:"varint,3,opt,name=source_seat,json=sourceSeat,proto3" json:"sourceSeat" bson:"sourceSeat" yaml:"sourceSeat"`
 	// 資源轉移目標座位。
 	TargetSeat int32 `protobuf:"varint,4,opt,name=target_seat,json=targetSeat,proto3" json:"targetSeat" bson:"targetSeat" yaml:"targetSeat"`
 	// 目標卡牌資源
@@ -391,17 +391,17 @@ type Step struct {
 	// 步驟代碼：StepCode
 	Code int32 `protobuf:"varint,1,opt,name=code,proto3" json:"code" bson:"code" yaml:"code"`
 	// 玩家、執行者：SeatCode
-	Seat int32 `protobuf:"varint,3,opt,name=seat,proto3" json:"seat" yaml:"seat" bson:"seat"`
+	Seat int32 `protobuf:"varint,3,opt,name=seat,proto3" json:"seat" bson:"seat" yaml:"seat"`
 	// 時間戳
 	Timestamp *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=timestamp,proto3" json:"timestamp" bson:"timestamp" yaml:"timestamp"`
 	// 執行動作
 	Actions []*StepAction `protobuf:"bytes,6,rep,name=actions,proto3" json:"actions" bson:"actions" yaml:"actions"`
 	// 執行錯誤
-	Error string `protobuf:"bytes,8,opt,name=error,proto3" json:"error" bson:"error" yaml:"error"`
+	Error string `protobuf:"bytes,8,opt,name=error,proto3" json:"error" yaml:"error" bson:"error"`
 	// 取消
 	Cancel bool `protobuf:"varint,9,opt,name=cancel,proto3" json:"cancel" bson:"cancel" yaml:"cancel"`
 	// 分配毫秒數
-	Duration int64 `protobuf:"varint,10,opt,name=duration,proto3" json:"duration" yaml:"duration" bson:"duration"`
+	Duration int64 `protobuf:"varint,10,opt,name=duration,proto3" json:"duration" bson:"duration" yaml:"duration"`
 }
 
 func (x *Step) Reset() {
@@ -646,7 +646,7 @@ type RoundRecord struct {
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,5,opt,name=table_code,json=tableCode,proto3" json:"tableCode" yaml:"tableCode" bson:"tableCode"`
+	TableCode string `protobuf:"bytes,5,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 局代碼
 	RoundCode string `protobuf:"bytes,6,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	// 使用牌靴
@@ -655,7 +655,7 @@ type RoundRecord struct {
 	ShuffleRound int64 `protobuf:"varint,8,opt,name=shuffle_round,json=shuffleRound,proto3" json:"shuffleRound" bson:"shuffleRound" yaml:"shuffleRound"`
 	// 座位組
 	// key: SeatCode, value: Seat
-	Seats map[int32]*Seat `protobuf:"bytes,10,rep,name=seats,proto3" json:"seats" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"seats" yaml:"seats"`
+	Seats map[int32]*Seat `protobuf:"bytes,10,rep,name=seats,proto3" json:"seats" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"seats" bson:"seats"`
 	// 玩家入座
 	// key: SeatCode, value: 玩家code。
 	Players map[int32]string `protobuf:"bytes,11,rep,name=players,proto3" json:"players" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"players" yaml:"players"`
@@ -670,7 +670,7 @@ type RoundRecord struct {
 	// 取消備註
 	CancelMessage string `protobuf:"bytes,16,opt,name=cancel_message,json=cancelMessage,proto3" json:"cancelMessage" bson:"cancelMessage" yaml:"cancelMessage"`
 	// 標籤
-	Tags map[string]string `protobuf:"bytes,17,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"tags" yaml:"tags"`
+	Tags map[string]string `protobuf:"bytes,17,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"tags" bson:"tags"`
 	// 開始時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// 結束時間
@@ -842,23 +842,23 @@ type ShuffleRecord struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	Id []byte `protobuf:"bytes,1,opt,name=id,proto3" json:"id" yaml:"id" bson:"_id,omitempty"`
+	Id []byte `protobuf:"bytes,1,opt,name=id,proto3" json:"id" bson:"_id,omitempty" yaml:"id"`
 	// 遊戲類型
 	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" yaml:"gameType" bson:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
+	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" yaml:"gameVersion" bson:"gameVersion"`
 	// 桌代碼
 	TableCode string `protobuf:"bytes,5,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 使用洗牌ID
 	ShuffleCode string `protobuf:"bytes,6,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 開始洗牌時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" yaml:"tsStart" bson:"tsStart"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// 結束洗牌時間
 	TsEnd *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" yaml:"tsEnd" bson:"tsEnd"`
 	// 起始位置（削牌後）
-	StartIndex int64 `protobuf:"varint,9,opt,name=start_index,json=startIndex,proto3" json:"startIndex" bson:"startIndex" yaml:"startIndex"`
+	StartIndex int64 `protobuf:"varint,9,opt,name=start_index,json=startIndex,proto3" json:"startIndex" yaml:"startIndex" bson:"startIndex"`
 	// 切牌位置
 	CutIndex int64 `protobuf:"varint,10,opt,name=cut_index,json=cutIndex,proto3" json:"cutIndex" bson:"cutIndex" yaml:"cutIndex"`
 	// cardList
