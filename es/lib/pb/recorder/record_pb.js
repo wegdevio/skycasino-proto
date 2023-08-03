@@ -181,15 +181,27 @@ export class Card extends Message {
  */
 export class CardList extends Message {
     /**
-     * @generated from field: string card_type = 7;
+     * @generated from field: string card_type = 1;
      */
     cardType = "";
     /**
      * 列表
      *
-     * @generated from field: repeated recorder.Card list = 1;
+     * @generated from field: repeated recorder.Card list = 2;
      */
     list = [];
+    /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 3;
+     */
+    startIndex = protoInt64.zero;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 4;
+     */
+    cutIndex = protoInt64.zero;
     constructor(data) {
         super();
         proto3.util.initPartial(data, this);
@@ -197,8 +209,10 @@ export class CardList extends Message {
     static runtime = proto3;
     static typeName = "recorder.CardList";
     static fields = proto3.util.newFieldList(() => [
-        { no: 7, name: "card_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 1, name: "list", kind: "message", T: Card, repeated: true },
+        { no: 1, name: "card_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 2, name: "list", kind: "message", T: Card, repeated: true },
+        { no: 3, name: "start_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+        { no: 4, name: "cut_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     ]);
     static fromBinary(bytes, options) {
         return new CardList().fromBinary(bytes, options);
@@ -683,18 +697,6 @@ export class ShuffleRecord extends Message {
      */
     tsEnd;
     /**
-     * 起始位置（削牌後）
-     *
-     * @generated from field: int64 start_index = 9;
-     */
-    startIndex = protoInt64.zero;
-    /**
-     * 切牌位置
-     *
-     * @generated from field: int64 cut_index = 10;
-     */
-    cutIndex = protoInt64.zero;
-    /**
      * cardList
      *
      * @generated from field: map<int32, recorder.CardList> card_list = 11;
@@ -715,8 +717,6 @@ export class ShuffleRecord extends Message {
         { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 7, name: "ts_start", kind: "message", T: Timestamp },
         { no: 8, name: "ts_end", kind: "message", T: Timestamp },
-        { no: 9, name: "start_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-        { no: 10, name: "cut_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
         { no: 11, name: "card_list", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: CardList } },
     ]);
     static fromBinary(bytes, options) {

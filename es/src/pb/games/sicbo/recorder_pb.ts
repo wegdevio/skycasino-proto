@@ -6,32 +6,6 @@
 import { proto3 } from "@bufbuild/protobuf";
 
 /**
- * 使用卡牌種類
- *
- * @generated from enum games.sicbo.CardType
- */
-export enum CardType {
-  /**
-   * 未指定
-   *
-   * @generated from enum value: CARD_TYPE_UNSPECIFIED = 0;
-   */
-  CARD_TYPE_UNSPECIFIED = 0,
-
-  /**
-   * 骰子
-   *
-   * @generated from enum value: DICE = 1;
-   */
-  DICE = 1,
-}
-// Retrieve enum metadata with: proto3.getEnumType(CardType)
-proto3.util.setEnumType(CardType, "games.sicbo.CardType", [
-  { no: 0, name: "CARD_TYPE_UNSPECIFIED" },
-  { no: 1, name: "DICE" },
-]);
-
-/**
  * @generated from enum games.sicbo.ResourceType
  */
 export enum ResourceType {

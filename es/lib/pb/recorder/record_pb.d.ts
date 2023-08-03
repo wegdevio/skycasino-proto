@@ -143,15 +143,27 @@ export declare class Card extends Message<Card> {
  */
 export declare class CardList extends Message<CardList> {
     /**
-     * @generated from field: string card_type = 7;
+     * @generated from field: string card_type = 1;
      */
     cardType: string;
     /**
      * 列表
      *
-     * @generated from field: repeated recorder.Card list = 1;
+     * @generated from field: repeated recorder.Card list = 2;
      */
     list: Card[];
+    /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 3;
+     */
+    startIndex: bigint;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 4;
+     */
+    cutIndex: bigint;
     constructor(data?: PartialMessage<CardList>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.CardList";
@@ -547,18 +559,6 @@ export declare class ShuffleRecord extends Message<ShuffleRecord> {
      * @generated from field: google.protobuf.Timestamp ts_end = 8;
      */
     tsEnd?: Timestamp;
-    /**
-     * 起始位置（削牌後）
-     *
-     * @generated from field: int64 start_index = 9;
-     */
-    startIndex: bigint;
-    /**
-     * 切牌位置
-     *
-     * @generated from field: int64 cut_index = 10;
-     */
-    cutIndex: bigint;
     /**
      * cardList
      *

@@ -6,32 +6,6 @@
 import { proto3 } from "@bufbuild/protobuf";
 
 /**
- * 使用卡牌種類
- *
- * @generated from enum games.roulette.CardType
- */
-export enum CardType {
-  /**
-   * 未指定
-   *
-   * @generated from enum value: CARD_TYPE_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * 類骰子類型
-   *
-   * @generated from enum value: CARD_TYPE_ROULETTE = 1;
-   */
-  ROULETTE = 1,
-}
-// Retrieve enum metadata with: proto3.getEnumType(CardType)
-proto3.util.setEnumType(CardType, "games.roulette.CardType", [
-  { no: 0, name: "CARD_TYPE_UNSPECIFIED" },
-  { no: 1, name: "CARD_TYPE_ROULETTE" },
-]);
-
-/**
  * @generated from enum games.roulette.ResourceType
  */
 export enum ResourceType {
