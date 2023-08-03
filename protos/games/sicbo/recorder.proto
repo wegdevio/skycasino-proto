@@ -1,16 +1,6 @@
 syntax = "proto3";
 package games.sicbo;
 
-// 使用卡牌種類
-enum CardType {
-
-  // 未指定
-  CARD_TYPE_UNSPECIFIED = 0;
-  // 骰子
-  DICE = 1;
-
-}
-
 enum ResourceType {
 
   // 未指定

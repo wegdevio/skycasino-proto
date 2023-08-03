@@ -86,7 +86,7 @@ type RecordShuffleStartedRequest struct {
 	// 洗牌代碼
 	ShuffleCode string `protobuf:"bytes,6,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" yaml:"tsStart" bson:"tsStart"`
 }
 
 func (x *RecordShuffleStartedRequest) Reset() {
@@ -178,7 +178,7 @@ type RecordShuffleDoneRequest struct {
 	// key: ResourceTypeCode；value: 卡牌陣列
 	Cards map[int32]*CardList `protobuf:"bytes,7,rep,name=cards,proto3" json:"cards" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"cards" yaml:"cards"`
 	// 起始位置（削牌後）
-	StartIndex int64 `protobuf:"varint,9,opt,name=start_index,json=startIndex,proto3" json:"startIndex" yaml:"startIndex" bson:"startIndex"`
+	StartIndex int64 `protobuf:"varint,9,opt,name=start_index,json=startIndex,proto3" json:"startIndex" bson:"startIndex" yaml:"startIndex"`
 	// 切牌位置
 	CutIndex int64 `protobuf:"varint,10,opt,name=cut_index,json=cutIndex,proto3" json:"cutIndex" bson:"cutIndex" yaml:"cutIndex"`
 }
@@ -565,7 +565,7 @@ type RecordRoundFinishRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
-	TsFinish *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_finish,json=tsFinish,proto3" json:"tsFinish" bson:"tsFinish" yaml:"tsFinish"`
+	TsFinish *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_finish,json=tsFinish,proto3" json:"tsFinish" yaml:"tsFinish" bson:"tsFinish"`
 }
 
 func (x *RecordRoundFinishRequest) Reset() {
@@ -703,7 +703,7 @@ type FetchShuffleRecordRequest struct {
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,5,opt,name=table_code,json=tableCode,proto3" json:"tableCode" yaml:"tableCode" bson:"tableCode"`
+	TableCode string `protobuf:"bytes,5,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 洗牌代碼
 	ShuffleCode string `protobuf:"bytes,6,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 允許的紀錄ID
@@ -713,7 +713,7 @@ type FetchShuffleRecordRequest struct {
 	// 允許的遊戲子類型
 	GameSubtypes []string `protobuf:"bytes,11,rep,name=game_subtypes,json=gameSubtypes,proto3" json:"gameSubtypes" bson:"gameSubtypes" yaml:"gameSubtypes"`
 	// 允許的遊戲版本
-	GameVersions []string `protobuf:"bytes,12,rep,name=game_versions,json=gameVersions,proto3" json:"gameVersions" yaml:"gameVersions" bson:"gameVersions"`
+	GameVersions []string `protobuf:"bytes,12,rep,name=game_versions,json=gameVersions,proto3" json:"gameVersions" bson:"gameVersions" yaml:"gameVersions"`
 	// 允許的桌代碼
 	TableCodes []string `protobuf:"bytes,13,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" bson:"tableCodes" yaml:"tableCodes"`
 	// 允許的洗牌代碼
@@ -898,7 +898,7 @@ type FetchRoundRecordRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 遊戲類型
 	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
@@ -922,7 +922,7 @@ type FetchRoundRecordRequest struct {
 	// 允許的局代碼
 	RoundCodes []string `protobuf:"bytes,14,rep,name=round_codes,json=roundCodes,proto3" json:"roundCodes" bson:"roundCodes" yaml:"roundCodes"`
 	// 查詢限制
-	Query *RecordQuery `protobuf:"bytes,16,opt,name=query,proto3" json:"query" yaml:"query" bson:"query"`
+	Query *RecordQuery `protobuf:"bytes,16,opt,name=query,proto3" json:"query" bson:"query" yaml:"query"`
 }
 
 func (x *FetchRoundRecordRequest) Reset() {

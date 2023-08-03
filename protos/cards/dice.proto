@@ -1,0 +1,16 @@
+syntax = "proto3";
+package cards;
+
+enum DiceCard {
+
+  // 未指定
+  DICE_CARD_UNSPECIFIED = 0;
+  
+  DICE_1 = 1;
+  DICE_2 = 2;
+  DICE_3 = 3;
+  DICE_4 = 4;
+  DICE_5 = 5;
+  DICE_6 = 6;
+
+}

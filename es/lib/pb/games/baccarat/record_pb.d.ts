@@ -1,23 +1,4 @@
 /**
- * 使用卡牌種類
- *
- * @generated from enum games.baccarat.CardType
- */
-export declare enum CardType {
-    /**
-     * 未指定
-     *
-     * @generated from enum value: CARD_TYPE_UNSPECIFIED = 0;
-     */
-    CARD_TYPE_UNSPECIFIED = 0,
-    /**
-     * 撲克牌
-     *
-     * @generated from enum value: POKER = 1;
-     */
-    POKER = 1
-}
-/**
  * @generated from enum games.baccarat.ResourceType
  */
 export declare enum ResourceType {

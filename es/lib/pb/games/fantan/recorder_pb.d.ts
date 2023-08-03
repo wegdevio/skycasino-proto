@@ -1,23 +1,4 @@
 /**
- * 使用卡牌種類
- *
- * @generated from enum games.fantan.CardType
- */
-export declare enum CardType {
-    /**
-     * 未指定
-     *
-     * @generated from enum value: CARD_TYPE_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * 類骰子類型
-     *
-     * @generated from enum value: CARD_TYPE_INT = 1;
-     */
-    INT = 1
-}
-/**
  * @generated from enum games.fantan.ResourceType
  */
 export declare enum ResourceType {
