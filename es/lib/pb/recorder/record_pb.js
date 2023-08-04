@@ -190,18 +190,6 @@ export class CardList extends Message {
      * @generated from field: repeated recorder.Card list = 2;
      */
     list = [];
-    /**
-     * 起始位置（削牌後）
-     *
-     * @generated from field: int64 start_index = 3;
-     */
-    startIndex = protoInt64.zero;
-    /**
-     * 切牌位置
-     *
-     * @generated from field: int64 cut_index = 4;
-     */
-    cutIndex = protoInt64.zero;
     constructor(data) {
         super();
         proto3.util.initPartial(data, this);
@@ -211,8 +199,6 @@ export class CardList extends Message {
     static fields = proto3.util.newFieldList(() => [
         { no: 1, name: "card_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 2, name: "list", kind: "message", T: Card, repeated: true },
-        { no: 3, name: "start_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-        { no: 4, name: "cut_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
     ]);
     static fromBinary(bytes, options) {
         return new CardList().fromBinary(bytes, options);
@@ -643,6 +629,59 @@ export class RoundRecord extends Message {
     }
 }
 /**
+ * @generated from message recorder.Deck
+ */
+export class Deck extends Message {
+    /**
+     * 卡牌
+     *
+     * @generated from field: recorder.CardList cards = 1;
+     */
+    cards;
+    /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 2;
+     */
+    startIndex = protoInt64.zero;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 3;
+     */
+    cutIndex = protoInt64.zero;
+    /**
+     * 目前位置
+     *
+     * @generated from field: int64 index = 4;
+     */
+    index = protoInt64.zero;
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static runtime = proto3;
+    static typeName = "recorder.Deck";
+    static fields = proto3.util.newFieldList(() => [
+        { no: 1, name: "cards", kind: "message", T: CardList },
+        { no: 2, name: "start_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+        { no: 3, name: "cut_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+        { no: 4, name: "index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    ]);
+    static fromBinary(bytes, options) {
+        return new Deck().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new Deck().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new Deck().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(Deck, a, b);
+    }
+}
+/**
  * 洗牌紀錄
  *
  * @generated from message recorder.ShuffleRecord
@@ -699,9 +738,9 @@ export class ShuffleRecord extends Message {
     /**
      * cardList
      *
-     * @generated from field: map<int32, recorder.CardList> card_list = 11;
+     * @generated from field: map<int32, recorder.Deck> decks = 11;
      */
-    cardList = {};
+    decks = {};
     constructor(data) {
         super();
         proto3.util.initPartial(data, this);
@@ -717,7 +756,7 @@ export class ShuffleRecord extends Message {
         { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 7, name: "ts_start", kind: "message", T: Timestamp },
         { no: 8, name: "ts_end", kind: "message", T: Timestamp },
-        { no: 11, name: "card_list", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: CardList } },
+        { no: 11, name: "decks", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: Deck } },
     ]);
     static fromBinary(bytes, options) {
         return new ShuffleRecord().fromBinary(bytes, options);

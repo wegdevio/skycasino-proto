@@ -152,18 +152,6 @@ export declare class CardList extends Message<CardList> {
      * @generated from field: repeated recorder.Card list = 2;
      */
     list: Card[];
-    /**
-     * 起始位置（削牌後）
-     *
-     * @generated from field: int64 start_index = 3;
-     */
-    startIndex: bigint;
-    /**
-     * 切牌位置
-     *
-     * @generated from field: int64 cut_index = 4;
-     */
-    cutIndex: bigint;
     constructor(data?: PartialMessage<CardList>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.CardList";
@@ -506,6 +494,43 @@ export declare class RoundRecord extends Message<RoundRecord> {
     static equals(a: RoundRecord | PlainMessage<RoundRecord> | undefined, b: RoundRecord | PlainMessage<RoundRecord> | undefined): boolean;
 }
 /**
+ * @generated from message recorder.Deck
+ */
+export declare class Deck extends Message<Deck> {
+    /**
+     * 卡牌
+     *
+     * @generated from field: recorder.CardList cards = 1;
+     */
+    cards?: CardList;
+    /**
+     * 起始位置（削牌後）
+     *
+     * @generated from field: int64 start_index = 2;
+     */
+    startIndex: bigint;
+    /**
+     * 切牌位置
+     *
+     * @generated from field: int64 cut_index = 3;
+     */
+    cutIndex: bigint;
+    /**
+     * 目前位置
+     *
+     * @generated from field: int64 index = 4;
+     */
+    index: bigint;
+    constructor(data?: PartialMessage<Deck>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.Deck";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Deck;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Deck;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Deck;
+    static equals(a: Deck | PlainMessage<Deck> | undefined, b: Deck | PlainMessage<Deck> | undefined): boolean;
+}
+/**
  * 洗牌紀錄
  *
  * @generated from message recorder.ShuffleRecord
@@ -562,10 +587,10 @@ export declare class ShuffleRecord extends Message<ShuffleRecord> {
     /**
      * cardList
      *
-     * @generated from field: map<int32, recorder.CardList> card_list = 11;
+     * @generated from field: map<int32, recorder.Deck> decks = 11;
      */
-    cardList: {
-        [key: number]: CardList;
+    decks: {
+        [key: number]: Deck;
     };
     constructor(data?: PartialMessage<ShuffleRecord>);
     static readonly runtime: typeof proto3;
