@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
-import { CardList, Result, RoundRecord, ShuffleRecord, Step } from "./record_pb";
+import { Deck, Result, RoundRecord, ShuffleRecord, Step } from "./record_pb";
 
 /**
  * @generated from message recorder.RecordIDResponse
@@ -152,25 +152,11 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
 
   /**
    * 洗牌類型
-   * key: ResourceTypeCode；value: 卡牌陣列
+   * key: ResourceTypeCode；value: 牌靴
    *
-   * @generated from field: map<int32, recorder.CardList> cards = 7;
+   * @generated from field: map<int32, recorder.Deck> cards = 7;
    */
-  cards: { [key: number]: CardList } = {};
-
-  /**
-   * 起始位置（削牌後）
-   *
-   * @generated from field: int64 start_index = 9;
-   */
-  startIndex = protoInt64.zero;
-
-  /**
-   * 切牌位置
-   *
-   * @generated from field: int64 cut_index = 10;
-   */
-  cutIndex = protoInt64.zero;
+  cards: { [key: number]: Deck } = {};
 
   constructor(data?: PartialMessage<RecordShuffleDoneRequest>) {
     super();
@@ -183,9 +169,7 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
     { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 5, name: "ts_done", kind: "message", T: Timestamp },
     { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: CardList} },
-    { no: 9, name: "start_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 10, name: "cut_index", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 7, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Deck} },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShuffleDoneRequest {

@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { CardList, Result, RoundRecord, ShuffleRecord, Step } from "./record_pb";
+import { Deck, Result, RoundRecord, ShuffleRecord, Step } from "./record_pb";
 /**
  * @generated from message recorder.RecordIDResponse
  */
@@ -93,25 +93,13 @@ export declare class RecordShuffleDoneRequest extends Message<RecordShuffleDoneR
     shuffleCode: string;
     /**
      * 洗牌類型
-     * key: ResourceTypeCode；value: 卡牌陣列
+     * key: ResourceTypeCode；value: 牌靴
      *
-     * @generated from field: map<int32, recorder.CardList> cards = 7;
+     * @generated from field: map<int32, recorder.Deck> cards = 7;
      */
     cards: {
-        [key: number]: CardList;
+        [key: number]: Deck;
     };
-    /**
-     * 起始位置（削牌後）
-     *
-     * @generated from field: int64 start_index = 9;
-     */
-    startIndex: bigint;
-    /**
-     * 切牌位置
-     *
-     * @generated from field: int64 cut_index = 10;
-     */
-    cutIndex: bigint;
     constructor(data?: PartialMessage<RecordShuffleDoneRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RecordShuffleDoneRequest";
