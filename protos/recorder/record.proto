@@ -178,12 +178,12 @@ message RoundRecord {
   string cancel_message = 16;
 
   // 標籤
-  map<string, string> tags = 17;
+  map<string, string> tags = 17 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
 
   // 開始時間
   google.protobuf.Timestamp ts_start = 18;
   // 結束時間
-  google.protobuf.Timestamp ts_end = 19;
+  google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
 
 }
 
@@ -199,7 +199,7 @@ message Deck {
 }
 
 // 洗牌紀錄
-message ShuffleRecord{
+message ShuffleRecord {
 
   // 紀錄ID
   bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
@@ -216,8 +216,8 @@ message ShuffleRecord{
   // 開始洗牌時間
   google.protobuf.Timestamp ts_start = 7;
   // 結束洗牌時間
-  google.protobuf.Timestamp ts_end = 8;
+  google.protobuf.Timestamp ts_end = 8 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
   // cardList
-  map<int32, Deck> decks = 11;
+  map<int32, Deck> decks = 11 [(tagger.tags) = "bson:\"decks,omitempty\"" ];
 
 }
