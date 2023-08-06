@@ -301,15 +301,15 @@ export declare class RecordQuery extends Message<RecordQuery> {
     /**
      * 筆數
      *
-     * @generated from field: int64 limit = 3;
+     * @generated from field: optional int64 limit = 3;
      */
-    limit: bigint;
+    limit?: bigint;
     /**
      * 頁面
      *
-     * @generated from field: int64 page = 4;
+     * @generated from field: optional int64 page = 4;
      */
-    page: bigint;
+    page?: bigint;
     constructor(data?: PartialMessage<RecordQuery>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RecordQuery";
@@ -326,39 +326,39 @@ export declare class FetchShuffleRecordRequest extends Message<FetchShuffleRecor
     /**
      * 紀錄ID
      *
-     * @generated from field: bytes record_id = 1;
+     * @generated from field: optional bytes record_id = 1;
      */
-    recordId: Uint8Array;
+    recordId?: Uint8Array;
     /**
      * 遊戲類型
      *
-     * @generated from field: string game_type = 2;
+     * @generated from field: optional string game_type = 2;
      */
-    gameType: string;
+    gameType?: string;
     /**
      * 遊戲子類型
      *
-     * @generated from field: string game_subtype = 3;
+     * @generated from field: optional string game_subtype = 3;
      */
-    gameSubtype: string;
+    gameSubtype?: string;
     /**
      * 遊戲版本
      *
-     * @generated from field: string game_version = 4;
+     * @generated from field: optional string game_version = 4;
      */
-    gameVersion: string;
+    gameVersion?: string;
     /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: optional string table_code = 5;
      */
-    tableCode: string;
+    tableCode?: string;
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 6;
+     * @generated from field: optional string shuffle_code = 6;
      */
-    shuffleCode: string;
+    shuffleCode?: string;
     /**
      * 允許的紀錄ID
      *
@@ -434,39 +434,39 @@ export declare class FetchRoundRecordRequest extends Message<FetchRoundRecordReq
     /**
      * 紀錄ID
      *
-     * @generated from field: bytes record_id = 1;
+     * @generated from field: optional bytes record_id = 1;
      */
-    recordId: Uint8Array;
+    recordId?: Uint8Array;
     /**
      * 遊戲類型
      *
-     * @generated from field: string game_type = 2;
+     * @generated from field: optional string game_type = 2;
      */
-    gameType: string;
+    gameType?: string;
     /**
      * 遊戲子類型
      *
-     * @generated from field: string game_subtype = 3;
+     * @generated from field: optional string game_subtype = 3;
      */
-    gameSubtype: string;
+    gameSubtype?: string;
     /**
      * 遊戲版本
      *
-     * @generated from field: string game_version = 4;
+     * @generated from field: optional string game_version = 4;
      */
-    gameVersion: string;
+    gameVersion?: string;
     /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: optional string table_code = 5;
      */
-    tableCode: string;
+    tableCode?: string;
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 6;
+     * @generated from field: optional string round_code = 6;
      */
-    roundCode: string;
+    roundCode?: string;
     /**
      * 允許的紀錄ID
      *

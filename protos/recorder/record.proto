@@ -144,7 +144,7 @@ message Result {
 message RoundRecord {
 
   // 紀錄ID
-  bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
+  bytes id = 1 [(tagger.tags) = "bson:\"_id,omitempty\"" ];
   // 遊戲類型
   string game_type = 2;
   // 遊戲子類型
@@ -162,20 +162,20 @@ message RoundRecord {
 
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 10;
+  map<int32, Seat> seats = 10 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 玩家入座
   // key: SeatCode, value: 玩家code。
-  map<int32, string> players = 11;
+  map<int32, string> players = 11 [(tagger.tags) = "bson:\"players,omitempty\""];
   // 歷程
-  repeated Step process = 12;
+  repeated Step process = 12 [(tagger.tags) = "bson:\"process,omitempty\""];
   // 判讀
-  repeated Result results = 13;
+  repeated Result results = 13 [(tagger.tags) = "bson:\"results,omitempty\""];
   // 取消
-  bool cancel = 14;
+  bool cancel = 14 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 取消代碼：CancelReasonCode
-  string cancel_code = 15;
+  string cancel_code = 15 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
   // 取消備註
-  string cancel_message = 16;
+  string cancel_message = 16 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
 
   // 標籤
   map<string, string> tags = 17 [(tagger.tags) = "bson:\"tags,omitempty\"" ];

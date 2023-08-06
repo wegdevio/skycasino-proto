@@ -509,16 +509,16 @@ export class RecordQuery extends Message<RecordQuery> {
   /**
    * 筆數
    *
-   * @generated from field: int64 limit = 3;
+   * @generated from field: optional int64 limit = 3;
    */
-  limit = protoInt64.zero;
+  limit?: bigint;
 
   /**
    * 頁面
    *
-   * @generated from field: int64 page = 4;
+   * @generated from field: optional int64 page = 4;
    */
-  page = protoInt64.zero;
+  page?: bigint;
 
   constructor(data?: PartialMessage<RecordQuery>) {
     super();
@@ -530,8 +530,8 @@ export class RecordQuery extends Message<RecordQuery> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "ts_from", kind: "message", T: Timestamp },
     { no: 2, name: "ts_to", kind: "message", T: Timestamp },
-    { no: 3, name: "limit", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 4, name: "page", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 3, name: "limit", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
+    { no: 4, name: "page", kind: "scalar", T: 3 /* ScalarType.INT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordQuery {
@@ -558,44 +558,44 @@ export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest
   /**
    * 紀錄ID
    *
-   * @generated from field: bytes record_id = 1;
+   * @generated from field: optional bytes record_id = 1;
    */
-  recordId = new Uint8Array(0);
+  recordId?: Uint8Array;
 
   /**
    * 遊戲類型
    *
-   * @generated from field: string game_type = 2;
+   * @generated from field: optional string game_type = 2;
    */
-  gameType = "";
+  gameType?: string;
 
   /**
    * 遊戲子類型
    *
-   * @generated from field: string game_subtype = 3;
+   * @generated from field: optional string game_subtype = 3;
    */
-  gameSubtype = "";
+  gameSubtype?: string;
 
   /**
    * 遊戲版本
    *
-   * @generated from field: string game_version = 4;
+   * @generated from field: optional string game_version = 4;
    */
-  gameVersion = "";
+  gameVersion?: string;
 
   /**
    * 桌代碼
    *
-   * @generated from field: string table_code = 5;
+   * @generated from field: optional string table_code = 5;
    */
-  tableCode = "";
+  tableCode?: string;
 
   /**
    * 洗牌代碼
    *
-   * @generated from field: string shuffle_code = 6;
+   * @generated from field: optional string shuffle_code = 6;
    */
-  shuffleCode = "";
+  shuffleCode?: string;
 
   /**
    * 允許的紀錄ID
@@ -654,12 +654,12 @@ export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.FetchShuffleRecordRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */, opt: true },
+    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
     { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
@@ -730,44 +730,44 @@ export class FetchRoundRecordRequest extends Message<FetchRoundRecordRequest> {
   /**
    * 紀錄ID
    *
-   * @generated from field: bytes record_id = 1;
+   * @generated from field: optional bytes record_id = 1;
    */
-  recordId = new Uint8Array(0);
+  recordId?: Uint8Array;
 
   /**
    * 遊戲類型
    *
-   * @generated from field: string game_type = 2;
+   * @generated from field: optional string game_type = 2;
    */
-  gameType = "";
+  gameType?: string;
 
   /**
    * 遊戲子類型
    *
-   * @generated from field: string game_subtype = 3;
+   * @generated from field: optional string game_subtype = 3;
    */
-  gameSubtype = "";
+  gameSubtype?: string;
 
   /**
    * 遊戲版本
    *
-   * @generated from field: string game_version = 4;
+   * @generated from field: optional string game_version = 4;
    */
-  gameVersion = "";
+  gameVersion?: string;
 
   /**
    * 桌代碼
    *
-   * @generated from field: string table_code = 5;
+   * @generated from field: optional string table_code = 5;
    */
-  tableCode = "";
+  tableCode?: string;
 
   /**
    * 局代碼
    *
-   * @generated from field: string round_code = 6;
+   * @generated from field: optional string round_code = 6;
    */
-  roundCode = "";
+  roundCode?: string;
 
   /**
    * 允許的紀錄ID
@@ -826,12 +826,12 @@ export class FetchRoundRecordRequest extends Message<FetchRoundRecordRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "recorder.FetchRoundRecordRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
-    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */, opt: true },
+    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
     { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },

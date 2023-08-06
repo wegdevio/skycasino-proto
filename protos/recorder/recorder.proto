@@ -137,26 +137,26 @@ message RecordQuery {
   google.protobuf.Timestamp ts_to = 2;
 
   // 筆數
-  int64 limit = 3;
+  optional int64 limit = 3;
   // 頁面
-  int64 page = 4;
+  optional int64 page = 4;
 
 }
 
 message FetchShuffleRecordRequest {
 
   // 紀錄ID
-  bytes record_id = 1;
+  optional bytes record_id = 1;
   // 遊戲類型
-  string game_type = 2;
+  optional string game_type = 2;
   // 遊戲子類型
-  string game_subtype = 3;
+  optional string game_subtype = 3;
   // 遊戲版本
-  string game_version = 4;
+  optional string game_version = 4;
   // 桌代碼
-  string table_code = 5;
+  optional string table_code = 5;
   // 洗牌代碼
-  string shuffle_code = 6;
+  optional string shuffle_code = 6;
 
   // 允許的紀錄ID
   repeated bytes record_ids = 9;
@@ -183,17 +183,17 @@ message FetchShuffleRecordResponse {
 message FetchRoundRecordRequest {
 
   // 紀錄ID
-  bytes record_id = 1;
+  optional bytes record_id = 1;
   // 遊戲類型
-  string game_type = 2;
+  optional string game_type = 2;
   // 遊戲子類型
-  string game_subtype = 3;
+  optional string game_subtype = 3;
   // 遊戲版本
-  string game_version = 4;
+  optional string game_version = 4;
   // 桌代碼
-  string table_code = 5;
+  optional string table_code = 5;
   // 局代碼
-  string round_code = 6;
+  optional string round_code = 6;
 
   // 允許的紀錄ID
   repeated bytes record_ids = 9;
