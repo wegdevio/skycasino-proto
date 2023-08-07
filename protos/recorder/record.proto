@@ -17,7 +17,7 @@ message Card {
   // 可見
   bool visible = 4;
   // 橫放、直放...
-  optional int64 status = 5;
+  optional int64 status = 5 [(tagger.tags) = "bson:\"status,omitempty\""];
 
   // 明文
   optional string plain_text = 8 [(tagger.tags) = "bson:\"plainText,omitempty\""];
@@ -98,7 +98,7 @@ message Step {
   // 時間戳
   google.protobuf.Timestamp timestamp = 5;
   // 執行動作
-  repeated StepAction actions = 6;
+  repeated StepAction actions = 6 [(tagger.tags) = "bson:\"action,omitempty\""];
   // 執行錯誤
   optional string error = 8 [(tagger.tags) = "bson:\"error,omitempty\""];
   // 取消
