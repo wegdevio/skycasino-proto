@@ -5,8 +5,10 @@ enum ResourceType {
 
   // 未指定
   RESOURCE_TYPE_UNSPECIFIED = 0;
+  // 牌靴
+  SHOE = 1;
   // 碗公
-  BOWL = 1;
+  BOWL = 2;
 
 }
 

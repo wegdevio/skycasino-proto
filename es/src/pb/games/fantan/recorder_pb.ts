@@ -17,16 +17,24 @@ export enum ResourceType {
   RESOURCE_TYPE_UNSPECIFIED = 0,
 
   /**
+   * 牌靴
+   *
+   * @generated from enum value: SHOE = 1;
+   */
+  SHOE = 1,
+
+  /**
    * 碗公
    *
-   * @generated from enum value: BOWL = 1;
+   * @generated from enum value: BOWL = 2;
    */
-  BOWL = 1,
+  BOWL = 2,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "games.fantan.ResourceType", [
   { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-  { no: 1, name: "BOWL" },
+  { no: 1, name: "SHOE" },
+  { no: 2, name: "BOWL" },
 ]);
 
 /**

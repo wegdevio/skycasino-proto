@@ -8,24 +8,23 @@ import "tagger/tagger.proto";
 // 卡牌，代表在此局中使用的各類物品
 message Card {
 
-  // 卡牌代碼
-  string code = 1;
   // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
-  string id = 2;
+  string id = 1;
+  // 卡牌代碼
+  string code = 2;
+  // 順序
+  int64 index = 3;
+  // 可見
+  bool visible = 4;
+  // 橫放、直放...
+  optional int64 status = 5;
 
   // 明文
-  string plain_text = 4;
+  optional string plain_text = 8 [(tagger.tags) = "bson:\"plainText,omitempty\""];
   // 簽章
-  string signature = 5;
+  optional string signature = 9 [(tagger.tags) = "bson:\"signature,omitempty\""];
   // 簽章方法
-  string sign_method = 6;
-
-  // 順序
-  int64 index = 8;
-  // 可見
-  bool visible = 9;
-  // 橫放、直放...
-  int32 status = 10;
+  optional string sign_algorithm = 10 [(tagger.tags) = "bson:\"signAlgorithm,omitempty\""];
 
 }
 
@@ -69,74 +68,71 @@ enum StepActionType {
 // 執行動作：對某些資源進行增、刪、移轉
 message StepAction {
 
-  reserved 2;
   // 行為說明代碼：StepActionCode
-  int32 code = 1;
+  int32 code = 2;
+  // 動作類型
+  StepActionType type = 3;
   // 資源擁有座位。
-  int32 source_seat = 3;
+  optional int32 source_seat = 4 [(tagger.tags) = "bson:\"sourceSeat,omitempty\""];
   // 資源轉移目標座位。
-  int32 target_seat = 4;
+  optional int32 target_seat = 5 [(tagger.tags) = "bson:\"targetSeat,omitempty\""];
   // 目標卡牌資源
   // key: ResourceTypeCode, value: 卡牌陣列
-  map<int32, CardList> cards = 6;
+  map<int32, CardList> cards = 6 [(tagger.tags) = "bson:\"cards,omitempty\""];
   // 目標分數資源
   // key: ResourceTypeCode, value: 分數值。
-  map<int32, int64> scores = 7;
-  // 動作類型
-  StepActionType type = 8;
+  map<int32, int64> scores = 7 [(tagger.tags) = "bson:\"scores,omitempty\""];
+
   // （可選）附加資料
-  google.protobuf.Any data = 9;
+  google.protobuf.Any data = 8 [(tagger.tags) = "bson:\"data,omitempty\""];
 
 }
 
 // 遊戲步驟
 message Step {
 
-  reserved 2, 4, 7;
   // 步驟代碼：StepCode
-  int32 code = 1;
+  int32 code = 2;
   // 玩家、執行者：SeatCode
-  int32 seat = 3;
+  optional int32 seat = 3 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 時間戳
   google.protobuf.Timestamp timestamp = 5;
   // 執行動作
   repeated StepAction actions = 6;
   // 執行錯誤
-  string error = 8;
+  optional string error = 8 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 取消
-  bool cancel = 9;
+  optional bool cancel = 9 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 分配毫秒數
-  int64 duration = 10;
+  optional int64 duration = 10 [(tagger.tags) = "bson:\"seats,omitempty\""];
 }
 
 // 座位
 message Seat {
 
-  reserved 2 to 5;
   // 座位功能代碼：SeatCode
-  int32 code = 1;
+  int32 code = 2;
   // 各類手牌
   // key: ResourceTypeCode, value: 卡牌陣列
-  map<int32, CardList> cards = 6;
+  map<int32, CardList> cards = 3 [(tagger.tags) = "bson:\"cards,omitempty\""];
   // 各類分數
   // key: ResourceTypeCode, value: 分數值。
-  map<int32, int64> scores = 8;
+  map<int32, int64> scores = 4 [(tagger.tags) = "bson:\"scores,omitempty\""];
 
 }
 
 // 記錄各座位狀態
 message Result {
 
-  reserved 2, 4;
   // 判讀類型代碼：ResultRecordTypeCode
-  int32 code = 1;
+  int32 code = 2;
   // 紀錄者座位代碼
-  int32 by_seat = 3;
+  optional int32 by_seat = 3 [(tagger.tags) = "bson:\"bySeat,omitempty\""];
   // 時間戳
-  google.protobuf.Timestamp timestamp = 5;
+  google.protobuf.Timestamp timestamp = 4;
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 6;
+  map<int32, Seat> seats = 5;
 
 }
 
@@ -144,7 +140,7 @@ message Result {
 message RoundRecord {
 
   // 紀錄ID
-  bytes id = 1 [(tagger.tags) = "bson:\"_id,omitempty\"" ];
+  bytes id = 1 [(tagger.tags) = "bson:\"_id,omitempty\""];
   // 遊戲類型
   string game_type = 2;
   // 遊戲子類型
@@ -153,37 +149,37 @@ message RoundRecord {
   string game_version = 4;
   // 桌代碼
   string table_code = 5;
-  // 局代碼
-  string round_code = 6;
   // 使用牌靴
-  string shuffle_code = 7;
+  string shuffle_code = 6;
+  // 局代碼
+  string round_code = 7;
   // 使用此洗牌第幾局，從1開始計算
   int64 shuffle_round = 8;
-
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 9;
   // 座位組
   // key: SeatCode, value: Seat
   map<int32, Seat> seats = 10 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 玩家入座
   // key: SeatCode, value: 玩家code。
   map<int32, string> players = 11 [(tagger.tags) = "bson:\"players,omitempty\""];
-  // 歷程
-  repeated Step process = 12 [(tagger.tags) = "bson:\"process,omitempty\""];
-  // 判讀
-  repeated Result results = 13 [(tagger.tags) = "bson:\"results,omitempty\""];
-  // 取消
-  bool cancel = 14 [(tagger.tags) = "bson:\"cancel,omitempty\""];
-  // 取消代碼：CancelReasonCode
-  string cancel_code = 15 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
-  // 取消備註
-  string cancel_message = 16 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
-
   // 標籤
-  map<string, string> tags = 17 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  map<string, string> tags = 12 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
 
-  // 開始時間
-  google.protobuf.Timestamp ts_start = 18;
+  // 歷程
+  repeated Step process = 13 [(tagger.tags) = "bson:\"process,omitempty\""];
+  // 判讀
+  repeated Result results = 14 [(tagger.tags) = "bson:\"results,omitempty\""];
+
   // 結束時間
-  google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
+  google.protobuf.Timestamp ts_end = 15 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
+
+  // 取消
+  optional bool cancel = 16 [(tagger.tags) = "bson:\"cancel,omitempty\""];
+  // 取消代碼：CancelReasonCode
+  optional string cancel_code = 17 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
+  // 取消備註
+  optional string cancel_message = 18 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
 
 }
 
@@ -193,7 +189,7 @@ message Deck {
   // 起始位置（削牌後）
   int64 start_index = 2;
   // 切牌位置
-  int64 cut_index = 3;
+  optional int64 cut_index = 3 [(tagger.tags) = "bson:\"cutIndex,omitempty\""];
   // 目前位置
   int64 index = 4;
 }
@@ -216,8 +212,8 @@ message ShuffleRecord {
   // 開始洗牌時間
   google.protobuf.Timestamp ts_start = 7;
   // 結束洗牌時間
-  google.protobuf.Timestamp ts_end = 8 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
+  google.protobuf.Timestamp ts_end = 8 [(tagger.tags) = "bson:\"tsEnd,omitempty\""];
   // cardList
-  map<int32, Deck> decks = 11 [(tagger.tags) = "bson:\"decks,omitempty\"" ];
+  map<int32, Deck> decks = 11 [(tagger.tags) = "bson:\"decks,omitempty\""];
 
 }

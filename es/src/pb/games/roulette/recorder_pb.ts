@@ -17,16 +17,24 @@ export enum ResourceType {
   RESOURCE_TYPE_UNSPECIFIED = 0,
 
   /**
+   * 牌靴
+   *
+   * @generated from enum value: SHOE = 1;
+   */
+  SHOE = 1,
+
+  /**
    * 輪盤
    *
-   * @generated from enum value: ROULETTE = 1;
+   * @generated from enum value: ROULETTE = 2;
    */
-  ROULETTE = 1,
+  ROULETTE = 2,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "games.roulette.ResourceType", [
   { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-  { no: 1, name: "ROULETTE" },
+  { no: 1, name: "SHOE" },
+  { no: 2, name: "ROULETTE" },
 ]);
 
 /**

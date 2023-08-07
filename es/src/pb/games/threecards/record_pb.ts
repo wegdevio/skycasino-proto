@@ -17,16 +17,24 @@ export enum ResourceType {
   RESOURCE_TYPE_UNSPECIFIED = 0,
 
   /**
+   * 牌靴
+   *
+   * @generated from enum value: SHOE = 1;
+   */
+  SHOE = 1,
+
+  /**
    * 例牌
    *
-   * @generated from enum value: NORMAL = 1;
+   * @generated from enum value: NORMAL = 2;
    */
-  NORMAL = 1,
+  NORMAL = 2,
 }
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "games.threecards.ResourceType", [
   { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-  { no: 1, name: "NORMAL" },
+  { no: 1, name: "SHOE" },
+  { no: 2, name: "NORMAL" },
 ]);
 
 /**
