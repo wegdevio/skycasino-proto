@@ -15,16 +15,23 @@ export var ResourceType;
      */
     ResourceType[ResourceType["RESOURCE_TYPE_UNSPECIFIED"] = 0] = "RESOURCE_TYPE_UNSPECIFIED";
     /**
+     * 牌靴
+     *
+     * @generated from enum value: SHOE = 1;
+     */
+    ResourceType[ResourceType["SHOE"] = 1] = "SHOE";
+    /**
      * 輪盤
      *
-     * @generated from enum value: WHEEL = 1;
+     * @generated from enum value: WHEEL = 2;
      */
-    ResourceType[ResourceType["WHEEL"] = 1] = "WHEEL";
+    ResourceType[ResourceType["WHEEL"] = 2] = "WHEEL";
 })(ResourceType || (ResourceType = {}));
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "games.luckywheel.ResourceType", [
     { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-    { no: 1, name: "WHEEL" },
+    { no: 1, name: "SHOE" },
+    { no: 2, name: "WHEEL" },
 ]);
 /**
  * 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到

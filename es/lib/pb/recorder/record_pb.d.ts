@@ -80,53 +80,53 @@ export declare enum StepActionType {
  */
 export declare class Card extends Message<Card> {
     /**
-     * 卡牌代碼
-     *
-     * @generated from field: string code = 1;
-     */
-    code: string;
-    /**
      * 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
      *
-     * @generated from field: string id = 2;
+     * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * 明文
+     * 卡牌代碼
      *
-     * @generated from field: string plain_text = 4;
+     * @generated from field: string code = 2;
      */
-    plainText: string;
-    /**
-     * 簽章
-     *
-     * @generated from field: string signature = 5;
-     */
-    signature: string;
-    /**
-     * 簽章方法
-     *
-     * @generated from field: string sign_method = 6;
-     */
-    signMethod: string;
+    code: string;
     /**
      * 順序
      *
-     * @generated from field: int64 index = 8;
+     * @generated from field: int64 index = 3;
      */
     index: bigint;
     /**
      * 可見
      *
-     * @generated from field: bool visible = 9;
+     * @generated from field: bool visible = 4;
      */
     visible: boolean;
     /**
      * 橫放、直放...
      *
-     * @generated from field: int32 status = 10;
+     * @generated from field: optional int64 status = 5;
      */
-    status: number;
+    status?: bigint;
+    /**
+     * 明文
+     *
+     * @generated from field: optional string plain_text = 8;
+     */
+    plainText?: string;
+    /**
+     * 簽章
+     *
+     * @generated from field: optional string signature = 9;
+     */
+    signature?: string;
+    /**
+     * 簽章方法
+     *
+     * @generated from field: optional string sign_algorithm = 10;
+     */
+    signAlgorithm?: string;
     constructor(data?: PartialMessage<Card>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.Card";
@@ -170,21 +170,27 @@ export declare class StepAction extends Message<StepAction> {
     /**
      * 行為說明代碼：StepActionCode
      *
-     * @generated from field: int32 code = 1;
+     * @generated from field: int32 code = 2;
      */
     code: number;
     /**
+     * 動作類型
+     *
+     * @generated from field: recorder.StepActionType type = 3;
+     */
+    type: StepActionType;
+    /**
      * 資源擁有座位。
      *
-     * @generated from field: int32 source_seat = 3;
+     * @generated from field: optional int32 source_seat = 4;
      */
-    sourceSeat: number;
+    sourceSeat?: number;
     /**
      * 資源轉移目標座位。
      *
-     * @generated from field: int32 target_seat = 4;
+     * @generated from field: optional int32 target_seat = 5;
      */
-    targetSeat: number;
+    targetSeat?: number;
     /**
      * 目標卡牌資源
      * key: ResourceTypeCode, value: 卡牌陣列
@@ -204,15 +210,9 @@ export declare class StepAction extends Message<StepAction> {
         [key: number]: bigint;
     };
     /**
-     * 動作類型
-     *
-     * @generated from field: recorder.StepActionType type = 8;
-     */
-    type: StepActionType;
-    /**
      * （可選）附加資料
      *
-     * @generated from field: google.protobuf.Any data = 9;
+     * @generated from field: google.protobuf.Any data = 8;
      */
     data?: Any;
     constructor(data?: PartialMessage<StepAction>);
@@ -233,15 +233,15 @@ export declare class Step extends Message<Step> {
     /**
      * 步驟代碼：StepCode
      *
-     * @generated from field: int32 code = 1;
+     * @generated from field: int32 code = 2;
      */
     code: number;
     /**
      * 玩家、執行者：SeatCode
      *
-     * @generated from field: int32 seat = 3;
+     * @generated from field: optional int32 seat = 3;
      */
-    seat: number;
+    seat?: number;
     /**
      * 時間戳
      *
@@ -257,21 +257,21 @@ export declare class Step extends Message<Step> {
     /**
      * 執行錯誤
      *
-     * @generated from field: string error = 8;
+     * @generated from field: optional string error = 8;
      */
-    error: string;
+    error?: string;
     /**
      * 取消
      *
-     * @generated from field: bool cancel = 9;
+     * @generated from field: optional bool cancel = 9;
      */
-    cancel: boolean;
+    cancel?: boolean;
     /**
      * 分配毫秒數
      *
-     * @generated from field: int64 duration = 10;
+     * @generated from field: optional int64 duration = 10;
      */
-    duration: bigint;
+    duration?: bigint;
     constructor(data?: PartialMessage<Step>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.Step";
@@ -290,14 +290,14 @@ export declare class Seat extends Message<Seat> {
     /**
      * 座位功能代碼：SeatCode
      *
-     * @generated from field: int32 code = 1;
+     * @generated from field: int32 code = 2;
      */
     code: number;
     /**
      * 各類手牌
      * key: ResourceTypeCode, value: 卡牌陣列
      *
-     * @generated from field: map<int32, recorder.CardList> cards = 6;
+     * @generated from field: map<int32, recorder.CardList> cards = 3;
      */
     cards: {
         [key: number]: CardList;
@@ -306,7 +306,7 @@ export declare class Seat extends Message<Seat> {
      * 各類分數
      * key: ResourceTypeCode, value: 分數值。
      *
-     * @generated from field: map<int32, int64> scores = 8;
+     * @generated from field: map<int32, int64> scores = 4;
      */
     scores: {
         [key: number]: bigint;
@@ -329,26 +329,26 @@ export declare class Result extends Message<Result> {
     /**
      * 判讀類型代碼：ResultRecordTypeCode
      *
-     * @generated from field: int32 code = 1;
+     * @generated from field: int32 code = 2;
      */
     code: number;
     /**
      * 紀錄者座位代碼
      *
-     * @generated from field: int32 by_seat = 3;
+     * @generated from field: optional int32 by_seat = 3;
      */
-    bySeat: number;
+    bySeat?: number;
     /**
      * 時間戳
      *
-     * @generated from field: google.protobuf.Timestamp timestamp = 5;
+     * @generated from field: google.protobuf.Timestamp timestamp = 4;
      */
     timestamp?: Timestamp;
     /**
      * 座位組
      * key: SeatCode, value: Seat
      *
-     * @generated from field: map<int32, recorder.Seat> seats = 6;
+     * @generated from field: map<int32, recorder.Seat> seats = 5;
      */
     seats: {
         [key: number]: Seat;
@@ -399,23 +399,29 @@ export declare class RoundRecord extends Message<RoundRecord> {
      */
     tableCode: string;
     /**
-     * 局代碼
-     *
-     * @generated from field: string round_code = 6;
-     */
-    roundCode: string;
-    /**
      * 使用牌靴
      *
-     * @generated from field: string shuffle_code = 7;
+     * @generated from field: string shuffle_code = 6;
      */
     shuffleCode: string;
+    /**
+     * 局代碼
+     *
+     * @generated from field: string round_code = 7;
+     */
+    roundCode: string;
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
      * @generated from field: int64 shuffle_round = 8;
      */
     shuffleRound: bigint;
+    /**
+     * 開始時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_start = 9;
+     */
+    tsStart?: Timestamp;
     /**
      * 座位組
      * key: SeatCode, value: Seat
@@ -435,55 +441,49 @@ export declare class RoundRecord extends Message<RoundRecord> {
         [key: number]: string;
     };
     /**
-     * 歷程
-     *
-     * @generated from field: repeated recorder.Step process = 12;
-     */
-    process: Step[];
-    /**
-     * 判讀
-     *
-     * @generated from field: repeated recorder.Result results = 13;
-     */
-    results: Result[];
-    /**
-     * 取消
-     *
-     * @generated from field: bool cancel = 14;
-     */
-    cancel: boolean;
-    /**
-     * 取消代碼：CancelReasonCode
-     *
-     * @generated from field: string cancel_code = 15;
-     */
-    cancelCode: string;
-    /**
-     * 取消備註
-     *
-     * @generated from field: string cancel_message = 16;
-     */
-    cancelMessage: string;
-    /**
      * 標籤
      *
-     * @generated from field: map<string, string> tags = 17;
+     * @generated from field: map<string, string> tags = 12;
      */
     tags: {
         [key: string]: string;
     };
     /**
-     * 開始時間
+     * 歷程
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 18;
+     * @generated from field: repeated recorder.Step process = 13;
      */
-    tsStart?: Timestamp;
+    process: Step[];
+    /**
+     * 判讀
+     *
+     * @generated from field: repeated recorder.Result results = 14;
+     */
+    results: Result[];
     /**
      * 結束時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_end = 19;
+     * @generated from field: google.protobuf.Timestamp ts_end = 15;
      */
     tsEnd?: Timestamp;
+    /**
+     * 取消
+     *
+     * @generated from field: optional bool cancel = 16;
+     */
+    cancel?: boolean;
+    /**
+     * 取消代碼：CancelReasonCode
+     *
+     * @generated from field: optional string cancel_code = 17;
+     */
+    cancelCode?: string;
+    /**
+     * 取消備註
+     *
+     * @generated from field: optional string cancel_message = 18;
+     */
+    cancelMessage?: string;
     constructor(data?: PartialMessage<RoundRecord>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RoundRecord";
@@ -512,9 +512,9 @@ export declare class Deck extends Message<Deck> {
     /**
      * 切牌位置
      *
-     * @generated from field: int64 cut_index = 3;
+     * @generated from field: optional int64 cut_index = 3;
      */
-    cutIndex: bigint;
+    cutIndex?: bigint;
     /**
      * 目前位置
      *

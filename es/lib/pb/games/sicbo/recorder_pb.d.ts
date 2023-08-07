@@ -9,11 +9,17 @@ export declare enum ResourceType {
      */
     RESOURCE_TYPE_UNSPECIFIED = 0,
     /**
+     * 牌靴
+     *
+     * @generated from enum value: SHOE = 1;
+     */
+    SHOE = 1,
+    /**
      * 碗公
      *
-     * @generated from enum value: BOWL = 1;
+     * @generated from enum value: BOWL = 2;
      */
-    BOWL = 1
+    BOWL = 2
 }
 /**
  * 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到

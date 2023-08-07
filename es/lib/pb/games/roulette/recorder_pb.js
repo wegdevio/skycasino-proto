@@ -15,16 +15,23 @@ export var ResourceType;
      */
     ResourceType[ResourceType["RESOURCE_TYPE_UNSPECIFIED"] = 0] = "RESOURCE_TYPE_UNSPECIFIED";
     /**
+     * 牌靴
+     *
+     * @generated from enum value: SHOE = 1;
+     */
+    ResourceType[ResourceType["SHOE"] = 1] = "SHOE";
+    /**
      * 輪盤
      *
-     * @generated from enum value: ROULETTE = 1;
+     * @generated from enum value: ROULETTE = 2;
      */
-    ResourceType[ResourceType["ROULETTE"] = 1] = "ROULETTE";
+    ResourceType[ResourceType["ROULETTE"] = 2] = "ROULETTE";
 })(ResourceType || (ResourceType = {}));
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "games.roulette.ResourceType", [
     { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-    { no: 1, name: "ROULETTE" },
+    { no: 1, name: "SHOE" },
+    { no: 2, name: "ROULETTE" },
 ]);
 /**
  * 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到

@@ -94,17 +94,17 @@ message Step {
   // 步驟代碼：StepCode
   int32 code = 2;
   // 玩家、執行者：SeatCode
-  optional int32 seat = 3 [(tagger.tags) = "bson:\"seats,omitempty\""];
+  optional int32 seat = 3 [(tagger.tags) = "bson:\"seat,omitempty\""];
   // 時間戳
   google.protobuf.Timestamp timestamp = 5;
   // 執行動作
   repeated StepAction actions = 6;
   // 執行錯誤
-  optional string error = 8 [(tagger.tags) = "bson:\"seats,omitempty\""];
+  optional string error = 8 [(tagger.tags) = "bson:\"error,omitempty\""];
   // 取消
-  optional bool cancel = 9 [(tagger.tags) = "bson:\"seats,omitempty\""];
+  optional bool cancel = 9 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 分配毫秒數
-  optional int64 duration = 10 [(tagger.tags) = "bson:\"seats,omitempty\""];
+  optional int64 duration = 10 [(tagger.tags) = "bson:\"duration,omitempty\""];
 }
 
 // 座位

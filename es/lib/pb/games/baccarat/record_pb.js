@@ -15,23 +15,30 @@ export var ResourceType;
      */
     ResourceType[ResourceType["RESOURCE_TYPE_UNSPECIFIED"] = 0] = "RESOURCE_TYPE_UNSPECIFIED";
     /**
+     * 牌靴
+     *
+     * @generated from enum value: SHOE = 1;
+     */
+    ResourceType[ResourceType["SHOE"] = 1] = "SHOE";
+    /**
      * 例牌
      *
-     * @generated from enum value: NORMAL = 1;
+     * @generated from enum value: NORMAL = 2;
      */
-    ResourceType[ResourceType["NORMAL"] = 1] = "NORMAL";
+    ResourceType[ResourceType["NORMAL"] = 2] = "NORMAL";
     /**
      * 非例牌
      *
-     * @generated from enum value: EXTRA = 2;
+     * @generated from enum value: EXTRA = 3;
      */
-    ResourceType[ResourceType["EXTRA"] = 2] = "EXTRA";
+    ResourceType[ResourceType["EXTRA"] = 3] = "EXTRA";
 })(ResourceType || (ResourceType = {}));
 // Retrieve enum metadata with: proto3.getEnumType(ResourceType)
 proto3.util.setEnumType(ResourceType, "games.baccarat.ResourceType", [
     { no: 0, name: "RESOURCE_TYPE_UNSPECIFIED" },
-    { no: 1, name: "NORMAL" },
-    { no: 2, name: "EXTRA" },
+    { no: 1, name: "SHOE" },
+    { no: 2, name: "NORMAL" },
+    { no: 3, name: "EXTRA" },
 ]);
 /**
  * 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
