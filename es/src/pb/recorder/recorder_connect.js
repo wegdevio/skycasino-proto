@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShuffleRecordRequest, FetchShuffleRecordResponse, RecordIDResponse, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
+import { RecordIDResponse, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
 import { Empty, MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -87,37 +87,6 @@ export const RecorderService = {
       name: "RecordRoundFinish",
       I: RecordRoundFinishRequest,
       O: Empty,
-      kind: MethodKind.Unary,
-    },
-  }
-};
-
-/**
- * @generated from service recorder.RecorderReadService
- */
-export const RecorderReadService = {
-  typeName: "recorder.RecorderReadService",
-  methods: {
-    /**
-     * 讀洗牌紀錄
-     *
-     * @generated from rpc recorder.RecorderReadService.FetchShuffleRecord
-     */
-    fetchShuffleRecord: {
-      name: "FetchShuffleRecord",
-      I: FetchShuffleRecordRequest,
-      O: FetchShuffleRecordResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
-     * 讀遊戲局號紀錄
-     *
-     * @generated from rpc recorder.RecorderReadService.FetchRoundRecord
-     */
-    fetchRoundRecord: {
-      name: "FetchRoundRecord",
-      I: FetchRoundRecordRequest,
-      O: FetchRoundRecordResponse,
       kind: MethodKind.Unary,
     },
   }

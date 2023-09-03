@@ -13,3 +13,6 @@ export * as luckywheel from "./pb/games/luckywheel/recorder_pb";
 export * as fantan from "./pb/games/fantan/recorder_pb";
 export * from "./pb/recorder/record_pb";
 export * from "./pb/recorder/recorder_pb";
+export * from "./pb/recorder/recorder_connect";
+export * from "./pb/recorder/provider_pb";
+export * from "./pb/recorder/provider_connect";

@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { Deck, Result, RoundRecord, ShuffleRecord, Step } from "./record_pb";
+import { Deck, Result, Step } from "./record_pb";
 /**
  * @generated from message recorder.RecordIDResponse
  */
@@ -138,29 +138,41 @@ export declare class RecordRoundStartRequest extends Message<RecordRoundStartReq
      */
     tableCode: string;
     /**
+     * 排班代碼
+     *
+     * @generated from field: string shift_code = 6;
+     */
+    shiftCode: string;
+    /**
+     * 此排班局數
+     *
+     * @generated from field: string shift_round = 7;
+     */
+    shiftRound: string;
+    /**
      * 局代碼
      *
-     * @generated from field: string round_code = 6;
+     * @generated from field: string round_code = 8;
      */
     roundCode: string;
     /**
-     * 時間
-     *
-     * @generated from field: google.protobuf.Timestamp ts_start = 7;
-     */
-    tsStart?: Timestamp;
-    /**
      * 使用洗牌代碼
      *
-     * @generated from field: string shuffle_code = 8;
+     * @generated from field: string shuffle_code = 9;
      */
     shuffleCode: string;
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 9;
+     * @generated from field: int64 shuffle_round = 10;
      */
     shuffleRound: bigint;
+    /**
+     * 開始時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_start = 11;
+     */
+    tsStart?: Timestamp;
     constructor(data?: PartialMessage<RecordRoundStartRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RecordRoundStartRequest";
@@ -281,257 +293,4 @@ export declare class RecordRoundFinishRequest extends Message<RecordRoundFinishR
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordRoundFinishRequest;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordRoundFinishRequest;
     static equals(a: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined, b: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined): boolean;
-}
-/**
- * @generated from message recorder.RecordQuery
- */
-export declare class RecordQuery extends Message<RecordQuery> {
-    /**
-     * 查詢起時
-     *
-     * @generated from field: google.protobuf.Timestamp ts_from = 1;
-     */
-    tsFrom?: Timestamp;
-    /**
-     * 查詢終時
-     *
-     * @generated from field: google.protobuf.Timestamp ts_to = 2;
-     */
-    tsTo?: Timestamp;
-    /**
-     * 筆數
-     *
-     * @generated from field: optional int64 limit = 3;
-     */
-    limit?: bigint;
-    /**
-     * 頁面
-     *
-     * @generated from field: optional int64 page = 4;
-     */
-    page?: bigint;
-    constructor(data?: PartialMessage<RecordQuery>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "recorder.RecordQuery";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordQuery;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordQuery;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordQuery;
-    static equals(a: RecordQuery | PlainMessage<RecordQuery> | undefined, b: RecordQuery | PlainMessage<RecordQuery> | undefined): boolean;
-}
-/**
- * @generated from message recorder.FetchShuffleRecordRequest
- */
-export declare class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest> {
-    /**
-     * 紀錄ID
-     *
-     * @generated from field: optional bytes record_id = 1;
-     */
-    recordId?: Uint8Array;
-    /**
-     * 遊戲類型
-     *
-     * @generated from field: optional string game_type = 2;
-     */
-    gameType?: string;
-    /**
-     * 遊戲子類型
-     *
-     * @generated from field: optional string game_subtype = 3;
-     */
-    gameSubtype?: string;
-    /**
-     * 遊戲版本
-     *
-     * @generated from field: optional string game_version = 4;
-     */
-    gameVersion?: string;
-    /**
-     * 桌代碼
-     *
-     * @generated from field: optional string table_code = 5;
-     */
-    tableCode?: string;
-    /**
-     * 洗牌代碼
-     *
-     * @generated from field: optional string shuffle_code = 6;
-     */
-    shuffleCode?: string;
-    /**
-     * 允許的紀錄ID
-     *
-     * @generated from field: repeated bytes record_ids = 9;
-     */
-    recordIds: Uint8Array[];
-    /**
-     * 允許的遊戲類型
-     *
-     * @generated from field: repeated string game_types = 10;
-     */
-    gameTypes: string[];
-    /**
-     * 允許的遊戲子類型
-     *
-     * @generated from field: repeated string game_subtypes = 11;
-     */
-    gameSubtypes: string[];
-    /**
-     * 允許的遊戲版本
-     *
-     * @generated from field: repeated string game_versions = 12;
-     */
-    gameVersions: string[];
-    /**
-     * 允許的桌代碼
-     *
-     * @generated from field: repeated string table_codes = 13;
-     */
-    tableCodes: string[];
-    /**
-     * 允許的洗牌代碼
-     *
-     * @generated from field: repeated string shuffle_codes = 14;
-     */
-    shuffleCodes: string[];
-    /**
-     * 查詢限制
-     *
-     * @generated from field: recorder.RecordQuery query = 16;
-     */
-    query?: RecordQuery;
-    constructor(data?: PartialMessage<FetchShuffleRecordRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "recorder.FetchShuffleRecordRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShuffleRecordRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchShuffleRecordRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchShuffleRecordRequest;
-    static equals(a: FetchShuffleRecordRequest | PlainMessage<FetchShuffleRecordRequest> | undefined, b: FetchShuffleRecordRequest | PlainMessage<FetchShuffleRecordRequest> | undefined): boolean;
-}
-/**
- * @generated from message recorder.FetchShuffleRecordResponse
- */
-export declare class FetchShuffleRecordResponse extends Message<FetchShuffleRecordResponse> {
-    /**
-     * @generated from field: repeated recorder.ShuffleRecord shuffle_record = 1;
-     */
-    shuffleRecord: ShuffleRecord[];
-    constructor(data?: PartialMessage<FetchShuffleRecordResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "recorder.FetchShuffleRecordResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShuffleRecordResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchShuffleRecordResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchShuffleRecordResponse;
-    static equals(a: FetchShuffleRecordResponse | PlainMessage<FetchShuffleRecordResponse> | undefined, b: FetchShuffleRecordResponse | PlainMessage<FetchShuffleRecordResponse> | undefined): boolean;
-}
-/**
- * @generated from message recorder.FetchRoundRecordRequest
- */
-export declare class FetchRoundRecordRequest extends Message<FetchRoundRecordRequest> {
-    /**
-     * 紀錄ID
-     *
-     * @generated from field: optional bytes record_id = 1;
-     */
-    recordId?: Uint8Array;
-    /**
-     * 遊戲類型
-     *
-     * @generated from field: optional string game_type = 2;
-     */
-    gameType?: string;
-    /**
-     * 遊戲子類型
-     *
-     * @generated from field: optional string game_subtype = 3;
-     */
-    gameSubtype?: string;
-    /**
-     * 遊戲版本
-     *
-     * @generated from field: optional string game_version = 4;
-     */
-    gameVersion?: string;
-    /**
-     * 桌代碼
-     *
-     * @generated from field: optional string table_code = 5;
-     */
-    tableCode?: string;
-    /**
-     * 局代碼
-     *
-     * @generated from field: optional string round_code = 6;
-     */
-    roundCode?: string;
-    /**
-     * 允許的紀錄ID
-     *
-     * @generated from field: repeated bytes record_ids = 9;
-     */
-    recordIds: Uint8Array[];
-    /**
-     * 允許的遊戲類型
-     *
-     * @generated from field: repeated string game_types = 10;
-     */
-    gameTypes: string[];
-    /**
-     * 允許的遊戲子類型
-     *
-     * @generated from field: repeated string game_subtypes = 11;
-     */
-    gameSubtypes: string[];
-    /**
-     * 允許的遊戲版本
-     *
-     * @generated from field: repeated string game_versions = 12;
-     */
-    gameVersions: string[];
-    /**
-     * 允許的桌代碼
-     *
-     * @generated from field: repeated string table_codes = 13;
-     */
-    tableCodes: string[];
-    /**
-     * 允許的局代碼
-     *
-     * @generated from field: repeated string round_codes = 14;
-     */
-    roundCodes: string[];
-    /**
-     * 查詢限制
-     *
-     * @generated from field: recorder.RecordQuery query = 16;
-     */
-    query?: RecordQuery;
-    constructor(data?: PartialMessage<FetchRoundRecordRequest>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "recorder.FetchRoundRecordRequest";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRoundRecordRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRoundRecordRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRoundRecordRequest;
-    static equals(a: FetchRoundRecordRequest | PlainMessage<FetchRoundRecordRequest> | undefined, b: FetchRoundRecordRequest | PlainMessage<FetchRoundRecordRequest> | undefined): boolean;
-}
-/**
- * @generated from message recorder.FetchRoundRecordResponse
- */
-export declare class FetchRoundRecordResponse extends Message<FetchRoundRecordResponse> {
-    /**
-     * @generated from field: repeated recorder.RoundRecord round_record = 1;
-     */
-    roundRecord: RoundRecord[];
-    constructor(data?: PartialMessage<FetchRoundRecordResponse>);
-    static readonly runtime: typeof proto3;
-    static readonly typeName = "recorder.FetchRoundRecordResponse";
-    static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRoundRecordResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchRoundRecordResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchRoundRecordResponse;
-    static equals(a: FetchRoundRecordResponse | PlainMessage<FetchRoundRecordResponse> | undefined, b: FetchRoundRecordResponse | PlainMessage<FetchRoundRecordResponse> | undefined): boolean;
 }

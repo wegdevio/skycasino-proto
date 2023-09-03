@@ -53,14 +53,18 @@ message RecordRoundStartRequest {
   string game_version = 4;
   // 桌代碼
   string table_code = 5;
+  // 排班代碼
+  string shift_code = 6;
+  // 此排班局數
+  string shift_round = 7;
   // 局代碼
-  string round_code = 6;
-  // 時間
-  google.protobuf.Timestamp ts_start = 7;
+  string round_code = 8;
   // 使用洗牌代碼
-  string shuffle_code = 8;
+  string shuffle_code = 9;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 9;
+  int64 shuffle_round = 10;
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 11;
 
 }
 
@@ -126,103 +130,5 @@ service RecorderService {
 
   // 結束此局
   rpc RecordRoundFinish(RecordRoundFinishRequest) returns (google.protobuf.Empty);
-
-}
-
-message RecordQuery {
-
-  // 查詢起時
-  google.protobuf.Timestamp ts_from = 1;
-  // 查詢終時
-  google.protobuf.Timestamp ts_to = 2;
-
-  // 筆數
-  optional int64 limit = 3;
-  // 頁面
-  optional int64 page = 4;
-
-}
-
-message FetchShuffleRecordRequest {
-
-  // 紀錄ID
-  optional bytes record_id = 1;
-  // 遊戲類型
-  optional string game_type = 2;
-  // 遊戲子類型
-  optional string game_subtype = 3;
-  // 遊戲版本
-  optional string game_version = 4;
-  // 桌代碼
-  optional string table_code = 5;
-  // 洗牌代碼
-  optional string shuffle_code = 6;
-
-  // 允許的紀錄ID
-  repeated bytes record_ids = 9;
-  // 允許的遊戲類型
-  repeated string game_types = 10;
-  // 允許的遊戲子類型
-  repeated string game_subtypes = 11;
-  // 允許的遊戲版本
-  repeated string game_versions = 12;
-  // 允許的桌代碼
-  repeated string table_codes = 13;
-  // 允許的洗牌代碼
-  repeated string shuffle_codes = 14;
-
-  // 查詢限制
-  RecordQuery query = 16;
-
-}
-
-message FetchShuffleRecordResponse {
-  repeated ShuffleRecord shuffle_record = 1;
-}
-
-message FetchRoundRecordRequest {
-
-  // 紀錄ID
-  optional bytes record_id = 1;
-  // 遊戲類型
-  optional string game_type = 2;
-  // 遊戲子類型
-  optional string game_subtype = 3;
-  // 遊戲版本
-  optional string game_version = 4;
-  // 桌代碼
-  optional string table_code = 5;
-  // 局代碼
-  optional string round_code = 6;
-
-  // 允許的紀錄ID
-  repeated bytes record_ids = 9;
-  // 允許的遊戲類型
-  repeated string game_types = 10;
-  // 允許的遊戲子類型
-  repeated string game_subtypes = 11;
-  // 允許的遊戲版本
-  repeated string game_versions = 12;
-  // 允許的桌代碼
-  repeated string table_codes = 13;
-  // 允許的局代碼
-  repeated string round_codes = 14;
-
-  // 查詢限制
-  RecordQuery query = 16;
-
-}
-
-message FetchRoundRecordResponse {
-  repeated RoundRecord round_record = 1;
-}
-
-service RecorderReadService {
-  
-  // 讀洗牌紀錄
-  rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchShuffleRecordResponse);
-
-  // 讀遊戲局號紀錄
-  rpc FetchRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
 
 }

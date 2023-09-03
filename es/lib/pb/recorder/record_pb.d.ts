@@ -399,34 +399,46 @@ export declare class RoundRecord extends Message<RoundRecord> {
      */
     tableCode: string;
     /**
-     * 使用牌靴
+     * 排班代碼
      *
-     * @generated from field: string shuffle_code = 6;
+     * @generated from field: string shift_code = 6;
      */
-    shuffleCode: string;
+    shiftCode: string;
+    /**
+     * 此排班局數
+     *
+     * @generated from field: string shift_round = 7;
+     */
+    shiftRound: string;
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 7;
+     * @generated from field: string round_code = 8;
      */
     roundCode: string;
     /**
+     * 使用洗牌代碼
+     *
+     * @generated from field: string shuffle_code = 9;
+     */
+    shuffleCode: string;
+    /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 8;
+     * @generated from field: int64 shuffle_round = 10;
      */
     shuffleRound: bigint;
     /**
      * 開始時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 9;
+     * @generated from field: google.protobuf.Timestamp ts_start = 11;
      */
     tsStart?: Timestamp;
     /**
      * 座位組
      * key: SeatCode, value: Seat
      *
-     * @generated from field: map<int32, recorder.Seat> seats = 10;
+     * @generated from field: map<int32, recorder.Seat> seats = 12;
      */
     seats: {
         [key: number]: Seat;
@@ -435,7 +447,7 @@ export declare class RoundRecord extends Message<RoundRecord> {
      * 玩家入座
      * key: SeatCode, value: 玩家code。
      *
-     * @generated from field: map<int32, string> players = 11;
+     * @generated from field: map<int32, string> players = 13;
      */
     players: {
         [key: number]: string;
@@ -443,7 +455,7 @@ export declare class RoundRecord extends Message<RoundRecord> {
     /**
      * 標籤
      *
-     * @generated from field: map<string, string> tags = 12;
+     * @generated from field: map<string, string> tags = 14;
      */
     tags: {
         [key: string]: string;
@@ -451,37 +463,37 @@ export declare class RoundRecord extends Message<RoundRecord> {
     /**
      * 歷程
      *
-     * @generated from field: repeated recorder.Step process = 13;
+     * @generated from field: repeated recorder.Step process = 15;
      */
     process: Step[];
     /**
      * 判讀
      *
-     * @generated from field: repeated recorder.Result results = 14;
+     * @generated from field: repeated recorder.Result results = 16;
      */
     results: Result[];
     /**
      * 結束時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_end = 15;
+     * @generated from field: google.protobuf.Timestamp ts_end = 17;
      */
     tsEnd?: Timestamp;
     /**
      * 取消
      *
-     * @generated from field: optional bool cancel = 16;
+     * @generated from field: optional bool cancel = 18;
      */
     cancel?: boolean;
     /**
      * 取消代碼：CancelReasonCode
      *
-     * @generated from field: optional string cancel_code = 17;
+     * @generated from field: optional string cancel_code = 19;
      */
     cancelCode?: string;
     /**
      * 取消備註
      *
-     * @generated from field: optional string cancel_message = 18;
+     * @generated from field: optional string cancel_message = 20;
      */
     cancelMessage?: string;
     constructor(data?: PartialMessage<RoundRecord>);

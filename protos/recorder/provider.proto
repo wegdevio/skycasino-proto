@@ -1,0 +1,192 @@
+syntax = "proto3";
+package recorder;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "recorder/record.proto";
+
+message RecordQuery {
+
+  // 查詢起時
+  google.protobuf.Timestamp ts_from = 1;
+  // 查詢終時
+  google.protobuf.Timestamp ts_to = 2;
+
+  // 筆數
+  optional int64 limit = 3;
+  // 頁面
+  optional int64 page = 4;
+
+}
+
+message FetchShuffleRecordRequest {
+
+  // 紀錄ID
+  optional bytes record_id = 1;
+  // 遊戲類型
+  optional string game_type = 2;
+  // 遊戲子類型
+  optional string game_subtype = 3;
+  // 桌代碼
+  optional string table_code = 5;
+  // 洗牌代碼
+  optional string shuffle_code = 6;
+
+  // 允許的紀錄ID
+  repeated bytes record_ids = 9;
+  // 允許的遊戲類型
+  repeated string game_types = 10;
+  // 允許的遊戲子類型
+  repeated string game_subtypes = 11;
+  // 允許的桌代碼
+  repeated string table_codes = 13;
+  // 允許的洗牌代碼
+  repeated string shuffle_codes = 14;
+
+  // 查詢限制
+  RecordQuery query = 16;
+
+}
+
+message FetchShuffleRecordResponse {
+  repeated ShuffleRecord shuffle_record = 1;
+}
+
+message FetchRoundRecordRequest {
+
+  // 紀錄ID
+  optional bytes record_id = 1;
+  // 遊戲類型
+  optional string game_type = 2;
+  // 遊戲子類型
+  optional string game_subtype = 3;
+  // 桌代碼
+  optional string table_code = 5;
+  // 局代碼
+  optional string round_code = 6;
+
+  // 允許的紀錄ID
+  repeated bytes record_ids = 9;
+  // 允許的遊戲類型
+  repeated string game_types = 10;
+  // 允許的遊戲子類型
+  repeated string game_subtypes = 11;
+  // 允許的桌代碼
+  repeated string table_codes = 13;
+  // 允許的局代碼
+  repeated string round_codes = 14;
+
+  // 查詢限制
+  RecordQuery query = 16;
+
+}
+
+message FetchRoundRecordResponse {
+  repeated RoundRecord round_record = 1;
+}
+
+service RecorderReadService {
+  
+  // 讀洗牌紀錄
+  rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchShuffleRecordResponse);
+
+  // 讀遊戲局號紀錄
+  rpc FetchRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
+
+}
+
+// 遊戲供應
+message TableProvide {
+
+  // 遊戲代碼
+  string game_code = 2;
+
+  // 遊戲類型
+  string game_type = 3;
+
+  // 遊戲子類型
+  string game_subtype = 4;
+
+  // 桌代碼
+  string table_code = 5;
+
+  // 標籤
+  map<string, string> tags = 6;
+
+  // 維護中
+  bool maintenance = 7;
+  
+}
+
+message FetchTableProvideListResponse {
+  
+  // 桌列表
+  repeated TableProvide table_provides = 1;
+
+}
+
+message TableStream {
+
+  // url
+  string url = 1;
+  
+  // 類型：hls, flv...
+  string mime = 2;
+
+  // 封面截圖
+  string cover_url = 3;
+  
+  // 封面截圖類型
+  string cover_mime = 4;
+
+}
+
+message CurrentTable {
+
+  // 桌代碼
+  string table_code = 1;
+
+  // 紀錄
+  optional RoundRecord round = 2;
+
+  // 洗牌
+  optional ShuffleRecord shuffle = 3;
+
+  // 直播網址列表
+  map<string, TableStream> map_table_stream = 4;
+
+}
+
+message FetchCurrentTableRequest {
+
+  // 查詢的Table Code
+  repeated string table_codes = 1;
+
+  // 返回Shuffle資訊
+  bool shuffle = 2;
+
+  // 返回直播網址
+  bool stream = 3;
+  
+}
+
+message FetchCurrentTableResponse {
+
+  // Table Code 對應的當下 Current Table
+  map<string, CurrentTable> map_current_table = 1;
+
+  // 時間戳
+  google.protobuf.Timestamp ts = 2;
+
+}
+
+// 遊戲供應商需要開放出來的被動接口
+service ProviderService {
+  
+  // 取得即時遊戲列表
+  rpc FetchTableProvideList(google.protobuf.Empty) returns (FetchTableProvideListResponse);
+
+  // 讀即時遊戲桌資訊
+  rpc FetchCurrentTable(FetchCurrentTableRequest) returns (FetchCurrentTableResponse);
+
+}
