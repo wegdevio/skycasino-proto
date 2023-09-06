@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
-import { Deck, Result, Step } from "./record_pb";
+import { Deck, Result, Step, URLMedia } from "./record_pb";
 
 /**
  * @generated from message recorder.RecordIDResponse
@@ -43,6 +43,140 @@ export class RecordIDResponse extends Message<RecordIDResponse> {
 
   static equals(a: RecordIDResponse | PlainMessage<RecordIDResponse> | undefined, b: RecordIDResponse | PlainMessage<RecordIDResponse> | undefined): boolean {
     return proto3.util.equals(RecordIDResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.RecordShiftStartedRequest
+ */
+export class RecordShiftStartedRequest extends Message<RecordShiftStartedRequest> {
+  /**
+   * 遊戲類型
+   *
+   * @generated from field: string game_type = 2;
+   */
+  gameType = "";
+
+  /**
+   * 遊戲子類型
+   *
+   * @generated from field: string game_subtype = 3;
+   */
+  gameSubtype = "";
+
+  /**
+   * 遊戲版本
+   *
+   * @generated from field: string game_version = 4;
+   */
+  gameVersion = "";
+
+  /**
+   * 遊戲代碼
+   *
+   * @generated from field: string game_code = 5;
+   */
+  gameCode = "";
+
+  /**
+   * 桌代碼
+   *
+   * @generated from field: string table_code = 6;
+   */
+  tableCode = "";
+
+  /**
+   * 班代碼
+   *
+   * @generated from field: string shift_code = 7;
+   */
+  shiftCode = "";
+
+  /**
+   * 時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_start = 8;
+   */
+  tsStart?: Timestamp;
+
+  constructor(data?: PartialMessage<RecordShiftStartedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.RecordShiftStartedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "ts_start", kind: "message", T: Timestamp },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShiftStartedRequest {
+    return new RecordShiftStartedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShiftStartedRequest {
+    return new RecordShiftStartedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShiftStartedRequest {
+    return new RecordShiftStartedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RecordShiftStartedRequest | PlainMessage<RecordShiftStartedRequest> | undefined, b: RecordShiftStartedRequest | PlainMessage<RecordShiftStartedRequest> | undefined): boolean {
+    return proto3.util.equals(RecordShiftStartedRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.RecordShiftEndedRequest
+ */
+export class RecordShiftEndedRequest extends Message<RecordShiftEndedRequest> {
+  /**
+   * 紀錄ID
+   *
+   * @generated from field: bytes record_id = 1;
+   */
+  recordId = new Uint8Array(0);
+
+  /**
+   * 時間
+   *
+   * @generated from field: google.protobuf.Timestamp ts_end = 5;
+   */
+  tsEnd?: Timestamp;
+
+  constructor(data?: PartialMessage<RecordShiftEndedRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.RecordShiftEndedRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 5, name: "ts_end", kind: "message", T: Timestamp },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShiftEndedRequest {
+    return new RecordShiftEndedRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShiftEndedRequest {
+    return new RecordShiftEndedRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShiftEndedRequest {
+    return new RecordShiftEndedRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RecordShiftEndedRequest | PlainMessage<RecordShiftEndedRequest> | undefined, b: RecordShiftEndedRequest | PlainMessage<RecordShiftEndedRequest> | undefined): boolean {
+    return proto3.util.equals(RecordShiftEndedRequest, a, b);
   }
 }
 
@@ -144,13 +278,6 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   tsDone?: Timestamp;
 
   /**
-   * 使用洗牌代碼
-   *
-   * @generated from field: string shuffle_code = 6;
-   */
-  shuffleCode = "";
-
-  /**
    * 洗牌類型
    * key: ResourceTypeCode；value: 牌靴
    *
@@ -168,7 +295,6 @@ export class RecordShuffleDoneRequest extends Message<RecordShuffleDoneRequest> 
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
     { no: 5, name: "ts_done", kind: "message", T: Timestamp },
-    { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "cards", kind: "map", K: 5 /* ScalarType.INT32 */, V: {kind: "message", T: Deck} },
   ]);
 
@@ -215,51 +341,58 @@ export class RecordRoundStartRequest extends Message<RecordRoundStartRequest> {
   gameVersion = "";
 
   /**
+   * 遊戲代碼
+   *
+   * @generated from field: string game_code = 5;
+   */
+  gameCode = "";
+
+  /**
    * 桌代碼
    *
-   * @generated from field: string table_code = 5;
+   * @generated from field: string table_code = 6;
    */
   tableCode = "";
 
   /**
    * 排班代碼
    *
-   * @generated from field: string shift_code = 6;
+   * @generated from field: string shift_code = 7;
    */
   shiftCode = "";
 
   /**
    * 此排班局數
    *
-   * @generated from field: string shift_round = 7;
+   * @generated from field: string shift_round = 8;
    */
   shiftRound = "";
 
   /**
    * 局代碼
    *
-   * @generated from field: string round_code = 8;
+   * @generated from field: string round_code = 9;
    */
   roundCode = "";
 
   /**
    * 使用洗牌代碼
    *
-   * @generated from field: string shuffle_code = 9;
+   * @generated from field: string shuffle_code = 10;
    */
   shuffleCode = "";
 
   /**
    * 使用此洗牌第幾局，從1開始計算
    *
-   * @generated from field: int64 shuffle_round = 10;
+   * @generated from field: int64 shuffle_round = 11;
    */
   shuffleRound = protoInt64.zero;
 
   /**
    * 開始時間
    *
-   * @generated from field: google.protobuf.Timestamp ts_start = 11;
+   * @generated from field: google.protobuf.Timestamp ts_start = 12;
    */
   tsStart?: Timestamp;
 
@@ -274,13 +407,14 @@ export class RecordRoundStartRequest extends Message<RecordRoundStartRequest> {
     { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "shift_round", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 8, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 9, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 10, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-    { no: 11, name: "ts_start", kind: "message", T: Timestamp },
+    { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "shift_round", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 11, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 12, name: "ts_start", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundStartRequest {
@@ -501,6 +635,114 @@ export class RecordRoundFinishRequest extends Message<RecordRoundFinishRequest> 
 
   static equals(a: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined, b: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined): boolean {
     return proto3.util.equals(RecordRoundFinishRequest, a, b);
+  }
+}
+
+/**
+ * 紀錄路紙
+ *
+ * @generated from message recorder.RecordRoadmapRequest
+ */
+export class RecordRoadmapRequest extends Message<RecordRoadmapRequest> {
+  /**
+   * 班紀錄ID
+   *
+   * TODO:
+   *
+   * @generated from field: bytes record_id = 1;
+   */
+  recordId = new Uint8Array(0);
+
+  constructor(data?: PartialMessage<RecordRoadmapRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.RecordRoadmapRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoadmapRequest {
+    return new RecordRoadmapRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordRoadmapRequest {
+    return new RecordRoadmapRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordRoadmapRequest {
+    return new RecordRoadmapRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RecordRoadmapRequest | PlainMessage<RecordRoadmapRequest> | undefined, b: RecordRoadmapRequest | PlainMessage<RecordRoadmapRequest> | undefined): boolean {
+    return proto3.util.equals(RecordRoadmapRequest, a, b);
+  }
+}
+
+/**
+ * 紀錄回放
+ *
+ * @generated from message recorder.RecordRoundMediaRequest
+ */
+export class RecordRoundMediaRequest extends Message<RecordRoundMediaRequest> {
+  /**
+   * 遊戲局紀錄ID
+   *
+   * @generated from field: bytes record_id = 1;
+   */
+  recordId = new Uint8Array(0);
+
+  /**
+   * 設定
+   *
+   * @generated from field: map<string, recorder.URLMedia> set = 2;
+   */
+  set: { [key: string]: URLMedia } = {};
+
+  /**
+   * 增加
+   *
+   * @generated from field: repeated recorder.URLMedia add = 3;
+   */
+  add: URLMedia[] = [];
+
+  /**
+   * 移除
+   *
+   * @generated from field: repeated string remove = 4;
+   */
+  remove: string[] = [];
+
+  constructor(data?: PartialMessage<RecordRoundMediaRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.RecordRoundMediaRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+    { no: 2, name: "set", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: URLMedia} },
+    { no: 3, name: "add", kind: "message", T: URLMedia, repeated: true },
+    { no: 4, name: "remove", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundMediaRequest {
+    return new RecordRoundMediaRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordRoundMediaRequest {
+    return new RecordRoundMediaRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordRoundMediaRequest {
+    return new RecordRoundMediaRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RecordRoundMediaRequest | PlainMessage<RecordRoundMediaRequest> | undefined, b: RecordRoundMediaRequest | PlainMessage<RecordRoundMediaRequest> | undefined): boolean {
+    return proto3.util.equals(RecordRoundMediaRequest, a, b);
   }
 }
 

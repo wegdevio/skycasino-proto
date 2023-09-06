@@ -474,6 +474,54 @@ export class Result extends Message {
     }
 }
 /**
+ * 多媒體
+ *
+ * @generated from message recorder.URLMedia
+ */
+export class URLMedia extends Message {
+    /**
+     * 代碼
+     *
+     * @generated from field: string code = 1;
+     */
+    code = "";
+    /**
+     * 類型：hls, flv...
+     *
+     * @generated from field: string mime = 2;
+     */
+    mime = "";
+    /**
+     * url
+     *
+     * @generated from field: string url = 3;
+     */
+    url = "";
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static runtime = proto3;
+    static typeName = "recorder.URLMedia";
+    static fields = proto3.util.newFieldList(() => [
+        { no: 1, name: "code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 2, name: "mime", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 3, name: "url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    ]);
+    static fromBinary(bytes, options) {
+        return new URLMedia().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new URLMedia().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new URLMedia().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(URLMedia, a, b);
+    }
+}
+/**
  * 紀錄
  *
  * @generated from message recorder.RoundRecord
@@ -504,103 +552,121 @@ export class RoundRecord extends Message {
      */
     gameVersion = "";
     /**
+     * 遊戲代碼
+     *
+     * @generated from field: string game_code = 5;
+     */
+    gameCode = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: string table_code = 6;
      */
     tableCode = "";
     /**
      * 排班代碼
      *
-     * @generated from field: string shift_code = 6;
+     * @generated from field: string shift_code = 7;
      */
     shiftCode = "";
     /**
      * 此排班局數
      *
-     * @generated from field: string shift_round = 7;
+     * @generated from field: string shift_round = 8;
      */
     shiftRound = "";
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 8;
+     * @generated from field: string round_code = 9;
      */
     roundCode = "";
     /**
      * 使用洗牌代碼
      *
-     * @generated from field: string shuffle_code = 9;
+     * @generated from field: string shuffle_code = 10;
      */
     shuffleCode = "";
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 10;
+     * @generated from field: int64 shuffle_round = 11;
      */
     shuffleRound = protoInt64.zero;
     /**
      * 開始時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 11;
+     * @generated from field: google.protobuf.Timestamp ts_start = 12;
      */
     tsStart;
     /**
      * 座位組
      * key: SeatCode, value: Seat
      *
-     * @generated from field: map<int32, recorder.Seat> seats = 12;
+     * @generated from field: map<int32, recorder.Seat> seats = 13;
      */
     seats = {};
     /**
      * 玩家入座
      * key: SeatCode, value: 玩家code。
      *
-     * @generated from field: map<int32, string> players = 13;
+     * @generated from field: map<int32, string> players = 14;
      */
     players = {};
     /**
      * 標籤
      *
-     * @generated from field: map<string, string> tags = 14;
+     * @generated from field: map<string, string> tags = 15;
      */
     tags = {};
     /**
      * 歷程
      *
-     * @generated from field: repeated recorder.Step process = 15;
+     * @generated from field: repeated recorder.Step process = 16;
      */
     process = [];
     /**
      * 判讀
      *
-     * @generated from field: repeated recorder.Result results = 16;
+     * @generated from field: repeated recorder.Result results = 17;
      */
     results = [];
     /**
+     * 結束
+     *
+     * @generated from field: bool is_end = 18;
+     */
+    isEnd = false;
+    /**
      * 結束時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_end = 17;
+     * @generated from field: google.protobuf.Timestamp ts_end = 19;
      */
     tsEnd;
     /**
      * 取消
      *
-     * @generated from field: optional bool cancel = 18;
+     * @generated from field: optional bool cancel = 20;
      */
     cancel;
     /**
      * 取消代碼：CancelReasonCode
      *
-     * @generated from field: optional string cancel_code = 19;
+     * @generated from field: optional string cancel_code = 21;
      */
     cancelCode;
     /**
      * 取消備註
      *
-     * @generated from field: optional string cancel_message = 20;
+     * @generated from field: optional string cancel_message = 22;
      */
     cancelMessage;
+    /**
+     * 附加媒體
+     *
+     * @generated from field: map<string, recorder.URLMedia> mideas = 24;
+     */
+    mideas = {};
     constructor(data) {
         super();
         proto3.util.initPartial(data, this);
@@ -612,22 +678,25 @@ export class RoundRecord extends Message {
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 6, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 7, name: "shift_round", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 8, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 9, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 10, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
-        { no: 11, name: "ts_start", kind: "message", T: Timestamp },
-        { no: 12, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: Seat } },
-        { no: 13, name: "players", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
-        { no: 14, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
-        { no: 15, name: "process", kind: "message", T: Step, repeated: true },
-        { no: 16, name: "results", kind: "message", T: Result, repeated: true },
-        { no: 17, name: "ts_end", kind: "message", T: Timestamp },
-        { no: 18, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
-        { no: 19, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-        { no: 20, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+        { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 7, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 8, name: "shift_round", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 9, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 10, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 11, name: "shuffle_round", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+        { no: 12, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 13, name: "seats", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "message", T: Seat } },
+        { no: 14, name: "players", kind: "map", K: 5 /* ScalarType.INT32 */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
+        { no: 15, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
+        { no: 16, name: "process", kind: "message", T: Step, repeated: true },
+        { no: 17, name: "results", kind: "message", T: Result, repeated: true },
+        { no: 18, name: "is_end", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+        { no: 19, name: "ts_end", kind: "message", T: Timestamp },
+        { no: 20, name: "cancel", kind: "scalar", T: 8 /* ScalarType.BOOL */, opt: true },
+        { no: 21, name: "cancel_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+        { no: 22, name: "cancel_message", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+        { no: 24, name: "mideas", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "message", T: URLMedia } },
     ]);
     static fromBinary(bytes, options) {
         return new RoundRecord().fromBinary(bytes, options);
@@ -783,5 +852,109 @@ export class ShuffleRecord extends Message {
     }
     static equals(a, b) {
         return proto3.util.equals(ShuffleRecord, a, b);
+    }
+}
+/**
+ * 排班
+ *
+ * @generated from message recorder.ShiftRecord
+ */
+export class ShiftRecord extends Message {
+    /**
+     * 紀錄ID
+     *
+     * @generated from field: bytes id = 1;
+     */
+    id = new Uint8Array(0);
+    /**
+     * 遊戲類型
+     *
+     * @generated from field: string game_type = 2;
+     */
+    gameType = "";
+    /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype = "";
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion = "";
+    /**
+     * 桌代碼
+     *
+     * @generated from field: string table_code = 5;
+     */
+    tableCode = "";
+    /**
+     * 標籤
+     *
+     * @generated from field: map<string, string> tags = 6;
+     */
+    tags = {};
+    /**
+     * 開始時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
+     */
+    tsStart;
+    /**
+     * 洗牌
+     *
+     * @generated from field: repeated string shuffle_codes = 8;
+     */
+    shuffleCodes = [];
+    /**
+     * 執行遊戲局
+     *
+     * @generated from field: repeated string round_codes = 9;
+     */
+    roundCodes = [];
+    /**
+     * 結束
+     *
+     * @generated from field: bool is_end = 12;
+     */
+    isEnd = false;
+    /**
+     * 結束時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_end = 13;
+     */
+    tsEnd;
+    constructor(data) {
+        super();
+        proto3.util.initPartial(data, this);
+    }
+    static runtime = proto3;
+    static typeName = "recorder.ShiftRecord";
+    static fields = proto3.util.newFieldList(() => [
+        { no: 1, name: "id", kind: "scalar", T: 12 /* ScalarType.BYTES */ },
+        { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: { kind: "scalar", T: 9 /* ScalarType.STRING */ } },
+        { no: 7, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 8, name: "shuffle_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 9, name: "round_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+        { no: 12, name: "is_end", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+        { no: 13, name: "ts_end", kind: "message", T: Timestamp },
+    ]);
+    static fromBinary(bytes, options) {
+        return new ShiftRecord().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new ShiftRecord().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new ShiftRecord().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return proto3.util.equals(ShiftRecord, a, b);
     }
 }

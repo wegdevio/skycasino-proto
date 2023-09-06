@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { Deck, Result, Step } from "./record_pb";
+import { Deck, Result, Step, URLMedia } from "./record_pb";
 /**
  * @generated from message recorder.RecordIDResponse
  */
@@ -19,6 +19,86 @@ export declare class RecordIDResponse extends Message<RecordIDResponse> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordIDResponse;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordIDResponse;
     static equals(a: RecordIDResponse | PlainMessage<RecordIDResponse> | undefined, b: RecordIDResponse | PlainMessage<RecordIDResponse> | undefined): boolean;
+}
+/**
+ * @generated from message recorder.RecordShiftStartedRequest
+ */
+export declare class RecordShiftStartedRequest extends Message<RecordShiftStartedRequest> {
+    /**
+     * 遊戲類型
+     *
+     * @generated from field: string game_type = 2;
+     */
+    gameType: string;
+    /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype: string;
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion: string;
+    /**
+     * 遊戲代碼
+     *
+     * @generated from field: string game_code = 5;
+     */
+    gameCode: string;
+    /**
+     * 桌代碼
+     *
+     * @generated from field: string table_code = 6;
+     */
+    tableCode: string;
+    /**
+     * 班代碼
+     *
+     * @generated from field: string shift_code = 7;
+     */
+    shiftCode: string;
+    /**
+     * 時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_start = 8;
+     */
+    tsStart?: Timestamp;
+    constructor(data?: PartialMessage<RecordShiftStartedRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.RecordShiftStartedRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShiftStartedRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShiftStartedRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShiftStartedRequest;
+    static equals(a: RecordShiftStartedRequest | PlainMessage<RecordShiftStartedRequest> | undefined, b: RecordShiftStartedRequest | PlainMessage<RecordShiftStartedRequest> | undefined): boolean;
+}
+/**
+ * @generated from message recorder.RecordShiftEndedRequest
+ */
+export declare class RecordShiftEndedRequest extends Message<RecordShiftEndedRequest> {
+    /**
+     * 紀錄ID
+     *
+     * @generated from field: bytes record_id = 1;
+     */
+    recordId: Uint8Array;
+    /**
+     * 時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_end = 5;
+     */
+    tsEnd?: Timestamp;
+    constructor(data?: PartialMessage<RecordShiftEndedRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.RecordShiftEndedRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordShiftEndedRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordShiftEndedRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordShiftEndedRequest;
+    static equals(a: RecordShiftEndedRequest | PlainMessage<RecordShiftEndedRequest> | undefined, b: RecordShiftEndedRequest | PlainMessage<RecordShiftEndedRequest> | undefined): boolean;
 }
 /**
  * @generated from message recorder.RecordShuffleStartedRequest
@@ -86,12 +166,6 @@ export declare class RecordShuffleDoneRequest extends Message<RecordShuffleDoneR
      */
     tsDone?: Timestamp;
     /**
-     * 使用洗牌代碼
-     *
-     * @generated from field: string shuffle_code = 6;
-     */
-    shuffleCode: string;
-    /**
      * 洗牌類型
      * key: ResourceTypeCode；value: 牌靴
      *
@@ -132,45 +206,51 @@ export declare class RecordRoundStartRequest extends Message<RecordRoundStartReq
      */
     gameVersion: string;
     /**
+     * 遊戲代碼
+     *
+     * @generated from field: string game_code = 5;
+     */
+    gameCode: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: string table_code = 6;
      */
     tableCode: string;
     /**
      * 排班代碼
      *
-     * @generated from field: string shift_code = 6;
+     * @generated from field: string shift_code = 7;
      */
     shiftCode: string;
     /**
      * 此排班局數
      *
-     * @generated from field: string shift_round = 7;
+     * @generated from field: string shift_round = 8;
      */
     shiftRound: string;
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 8;
+     * @generated from field: string round_code = 9;
      */
     roundCode: string;
     /**
      * 使用洗牌代碼
      *
-     * @generated from field: string shuffle_code = 9;
+     * @generated from field: string shuffle_code = 10;
      */
     shuffleCode: string;
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 10;
+     * @generated from field: int64 shuffle_round = 11;
      */
     shuffleRound: bigint;
     /**
      * 開始時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 11;
+     * @generated from field: google.protobuf.Timestamp ts_start = 12;
      */
     tsStart?: Timestamp;
     constructor(data?: PartialMessage<RecordRoundStartRequest>);
@@ -293,4 +373,68 @@ export declare class RecordRoundFinishRequest extends Message<RecordRoundFinishR
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordRoundFinishRequest;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordRoundFinishRequest;
     static equals(a: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined, b: RecordRoundFinishRequest | PlainMessage<RecordRoundFinishRequest> | undefined): boolean;
+}
+/**
+ * 紀錄路紙
+ *
+ * @generated from message recorder.RecordRoadmapRequest
+ */
+export declare class RecordRoadmapRequest extends Message<RecordRoadmapRequest> {
+    /**
+     * 班紀錄ID
+     *
+     * TODO:
+     *
+     * @generated from field: bytes record_id = 1;
+     */
+    recordId: Uint8Array;
+    constructor(data?: PartialMessage<RecordRoadmapRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.RecordRoadmapRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoadmapRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordRoadmapRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordRoadmapRequest;
+    static equals(a: RecordRoadmapRequest | PlainMessage<RecordRoadmapRequest> | undefined, b: RecordRoadmapRequest | PlainMessage<RecordRoadmapRequest> | undefined): boolean;
+}
+/**
+ * 紀錄回放
+ *
+ * @generated from message recorder.RecordRoundMediaRequest
+ */
+export declare class RecordRoundMediaRequest extends Message<RecordRoundMediaRequest> {
+    /**
+     * 遊戲局紀錄ID
+     *
+     * @generated from field: bytes record_id = 1;
+     */
+    recordId: Uint8Array;
+    /**
+     * 設定
+     *
+     * @generated from field: map<string, recorder.URLMedia> set = 2;
+     */
+    set: {
+        [key: string]: URLMedia;
+    };
+    /**
+     * 增加
+     *
+     * @generated from field: repeated recorder.URLMedia add = 3;
+     */
+    add: URLMedia[];
+    /**
+     * 移除
+     *
+     * @generated from field: repeated string remove = 4;
+     */
+    remove: string[];
+    constructor(data?: PartialMessage<RecordRoundMediaRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.RecordRoundMediaRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RecordRoundMediaRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RecordRoundMediaRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RecordRoundMediaRequest;
+    static equals(a: RecordRoundMediaRequest | PlainMessage<RecordRoundMediaRequest> | undefined, b: RecordRoundMediaRequest | PlainMessage<RecordRoundMediaRequest> | undefined): boolean;
 }

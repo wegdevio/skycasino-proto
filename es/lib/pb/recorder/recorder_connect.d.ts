@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { RecordIDResponse, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
+import { RecordIDResponse, RecordRoadmapRequest, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundMediaRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShiftEndedRequest, RecordShiftStartedRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
 import { Empty, MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -12,6 +12,28 @@ import { Empty, MethodKind } from "@bufbuild/protobuf";
 export declare const RecorderService: {
   readonly typeName: "recorder.RecorderService",
   readonly methods: {
+    /**
+     * 建立新排班
+     *
+     * @generated from rpc recorder.RecorderService.RecordShiftStarted
+     */
+    readonly recordShiftStarted: {
+      readonly name: "RecordShiftStarted",
+      readonly I: typeof RecordShiftStartedRequest,
+      readonly O: typeof RecordIDResponse,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * 排班結束
+     *
+     * @generated from rpc recorder.RecorderService.RecordShiftEnded
+     */
+    readonly recordShiftEnded: {
+      readonly name: "RecordShiftEnded",
+      readonly I: typeof RecordShiftEndedRequest,
+      readonly O: typeof Empty,
+      readonly kind: MethodKind.Unary,
+    },
     /**
      * 開始更換牌組
      *
@@ -86,6 +108,28 @@ export declare const RecorderService: {
     readonly recordRoundFinish: {
       readonly name: "RecordRoundFinish",
       readonly I: typeof RecordRoundFinishRequest,
+      readonly O: typeof Empty,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * 紀錄路紙
+     *
+     * @generated from rpc recorder.RecorderService.RecordRoadmap
+     */
+    readonly recordRoadmap: {
+      readonly name: "RecordRoadmap",
+      readonly I: typeof RecordRoadmapRequest,
+      readonly O: typeof Empty,
+      readonly kind: MethodKind.Unary,
+    },
+    /**
+     * 紀錄回放
+     *
+     * @generated from rpc recorder.RecorderService.RecordRoundVideo
+     */
+    readonly recordRoundVideo: {
+      readonly name: "RecordRoundVideo",
+      readonly I: typeof RecordRoundMediaRequest,
       readonly O: typeof Empty,
       readonly kind: MethodKind.Unary,
     },

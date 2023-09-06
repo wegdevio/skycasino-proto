@@ -20,6 +20,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
+	RecorderService_RecordShiftStarted_FullMethodName   = "/recorder.RecorderService/RecordShiftStarted"
+	RecorderService_RecordShiftEnded_FullMethodName     = "/recorder.RecorderService/RecordShiftEnded"
 	RecorderService_RecordShuffleStarted_FullMethodName = "/recorder.RecorderService/RecordShuffleStarted"
 	RecorderService_RecordShuffleDone_FullMethodName    = "/recorder.RecorderService/RecordShuffleDone"
 	RecorderService_RecordRoundStart_FullMethodName     = "/recorder.RecorderService/RecordRoundStart"
@@ -27,12 +29,18 @@ const (
 	RecorderService_RecordRoundResults_FullMethodName   = "/recorder.RecorderService/RecordRoundResults"
 	RecorderService_RecordRoundCancel_FullMethodName    = "/recorder.RecorderService/RecordRoundCancel"
 	RecorderService_RecordRoundFinish_FullMethodName    = "/recorder.RecorderService/RecordRoundFinish"
+	RecorderService_RecordRoadmap_FullMethodName        = "/recorder.RecorderService/RecordRoadmap"
+	RecorderService_RecordRoundVideo_FullMethodName     = "/recorder.RecorderService/RecordRoundVideo"
 )
 
 // RecorderServiceClient is the client API for RecorderService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RecorderServiceClient interface {
+	// 建立新排班
+	RecordShiftStarted(ctx context.Context, in *RecordShiftStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
+	// 排班結束
+	RecordShiftEnded(ctx context.Context, in *RecordShiftEndedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 開始更換牌組
 	RecordShuffleStarted(ctx context.Context, in *RecordShuffleStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
 	// 更換牌組完畢
@@ -47,6 +55,10 @@ type RecorderServiceClient interface {
 	RecordRoundCancel(ctx context.Context, in *RecordRoundCancelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 結束此局
 	RecordRoundFinish(ctx context.Context, in *RecordRoundFinishRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 紀錄路紙
+	RecordRoadmap(ctx context.Context, in *RecordRoadmapRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 紀錄回放
+	RecordRoundVideo(ctx context.Context, in *RecordRoundMediaRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type recorderServiceClient struct {
@@ -55,6 +67,24 @@ type recorderServiceClient struct {
 
 func NewRecorderServiceClient(cc grpc.ClientConnInterface) RecorderServiceClient {
 	return &recorderServiceClient{cc}
+}
+
+func (c *recorderServiceClient) RecordShiftStarted(ctx context.Context, in *RecordShiftStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error) {
+	out := new(RecordIDResponse)
+	err := c.cc.Invoke(ctx, RecorderService_RecordShiftStarted_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *recorderServiceClient) RecordShiftEnded(ctx context.Context, in *RecordShiftEndedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, RecorderService_RecordShiftEnded_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *recorderServiceClient) RecordShuffleStarted(ctx context.Context, in *RecordShuffleStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error) {
@@ -120,10 +150,32 @@ func (c *recorderServiceClient) RecordRoundFinish(ctx context.Context, in *Recor
 	return out, nil
 }
 
+func (c *recorderServiceClient) RecordRoadmap(ctx context.Context, in *RecordRoadmapRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, RecorderService_RecordRoadmap_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *recorderServiceClient) RecordRoundVideo(ctx context.Context, in *RecordRoundMediaRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, RecorderService_RecordRoundVideo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RecorderServiceServer is the server API for RecorderService service.
 // All implementations must embed UnimplementedRecorderServiceServer
 // for forward compatibility
 type RecorderServiceServer interface {
+	// 建立新排班
+	RecordShiftStarted(context.Context, *RecordShiftStartedRequest) (*RecordIDResponse, error)
+	// 排班結束
+	RecordShiftEnded(context.Context, *RecordShiftEndedRequest) (*emptypb.Empty, error)
 	// 開始更換牌組
 	RecordShuffleStarted(context.Context, *RecordShuffleStartedRequest) (*RecordIDResponse, error)
 	// 更換牌組完畢
@@ -138,6 +190,10 @@ type RecorderServiceServer interface {
 	RecordRoundCancel(context.Context, *RecordRoundCancelRequest) (*emptypb.Empty, error)
 	// 結束此局
 	RecordRoundFinish(context.Context, *RecordRoundFinishRequest) (*emptypb.Empty, error)
+	// 紀錄路紙
+	RecordRoadmap(context.Context, *RecordRoadmapRequest) (*emptypb.Empty, error)
+	// 紀錄回放
+	RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedRecorderServiceServer()
 }
 
@@ -145,6 +201,12 @@ type RecorderServiceServer interface {
 type UnimplementedRecorderServiceServer struct {
 }
 
+func (UnimplementedRecorderServiceServer) RecordShiftStarted(context.Context, *RecordShiftStartedRequest) (*RecordIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordShiftStarted not implemented")
+}
+func (UnimplementedRecorderServiceServer) RecordShiftEnded(context.Context, *RecordShiftEndedRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordShiftEnded not implemented")
+}
 func (UnimplementedRecorderServiceServer) RecordShuffleStarted(context.Context, *RecordShuffleStartedRequest) (*RecordIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordShuffleStarted not implemented")
 }
@@ -166,6 +228,12 @@ func (UnimplementedRecorderServiceServer) RecordRoundCancel(context.Context, *Re
 func (UnimplementedRecorderServiceServer) RecordRoundFinish(context.Context, *RecordRoundFinishRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundFinish not implemented")
 }
+func (UnimplementedRecorderServiceServer) RecordRoadmap(context.Context, *RecordRoadmapRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordRoadmap not implemented")
+}
+func (UnimplementedRecorderServiceServer) RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundVideo not implemented")
+}
 func (UnimplementedRecorderServiceServer) mustEmbedUnimplementedRecorderServiceServer() {}
 
 // UnsafeRecorderServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -177,6 +245,42 @@ type UnsafeRecorderServiceServer interface {
 
 func RegisterRecorderServiceServer(s grpc.ServiceRegistrar, srv RecorderServiceServer) {
 	s.RegisterService(&RecorderService_ServiceDesc, srv)
+}
+
+func _RecorderService_RecordShiftStarted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordShiftStartedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderServiceServer).RecordShiftStarted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderService_RecordShiftStarted_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderServiceServer).RecordShiftStarted(ctx, req.(*RecordShiftStartedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RecorderService_RecordShiftEnded_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordShiftEndedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderServiceServer).RecordShiftEnded(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderService_RecordShiftEnded_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderServiceServer).RecordShiftEnded(ctx, req.(*RecordShiftEndedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RecorderService_RecordShuffleStarted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -305,6 +409,42 @@ func _RecorderService_RecordRoundFinish_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RecorderService_RecordRoadmap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordRoadmapRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderServiceServer).RecordRoadmap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderService_RecordRoadmap_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderServiceServer).RecordRoadmap(ctx, req.(*RecordRoadmapRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RecorderService_RecordRoundVideo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordRoundMediaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderServiceServer).RecordRoundVideo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderService_RecordRoundVideo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderServiceServer).RecordRoundVideo(ctx, req.(*RecordRoundMediaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RecorderService_ServiceDesc is the grpc.ServiceDesc for RecorderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -312,6 +452,14 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "recorder.RecorderService",
 	HandlerType: (*RecorderServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "RecordShiftStarted",
+			Handler:    _RecorderService_RecordShiftStarted_Handler,
+		},
+		{
+			MethodName: "RecordShiftEnded",
+			Handler:    _RecorderService_RecordShiftEnded_Handler,
+		},
 		{
 			MethodName: "RecordShuffleStarted",
 			Handler:    _RecorderService_RecordShuffleStarted_Handler,
@@ -339,6 +487,14 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecordRoundFinish",
 			Handler:    _RecorderService_RecordRoundFinish_Handler,
+		},
+		{
+			MethodName: "RecordRoadmap",
+			Handler:    _RecorderService_RecordRoadmap_Handler,
+		},
+		{
+			MethodName: "RecordRoundVideo",
+			Handler:    _RecorderService_RecordRoundVideo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

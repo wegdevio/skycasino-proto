@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { FetchCurrentTableRequest, FetchCurrentTableResponse, FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShuffleRecordRequest, FetchShuffleRecordResponse, FetchTableProvideListResponse } from "./provider_pb.js";
+import { FetchCurrentGameRequest, FetchCurrentGameResponse, FetchGameProvideListResponse, FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShiftRecordRequest, FetchShiftRecordResponse, FetchShuffleRecordRequest, FetchShuffleRecordResponse } from "./provider_pb.js";
 import { Empty, MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -12,6 +12,17 @@ import { Empty, MethodKind } from "@bufbuild/protobuf";
 export const RecorderReadService = {
   typeName: "recorder.RecorderReadService",
   methods: {
+    /**
+     * 讀取班次紀錄
+     *
+     * @generated from rpc recorder.RecorderReadService.FetchShiftRecord
+     */
+    fetchShiftRecord: {
+      name: "FetchShiftRecord",
+      I: FetchShiftRecordRequest,
+      O: FetchShiftRecordResponse,
+      kind: MethodKind.Unary,
+    },
     /**
      * 讀洗牌紀錄
      *
@@ -53,18 +64,18 @@ export const ProviderService = {
     fetchTableProvideList: {
       name: "FetchTableProvideList",
       I: Empty,
-      O: FetchTableProvideListResponse,
+      O: FetchGameProvideListResponse,
       kind: MethodKind.Unary,
     },
     /**
      * 讀即時遊戲桌資訊
      *
-     * @generated from rpc recorder.ProviderService.FetchCurrentTable
+     * @generated from rpc recorder.ProviderService.FetchCurrentGame
      */
-    fetchCurrentTable: {
-      name: "FetchCurrentTable",
-      I: FetchCurrentTableRequest,
-      O: FetchCurrentTableResponse,
+    fetchCurrentGame: {
+      name: "FetchCurrentGame",
+      I: FetchCurrentGameRequest,
+      O: FetchCurrentGameResponse,
       kind: MethodKind.Unary,
     },
   }

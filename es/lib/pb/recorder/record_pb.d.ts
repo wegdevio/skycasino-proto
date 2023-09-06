@@ -363,6 +363,39 @@ export declare class Result extends Message<Result> {
     static equals(a: Result | PlainMessage<Result> | undefined, b: Result | PlainMessage<Result> | undefined): boolean;
 }
 /**
+ * 多媒體
+ *
+ * @generated from message recorder.URLMedia
+ */
+export declare class URLMedia extends Message<URLMedia> {
+    /**
+     * 代碼
+     *
+     * @generated from field: string code = 1;
+     */
+    code: string;
+    /**
+     * 類型：hls, flv...
+     *
+     * @generated from field: string mime = 2;
+     */
+    mime: string;
+    /**
+     * url
+     *
+     * @generated from field: string url = 3;
+     */
+    url: string;
+    constructor(data?: PartialMessage<URLMedia>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.URLMedia";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): URLMedia;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): URLMedia;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): URLMedia;
+    static equals(a: URLMedia | PlainMessage<URLMedia> | undefined, b: URLMedia | PlainMessage<URLMedia> | undefined): boolean;
+}
+/**
  * 紀錄
  *
  * @generated from message recorder.RoundRecord
@@ -393,52 +426,58 @@ export declare class RoundRecord extends Message<RoundRecord> {
      */
     gameVersion: string;
     /**
+     * 遊戲代碼
+     *
+     * @generated from field: string game_code = 5;
+     */
+    gameCode: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: string table_code = 6;
      */
     tableCode: string;
     /**
      * 排班代碼
      *
-     * @generated from field: string shift_code = 6;
+     * @generated from field: string shift_code = 7;
      */
     shiftCode: string;
     /**
      * 此排班局數
      *
-     * @generated from field: string shift_round = 7;
+     * @generated from field: string shift_round = 8;
      */
     shiftRound: string;
     /**
      * 局代碼
      *
-     * @generated from field: string round_code = 8;
+     * @generated from field: string round_code = 9;
      */
     roundCode: string;
     /**
      * 使用洗牌代碼
      *
-     * @generated from field: string shuffle_code = 9;
+     * @generated from field: string shuffle_code = 10;
      */
     shuffleCode: string;
     /**
      * 使用此洗牌第幾局，從1開始計算
      *
-     * @generated from field: int64 shuffle_round = 10;
+     * @generated from field: int64 shuffle_round = 11;
      */
     shuffleRound: bigint;
     /**
      * 開始時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 11;
+     * @generated from field: google.protobuf.Timestamp ts_start = 12;
      */
     tsStart?: Timestamp;
     /**
      * 座位組
      * key: SeatCode, value: Seat
      *
-     * @generated from field: map<int32, recorder.Seat> seats = 12;
+     * @generated from field: map<int32, recorder.Seat> seats = 13;
      */
     seats: {
         [key: number]: Seat;
@@ -447,7 +486,7 @@ export declare class RoundRecord extends Message<RoundRecord> {
      * 玩家入座
      * key: SeatCode, value: 玩家code。
      *
-     * @generated from field: map<int32, string> players = 13;
+     * @generated from field: map<int32, string> players = 14;
      */
     players: {
         [key: number]: string;
@@ -455,7 +494,7 @@ export declare class RoundRecord extends Message<RoundRecord> {
     /**
      * 標籤
      *
-     * @generated from field: map<string, string> tags = 14;
+     * @generated from field: map<string, string> tags = 15;
      */
     tags: {
         [key: string]: string;
@@ -463,39 +502,53 @@ export declare class RoundRecord extends Message<RoundRecord> {
     /**
      * 歷程
      *
-     * @generated from field: repeated recorder.Step process = 15;
+     * @generated from field: repeated recorder.Step process = 16;
      */
     process: Step[];
     /**
      * 判讀
      *
-     * @generated from field: repeated recorder.Result results = 16;
+     * @generated from field: repeated recorder.Result results = 17;
      */
     results: Result[];
     /**
+     * 結束
+     *
+     * @generated from field: bool is_end = 18;
+     */
+    isEnd: boolean;
+    /**
      * 結束時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_end = 17;
+     * @generated from field: google.protobuf.Timestamp ts_end = 19;
      */
     tsEnd?: Timestamp;
     /**
      * 取消
      *
-     * @generated from field: optional bool cancel = 18;
+     * @generated from field: optional bool cancel = 20;
      */
     cancel?: boolean;
     /**
      * 取消代碼：CancelReasonCode
      *
-     * @generated from field: optional string cancel_code = 19;
+     * @generated from field: optional string cancel_code = 21;
      */
     cancelCode?: string;
     /**
      * 取消備註
      *
-     * @generated from field: optional string cancel_message = 20;
+     * @generated from field: optional string cancel_message = 22;
      */
     cancelMessage?: string;
+    /**
+     * 附加媒體
+     *
+     * @generated from field: map<string, recorder.URLMedia> mideas = 24;
+     */
+    mideas: {
+        [key: string]: URLMedia;
+    };
     constructor(data?: PartialMessage<RoundRecord>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "recorder.RoundRecord";
@@ -612,4 +665,87 @@ export declare class ShuffleRecord extends Message<ShuffleRecord> {
     static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ShuffleRecord;
     static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ShuffleRecord;
     static equals(a: ShuffleRecord | PlainMessage<ShuffleRecord> | undefined, b: ShuffleRecord | PlainMessage<ShuffleRecord> | undefined): boolean;
+}
+/**
+ * 排班
+ *
+ * @generated from message recorder.ShiftRecord
+ */
+export declare class ShiftRecord extends Message<ShiftRecord> {
+    /**
+     * 紀錄ID
+     *
+     * @generated from field: bytes id = 1;
+     */
+    id: Uint8Array;
+    /**
+     * 遊戲類型
+     *
+     * @generated from field: string game_type = 2;
+     */
+    gameType: string;
+    /**
+     * 遊戲子類型
+     *
+     * @generated from field: string game_subtype = 3;
+     */
+    gameSubtype: string;
+    /**
+     * 遊戲版本
+     *
+     * @generated from field: string game_version = 4;
+     */
+    gameVersion: string;
+    /**
+     * 桌代碼
+     *
+     * @generated from field: string table_code = 5;
+     */
+    tableCode: string;
+    /**
+     * 標籤
+     *
+     * @generated from field: map<string, string> tags = 6;
+     */
+    tags: {
+        [key: string]: string;
+    };
+    /**
+     * 開始時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_start = 7;
+     */
+    tsStart?: Timestamp;
+    /**
+     * 洗牌
+     *
+     * @generated from field: repeated string shuffle_codes = 8;
+     */
+    shuffleCodes: string[];
+    /**
+     * 執行遊戲局
+     *
+     * @generated from field: repeated string round_codes = 9;
+     */
+    roundCodes: string[];
+    /**
+     * 結束
+     *
+     * @generated from field: bool is_end = 12;
+     */
+    isEnd: boolean;
+    /**
+     * 結束時間
+     *
+     * @generated from field: google.protobuf.Timestamp ts_end = 13;
+     */
+    tsEnd?: Timestamp;
+    constructor(data?: PartialMessage<ShiftRecord>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "recorder.ShiftRecord";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ShiftRecord;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ShiftRecord;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ShiftRecord;
+    static equals(a: ShiftRecord | PlainMessage<ShiftRecord> | undefined, b: ShiftRecord | PlainMessage<ShiftRecord> | undefined): boolean;
 }

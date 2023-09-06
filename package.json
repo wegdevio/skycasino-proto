@@ -16,7 +16,7 @@
     "gen:go": "buf generate",
     "gen:gotag": "buf generate --template buf.gen.tag.yaml",
     "gen:es": "buf generate --template buf.gen.eslib.yaml",
-    "clear": "rm -rf es/lib & rm -rf es/src/pb",
+    "clean": "rm -rf es/lib & rm -rf es/src/pb",
     "build": "tsc"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { FetchCurrentTableRequest, FetchCurrentTableResponse, FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShuffleRecordRequest, FetchShuffleRecordResponse, FetchTableProvideListResponse } from "./provider_pb.js";
+import { FetchCurrentGameRequest, FetchCurrentGameResponse, FetchGameProvideListResponse, FetchRoundRecordRequest, FetchRoundRecordResponse, FetchShiftRecordRequest, FetchShiftRecordResponse, FetchShuffleRecordRequest, FetchShuffleRecordResponse } from "./provider_pb.js";
 import { Empty, MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -12,6 +12,17 @@ import { Empty, MethodKind } from "@bufbuild/protobuf";
 export declare const RecorderReadService: {
   readonly typeName: "recorder.RecorderReadService",
   readonly methods: {
+    /**
+     * 讀取班次紀錄
+     *
+     * @generated from rpc recorder.RecorderReadService.FetchShiftRecord
+     */
+    readonly fetchShiftRecord: {
+      readonly name: "FetchShiftRecord",
+      readonly I: typeof FetchShiftRecordRequest,
+      readonly O: typeof FetchShiftRecordResponse,
+      readonly kind: MethodKind.Unary,
+    },
     /**
      * 讀洗牌紀錄
      *
@@ -53,18 +64,18 @@ export declare const ProviderService: {
     readonly fetchTableProvideList: {
       readonly name: "FetchTableProvideList",
       readonly I: typeof Empty,
-      readonly O: typeof FetchTableProvideListResponse,
+      readonly O: typeof FetchGameProvideListResponse,
       readonly kind: MethodKind.Unary,
     },
     /**
      * 讀即時遊戲桌資訊
      *
-     * @generated from rpc recorder.ProviderService.FetchCurrentTable
+     * @generated from rpc recorder.ProviderService.FetchCurrentGame
      */
-    readonly fetchCurrentTable: {
-      readonly name: "FetchCurrentTable",
-      readonly I: typeof FetchCurrentTableRequest,
-      readonly O: typeof FetchCurrentTableResponse,
+    readonly fetchCurrentGame: {
+      readonly name: "FetchCurrentGame",
+      readonly I: typeof FetchCurrentGameRequest,
+      readonly O: typeof FetchCurrentGameResponse,
       readonly kind: MethodKind.Unary,
     },
   }

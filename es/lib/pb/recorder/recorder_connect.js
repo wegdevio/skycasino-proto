@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { RecordIDResponse, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
+import { RecordIDResponse, RecordRoadmapRequest, RecordRoundCancelRequest, RecordRoundFinishRequest, RecordRoundMediaRequest, RecordRoundResultsRequest, RecordRoundStartRequest, RecordRoundStepsRequest, RecordShiftEndedRequest, RecordShiftStartedRequest, RecordShuffleDoneRequest, RecordShuffleStartedRequest } from "./recorder_pb.js";
 import { Empty, MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -12,6 +12,28 @@ import { Empty, MethodKind } from "@bufbuild/protobuf";
 export const RecorderService = {
   typeName: "recorder.RecorderService",
   methods: {
+    /**
+     * 建立新排班
+     *
+     * @generated from rpc recorder.RecorderService.RecordShiftStarted
+     */
+    recordShiftStarted: {
+      name: "RecordShiftStarted",
+      I: RecordShiftStartedRequest,
+      O: RecordIDResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * 排班結束
+     *
+     * @generated from rpc recorder.RecorderService.RecordShiftEnded
+     */
+    recordShiftEnded: {
+      name: "RecordShiftEnded",
+      I: RecordShiftEndedRequest,
+      O: Empty,
+      kind: MethodKind.Unary,
+    },
     /**
      * 開始更換牌組
      *
@@ -86,6 +108,28 @@ export const RecorderService = {
     recordRoundFinish: {
       name: "RecordRoundFinish",
       I: RecordRoundFinishRequest,
+      O: Empty,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * 紀錄路紙
+     *
+     * @generated from rpc recorder.RecorderService.RecordRoadmap
+     */
+    recordRoadmap: {
+      name: "RecordRoadmap",
+      I: RecordRoadmapRequest,
+      O: Empty,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * 紀錄回放
+     *
+     * @generated from rpc recorder.RecorderService.RecordRoundVideo
+     */
+    recordRoundVideo: {
+      name: "RecordRoundVideo",
+      I: RecordRoundMediaRequest,
       O: Empty,
       kind: MethodKind.Unary,
     },

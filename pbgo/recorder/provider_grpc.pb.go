@@ -20,6 +20,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
+	RecorderReadService_FetchShiftRecord_FullMethodName   = "/recorder.RecorderReadService/FetchShiftRecord"
 	RecorderReadService_FetchShuffleRecord_FullMethodName = "/recorder.RecorderReadService/FetchShuffleRecord"
 	RecorderReadService_FetchRoundRecord_FullMethodName   = "/recorder.RecorderReadService/FetchRoundRecord"
 )
@@ -28,6 +29,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RecorderReadServiceClient interface {
+	// 讀取班次紀錄
+	FetchShiftRecord(ctx context.Context, in *FetchShiftRecordRequest, opts ...grpc.CallOption) (*FetchShiftRecordResponse, error)
 	// 讀洗牌紀錄
 	FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchShuffleRecordResponse, error)
 	// 讀遊戲局號紀錄
@@ -40,6 +43,15 @@ type recorderReadServiceClient struct {
 
 func NewRecorderReadServiceClient(cc grpc.ClientConnInterface) RecorderReadServiceClient {
 	return &recorderReadServiceClient{cc}
+}
+
+func (c *recorderReadServiceClient) FetchShiftRecord(ctx context.Context, in *FetchShiftRecordRequest, opts ...grpc.CallOption) (*FetchShiftRecordResponse, error) {
+	out := new(FetchShiftRecordResponse)
+	err := c.cc.Invoke(ctx, RecorderReadService_FetchShiftRecord_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *recorderReadServiceClient) FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchShuffleRecordResponse, error) {
@@ -64,6 +76,8 @@ func (c *recorderReadServiceClient) FetchRoundRecord(ctx context.Context, in *Fe
 // All implementations must embed UnimplementedRecorderReadServiceServer
 // for forward compatibility
 type RecorderReadServiceServer interface {
+	// 讀取班次紀錄
+	FetchShiftRecord(context.Context, *FetchShiftRecordRequest) (*FetchShiftRecordResponse, error)
 	// 讀洗牌紀錄
 	FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchShuffleRecordResponse, error)
 	// 讀遊戲局號紀錄
@@ -75,6 +89,9 @@ type RecorderReadServiceServer interface {
 type UnimplementedRecorderReadServiceServer struct {
 }
 
+func (UnimplementedRecorderReadServiceServer) FetchShiftRecord(context.Context, *FetchShiftRecordRequest) (*FetchShiftRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchShiftRecord not implemented")
+}
 func (UnimplementedRecorderReadServiceServer) FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchShuffleRecordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchShuffleRecord not implemented")
 }
@@ -92,6 +109,24 @@ type UnsafeRecorderReadServiceServer interface {
 
 func RegisterRecorderReadServiceServer(s grpc.ServiceRegistrar, srv RecorderReadServiceServer) {
 	s.RegisterService(&RecorderReadService_ServiceDesc, srv)
+}
+
+func _RecorderReadService_FetchShiftRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchShiftRecordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderReadServiceServer).FetchShiftRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderReadService_FetchShiftRecord_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderReadServiceServer).FetchShiftRecord(ctx, req.(*FetchShiftRecordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RecorderReadService_FetchShuffleRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -138,6 +173,10 @@ var RecorderReadService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RecorderReadServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "FetchShiftRecord",
+			Handler:    _RecorderReadService_FetchShiftRecord_Handler,
+		},
+		{
 			MethodName: "FetchShuffleRecord",
 			Handler:    _RecorderReadService_FetchShuffleRecord_Handler,
 		},
@@ -152,7 +191,7 @@ var RecorderReadService_ServiceDesc = grpc.ServiceDesc{
 
 const (
 	ProviderService_FetchTableProvideList_FullMethodName = "/recorder.ProviderService/FetchTableProvideList"
-	ProviderService_FetchCurrentTable_FullMethodName     = "/recorder.ProviderService/FetchCurrentTable"
+	ProviderService_FetchCurrentGame_FullMethodName      = "/recorder.ProviderService/FetchCurrentGame"
 )
 
 // ProviderServiceClient is the client API for ProviderService service.
@@ -160,9 +199,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProviderServiceClient interface {
 	// 取得即時遊戲列表
-	FetchTableProvideList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FetchTableProvideListResponse, error)
+	FetchTableProvideList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FetchGameProvideListResponse, error)
 	// 讀即時遊戲桌資訊
-	FetchCurrentTable(ctx context.Context, in *FetchCurrentTableRequest, opts ...grpc.CallOption) (*FetchCurrentTableResponse, error)
+	FetchCurrentGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
 }
 
 type providerServiceClient struct {
@@ -173,8 +212,8 @@ func NewProviderServiceClient(cc grpc.ClientConnInterface) ProviderServiceClient
 	return &providerServiceClient{cc}
 }
 
-func (c *providerServiceClient) FetchTableProvideList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FetchTableProvideListResponse, error) {
-	out := new(FetchTableProvideListResponse)
+func (c *providerServiceClient) FetchTableProvideList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FetchGameProvideListResponse, error) {
+	out := new(FetchGameProvideListResponse)
 	err := c.cc.Invoke(ctx, ProviderService_FetchTableProvideList_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -182,9 +221,9 @@ func (c *providerServiceClient) FetchTableProvideList(ctx context.Context, in *e
 	return out, nil
 }
 
-func (c *providerServiceClient) FetchCurrentTable(ctx context.Context, in *FetchCurrentTableRequest, opts ...grpc.CallOption) (*FetchCurrentTableResponse, error) {
-	out := new(FetchCurrentTableResponse)
-	err := c.cc.Invoke(ctx, ProviderService_FetchCurrentTable_FullMethodName, in, out, opts...)
+func (c *providerServiceClient) FetchCurrentGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error) {
+	out := new(FetchCurrentGameResponse)
+	err := c.cc.Invoke(ctx, ProviderService_FetchCurrentGame_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -196,9 +235,9 @@ func (c *providerServiceClient) FetchCurrentTable(ctx context.Context, in *Fetch
 // for forward compatibility
 type ProviderServiceServer interface {
 	// 取得即時遊戲列表
-	FetchTableProvideList(context.Context, *emptypb.Empty) (*FetchTableProvideListResponse, error)
+	FetchTableProvideList(context.Context, *emptypb.Empty) (*FetchGameProvideListResponse, error)
 	// 讀即時遊戲桌資訊
-	FetchCurrentTable(context.Context, *FetchCurrentTableRequest) (*FetchCurrentTableResponse, error)
+	FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error)
 	mustEmbedUnimplementedProviderServiceServer()
 }
 
@@ -206,11 +245,11 @@ type ProviderServiceServer interface {
 type UnimplementedProviderServiceServer struct {
 }
 
-func (UnimplementedProviderServiceServer) FetchTableProvideList(context.Context, *emptypb.Empty) (*FetchTableProvideListResponse, error) {
+func (UnimplementedProviderServiceServer) FetchTableProvideList(context.Context, *emptypb.Empty) (*FetchGameProvideListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchTableProvideList not implemented")
 }
-func (UnimplementedProviderServiceServer) FetchCurrentTable(context.Context, *FetchCurrentTableRequest) (*FetchCurrentTableResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FetchCurrentTable not implemented")
+func (UnimplementedProviderServiceServer) FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchCurrentGame not implemented")
 }
 func (UnimplementedProviderServiceServer) mustEmbedUnimplementedProviderServiceServer() {}
 
@@ -243,20 +282,20 @@ func _ProviderService_FetchTableProvideList_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProviderService_FetchCurrentTable_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FetchCurrentTableRequest)
+func _ProviderService_FetchCurrentGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchCurrentGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProviderServiceServer).FetchCurrentTable(ctx, in)
+		return srv.(ProviderServiceServer).FetchCurrentGame(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProviderService_FetchCurrentTable_FullMethodName,
+		FullMethod: ProviderService_FetchCurrentGame_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServiceServer).FetchCurrentTable(ctx, req.(*FetchCurrentTableRequest))
+		return srv.(ProviderServiceServer).FetchCurrentGame(ctx, req.(*FetchCurrentGameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -273,8 +312,8 @@ var ProviderService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProviderService_FetchTableProvideList_Handler,
 		},
 		{
-			MethodName: "FetchCurrentTable",
-			Handler:    _ProviderService_FetchCurrentTable_Handler,
+			MethodName: "FetchCurrentGame",
+			Handler:    _ProviderService_FetchCurrentGame_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

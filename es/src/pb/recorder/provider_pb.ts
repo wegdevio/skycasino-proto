@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { RoundRecord, ShuffleRecord } from "./record_pb";
+import { RoundRecord, ShiftRecord, ShuffleRecord, URLMedia } from "./record_pb";
 
 /**
  * @generated from message recorder.RecordQuery
@@ -71,6 +71,162 @@ export class RecordQuery extends Message<RecordQuery> {
 }
 
 /**
+ * @generated from message recorder.FetchShiftRecordRequest
+ */
+export class FetchShiftRecordRequest extends Message<FetchShiftRecordRequest> {
+  /**
+   * 紀錄ID
+   *
+   * @generated from field: optional bytes record_id = 1;
+   */
+  recordId?: Uint8Array;
+
+  /**
+   * 遊戲類型
+   *
+   * @generated from field: optional string game_type = 2;
+   */
+  gameType?: string;
+
+  /**
+   * 遊戲子類型
+   *
+   * @generated from field: optional string game_subtype = 3;
+   */
+  gameSubtype?: string;
+
+  /**
+   * 遊戲代碼
+   *
+   * @generated from field: optional string game_code = 5;
+   */
+  gameCode?: string;
+
+  /**
+   * 桌代碼
+   *
+   * @generated from field: optional string table_code = 6;
+   */
+  tableCode?: string;
+
+  /**
+   * 允許的紀錄ID
+   *
+   * @generated from field: repeated bytes record_ids = 9;
+   */
+  recordIds: Uint8Array[] = [];
+
+  /**
+   * 允許的遊戲類型
+   *
+   * @generated from field: repeated string game_types = 10;
+   */
+  gameTypes: string[] = [];
+
+  /**
+   * 允許的遊戲子類型
+   *
+   * @generated from field: repeated string game_subtypes = 11;
+   */
+  gameSubtypes: string[] = [];
+
+  /**
+   * 允許的遊戲代碼
+   *
+   * @generated from field: repeated string game_codes = 13;
+   */
+  gameCodes: string[] = [];
+
+  /**
+   * 允許的桌代碼
+   *
+   * @generated from field: repeated string table_codes = 14;
+   */
+  tableCodes: string[] = [];
+
+  /**
+   * 查詢限制
+   *
+   * @generated from field: recorder.RecordQuery query = 20;
+   */
+  query?: RecordQuery;
+
+  constructor(data?: PartialMessage<FetchShiftRecordRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.FetchShiftRecordRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */, opt: true },
+    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
+    { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 13, name: "game_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 14, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 20, name: "query", kind: "message", T: RecordQuery },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShiftRecordRequest {
+    return new FetchShiftRecordRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchShiftRecordRequest {
+    return new FetchShiftRecordRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchShiftRecordRequest {
+    return new FetchShiftRecordRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FetchShiftRecordRequest | PlainMessage<FetchShiftRecordRequest> | undefined, b: FetchShiftRecordRequest | PlainMessage<FetchShiftRecordRequest> | undefined): boolean {
+    return proto3.util.equals(FetchShiftRecordRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message recorder.FetchShiftRecordResponse
+ */
+export class FetchShiftRecordResponse extends Message<FetchShiftRecordResponse> {
+  /**
+   * @generated from field: repeated recorder.ShiftRecord shift_record = 1;
+   */
+  shiftRecord: ShiftRecord[] = [];
+
+  constructor(data?: PartialMessage<FetchShiftRecordResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "recorder.FetchShiftRecordResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "shift_record", kind: "message", T: ShiftRecord, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShiftRecordResponse {
+    return new FetchShiftRecordResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchShiftRecordResponse {
+    return new FetchShiftRecordResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchShiftRecordResponse {
+    return new FetchShiftRecordResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: FetchShiftRecordResponse | PlainMessage<FetchShiftRecordResponse> | undefined, b: FetchShiftRecordResponse | PlainMessage<FetchShiftRecordResponse> | undefined): boolean {
+    return proto3.util.equals(FetchShiftRecordResponse, a, b);
+  }
+}
+
+/**
  * @generated from message recorder.FetchShuffleRecordRequest
  */
 export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest> {
@@ -96,16 +252,30 @@ export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest
   gameSubtype?: string;
 
   /**
+   * 遊戲代碼
+   *
+   * @generated from field: optional string game_code = 5;
+   */
+  gameCode?: string;
+
+  /**
    * 桌代碼
    *
-   * @generated from field: optional string table_code = 5;
+   * @generated from field: optional string table_code = 6;
    */
   tableCode?: string;
 
   /**
+   * 班代碼
+   *
+   * @generated from field: optional string shift_code = 7;
+   */
+  shiftCode?: string;
+
+  /**
    * 洗牌代碼
    *
-   * @generated from field: optional string shuffle_code = 6;
+   * @generated from field: optional string shuffle_code = 8;
    */
   shuffleCode?: string;
 
@@ -131,23 +301,37 @@ export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest
   gameSubtypes: string[] = [];
 
   /**
+   * 允許的遊戲代碼
+   *
+   * @generated from field: repeated string game_codes = 13;
+   */
+  gameCodes: string[] = [];
+
+  /**
    * 允許的桌代碼
    *
-   * @generated from field: repeated string table_codes = 13;
+   * @generated from field: repeated string table_codes = 14;
    */
   tableCodes: string[] = [];
 
   /**
+   * 允許的班代碼
+   *
+   * @generated from field: repeated string shift_codes = 15;
+   */
+  shiftCodes: string[] = [];
+
+  /**
    * 允許的洗牌代碼
    *
-   * @generated from field: repeated string shuffle_codes = 14;
+   * @generated from field: repeated string shuffle_codes = 16;
    */
   shuffleCodes: string[] = [];
 
   /**
    * 查詢限制
    *
-   * @generated from field: recorder.RecordQuery query = 16;
+   * @generated from field: recorder.RecordQuery query = 20;
    */
   query?: RecordQuery;
 
@@ -162,14 +346,18 @@ export class FetchShuffleRecordRequest extends Message<FetchShuffleRecordRequest
     { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */, opt: true },
     { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 8, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
     { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 13, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 14, name: "shuffle_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 16, name: "query", kind: "message", T: RecordQuery },
+    { no: 13, name: "game_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 14, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 15, name: "shift_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 16, name: "shuffle_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 20, name: "query", kind: "message", T: RecordQuery },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchShuffleRecordRequest {
@@ -252,16 +440,30 @@ export class FetchRoundRecordRequest extends Message<FetchRoundRecordRequest> {
   gameSubtype?: string;
 
   /**
+   * 遊戲代碼
+   *
+   * @generated from field: optional string game_code = 5;
+   */
+  gameCode?: string;
+
+  /**
    * 桌代碼
    *
-   * @generated from field: optional string table_code = 5;
+   * @generated from field: optional string table_code = 6;
    */
   tableCode?: string;
 
   /**
+   * 班代碼
+   *
+   * @generated from field: optional string shift_code = 7;
+   */
+  shiftCode?: string;
+
+  /**
    * 局代碼
    *
-   * @generated from field: optional string round_code = 6;
+   * @generated from field: optional string round_code = 8;
    */
   roundCode?: string;
 
@@ -287,23 +489,37 @@ export class FetchRoundRecordRequest extends Message<FetchRoundRecordRequest> {
   gameSubtypes: string[] = [];
 
   /**
+   * 允許的遊戲代碼
+   *
+   * @generated from field: repeated string game_codes = 13;
+   */
+  gameCodes: string[] = [];
+
+  /**
    * 允許的桌代碼
    *
-   * @generated from field: repeated string table_codes = 13;
+   * @generated from field: repeated string table_codes = 14;
    */
   tableCodes: string[] = [];
 
   /**
+   * 允許的班代碼
+   *
+   * @generated from field: repeated string shift_codes = 15;
+   */
+  shiftCodes: string[] = [];
+
+  /**
    * 允許的局代碼
    *
-   * @generated from field: repeated string round_codes = 14;
+   * @generated from field: repeated string round_codes = 16;
    */
   roundCodes: string[] = [];
 
   /**
    * 查詢限制
    *
-   * @generated from field: recorder.RecordQuery query = 16;
+   * @generated from field: recorder.RecordQuery query = 20;
    */
   query?: RecordQuery;
 
@@ -318,14 +534,18 @@ export class FetchRoundRecordRequest extends Message<FetchRoundRecordRequest> {
     { no: 1, name: "record_id", kind: "scalar", T: 12 /* ScalarType.BYTES */, opt: true },
     { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
-    { no: 6, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 7, name: "shift_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 8, name: "round_code", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
     { no: 9, name: "record_ids", kind: "scalar", T: 12 /* ScalarType.BYTES */, repeated: true },
     { no: 10, name: "game_types", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 11, name: "game_subtypes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 13, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 14, name: "round_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 16, name: "query", kind: "message", T: RecordQuery },
+    { no: 13, name: "game_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 14, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 15, name: "shift_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 16, name: "round_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 20, name: "query", kind: "message", T: RecordQuery },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchRoundRecordRequest {
@@ -385,41 +605,34 @@ export class FetchRoundRecordResponse extends Message<FetchRoundRecordResponse> 
 /**
  * 遊戲供應
  *
- * @generated from message recorder.TableProvide
+ * @generated from message recorder.GameProvide
  */
-export class TableProvide extends Message<TableProvide> {
-  /**
-   * 遊戲代碼
-   *
-   * @generated from field: string game_code = 2;
-   */
-  gameCode = "";
-
+export class GameProvide extends Message<GameProvide> {
   /**
    * 遊戲類型
    *
-   * @generated from field: string game_type = 3;
+   * @generated from field: string game_type = 2;
    */
   gameType = "";
 
   /**
    * 遊戲子類型
    *
-   * @generated from field: string game_subtype = 4;
+   * @generated from field: string game_subtype = 3;
    */
   gameSubtype = "";
 
   /**
-   * 桌代碼
+   * 遊戲代碼
    *
-   * @generated from field: string table_code = 5;
+   * @generated from field: string game_code = 4;
    */
-  tableCode = "";
+  gameCode = "";
 
   /**
    * 標籤
    *
-   * @generated from field: map<string, string> tags = 6;
+   * @generated from field: map<string, string> tags = 5;
    */
   tags: { [key: string]: string } = {};
 
@@ -430,219 +643,170 @@ export class TableProvide extends Message<TableProvide> {
    */
   maintenance = false;
 
-  constructor(data?: PartialMessage<TableProvide>) {
+  constructor(data?: PartialMessage<GameProvide>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.TableProvide";
+  static readonly typeName = "recorder.GameProvide";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 2, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 6, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "tags", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
     { no: 7, name: "maintenance", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TableProvide {
-    return new TableProvide().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GameProvide {
+    return new GameProvide().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TableProvide {
-    return new TableProvide().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GameProvide {
+    return new GameProvide().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TableProvide {
-    return new TableProvide().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GameProvide {
+    return new GameProvide().fromJsonString(jsonString, options);
   }
 
-  static equals(a: TableProvide | PlainMessage<TableProvide> | undefined, b: TableProvide | PlainMessage<TableProvide> | undefined): boolean {
-    return proto3.util.equals(TableProvide, a, b);
+  static equals(a: GameProvide | PlainMessage<GameProvide> | undefined, b: GameProvide | PlainMessage<GameProvide> | undefined): boolean {
+    return proto3.util.equals(GameProvide, a, b);
   }
 }
 
 /**
- * @generated from message recorder.FetchTableProvideListResponse
+ * @generated from message recorder.FetchGameProvideListResponse
  */
-export class FetchTableProvideListResponse extends Message<FetchTableProvideListResponse> {
+export class FetchGameProvideListResponse extends Message<FetchGameProvideListResponse> {
   /**
    * 桌列表
    *
-   * @generated from field: repeated recorder.TableProvide table_provides = 1;
+   * @generated from field: repeated recorder.GameProvide game_provides = 1;
    */
-  tableProvides: TableProvide[] = [];
+  gameProvides: GameProvide[] = [];
 
-  constructor(data?: PartialMessage<FetchTableProvideListResponse>) {
+  constructor(data?: PartialMessage<FetchGameProvideListResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.FetchTableProvideListResponse";
+  static readonly typeName = "recorder.FetchGameProvideListResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "table_provides", kind: "message", T: TableProvide, repeated: true },
+    { no: 1, name: "game_provides", kind: "message", T: GameProvide, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchTableProvideListResponse {
-    return new FetchTableProvideListResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchGameProvideListResponse {
+    return new FetchGameProvideListResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchTableProvideListResponse {
-    return new FetchTableProvideListResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchGameProvideListResponse {
+    return new FetchGameProvideListResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchTableProvideListResponse {
-    return new FetchTableProvideListResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchGameProvideListResponse {
+    return new FetchGameProvideListResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: FetchTableProvideListResponse | PlainMessage<FetchTableProvideListResponse> | undefined, b: FetchTableProvideListResponse | PlainMessage<FetchTableProvideListResponse> | undefined): boolean {
-    return proto3.util.equals(FetchTableProvideListResponse, a, b);
+  static equals(a: FetchGameProvideListResponse | PlainMessage<FetchGameProvideListResponse> | undefined, b: FetchGameProvideListResponse | PlainMessage<FetchGameProvideListResponse> | undefined): boolean {
+    return proto3.util.equals(FetchGameProvideListResponse, a, b);
   }
 }
 
 /**
- * @generated from message recorder.TableStream
+ * @generated from message recorder.CurrentGame
  */
-export class TableStream extends Message<TableStream> {
+export class CurrentGame extends Message<CurrentGame> {
   /**
-   * url
+   * 遊戲代碼
    *
-   * @generated from field: string url = 1;
+   * @generated from field: string game_code = 5;
    */
-  url = "";
+  gameCode = "";
 
   /**
-   * 類型：hls, flv...
+   * 班
    *
-   * @generated from field: string mime = 2;
+   * @generated from field: optional recorder.ShiftRecord shift = 7;
    */
-  mime = "";
+  shift?: ShiftRecord;
 
   /**
-   * 封面截圖
+   * 遊戲局
    *
-   * @generated from field: string cover_url = 3;
-   */
-  coverUrl = "";
-
-  /**
-   * 封面截圖類型
-   *
-   * @generated from field: string cover_mime = 4;
-   */
-  coverMime = "";
-
-  constructor(data?: PartialMessage<TableStream>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.TableStream";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "mime", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "cover_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "cover_mime", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TableStream {
-    return new TableStream().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TableStream {
-    return new TableStream().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TableStream {
-    return new TableStream().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: TableStream | PlainMessage<TableStream> | undefined, b: TableStream | PlainMessage<TableStream> | undefined): boolean {
-    return proto3.util.equals(TableStream, a, b);
-  }
-}
-
-/**
- * @generated from message recorder.CurrentTable
- */
-export class CurrentTable extends Message<CurrentTable> {
-  /**
-   * 桌代碼
-   *
-   * @generated from field: string table_code = 1;
-   */
-  tableCode = "";
-
-  /**
-   * 紀錄
-   *
-   * @generated from field: optional recorder.RoundRecord round = 2;
+   * @generated from field: optional recorder.RoundRecord round = 9;
    */
   round?: RoundRecord;
 
   /**
    * 洗牌
    *
-   * @generated from field: optional recorder.ShuffleRecord shuffle = 3;
+   * @generated from field: optional recorder.ShuffleRecord shuffle = 10;
    */
   shuffle?: ShuffleRecord;
 
   /**
-   * 直播網址列表
+   * 附加媒體
    *
-   * @generated from field: map<string, recorder.TableStream> map_table_stream = 4;
+   * @generated from field: map<string, recorder.URLMedia> map_mideas = 24;
    */
-  mapTableStream: { [key: string]: TableStream } = {};
+  mapMideas: { [key: string]: URLMedia } = {};
 
-  constructor(data?: PartialMessage<CurrentTable>) {
+  constructor(data?: PartialMessage<CurrentGame>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.CurrentTable";
+  static readonly typeName = "recorder.CurrentGame";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "round", kind: "message", T: RoundRecord, opt: true },
-    { no: 3, name: "shuffle", kind: "message", T: ShuffleRecord, opt: true },
-    { no: 4, name: "map_table_stream", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: TableStream} },
+    { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "shift", kind: "message", T: ShiftRecord, opt: true },
+    { no: 9, name: "round", kind: "message", T: RoundRecord, opt: true },
+    { no: 10, name: "shuffle", kind: "message", T: ShuffleRecord, opt: true },
+    { no: 24, name: "map_mideas", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: URLMedia} },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CurrentTable {
-    return new CurrentTable().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CurrentGame {
+    return new CurrentGame().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CurrentTable {
-    return new CurrentTable().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CurrentGame {
+    return new CurrentGame().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CurrentTable {
-    return new CurrentTable().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CurrentGame {
+    return new CurrentGame().fromJsonString(jsonString, options);
   }
 
-  static equals(a: CurrentTable | PlainMessage<CurrentTable> | undefined, b: CurrentTable | PlainMessage<CurrentTable> | undefined): boolean {
-    return proto3.util.equals(CurrentTable, a, b);
+  static equals(a: CurrentGame | PlainMessage<CurrentGame> | undefined, b: CurrentGame | PlainMessage<CurrentGame> | undefined): boolean {
+    return proto3.util.equals(CurrentGame, a, b);
   }
 }
 
 /**
- * @generated from message recorder.FetchCurrentTableRequest
+ * @generated from message recorder.FetchCurrentGameRequest
  */
-export class FetchCurrentTableRequest extends Message<FetchCurrentTableRequest> {
+export class FetchCurrentGameRequest extends Message<FetchCurrentGameRequest> {
   /**
    * 查詢的Table Code
    *
-   * @generated from field: repeated string table_codes = 1;
+   * @generated from field: repeated string game_codes = 1;
    */
-  tableCodes: string[] = [];
+  gameCodes: string[] = [];
+
+  /**
+   * 返回Shift資訊
+   *
+   * @generated from field: bool shift = 7;
+   */
+  shift = false;
 
   /**
    * 返回Shuffle資訊
    *
-   * @generated from field: bool shuffle = 2;
+   * @generated from field: bool shuffle = 10;
    */
   shuffle = false;
 
@@ -653,46 +817,47 @@ export class FetchCurrentTableRequest extends Message<FetchCurrentTableRequest> 
    */
   stream = false;
 
-  constructor(data?: PartialMessage<FetchCurrentTableRequest>) {
+  constructor(data?: PartialMessage<FetchCurrentGameRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.FetchCurrentTableRequest";
+  static readonly typeName = "recorder.FetchCurrentGameRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "table_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 2, name: "shuffle", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 1, name: "game_codes", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 7, name: "shift", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 10, name: "shuffle", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 3, name: "stream", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchCurrentTableRequest {
-    return new FetchCurrentTableRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchCurrentGameRequest {
+    return new FetchCurrentGameRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchCurrentTableRequest {
-    return new FetchCurrentTableRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchCurrentGameRequest {
+    return new FetchCurrentGameRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchCurrentTableRequest {
-    return new FetchCurrentTableRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchCurrentGameRequest {
+    return new FetchCurrentGameRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: FetchCurrentTableRequest | PlainMessage<FetchCurrentTableRequest> | undefined, b: FetchCurrentTableRequest | PlainMessage<FetchCurrentTableRequest> | undefined): boolean {
-    return proto3.util.equals(FetchCurrentTableRequest, a, b);
+  static equals(a: FetchCurrentGameRequest | PlainMessage<FetchCurrentGameRequest> | undefined, b: FetchCurrentGameRequest | PlainMessage<FetchCurrentGameRequest> | undefined): boolean {
+    return proto3.util.equals(FetchCurrentGameRequest, a, b);
   }
 }
 
 /**
- * @generated from message recorder.FetchCurrentTableResponse
+ * @generated from message recorder.FetchCurrentGameResponse
  */
-export class FetchCurrentTableResponse extends Message<FetchCurrentTableResponse> {
+export class FetchCurrentGameResponse extends Message<FetchCurrentGameResponse> {
   /**
    * Table Code 對應的當下 Current Table
    *
-   * @generated from field: map<string, recorder.CurrentTable> map_current_table = 1;
+   * @generated from field: map<string, recorder.CurrentGame> map_current_games = 1;
    */
-  mapCurrentTable: { [key: string]: CurrentTable } = {};
+  mapCurrentGames: { [key: string]: CurrentGame } = {};
 
   /**
    * 時間戳
@@ -701,32 +866,32 @@ export class FetchCurrentTableResponse extends Message<FetchCurrentTableResponse
    */
   ts?: Timestamp;
 
-  constructor(data?: PartialMessage<FetchCurrentTableResponse>) {
+  constructor(data?: PartialMessage<FetchCurrentGameResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "recorder.FetchCurrentTableResponse";
+  static readonly typeName = "recorder.FetchCurrentGameResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "map_current_table", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: CurrentTable} },
+    { no: 1, name: "map_current_games", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "message", T: CurrentGame} },
     { no: 2, name: "ts", kind: "message", T: Timestamp },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchCurrentTableResponse {
-    return new FetchCurrentTableResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): FetchCurrentGameResponse {
+    return new FetchCurrentGameResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchCurrentTableResponse {
-    return new FetchCurrentTableResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): FetchCurrentGameResponse {
+    return new FetchCurrentGameResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchCurrentTableResponse {
-    return new FetchCurrentTableResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): FetchCurrentGameResponse {
+    return new FetchCurrentGameResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: FetchCurrentTableResponse | PlainMessage<FetchCurrentTableResponse> | undefined, b: FetchCurrentTableResponse | PlainMessage<FetchCurrentTableResponse> | undefined): boolean {
-    return proto3.util.equals(FetchCurrentTableResponse, a, b);
+  static equals(a: FetchCurrentGameResponse | PlainMessage<FetchCurrentGameResponse> | undefined, b: FetchCurrentGameResponse | PlainMessage<FetchCurrentGameResponse> | undefined): boolean {
+    return proto3.util.equals(FetchCurrentGameResponse, a, b);
   }
 }
 
