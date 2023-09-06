@@ -137,6 +137,20 @@ message Result {
 
 }
 
+// 多媒體
+message URLMedia {
+
+  // 代碼
+  string code = 1;
+
+  // 類型：hls, flv...
+  string mime = 2;
+
+  // url
+  string url = 3;
+  
+}
+
 // 紀錄
 message RoundRecord {
 
@@ -148,47 +162,55 @@ message RoundRecord {
   string game_subtype = 3;
   // 遊戲版本
   string game_version = 4;
+  // 遊戲代碼
+  string game_code = 5;
   // 桌代碼
-  string table_code = 5;
+  string table_code = 6;
   // 排班代碼
-  string shift_code = 6;
+  string shift_code = 7;
   // 此排班局數
-  string shift_round = 7;
+  string shift_round = 8;
   // 局代碼
-  string round_code = 8;
+  string round_code = 9;
   // 使用洗牌代碼
-  string shuffle_code = 9;
+  string shuffle_code = 10;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 10;
+  int64 shuffle_round = 11;
   // 開始時間
-  google.protobuf.Timestamp ts_start = 11;
+  google.protobuf.Timestamp ts_start = 12;
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 12 [(tagger.tags) = "bson:\"seats,omitempty\""];
+  map<int32, Seat> seats = 13 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 玩家入座
   // key: SeatCode, value: 玩家code。
-  map<int32, string> players = 13 [(tagger.tags) = "bson:\"players,omitempty\""];
+  map<int32, string> players = 14 [(tagger.tags) = "bson:\"players,omitempty\""];
   // 標籤
-  map<string, string> tags = 14 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  map<string, string> tags = 15 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
 
   // 歷程
-  repeated Step process = 15 [(tagger.tags) = "bson:\"process,omitempty\""];
+  repeated Step process = 16 [(tagger.tags) = "bson:\"process,omitempty\""];
   // 判讀
-  repeated Result results = 16 [(tagger.tags) = "bson:\"results,omitempty\""];
+  repeated Result results = 17 [(tagger.tags) = "bson:\"results,omitempty\""];
 
+  // 結束
+  bool is_end = 18;
   // 結束時間
-  google.protobuf.Timestamp ts_end = 17 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
+  google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
 
   // 取消
-  optional bool cancel = 18 [(tagger.tags) = "bson:\"cancel,omitempty\""];
+  optional bool cancel = 20 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 取消代碼：CancelReasonCode
-  optional string cancel_code = 19 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
+  optional string cancel_code = 21 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
   // 取消備註
-  optional string cancel_message = 20 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
+  optional string cancel_message = 22 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
+
+  // 附加媒體
+  map<string, URLMedia> mideas = 24;
 
 }
 
 message Deck {
+
   // 卡牌
   CardList cards = 1;
   // 起始位置（削牌後）
@@ -197,6 +219,7 @@ message Deck {
   optional int64 cut_index = 3 [(tagger.tags) = "bson:\"cutIndex,omitempty\""];
   // 目前位置
   int64 index = 4;
+
 }
 
 // 洗牌紀錄
@@ -221,4 +244,36 @@ message ShuffleRecord {
   // cardList
   map<int32, Deck> decks = 11 [(tagger.tags) = "bson:\"decks,omitempty\""];
 
+}
+
+// 排班
+message ShiftRecord {
+
+  // 紀錄ID
+  bytes id = 1  [(tagger.tags) = "bson:\"_id,omitempty\"" ];
+  // 遊戲類型
+  string game_type = 2;
+  // 遊戲子類型
+  string game_subtype = 3;
+  // 遊戲版本
+  string game_version = 4;
+  // 桌代碼
+  string table_code = 5;
+  // 標籤
+  map<string, string> tags = 6 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 7;
+
+  // 洗牌
+  repeated string shuffle_codes = 8;
+  // 執行遊戲局
+  repeated string round_codes = 9;
+
+  // TODO: 路紙
+
+  // 結束
+  bool is_end = 12;
+  // 結束時間
+  google.protobuf.Timestamp ts_end = 13 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
+  
 }

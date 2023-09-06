@@ -12,6 +12,34 @@ message RecordIDResponse {
 
 }
 
+message RecordShiftStartedRequest {
+
+  // 遊戲類型
+  string game_type = 2;
+  // 遊戲子類型
+  string game_subtype = 3;
+  // 遊戲版本
+  string game_version = 4;
+  // 遊戲代碼
+  string game_code = 5;
+  // 桌代碼
+  string table_code = 6;
+  // 班代碼
+  string shift_code = 7;
+  // 時間
+  google.protobuf.Timestamp ts_start = 8;
+
+}
+
+message RecordShiftEndedRequest {
+
+  // 紀錄ID
+  bytes record_id = 1;
+  // 時間
+  google.protobuf.Timestamp ts_end = 5;
+
+}
+
 message RecordShuffleStartedRequest {
 
   // 遊戲類型
@@ -35,8 +63,6 @@ message RecordShuffleDoneRequest {
   bytes record_id = 1;
   // 時間
   google.protobuf.Timestamp ts_done = 5;
-  // 使用洗牌代碼
-  string shuffle_code = 6;
   // 洗牌類型
   // key: ResourceTypeCode；value: 牌靴
   map<int32, Deck> cards = 7;
@@ -51,20 +77,22 @@ message RecordRoundStartRequest {
   string game_subtype = 3;
   // 遊戲版本
   string game_version = 4;
+  // 遊戲代碼
+  string game_code = 5;
   // 桌代碼
-  string table_code = 5;
+  string table_code = 6;
   // 排班代碼
-  string shift_code = 6;
+  string shift_code = 7;
   // 此排班局數
-  string shift_round = 7;
+  string shift_round = 8;
   // 局代碼
-  string round_code = 8;
+  string round_code = 9;
   // 使用洗牌代碼
-  string shuffle_code = 9;
+  string shuffle_code = 10;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 10;
+  int64 shuffle_round = 11;
   // 開始時間
-  google.protobuf.Timestamp ts_start = 11;
+  google.protobuf.Timestamp ts_start = 12;
 
 }
 
@@ -108,8 +136,37 @@ message RecordRoundFinishRequest {
 
 }
 
+// 紀錄路紙
+message RecordRoadmapRequest {
+
+  // 班紀錄ID
+  bytes record_id = 1;
+  // TODO:
+
+}
+
+// 紀錄回放
+message RecordRoundMediaRequest {
+
+  // 遊戲局紀錄ID
+  bytes record_id = 1;
+  // 設定
+  map<string, URLMedia> set = 2;
+  // 增加
+  repeated URLMedia add = 3;
+  // 移除
+  repeated string remove = 4;
+
+}
+
 service RecorderService {
   
+  // 建立新排班
+  rpc RecordShiftStarted(RecordShiftStartedRequest) returns (RecordIDResponse);
+
+  // 排班結束
+  rpc RecordShiftEnded(RecordShiftEndedRequest) returns (google.protobuf.Empty);
+
   // 開始更換牌組
   rpc RecordShuffleStarted(RecordShuffleStartedRequest) returns (RecordIDResponse);
 
@@ -131,4 +188,10 @@ service RecorderService {
   // 結束此局
   rpc RecordRoundFinish(RecordRoundFinishRequest) returns (google.protobuf.Empty);
 
+  // 紀錄路紙
+  rpc RecordRoadmap (RecordRoadmapRequest) returns (google.protobuf.Empty);
+
+  // 紀錄回放
+  rpc RecordRoundVideo(RecordRoundMediaRequest) returns (google.protobuf.Empty);
+  
 }

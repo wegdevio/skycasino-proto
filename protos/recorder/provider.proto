@@ -19,6 +19,39 @@ message RecordQuery {
 
 }
 
+message FetchShiftRecordRequest {
+
+  // 紀錄ID
+  optional bytes record_id = 1;
+  // 遊戲類型
+  optional string game_type = 2;
+  // 遊戲子類型
+  optional string game_subtype = 3;
+  // 遊戲代碼
+  optional string game_code = 5;
+  // 桌代碼
+  optional string table_code = 6;
+
+  // 允許的紀錄ID
+  repeated bytes record_ids = 9;
+  // 允許的遊戲類型
+  repeated string game_types = 10;
+  // 允許的遊戲子類型
+  repeated string game_subtypes = 11;
+  // 允許的遊戲代碼
+  repeated string game_codes = 13;
+  // 允許的桌代碼
+  repeated string table_codes = 14;
+
+  // 查詢限制
+  RecordQuery query = 20;
+
+}
+
+message FetchShiftRecordResponse {
+  repeated ShiftRecord shift_record = 1;
+}
+
 message FetchShuffleRecordRequest {
 
   // 紀錄ID
@@ -27,10 +60,14 @@ message FetchShuffleRecordRequest {
   optional string game_type = 2;
   // 遊戲子類型
   optional string game_subtype = 3;
+  // 遊戲代碼
+  optional string game_code = 5;
   // 桌代碼
-  optional string table_code = 5;
+  optional string table_code = 6;
+  // 班代碼
+  optional string shift_code = 7;
   // 洗牌代碼
-  optional string shuffle_code = 6;
+  optional string shuffle_code = 8;
 
   // 允許的紀錄ID
   repeated bytes record_ids = 9;
@@ -38,13 +75,17 @@ message FetchShuffleRecordRequest {
   repeated string game_types = 10;
   // 允許的遊戲子類型
   repeated string game_subtypes = 11;
+  // 允許的遊戲代碼
+  repeated string game_codes = 13;
   // 允許的桌代碼
-  repeated string table_codes = 13;
+  repeated string table_codes = 14;
+  // 允許的班代碼
+  repeated string shift_codes = 15;
   // 允許的洗牌代碼
-  repeated string shuffle_codes = 14;
+  repeated string shuffle_codes = 16;
 
   // 查詢限制
-  RecordQuery query = 16;
+  RecordQuery query = 20;
 
 }
 
@@ -60,10 +101,14 @@ message FetchRoundRecordRequest {
   optional string game_type = 2;
   // 遊戲子類型
   optional string game_subtype = 3;
+  // 遊戲代碼
+  optional string game_code = 5;
   // 桌代碼
-  optional string table_code = 5;
+  optional string table_code = 6;
+  // 班代碼
+  optional string shift_code = 7;
   // 局代碼
-  optional string round_code = 6;
+  optional string round_code = 8;
 
   // 允許的紀錄ID
   repeated bytes record_ids = 9;
@@ -71,13 +116,17 @@ message FetchRoundRecordRequest {
   repeated string game_types = 10;
   // 允許的遊戲子類型
   repeated string game_subtypes = 11;
+  // 允許的遊戲代碼
+  repeated string game_codes = 13;
   // 允許的桌代碼
-  repeated string table_codes = 13;
+  repeated string table_codes = 14;
+  // 允許的班代碼
+  repeated string shift_codes = 15;
   // 允許的局代碼
-  repeated string round_codes = 14;
+  repeated string round_codes = 16;
 
   // 查詢限制
-  RecordQuery query = 16;
+  RecordQuery query = 20;
 
 }
 
@@ -87,6 +136,9 @@ message FetchRoundRecordResponse {
 
 service RecorderReadService {
   
+  // 讀取班次紀錄
+  rpc FetchShiftRecord(FetchShiftRecordRequest) returns (FetchShiftRecordResponse);
+
   // 讀洗牌紀錄
   rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchShuffleRecordResponse);
 
@@ -96,84 +148,71 @@ service RecorderReadService {
 }
 
 // 遊戲供應
-message TableProvide {
-
-  // 遊戲代碼
-  string game_code = 2;
+message GameProvide {
 
   // 遊戲類型
-  string game_type = 3;
+  string game_type = 2;
 
   // 遊戲子類型
-  string game_subtype = 4;
+  string game_subtype = 3;
 
-  // 桌代碼
-  string table_code = 5;
+  // 遊戲代碼
+  string game_code = 4;
 
   // 標籤
-  map<string, string> tags = 6;
+  map<string, string> tags = 5;
 
   // 維護中
   bool maintenance = 7;
   
 }
 
-message FetchTableProvideListResponse {
+message FetchGameProvideListResponse {
   
   // 桌列表
-  repeated TableProvide table_provides = 1;
+  repeated GameProvide game_provides = 1;
 
 }
 
-message TableStream {
+message CurrentGame {
 
-  // url
-  string url = 1;
-  
-  // 類型：hls, flv...
-  string mime = 2;
+  // 遊戲代碼
+  string game_code = 5;
 
-  // 封面截圖
-  string cover_url = 3;
-  
-  // 封面截圖類型
-  string cover_mime = 4;
+  // 班
+  optional ShiftRecord shift = 7;
 
-}
-
-message CurrentTable {
-
-  // 桌代碼
-  string table_code = 1;
-
-  // 紀錄
-  optional RoundRecord round = 2;
+  // 遊戲局
+  optional RoundRecord round = 9;
 
   // 洗牌
-  optional ShuffleRecord shuffle = 3;
+  optional ShuffleRecord shuffle = 10;
 
-  // 直播網址列表
-  map<string, TableStream> map_table_stream = 4;
+  // 附加媒體
+  map<string, URLMedia> map_mideas = 24;
 
 }
 
-message FetchCurrentTableRequest {
+message FetchCurrentGameRequest {
 
   // 查詢的Table Code
-  repeated string table_codes = 1;
+  repeated string game_codes = 1;
+
+  // 返回Shift資訊
+  bool shift = 7;
 
   // 返回Shuffle資訊
-  bool shuffle = 2;
+  bool shuffle = 10;
 
   // 返回直播網址
   bool stream = 3;
   
 }
 
-message FetchCurrentTableResponse {
+message FetchCurrentGameResponse {
 
   // Table Code 對應的當下 Current Table
-  map<string, CurrentTable> map_current_table = 1;
+  map<string, CurrentGame> map_current_games = 1;
 
   // 時間戳
   google.protobuf.Timestamp ts = 2;
@@ -184,9 +223,9 @@ message FetchCurrentTableResponse {
 service ProviderService {
   
   // 取得即時遊戲列表
-  rpc FetchTableProvideList(google.protobuf.Empty) returns (FetchTableProvideListResponse);
+  rpc FetchTableProvideList(google.protobuf.Empty) returns (FetchGameProvideListResponse);
 
   // 讀即時遊戲桌資訊
-  rpc FetchCurrentTable(FetchCurrentTableRequest) returns (FetchCurrentTableResponse);
+  rpc FetchCurrentGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
 
 }
