@@ -59,10 +59,10 @@ export declare const ProviderService: {
     /**
      * 取得即時遊戲列表
      *
-     * @generated from rpc recorder.ProviderService.FetchTableProvideList
+     * @generated from rpc recorder.ProviderService.FetchGameProvideList
      */
-    readonly fetchTableProvideList: {
-      readonly name: "FetchTableProvideList",
+    readonly fetchGameProvideList: {
+      readonly name: "FetchGameProvideList",
       readonly I: typeof Empty,
       readonly O: typeof FetchGameProvideListResponse,
       readonly kind: MethodKind.Unary,

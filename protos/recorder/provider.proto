@@ -223,7 +223,7 @@ message FetchCurrentGameResponse {
 service ProviderService {
   
   // 取得即時遊戲列表
-  rpc FetchTableProvideList(google.protobuf.Empty) returns (FetchGameProvideListResponse);
+  rpc FetchGameProvideList(google.protobuf.Empty) returns (FetchGameProvideListResponse);
 
   // 讀即時遊戲桌資訊
   rpc FetchCurrentGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);

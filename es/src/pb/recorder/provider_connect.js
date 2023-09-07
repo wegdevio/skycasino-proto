@@ -59,10 +59,10 @@ export const ProviderService = {
     /**
      * 取得即時遊戲列表
      *
-     * @generated from rpc recorder.ProviderService.FetchTableProvideList
+     * @generated from rpc recorder.ProviderService.FetchGameProvideList
      */
-    fetchTableProvideList: {
-      name: "FetchTableProvideList",
+    fetchGameProvideList: {
+      name: "FetchGameProvideList",
       I: Empty,
       O: FetchGameProvideListResponse,
       kind: MethodKind.Unary,
