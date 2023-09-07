@@ -123,21 +123,27 @@ export declare class RecordShuffleStartedRequest extends Message<RecordShuffleSt
      */
     gameVersion: string;
     /**
+     * 遊戲代碼
+     *
+     * @generated from field: string game_code = 5;
+     */
+    gameCode: string;
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: string table_code = 6;
      */
     tableCode: string;
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 6;
+     * @generated from field: string shuffle_code = 10;
      */
     shuffleCode: string;
     /**
      * 時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 7;
+     * @generated from field: google.protobuf.Timestamp ts_start = 12;
      */
     tsStart?: Timestamp;
     constructor(data?: PartialMessage<RecordShuffleStartedRequest>);

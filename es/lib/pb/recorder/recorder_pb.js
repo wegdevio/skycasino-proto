@@ -172,21 +172,27 @@ export class RecordShuffleStartedRequest extends Message {
      */
     gameVersion = "";
     /**
+     * 遊戲代碼
+     *
+     * @generated from field: string game_code = 5;
+     */
+    gameCode = "";
+    /**
      * 桌代碼
      *
-     * @generated from field: string table_code = 5;
+     * @generated from field: string table_code = 6;
      */
     tableCode = "";
     /**
      * 洗牌代碼
      *
-     * @generated from field: string shuffle_code = 6;
+     * @generated from field: string shuffle_code = 10;
      */
     shuffleCode = "";
     /**
      * 時間
      *
-     * @generated from field: google.protobuf.Timestamp ts_start = 7;
+     * @generated from field: google.protobuf.Timestamp ts_start = 12;
      */
     tsStart;
     constructor(data) {
@@ -199,9 +205,10 @@ export class RecordShuffleStartedRequest extends Message {
         { no: 2, name: "game_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 3, name: "game_subtype", kind: "scalar", T: 9 /* ScalarType.STRING */ },
         { no: 4, name: "game_version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 5, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 6, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-        { no: 7, name: "ts_start", kind: "message", T: Timestamp },
+        { no: 5, name: "game_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 6, name: "table_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 10, name: "shuffle_code", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+        { no: 12, name: "ts_start", kind: "message", T: Timestamp },
     ]);
     static fromBinary(bytes, options) {
         return new RecordShuffleStartedRequest().fromBinary(bytes, options);
