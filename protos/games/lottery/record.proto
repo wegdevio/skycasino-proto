@@ -4,7 +4,7 @@ package games.lottery;
 /**
  * The state of the game flow
  */
- enum GameState {
+enum GameState {
     STATE_IDLE = 0;             // Idle
     STATE_START = 1;            // Game Starting
     STATE_COUNTER_START = 2;    // Counuter Started
