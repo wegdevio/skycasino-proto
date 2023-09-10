@@ -16,20 +16,14 @@ jobs:
       contents: write
     secrets: inherit
 
-  echo:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo ${{ needs.version.outputs.version }}
-
-  # build:
-  #   if: github.event.pull_request.merged == true
-  #   needs: version
-  #   uses: sky-platform/workflow/.github/workflows/pnpm_publish.yaml@main
-  #   permissions:
-  #     id-token: write # This is required for requesting the JWT
-  #     contents: read  # This is required for actions/checkout
-  #     packages: write # This is required for publish package to github package
-  #   secrets: inherit
-  #   with:
-  #     VERSION: ${{ needs.version.outputs.version }}
+  build:
+    if: github.event.pull_request.merged == true
+    needs: version
+    uses: sky-platform/workflow/.github/workflows/pnpm_publish.yaml@main
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+      packages: write # This is required for publish package to github package
+    secrets: inherit
+    with:
+      VERSION: ${{ needs.version.outputs.version }}
