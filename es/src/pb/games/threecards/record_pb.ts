@@ -3,7 +3,8 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { proto3 } from "@bufbuild/protobuf";
+import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 
 /**
  * @generated from enum games.threecards.ResourceType
@@ -268,4 +269,508 @@ proto3.util.setEnumType(CancelReason, "games.threecards.CancelReason", [
   { no: 0, name: "CANCEL_REASON_UNSPECIFIED" },
   { no: 1, name: "NO_REASON" },
 ]);
+
+/**
+ * *
+ * The state of the game flow
+ *
+ * @generated from enum games.threecards.GameState
+ */
+export enum GameState {
+  /**
+   * Idle
+   *
+   * @generated from enum value: STATE_IDLE = 0;
+   */
+  STATE_IDLE = 0,
+
+  /**
+   * Game Starting
+   *
+   * @generated from enum value: STATE_START = 1;
+   */
+  STATE_START = 1,
+
+  /**
+   * Counuter Started
+   *
+   * @generated from enum value: STATE_COUNTER_START = 2;
+   */
+  STATE_COUNTER_START = 2,
+
+  /**
+   * Scan the dragon card
+   *
+   * @generated from enum value: STATE_DRAGON = 3;
+   */
+  STATE_DRAGON = 3,
+
+  /**
+   * Scan the phoenix card
+   *
+   * @generated from enum value: STATE_PHOENIX = 4;
+   */
+  STATE_PHOENIX = 4,
+
+  /**
+   * Scan the dragon extra card
+   *
+   * @generated from enum value: STATE_DRAGON_LAST = 5;
+   */
+  STATE_DRAGON_LAST = 5,
+
+  /**
+   * Scan the phoenix extra card
+   *
+   * @generated from enum value: STATE_PHOENIX_LAST = 6;
+   */
+  STATE_PHOENIX_LAST = 6,
+
+  /**
+   * Game Ended
+   *
+   * @generated from enum value: STATE_END = 7;
+   */
+  STATE_END = 7,
+
+  /**
+   * Wait for confirm
+   *
+   * @generated from enum value: STATE_CONFIRM = 8;
+   */
+  STATE_CONFIRM = 8,
+
+  /**
+   * Scane the discard
+   *
+   * @generated from enum value: STATE_DISCARD = 9;
+   */
+  STATE_DISCARD = 9,
+
+  /**
+   * Shuffle cards
+   *
+   * @generated from enum value: STATE_SHUFFLE = 30;
+   */
+  STATE_SHUFFLE = 30,
+}
+// Retrieve enum metadata with: proto3.getEnumType(GameState)
+proto3.util.setEnumType(GameState, "games.threecards.GameState", [
+  { no: 0, name: "STATE_IDLE" },
+  { no: 1, name: "STATE_START" },
+  { no: 2, name: "STATE_COUNTER_START" },
+  { no: 3, name: "STATE_DRAGON" },
+  { no: 4, name: "STATE_PHOENIX" },
+  { no: 5, name: "STATE_DRAGON_LAST" },
+  { no: 6, name: "STATE_PHOENIX_LAST" },
+  { no: 7, name: "STATE_END" },
+  { no: 8, name: "STATE_CONFIRM" },
+  { no: 9, name: "STATE_DISCARD" },
+  { no: 30, name: "STATE_SHUFFLE" },
+]);
+
+/**
+ * WinType_PHOENIX 銀 右 莊
+ * WinType_DRAGON 金 左 閒
+ *
+ * @generated from enum games.threecards.WinType
+ */
+export enum WinType {
+  /**
+   * @generated from enum value: NULL = 0;
+   */
+  NULL = 0,
+
+  /**
+   * @generated from enum value: DRAGON = 1;
+   */
+  DRAGON = 1,
+
+  /**
+   * @generated from enum value: PHOENIX = 2;
+   */
+  PHOENIX = 2,
+
+  /**
+   * @generated from enum value: TIE = 3;
+   */
+  TIE = 3,
+}
+// Retrieve enum metadata with: proto3.getEnumType(WinType)
+proto3.util.setEnumType(WinType, "games.threecards.WinType", [
+  { no: 0, name: "NULL" },
+  { no: 1, name: "DRAGON" },
+  { no: 2, name: "PHOENIX" },
+  { no: 3, name: "TIE" },
+]);
+
+/**
+ * 豹子 > 同花順 > 同花 > 順子 > 對子 > 散牌
+ *
+ * @generated from enum games.threecards.CardStyle
+ */
+export enum CardStyle {
+  /**
+   * 散牌
+   *
+   * @generated from enum value: NONE = 0;
+   */
+  NONE = 0,
+
+  /**
+   * 對子
+   *
+   * @generated from enum value: PAIR = 1;
+   */
+  PAIR = 1,
+
+  /**
+   * 順子
+   *
+   * @generated from enum value: STRAIGHT = 2;
+   */
+  STRAIGHT = 2,
+
+  /**
+   * 同花
+   *
+   * @generated from enum value: FLUSH = 3;
+   */
+  FLUSH = 3,
+
+  /**
+   * 順子
+   *
+   * @generated from enum value: STRAIGHTF = 4;
+   */
+  STRAIGHTF = 4,
+
+  /**
+   * 豹子
+   *
+   * @generated from enum value: LEOPARD = 5;
+   */
+  LEOPARD = 5,
+
+  /**
+   * 豹子殺手
+   *
+   * @generated from enum value: LEOPARD_KILLER = 6;
+   */
+  LEOPARD_KILLER = 6,
+}
+// Retrieve enum metadata with: proto3.getEnumType(CardStyle)
+proto3.util.setEnumType(CardStyle, "games.threecards.CardStyle", [
+  { no: 0, name: "NONE" },
+  { no: 1, name: "PAIR" },
+  { no: 2, name: "STRAIGHT" },
+  { no: 3, name: "FLUSH" },
+  { no: 4, name: "STRAIGHTF" },
+  { no: 5, name: "LEOPARD" },
+  { no: 6, name: "LEOPARD_KILLER" },
+]);
+
+/**
+ * *
+ * The status fo the current game.
+ *
+ * @generated from message games.threecards.GameStatus
+ */
+export class GameStatus extends Message<GameStatus> {
+  /**
+   * Unique tableid
+   *
+   * @generated from field: string sessionID = 1;
+   */
+  sessionID = "";
+
+  /**
+   * Unique session for the game
+   *
+   * @generated from field: string gameRoundID = 2;
+   */
+  gameRoundID = "";
+
+  /**
+   * Unique tableid
+   *
+   * @generated from field: string tableID = 3;
+   */
+  tableID = "";
+
+  /**
+   * State of the game
+   *
+   * @generated from field: games.threecards.GameState state = 4;
+   */
+  state = GameState.STATE_IDLE;
+
+  /**
+   * Time when game start
+   *
+   * @generated from field: int64 startTime = 5;
+   */
+  startTime = protoInt64.zero;
+
+  /**
+   * Shoe ID
+   *
+   * @generated from field: string shoeID = 6;
+   */
+  shoeID = "";
+
+  /**
+   * @generated from field: int32 shoe = 7;
+   */
+  shoe = 0;
+
+  /**
+   * @generated from field: int32 round = 8;
+   */
+  round = 0;
+
+  /**
+   * Time when game start
+   *
+   * @generated from field: int64 shuffleTime = 9;
+   */
+  shuffleTime = protoInt64.zero;
+
+  /**
+   * Coundown value
+   *
+   * @generated from field: int32 countdown = 10;
+   */
+  countdown = 0;
+
+  /**
+   * If redcard scan
+   *
+   * @generated from field: bool redcard = 11;
+   */
+  redcard = false;
+
+  /**
+   * game specify information
+   *
+   * @generated from field: string dragon1 = 20;
+   */
+  dragon1 = "";
+
+  /**
+   * @generated from field: string dragon2 = 21;
+   */
+  dragon2 = "";
+
+  /**
+   * @generated from field: string dragon3 = 22;
+   */
+  dragon3 = "";
+
+  /**
+   * @generated from field: string phoenix1 = 23;
+   */
+  phoenix1 = "";
+
+  /**
+   * @generated from field: string phoenix2 = 24;
+   */
+  phoenix2 = "";
+
+  /**
+   * @generated from field: string phoenix3 = 25;
+   */
+  phoenix3 = "";
+
+  /**
+   * @generated from field: map<string, string> dragonBarcode = 26;
+   */
+  dragonBarcode: { [key: string]: string } = {};
+
+  /**
+   * @generated from field: map<string, string> phoenixBarcode = 27;
+   */
+  phoenixBarcode: { [key: string]: string } = {};
+
+  /**
+   * results
+   *
+   * Wintype
+   *
+   * @generated from field: games.threecards.WinType winType = 30;
+   */
+  winType = WinType.NULL;
+
+  /**
+   * @generated from field: string dragonResult = 31;
+   */
+  dragonResult = "";
+
+  /**
+   * @generated from field: string phoenixResult = 32;
+   */
+  phoenixResult = "";
+
+  /**
+   * @generated from field: games.threecards.CardStyle dragonResultInt = 33;
+   */
+  dragonResultInt = CardStyle.NONE;
+
+  /**
+   * @generated from field: games.threecards.CardStyle phoenixResultInt = 34;
+   */
+  phoenixResultInt = CardStyle.NONE;
+
+  /**
+   * @generated from field: string dragonWinValue = 35;
+   */
+  dragonWinValue = "";
+
+  /**
+   * @generated from field: string phoenixWinValue = 36;
+   */
+  phoenixWinValue = "";
+
+  /**
+   * store the bardcodehash for that round
+   *
+   * @generated from field: map<string, string> barcodeHash = 37;
+   */
+  barcodeHash: { [key: string]: string } = {};
+
+  /**
+   * store the bardcodehash SN for that round
+   *
+   * @generated from field: map<string, string> barcodeSN = 38;
+   */
+  barcodeSN: { [key: string]: string } = {};
+
+  /**
+   * blockchain
+   *
+   * masked cards sn slice for blockchan
+   *
+   * @generated from field: repeated string maskedCardsSN = 103;
+   */
+  maskedCardsSN: string[] = [];
+
+  /**
+   * sha256 cards from masked cards sn
+   *
+   * @generated from field: repeated string hashedCards = 104;
+   */
+  hashedCards: string[] = [];
+
+  /**
+   * show first card boolean when new shoe
+   *
+   * @generated from field: bool showFirstCard = 105;
+   */
+  showFirstCard = false;
+
+  /**
+   * first card of the shoe
+   *
+   * @generated from field: string firstCard = 106;
+   */
+  firstCard = "";
+
+  /**
+   * next card to show (i.e. first maskedCardsSN haven't been shown's index)
+   *
+   * @generated from field: int32 currentCardIndex = 107;
+   */
+  currentCardIndex = 0;
+
+  /**
+   * the red card index of the shoe
+   *
+   * @generated from field: int32 redCardIndex = 108;
+   */
+  redCardIndex = 0;
+
+  /**
+   * cosmos blockchain id for the shoe
+   *
+   * @generated from field: string cosmosShoeID = 109;
+   */
+  cosmosShoeID = "";
+
+  /**
+   * length of hashedCards
+   *
+   * @generated from field: int32 hashedLength = 110;
+   */
+  hashedLength = 0;
+
+  /**
+   * Lucky Number and payout ratio
+   *
+   * @generated from field: map<string, int32> lucky = 150;
+   */
+  lucky: { [key: string]: number } = {};
+
+  constructor(data?: PartialMessage<GameStatus>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "games.threecards.GameStatus";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sessionID", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "gameRoundID", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "tableID", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "state", kind: "enum", T: proto3.getEnumType(GameState) },
+    { no: 5, name: "startTime", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 6, name: "shoeID", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "shoe", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 8, name: "round", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 9, name: "shuffleTime", kind: "scalar", T: 3 /* ScalarType.INT64 */ },
+    { no: 10, name: "countdown", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 11, name: "redcard", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 20, name: "dragon1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 21, name: "dragon2", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 22, name: "dragon3", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 23, name: "phoenix1", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 24, name: "phoenix2", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 25, name: "phoenix3", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 26, name: "dragonBarcode", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 27, name: "phoenixBarcode", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 30, name: "winType", kind: "enum", T: proto3.getEnumType(WinType) },
+    { no: 31, name: "dragonResult", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 32, name: "phoenixResult", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 33, name: "dragonResultInt", kind: "enum", T: proto3.getEnumType(CardStyle) },
+    { no: 34, name: "phoenixResultInt", kind: "enum", T: proto3.getEnumType(CardStyle) },
+    { no: 35, name: "dragonWinValue", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 36, name: "phoenixWinValue", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 37, name: "barcodeHash", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 38, name: "barcodeSN", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 9 /* ScalarType.STRING */} },
+    { no: 103, name: "maskedCardsSN", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 104, name: "hashedCards", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 105, name: "showFirstCard", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 106, name: "firstCard", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 107, name: "currentCardIndex", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 108, name: "redCardIndex", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 109, name: "cosmosShoeID", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 110, name: "hashedLength", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 150, name: "lucky", kind: "map", K: 9 /* ScalarType.STRING */, V: {kind: "scalar", T: 5 /* ScalarType.INT32 */} },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GameStatus {
+    return new GameStatus().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GameStatus {
+    return new GameStatus().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GameStatus {
+    return new GameStatus().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GameStatus | PlainMessage<GameStatus> | undefined, b: GameStatus | PlainMessage<GameStatus> | undefined): boolean {
+    return proto3.util.equals(GameStatus, a, b);
+  }
+}
 
