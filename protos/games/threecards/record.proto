@@ -85,4 +85,5 @@ enum CancelReason {
   CANCEL_REASON_UNSPECIFIED = 0;
   // 取消說明原因
   NO_REASON = 1;
+  
 }

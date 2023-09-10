@@ -72,7 +72,7 @@ enum Seat {
   PLAYER2 = 4;
   // 玩家3
   PLAYER3 = 5;
-  // Dealer
+  // Dealer 
   DEALER = 6;
   // Pitboss
   PITBOSS = 9;
@@ -98,5 +98,5 @@ enum CancelReason {
   CANCEL_REASON_UNSPECIFIED = 0;
   // 取消說明原因
   NO_REASON = 1;
-
+  
 }
