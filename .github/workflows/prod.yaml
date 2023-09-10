@@ -27,5 +27,5 @@ jobs:
       packages: write # This is required for publish package to github package
     secrets: inherit
     with:
-      VERSION: ${{ needs.version.outputs.version }}
+      version: ${{ needs.version.outputs.version }}
         

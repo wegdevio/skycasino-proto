@@ -1,6 +1,6 @@
 {
   "name": "@sky-platform/skycasino-proto",
-  "version": "0.3.0-alpha.2",
+  "version": "0.2.0",
   "description": "skycasino typescript esnext lib",
   "author": "Sky",
   "repository": "https://github.com/sky-platform/skycasino-proto",
