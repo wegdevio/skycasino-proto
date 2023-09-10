@@ -15,7 +15,9 @@
   "scripts": {
     "gen:go": "buf generate",
     "gen:gotag": "buf generate --template buf.gen.tag.yaml",
-    "prepare": "rm -rf es/lib & rm -rf es/src/pb & buf generate --template buf.gen.eslib.yaml && tsc"
+    "gen:es": "buf generate --template buf.gen.eslib.yaml",
+    "clean": "rm -rf es/lib & rm -rf es/src/pb",
+    "build": "tsc"
   },
   "devDependencies": {
     "typescript": "^5.1.6"

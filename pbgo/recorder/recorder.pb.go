@@ -28,7 +28,7 @@ type RecordIDResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 }
 
 func (x *RecordIDResponse) Reset() {
@@ -76,19 +76,19 @@ type RecordShiftStartedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 遊戲類型
-	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"game_subtype,omitempty"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"game_version,omitempty"`
+	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
-	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"game_code,omitempty"`
+	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"table_code,omitempty"`
+	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
-	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shift_code,omitempty"`
+	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" yaml:"shiftCode" bson:"shiftCode"`
 	// 時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ts_start,json=tsStart,proto3" json:"ts_start,omitempty"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 }
 
 func (x *RecordShiftStartedRequest) Reset() {
@@ -178,9 +178,9 @@ type RecordShiftEndedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 時間
-	TsEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_end,json=tsEnd,proto3" json:"ts_end,omitempty"`
+	TsEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd" yaml:"tsEnd"`
 }
 
 func (x *RecordShiftEndedRequest) Reset() {
@@ -235,19 +235,19 @@ type RecordShuffleStartedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 遊戲類型
-	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"game_subtype,omitempty"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"game_version,omitempty"`
+	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
-	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"game_code,omitempty"`
+	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"table_code,omitempty"`
+	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 洗牌代碼
-	ShuffleCode string `protobuf:"bytes,10,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffle_code,omitempty"`
+	ShuffleCode string `protobuf:"bytes,10,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"ts_start,omitempty"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 }
 
 func (x *RecordShuffleStartedRequest) Reset() {
@@ -337,12 +337,12 @@ type RecordShuffleDoneRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 時間
-	TsDone *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_done,json=tsDone,proto3" json:"ts_done,omitempty"`
+	TsDone *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_done,json=tsDone,proto3" json:"tsDone" bson:"tsDone" yaml:"tsDone"`
 	// 洗牌類型
 	// key: ResourceTypeCode；value: 牌靴
-	Cards map[int32]*Deck `protobuf:"bytes,7,rep,name=cards,proto3" json:"cards,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Cards map[int32]*Deck `protobuf:"bytes,7,rep,name=cards,proto3" json:"cards" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"cards" yaml:"cards"`
 }
 
 func (x *RecordShuffleDoneRequest) Reset() {
@@ -404,27 +404,27 @@ type RecordRoundStartRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 遊戲類型
-	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"game_type,omitempty"`
+	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"game_subtype,omitempty"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"game_version,omitempty"`
+	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
-	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"game_code,omitempty"`
+	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"table_code,omitempty"`
+	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 排班代碼
-	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shift_code,omitempty"`
+	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 此排班局數
-	ShiftRound string `protobuf:"bytes,8,opt,name=shift_round,json=shiftRound,proto3" json:"shift_round,omitempty"`
+	ShiftRound string `protobuf:"bytes,8,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" bson:"shiftRound" yaml:"shiftRound"`
 	// 局代碼
-	RoundCode string `protobuf:"bytes,9,opt,name=round_code,json=roundCode,proto3" json:"round_code,omitempty"`
+	RoundCode string `protobuf:"bytes,9,opt,name=round_code,json=roundCode,proto3" json:"roundCode" yaml:"roundCode" bson:"roundCode"`
 	// 使用洗牌代碼
-	ShuffleCode string `protobuf:"bytes,10,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffle_code,omitempty"`
+	ShuffleCode string `protobuf:"bytes,10,opt,name=shuffle_code,json=shuffleCode,proto3" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 使用此洗牌第幾局，從1開始計算
-	ShuffleRound int64 `protobuf:"varint,11,opt,name=shuffle_round,json=shuffleRound,proto3" json:"shuffle_round,omitempty"`
+	ShuffleRound int64 `protobuf:"varint,11,opt,name=shuffle_round,json=shuffleRound,proto3" json:"shuffleRound" bson:"shuffleRound" yaml:"shuffleRound"`
 	// 開始時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"ts_start,omitempty"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 }
 
 func (x *RecordRoundStartRequest) Reset() {
@@ -542,9 +542,9 @@ type RecordRoundStepsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 步驟
-	Steps []*Step `protobuf:"bytes,5,rep,name=steps,proto3" json:"steps,omitempty"`
+	Steps []*Step `protobuf:"bytes,5,rep,name=steps,proto3" json:"steps" bson:"steps" yaml:"steps"`
 }
 
 func (x *RecordRoundStepsRequest) Reset() {
@@ -599,9 +599,9 @@ type RecordRoundResultsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 判讀結果
-	Results []*Result `protobuf:"bytes,6,rep,name=results,proto3" json:"results,omitempty"`
+	Results []*Result `protobuf:"bytes,6,rep,name=results,proto3" json:"results" bson:"results" yaml:"results"`
 }
 
 func (x *RecordRoundResultsRequest) Reset() {
@@ -656,13 +656,13 @@ type RecordRoundCancelRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
-	TsCancel *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_cancel,json=tsCancel,proto3" json:"ts_cancel,omitempty"`
+	TsCancel *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_cancel,json=tsCancel,proto3" json:"tsCancel" bson:"tsCancel" yaml:"tsCancel"`
 	// 取消代碼
-	CancelCode string `protobuf:"bytes,6,opt,name=cancel_code,json=cancelCode,proto3" json:"cancel_code,omitempty"`
+	CancelCode string `protobuf:"bytes,6,opt,name=cancel_code,json=cancelCode,proto3" json:"cancelCode" bson:"cancelCode" yaml:"cancelCode"`
 	// 取消備註
-	CancelMessage string `protobuf:"bytes,7,opt,name=cancel_message,json=cancelMessage,proto3" json:"cancel_message,omitempty"`
+	CancelMessage string `protobuf:"bytes,7,opt,name=cancel_message,json=cancelMessage,proto3" json:"cancelMessage" yaml:"cancelMessage" bson:"cancelMessage"`
 }
 
 func (x *RecordRoundCancelRequest) Reset() {
@@ -731,9 +731,9 @@ type RecordRoundFinishRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
-	TsFinish *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_finish,json=tsFinish,proto3" json:"ts_finish,omitempty"`
+	TsFinish *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_finish,json=tsFinish,proto3" json:"tsFinish" bson:"tsFinish" yaml:"tsFinish"`
 }
 
 func (x *RecordRoundFinishRequest) Reset() {
@@ -789,7 +789,7 @@ type RecordRoadmapRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 班紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"` // TODO:
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"` // TODO:
 }
 
 func (x *RecordRoadmapRequest) Reset() {
@@ -838,13 +838,13 @@ type RecordRoundMediaRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 遊戲局紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"record_id,omitempty"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 設定
-	Set map[string]*URLMedia `protobuf:"bytes,2,rep,name=set,proto3" json:"set,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Set map[string]*URLMedia `protobuf:"bytes,2,rep,name=set,proto3" json:"set" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"set" yaml:"set"`
 	// 增加
-	Add []*URLMedia `protobuf:"bytes,3,rep,name=add,proto3" json:"add,omitempty"`
+	Add []*URLMedia `protobuf:"bytes,3,rep,name=add,proto3" json:"add" bson:"add" yaml:"add"`
 	// 移除
-	Remove []string `protobuf:"bytes,4,rep,name=remove,proto3" json:"remove,omitempty"`
+	Remove []string `protobuf:"bytes,4,rep,name=remove,proto3" json:"remove" bson:"remove" yaml:"remove"`
 }
 
 func (x *RecordRoundMediaRequest) Reset() {
