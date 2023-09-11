@@ -13,7 +13,7 @@ on:  # 觸發條件
 jobs:
 
   version:  # 工作名稱
-    uses: sky-platform/workflow/.github/workflows/beta_tag.yaml@main
+    uses: sky-platform/workflow/.github/workflows/tag-beta.yaml@main
     permissions:
       contents: read
     secrets: inherit
@@ -21,7 +21,7 @@ jobs:
   build:
     if: github.event.pull_request.merged == true
     needs: version
-    uses: sky-platform/workflow/.github/workflows/pnpm_publish.yaml@main
+    uses: sky-platform/workflow/.github/workflows/packages-pnpm.yaml@main
     permissions:
       id-token: write # This is required for requesting the JWT
       contents: read  # This is required for actions/checkout
