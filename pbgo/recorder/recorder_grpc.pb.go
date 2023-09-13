@@ -24,6 +24,7 @@ const (
 	RecorderService_RecordShiftEnded_FullMethodName     = "/recorder.RecorderService/RecordShiftEnded"
 	RecorderService_RecordShuffleStarted_FullMethodName = "/recorder.RecorderService/RecordShuffleStarted"
 	RecorderService_RecordShuffleDone_FullMethodName    = "/recorder.RecorderService/RecordShuffleDone"
+	RecorderService_RecordShuffleEnd_FullMethodName     = "/recorder.RecorderService/RecordShuffleEnd"
 	RecorderService_RecordRoundStart_FullMethodName     = "/recorder.RecorderService/RecordRoundStart"
 	RecorderService_RecordRoundSteps_FullMethodName     = "/recorder.RecorderService/RecordRoundSteps"
 	RecorderService_RecordRoundResults_FullMethodName   = "/recorder.RecorderService/RecordRoundResults"
@@ -45,6 +46,8 @@ type RecorderServiceClient interface {
 	RecordShuffleStarted(ctx context.Context, in *RecordShuffleStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
 	// 更換牌組完畢
 	RecordShuffleDone(ctx context.Context, in *RecordShuffleDoneRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	// 使用牌組完畢
+	RecordShuffleEnd(ctx context.Context, in *RecordShuffleDoneRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 開啟新局
 	RecordRoundStart(ctx context.Context, in *RecordRoundStartRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
 	// 記錄步驟
@@ -99,6 +102,15 @@ func (c *recorderServiceClient) RecordShuffleStarted(ctx context.Context, in *Re
 func (c *recorderServiceClient) RecordShuffleDone(ctx context.Context, in *RecordShuffleDoneRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, RecorderService_RecordShuffleDone_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *recorderServiceClient) RecordShuffleEnd(ctx context.Context, in *RecordShuffleDoneRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, RecorderService_RecordShuffleEnd_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -180,6 +192,8 @@ type RecorderServiceServer interface {
 	RecordShuffleStarted(context.Context, *RecordShuffleStartedRequest) (*RecordIDResponse, error)
 	// 更換牌組完畢
 	RecordShuffleDone(context.Context, *RecordShuffleDoneRequest) (*emptypb.Empty, error)
+	// 使用牌組完畢
+	RecordShuffleEnd(context.Context, *RecordShuffleDoneRequest) (*emptypb.Empty, error)
 	// 開啟新局
 	RecordRoundStart(context.Context, *RecordRoundStartRequest) (*RecordIDResponse, error)
 	// 記錄步驟
@@ -212,6 +226,9 @@ func (UnimplementedRecorderServiceServer) RecordShuffleStarted(context.Context, 
 }
 func (UnimplementedRecorderServiceServer) RecordShuffleDone(context.Context, *RecordShuffleDoneRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordShuffleDone not implemented")
+}
+func (UnimplementedRecorderServiceServer) RecordShuffleEnd(context.Context, *RecordShuffleDoneRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordShuffleEnd not implemented")
 }
 func (UnimplementedRecorderServiceServer) RecordRoundStart(context.Context, *RecordRoundStartRequest) (*RecordIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundStart not implemented")
@@ -315,6 +332,24 @@ func _RecorderService_RecordShuffleDone_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RecorderServiceServer).RecordShuffleDone(ctx, req.(*RecordShuffleDoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RecorderService_RecordShuffleEnd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordShuffleDoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RecorderServiceServer).RecordShuffleEnd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RecorderService_RecordShuffleEnd_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RecorderServiceServer).RecordShuffleEnd(ctx, req.(*RecordShuffleDoneRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -467,6 +502,10 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecordShuffleDone",
 			Handler:    _RecorderService_RecordShuffleDone_Handler,
+		},
+		{
+			MethodName: "RecordShuffleEnd",
+			Handler:    _RecorderService_RecordShuffleEnd_Handler,
 		},
 		{
 			MethodName: "RecordRoundStart",

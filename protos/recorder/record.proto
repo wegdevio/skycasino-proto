@@ -243,6 +243,8 @@ message ShuffleRecord {
   google.protobuf.Timestamp ts_end = 8 [(tagger.tags) = "bson:\"tsEnd,omitempty\""];
   // cardList
   map<int32, Deck> decks = 11 [(tagger.tags) = "bson:\"decks,omitempty\""];
+  // 已經完成
+  bool is_end = 12;
 
 }
 

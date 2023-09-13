@@ -8,3 +8,5 @@
 main
 
 node_modules
+es/lib
+es/src/pb
