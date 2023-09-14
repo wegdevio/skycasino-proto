@@ -15,7 +15,7 @@ jobs:
   version:  # 工作名稱
     uses: sky-platform/workflow/.github/workflows/tag-beta.yaml@main
     permissions:
-      contents: read
+      contents: write
     secrets: inherit
 
   build:
