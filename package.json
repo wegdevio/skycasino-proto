@@ -1,6 +1,6 @@
 {
   "name": "@sky-platform/skycasino-proto",
-  "version": "0.3.0-alpha.2",
+  "version": "0.2.0",
   "description": "skycasino typescript esnext lib",
   "author": "Sky",
   "repository": "https://github.com/sky-platform/skycasino-proto",
@@ -15,9 +15,8 @@
   "scripts": {
     "gen:go": "buf generate",
     "gen:gotag": "buf generate --template buf.gen.tag.yaml",
-    "gen:es": "buf generate --template buf.gen.eslib.yaml",
-    "clean": "rm -rf es/lib & rm -rf es/src/pb",
-    "build": "tsc"
+    "prepare": "rm -rf es/lib & rm -rf es/src/pb & buf generate --template buf.gen.eslib.yaml && tsc",
+    "clean:es": "rm -rf es/lib & rm -rf es/src/pb"
   },
   "devDependencies": {
     "typescript": "^5.1.6"

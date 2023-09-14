@@ -1,0 +1,31 @@
+# Beta 是需求測試階段，當releases/* 內測完成，對main發起pull request，或更新pull request 程式時，進行打包並部署。部署完成由需求方測試，或開放至uat環境供外部測試。
+name: Beta  # 工作流程的名稱
+
+on:  # 觸發條件
+  pull_request:  # 當有 pull_request 事件時觸發
+    branches:  # 僅針對特定分支
+    - master
+    types:
+    - opened
+    - reopened
+    - synchronize
+
+jobs:
+
+  version:  # 工作名稱
+    uses: sky-platform/workflow/.github/workflows/tag-beta.yaml@main
+    permissions:
+      contents: read
+    secrets: inherit
+
+  build:
+    if: github.event.pull_request.merged == true
+    needs: version
+    uses: sky-platform/workflow/.github/workflows/packages-pnpm.yaml@main
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+      packages: write # This is required for publish package to github package
+    secrets: inherit
+    with:
+      version: ${{ needs.version.outputs.version }}

@@ -42,7 +42,7 @@ enum Seat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
-  // Dealer
+  // Dealer 
   DEALER = 1;
   // Pitboss
   PITBOSS = 9;

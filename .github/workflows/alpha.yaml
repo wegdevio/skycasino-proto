@@ -1,0 +1,29 @@
+# Alpha 是內測階段，當features/* 或是 bugfix/*分支，使用pull request 方式合到release/*時，打包Alpha進行部署並通知QAteam測試
+name: Alpha  # 工作流程的名稱
+
+on:               # 觸發條件
+  pull_request:   # 當有 pull_request 事件時觸發
+    branches:     # 僅針對特定分支
+    - releases/**
+    types:
+    - closed      # PR 關閉才會執行
+
+jobs:
+
+  version:  # 工作名稱
+    uses: sky-platform/workflow/.github/workflows/tag-alpha.yaml@main
+    permissions:
+      contents: write
+    secrets: inherit
+
+  build:
+    if: github.event.pull_request.merged == true
+    needs: version
+    uses: sky-platform/workflow/.github/workflows/packages-pnpm.yaml@main
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+      packages: write # This is required for publish package to github package
+    secrets: inherit
+    with:
+      version: ${{ needs.version.outputs.version }}

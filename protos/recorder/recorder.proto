@@ -71,6 +71,18 @@ message RecordShuffleDoneRequest {
 
 }
 
+message RecordShuffleEndRequest {
+
+  // 紀錄ID
+  bytes record_id = 1;
+  // 時間
+  google.protobuf.Timestamp ts_end = 5;
+  // 洗牌類型
+  // key: ResourceTypeCode；value: 牌靴
+  map<int32, Deck> cards = 7;
+
+}
+
 message RecordRoundStartRequest {
 
   // 遊戲類型
@@ -174,6 +186,9 @@ service RecorderService {
 
   // 更換牌組完畢
   rpc RecordShuffleDone(RecordShuffleDoneRequest) returns (google.protobuf.Empty);
+
+  // 使用牌組完畢
+  rpc RecordShuffleEnd(RecordShuffleDoneRequest) returns (google.protobuf.Empty);
 
   // 開啟新局
   rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordIDResponse);
