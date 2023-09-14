@@ -19,7 +19,6 @@ jobs:
     secrets: inherit
 
   build:
-    if: github.event.pull_request.merged == true
     needs: version
     uses: sky-platform/workflow/.github/workflows/packages-pnpm.yaml@main
     permissions:
