@@ -105,7 +105,7 @@ type FetchShiftRecordRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3,oneof" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 遊戲類型
-	GameType *string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3,oneof" json:"gameType" bson:"gameType" yaml:"gameType"`
+	GameType *string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3,oneof" json:"gameType" yaml:"gameType" bson:"gameType"`
 	// 遊戲子類型
 	GameSubtype *string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3,oneof" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲代碼
@@ -119,7 +119,7 @@ type FetchShiftRecordRequest struct {
 	// 允許的遊戲子類型
 	GameSubtypes []string `protobuf:"bytes,11,rep,name=game_subtypes,json=gameSubtypes,proto3" json:"gameSubtypes" bson:"gameSubtypes" yaml:"gameSubtypes"`
 	// 允許的遊戲代碼
-	GameCodes []string `protobuf:"bytes,13,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" yaml:"gameCodes" bson:"gameCodes"`
+	GameCodes []string `protobuf:"bytes,13,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" bson:"gameCodes" yaml:"gameCodes"`
 	// 允許的桌代碼
 	TableCodes []string `protobuf:"bytes,14,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" bson:"tableCodes" yaml:"tableCodes"`
 	// 查詢限制
@@ -290,7 +290,7 @@ type FetchShuffleRecordRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3,oneof" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 遊戲類型
-	GameType *string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3,oneof" json:"gameType" yaml:"gameType" bson:"gameType"`
+	GameType *string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3,oneof" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
 	GameSubtype *string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3,oneof" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲代碼
@@ -302,21 +302,21 @@ type FetchShuffleRecordRequest struct {
 	// 洗牌代碼
 	ShuffleCode *string `protobuf:"bytes,8,opt,name=shuffle_code,json=shuffleCode,proto3,oneof" json:"shuffleCode" bson:"shuffleCode" yaml:"shuffleCode"`
 	// 允許的紀錄ID
-	RecordIds [][]byte `protobuf:"bytes,9,rep,name=record_ids,json=recordIds,proto3" json:"recordIds" yaml:"recordIds" bson:"recordIds"`
+	RecordIds [][]byte `protobuf:"bytes,9,rep,name=record_ids,json=recordIds,proto3" json:"recordIds" bson:"recordIds" yaml:"recordIds"`
 	// 允許的遊戲類型
 	GameTypes []string `protobuf:"bytes,10,rep,name=game_types,json=gameTypes,proto3" json:"gameTypes" bson:"gameTypes" yaml:"gameTypes"`
 	// 允許的遊戲子類型
-	GameSubtypes []string `protobuf:"bytes,11,rep,name=game_subtypes,json=gameSubtypes,proto3" json:"gameSubtypes" yaml:"gameSubtypes" bson:"gameSubtypes"`
+	GameSubtypes []string `protobuf:"bytes,11,rep,name=game_subtypes,json=gameSubtypes,proto3" json:"gameSubtypes" bson:"gameSubtypes" yaml:"gameSubtypes"`
 	// 允許的遊戲代碼
 	GameCodes []string `protobuf:"bytes,13,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" bson:"gameCodes" yaml:"gameCodes"`
 	// 允許的桌代碼
-	TableCodes []string `protobuf:"bytes,14,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" yaml:"tableCodes" bson:"tableCodes"`
+	TableCodes []string `protobuf:"bytes,14,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" bson:"tableCodes" yaml:"tableCodes"`
 	// 允許的班代碼
-	ShiftCodes []string `protobuf:"bytes,15,rep,name=shift_codes,json=shiftCodes,proto3" json:"shiftCodes" yaml:"shiftCodes" bson:"shiftCodes"`
+	ShiftCodes []string `protobuf:"bytes,15,rep,name=shift_codes,json=shiftCodes,proto3" json:"shiftCodes" bson:"shiftCodes" yaml:"shiftCodes"`
 	// 允許的洗牌代碼
 	ShuffleCodes []string `protobuf:"bytes,16,rep,name=shuffle_codes,json=shuffleCodes,proto3" json:"shuffleCodes" bson:"shuffleCodes" yaml:"shuffleCodes"`
 	// 查詢限制
-	Query *RecordQuery `protobuf:"bytes,20,opt,name=query,proto3" json:"query" yaml:"query" bson:"query"`
+	Query *RecordQuery `protobuf:"bytes,20,opt,name=query,proto3" json:"query" bson:"query" yaml:"query"`
 }
 
 func (x *FetchShuffleRecordRequest) Reset() {
@@ -517,7 +517,7 @@ type FetchRoundRecordRequest struct {
 	// 遊戲代碼
 	GameCode *string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3,oneof" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode *string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3,oneof" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
+	TableCode *string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3,oneof" json:"tableCode" yaml:"tableCode" bson:"tableCode"`
 	// 班代碼
 	ShiftCode *string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3,oneof" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 局代碼
@@ -525,7 +525,7 @@ type FetchRoundRecordRequest struct {
 	// 允許的紀錄ID
 	RecordIds [][]byte `protobuf:"bytes,9,rep,name=record_ids,json=recordIds,proto3" json:"recordIds" bson:"recordIds" yaml:"recordIds"`
 	// 允許的遊戲類型
-	GameTypes []string `protobuf:"bytes,10,rep,name=game_types,json=gameTypes,proto3" json:"gameTypes" bson:"gameTypes" yaml:"gameTypes"`
+	GameTypes []string `protobuf:"bytes,10,rep,name=game_types,json=gameTypes,proto3" json:"gameTypes" yaml:"gameTypes" bson:"gameTypes"`
 	// 允許的遊戲子類型
 	GameSubtypes []string `protobuf:"bytes,11,rep,name=game_subtypes,json=gameSubtypes,proto3" json:"gameSubtypes" bson:"gameSubtypes" yaml:"gameSubtypes"`
 	// 允許的遊戲代碼
@@ -863,9 +863,9 @@ type CurrentGame struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 遊戲代碼
-	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
+	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" yaml:"gameCode" bson:"gameCode"`
 	// 班
-	Shift *ShiftRecord `protobuf:"bytes,7,opt,name=shift,proto3,oneof" json:"shift" bson:"shift" yaml:"shift"`
+	Shift *ShiftRecord `protobuf:"bytes,7,opt,name=shift,proto3,oneof" json:"shift" yaml:"shift" bson:"shift"`
 	// 遊戲局
 	Round *RoundRecord `protobuf:"bytes,9,opt,name=round,proto3,oneof" json:"round" bson:"round" yaml:"round"`
 	// 洗牌
@@ -949,7 +949,7 @@ type FetchCurrentGameRequest struct {
 	// 查詢的Table Code
 	GameCodes []string `protobuf:"bytes,1,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" bson:"gameCodes" yaml:"gameCodes"`
 	// 返回Shift資訊
-	Shift bool `protobuf:"varint,7,opt,name=shift,proto3" json:"shift" bson:"shift" yaml:"shift"`
+	Shift bool `protobuf:"varint,7,opt,name=shift,proto3" json:"shift" yaml:"shift" bson:"shift"`
 	// 返回Shuffle資訊
 	Shuffle bool `protobuf:"varint,10,opt,name=shuffle,proto3" json:"shuffle" bson:"shuffle" yaml:"shuffle"`
 	// 返回直播網址
