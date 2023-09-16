@@ -27,9 +27,7 @@ message RecordShiftStartedRequest {
   // 班代碼
   string shift_code = 7;
   // 時間
-  google.protobuf.Timestamp ts_start = 12;
-  // 標籤
-  map<string, string> tags = 15;
+  google.protobuf.Timestamp ts_start = 8;
 
 }
 

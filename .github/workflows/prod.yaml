@@ -4,6 +4,7 @@ name: Production  # 工作流程的名稱
 on:  # 觸發條件
   pull_request:  # 當有 Push 事件時觸發
     branches:  # 僅針對特定分支
+    - master
     - main
     types:
     - closed       # PR 關閉才會執行
@@ -13,7 +14,7 @@ jobs:
   version:  # 工作名稱
     uses: sky-platform/workflow/.github/workflows/tag-prod.yaml@main
     permissions:
-      contents: write
+      contents: read
     secrets: inherit
 
   build:
