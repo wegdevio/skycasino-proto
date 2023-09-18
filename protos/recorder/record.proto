@@ -233,18 +233,22 @@ message ShuffleRecord {
   string game_subtype = 3;
   // 遊戲版本
   string game_version = 4;
+  // 遊戲代碼
+  string game_code = 5;
   // 桌代碼
-  string table_code = 5;
+  string table_code = 6;
+  // 班代碼
+  string shift_code = 7;
   // 使用洗牌ID
-  string shuffle_code = 6;
-  // 開始洗牌時間
-  google.protobuf.Timestamp ts_start = 7;
-  // 結束洗牌時間
-  google.protobuf.Timestamp ts_end = 8 [(tagger.tags) = "bson:\"tsEnd,omitempty\""];
+  string shuffle_code = 10;
   // cardList
   map<int32, Deck> decks = 11 [(tagger.tags) = "bson:\"decks,omitempty\""];
+  // 開始洗牌時間
+  google.protobuf.Timestamp ts_start = 12;
   // 已經完成
-  bool is_end = 12;
+  bool is_end = 18;
+  // 結束洗牌時間
+  google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\""];
 
 }
 
