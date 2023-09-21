@@ -33,7 +33,6 @@ enum MahjongWheel {
   MAHJONG_WEEL_GREEN_DRAGON = 7;
 }
 
-
 // 彩虹幸運輪 
 enum RainbowWheel {
 
