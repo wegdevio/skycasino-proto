@@ -1,8 +1,24 @@
 syntax = "proto3";
 package cards;
 
+// empty Wheel
+enum Wheel {
+  WEEL_0_UNSPECIFIED = 0;
 
-// 麻將幸運輪
+  WEEL_1 = 1;
+  WEEL_2 = 2;
+  WEEL_3 = 3;
+  WEEL_4 = 4;
+  WEEL_5 = 5;
+  WEEL_6 = 6;
+  WEEL_7 = 7;
+  WEEL_8 = 8;
+  WEEL_9 = 9;
+  WEEL_10 = 10;
+
+}
+
+// 麻將幸運輪 
 enum MahjongWheel {
 
   // 未指定
@@ -16,3 +32,20 @@ enum MahjongWheel {
   MAHJONG_WEEL_RED_DRAGON = 6;
   MAHJONG_WEEL_GREEN_DRAGON = 7;
 }
+
+
+// 彩虹幸運輪 
+enum RainbowWheel {
+
+  // 未指定
+  RAINBOW_WEEL_CARD_UNSPECIFIED = 0;
+    
+  RAINBOW_WEEL_RED = 1;
+  RAINBOW_WEEL_ORANGE = 2;
+  RAINBOW_WEEL_YELLOW = 3;
+  RAINBOW_WEEL_GREEN = 4;
+  RAINBOW_WEEL_BLUE = 5;
+  RAINBOW_WEEL_INDIGO = 6;
+  RAINBOW_WEEL_VIOLET = 7;
+}
+
