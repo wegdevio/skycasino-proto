@@ -42,7 +42,7 @@ message RecordShiftEndedRequest {
 
 }
 
-message RecordShuffleStartedRequest {
+message RecordShoeStartedRequest {
 
   // 遊戲類型
   string game_type = 2;
@@ -55,25 +55,13 @@ message RecordShuffleStartedRequest {
   // 桌代碼
   string table_code = 6;
   // 洗牌代碼
-  string shuffle_code = 10;
+  string shoe_code = 10;
   // 時間
   google.protobuf.Timestamp ts_start = 12;
 
 }
 
-message RecordShuffleDoneRequest {
-
-  // 紀錄ID
-  bytes record_id = 1;
-  // 時間
-  google.protobuf.Timestamp ts_done = 5;
-  // 洗牌類型
-  // key: ResourceTypeCode；value: 牌靴
-  map<int32, Deck> cards = 7;
-
-}
-
-message RecordShuffleEndRequest {
+message RecordShoeEndRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -104,9 +92,9 @@ message RecordRoundStartRequest {
   // 局代碼
   string round_code = 9;
   // 使用洗牌代碼
-  string shuffle_code = 10;
+  string shoe_code = 10;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuffle_round = 11;
+  int64 shuoe_round = 11;
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
 
@@ -183,14 +171,11 @@ service RecorderService {
   // 排班結束
   rpc RecordShiftEnded(RecordShiftEndedRequest) returns (google.protobuf.Empty);
 
-  // 開始更換牌組
-  rpc RecordShuffleStarted(RecordShuffleStartedRequest) returns (RecordIDResponse);
+  // 開始使用牌靴
+  rpc RecordShoeStarted(RecordShoeStartedRequest) returns (RecordIDResponse);
 
-  // 更換牌組完畢
-  rpc RecordShuffleDone(RecordShuffleDoneRequest) returns (google.protobuf.Empty);
-
-  // 使用牌組完畢
-  rpc RecordShuffleEnd(RecordShuffleDoneRequest) returns (google.protobuf.Empty);
+  // 使用牌靴完畢
+  rpc RecordShoeEnd(RecordShoeEndRequest) returns (google.protobuf.Empty);
 
   // 開啟新局
   rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordIDResponse);

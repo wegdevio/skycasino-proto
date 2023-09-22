@@ -52,7 +52,7 @@ message FetchShiftRecordResponse {
   repeated ShiftRecord shift_record = 1;
 }
 
-message FetchShuffleRecordRequest {
+message FetchShoeRecordRequest {
 
   // 紀錄ID
   optional bytes record_id = 1;
@@ -67,7 +67,7 @@ message FetchShuffleRecordRequest {
   // 班代碼
   optional string shift_code = 7;
   // 洗牌代碼
-  optional string shuffle_code = 8;
+  optional string shoe_code = 8;
 
   // 允許的紀錄ID
   repeated bytes record_ids = 9;
@@ -82,15 +82,15 @@ message FetchShuffleRecordRequest {
   // 允許的班代碼
   repeated string shift_codes = 15;
   // 允許的洗牌代碼
-  repeated string shuffle_codes = 16;
+  repeated string shoe_codes = 16;
 
   // 查詢限制
   RecordQuery query = 20;
 
 }
 
-message FetchShuffleRecordResponse {
-  repeated ShuffleRecord shuffle_record = 1;
+message FetchShoeRecordResponse {
+  repeated ShoeRecord shoe_record = 1;
 }
 
 message FetchRoundRecordRequest {
@@ -139,8 +139,8 @@ service RecorderReadService {
   // 讀取班次紀錄
   rpc FetchShiftRecord(FetchShiftRecordRequest) returns (FetchShiftRecordResponse);
 
-  // 讀洗牌紀錄
-  rpc FetchShuffleRecord(FetchShuffleRecordRequest) returns (FetchShuffleRecordResponse);
+  // 讀牌靴紀錄
+  rpc FetchShoeRecord(FetchShoeRecordRequest) returns (FetchShoeRecordResponse);
 
   // 讀遊戲局號紀錄
   rpc FetchRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
@@ -186,7 +186,7 @@ message CurrentGame {
   optional RoundRecord round = 9;
 
   // 洗牌
-  optional ShuffleRecord shuffle = 10;
+  optional ShoeRecord shoe = 10;
 
   // 附加媒體
   map<string, URLMedia> map_mideas = 24;
@@ -195,14 +195,14 @@ message CurrentGame {
 
 message FetchCurrentGameRequest {
 
-  // 查詢的Table Code
+  // 查詢的遊戲代號
   repeated string game_codes = 1;
 
-  // 返回Shift資訊
+  // 返回班表資訊
   bool shift = 7;
 
-  // 返回Shuffle資訊
-  bool shuffle = 10;
+  // 返回牌靴資訊
+  bool shoe = 10;
 
   // 返回直播網址
   bool stream = 3;

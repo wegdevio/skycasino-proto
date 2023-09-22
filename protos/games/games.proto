@@ -1,0 +1,28 @@
+syntax = "proto3";
+package games;
+
+enum GameType {
+
+  // 未指定
+  GAME_TYPE_UNSPECIFIED = 0;
+
+  // 百家樂
+  BACCARAT = 16;
+  // 龍虎鬥
+  THEBIGBATTLE = 17;
+  // 炸金花
+  THREECARDS = 18;
+  // 牛牛
+  BULLFIGHT = 19;
+  
+  // 番攤
+  FANTAN = 20;
+
+  // 骰寶
+  SICBO = 32;
+  // 輪盤
+  ROULETTE = 36;
+  // 幸運輪
+  LUCKYWHEEL = 40;
+
+}
