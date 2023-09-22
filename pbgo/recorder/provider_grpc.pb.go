@@ -20,9 +20,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	RecorderReadService_FetchShiftRecord_FullMethodName   = "/recorder.RecorderReadService/FetchShiftRecord"
-	RecorderReadService_FetchShuffleRecord_FullMethodName = "/recorder.RecorderReadService/FetchShuffleRecord"
-	RecorderReadService_FetchRoundRecord_FullMethodName   = "/recorder.RecorderReadService/FetchRoundRecord"
+	RecorderReadService_FetchShiftRecord_FullMethodName = "/recorder.RecorderReadService/FetchShiftRecord"
+	RecorderReadService_FetchShoeRecord_FullMethodName  = "/recorder.RecorderReadService/FetchShoeRecord"
+	RecorderReadService_FetchRoundRecord_FullMethodName = "/recorder.RecorderReadService/FetchRoundRecord"
 )
 
 // RecorderReadServiceClient is the client API for RecorderReadService service.
@@ -31,8 +31,8 @@ const (
 type RecorderReadServiceClient interface {
 	// 讀取班次紀錄
 	FetchShiftRecord(ctx context.Context, in *FetchShiftRecordRequest, opts ...grpc.CallOption) (*FetchShiftRecordResponse, error)
-	// 讀洗牌紀錄
-	FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchShuffleRecordResponse, error)
+	// 讀牌靴紀錄
+	FetchShoeRecord(ctx context.Context, in *FetchShoeRecordRequest, opts ...grpc.CallOption) (*FetchShoeRecordResponse, error)
 	// 讀遊戲局號紀錄
 	FetchRoundRecord(ctx context.Context, in *FetchRoundRecordRequest, opts ...grpc.CallOption) (*FetchRoundRecordResponse, error)
 }
@@ -54,9 +54,9 @@ func (c *recorderReadServiceClient) FetchShiftRecord(ctx context.Context, in *Fe
 	return out, nil
 }
 
-func (c *recorderReadServiceClient) FetchShuffleRecord(ctx context.Context, in *FetchShuffleRecordRequest, opts ...grpc.CallOption) (*FetchShuffleRecordResponse, error) {
-	out := new(FetchShuffleRecordResponse)
-	err := c.cc.Invoke(ctx, RecorderReadService_FetchShuffleRecord_FullMethodName, in, out, opts...)
+func (c *recorderReadServiceClient) FetchShoeRecord(ctx context.Context, in *FetchShoeRecordRequest, opts ...grpc.CallOption) (*FetchShoeRecordResponse, error) {
+	out := new(FetchShoeRecordResponse)
+	err := c.cc.Invoke(ctx, RecorderReadService_FetchShoeRecord_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,8 +78,8 @@ func (c *recorderReadServiceClient) FetchRoundRecord(ctx context.Context, in *Fe
 type RecorderReadServiceServer interface {
 	// 讀取班次紀錄
 	FetchShiftRecord(context.Context, *FetchShiftRecordRequest) (*FetchShiftRecordResponse, error)
-	// 讀洗牌紀錄
-	FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchShuffleRecordResponse, error)
+	// 讀牌靴紀錄
+	FetchShoeRecord(context.Context, *FetchShoeRecordRequest) (*FetchShoeRecordResponse, error)
 	// 讀遊戲局號紀錄
 	FetchRoundRecord(context.Context, *FetchRoundRecordRequest) (*FetchRoundRecordResponse, error)
 	mustEmbedUnimplementedRecorderReadServiceServer()
@@ -92,8 +92,8 @@ type UnimplementedRecorderReadServiceServer struct {
 func (UnimplementedRecorderReadServiceServer) FetchShiftRecord(context.Context, *FetchShiftRecordRequest) (*FetchShiftRecordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchShiftRecord not implemented")
 }
-func (UnimplementedRecorderReadServiceServer) FetchShuffleRecord(context.Context, *FetchShuffleRecordRequest) (*FetchShuffleRecordResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FetchShuffleRecord not implemented")
+func (UnimplementedRecorderReadServiceServer) FetchShoeRecord(context.Context, *FetchShoeRecordRequest) (*FetchShoeRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchShoeRecord not implemented")
 }
 func (UnimplementedRecorderReadServiceServer) FetchRoundRecord(context.Context, *FetchRoundRecordRequest) (*FetchRoundRecordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchRoundRecord not implemented")
@@ -129,20 +129,20 @@ func _RecorderReadService_FetchShiftRecord_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecorderReadService_FetchShuffleRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FetchShuffleRecordRequest)
+func _RecorderReadService_FetchShoeRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchShoeRecordRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RecorderReadServiceServer).FetchShuffleRecord(ctx, in)
+		return srv.(RecorderReadServiceServer).FetchShoeRecord(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RecorderReadService_FetchShuffleRecord_FullMethodName,
+		FullMethod: RecorderReadService_FetchShoeRecord_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderReadServiceServer).FetchShuffleRecord(ctx, req.(*FetchShuffleRecordRequest))
+		return srv.(RecorderReadServiceServer).FetchShoeRecord(ctx, req.(*FetchShoeRecordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -177,8 +177,8 @@ var RecorderReadService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RecorderReadService_FetchShiftRecord_Handler,
 		},
 		{
-			MethodName: "FetchShuffleRecord",
-			Handler:    _RecorderReadService_FetchShuffleRecord_Handler,
+			MethodName: "FetchShoeRecord",
+			Handler:    _RecorderReadService_FetchShoeRecord_Handler,
 		},
 		{
 			MethodName: "FetchRoundRecord",
