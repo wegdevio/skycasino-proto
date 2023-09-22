@@ -54,6 +54,8 @@ message RecordShoeStartedRequest {
   string game_code = 5;
   // 桌代碼
   string table_code = 6;
+  // 班代碼
+  string shift_code = 7;
   // 洗牌代碼
   string shoe_code = 10;
   // 時間
