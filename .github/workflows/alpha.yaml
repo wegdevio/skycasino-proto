@@ -5,6 +5,7 @@ on:               # 觸發條件
   pull_request:   # 當有 pull_request 事件時觸發
     branches:     # 僅針對特定分支
     - releases/**
+    - bugfix/**
     types:
     - closed      # PR 關閉才會執行
 
