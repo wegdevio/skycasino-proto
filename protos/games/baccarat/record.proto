@@ -37,6 +37,8 @@ enum Step {
 
   // 開放下注
   OPEN_FOR_BETTING = 8;
+  // 倒數
+  COUNTDOWN = 27;
   // 停止下注
   CLOSE_THE_BETTING = 9;
 
