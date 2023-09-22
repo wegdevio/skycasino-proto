@@ -54,6 +54,8 @@ message RecordShoeStartedRequest {
   string game_code = 5;
   // 桌代碼
   string table_code = 6;
+  // 班代碼
+  string shift_code = 7;
   // 洗牌代碼
   string shoe_code = 10;
   // 時間
@@ -94,7 +96,7 @@ message RecordRoundStartRequest {
   // 使用洗牌代碼
   string shoe_code = 10;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuoe_round = 11;
+  int64 shoe_round = 11;
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
 
