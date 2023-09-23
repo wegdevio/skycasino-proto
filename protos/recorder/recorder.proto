@@ -63,7 +63,7 @@ message RecordShoeStartedRequest {
 
 }
 
-message RecordShoeEndRequest {
+message RecordShoeEndedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -75,7 +75,7 @@ message RecordShoeEndRequest {
 
 }
 
-message RecordRoundStartRequest {
+message RecordRoundStartedRequest {
 
   // 遊戲類型
   string game_type = 2;
@@ -99,6 +99,8 @@ message RecordRoundStartRequest {
   int64 shoe_round = 11;
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
+  // 標籤
+  map<string, string> tags = 15;
 
 }
 
@@ -120,7 +122,7 @@ message RecordRoundResultsRequest {
   
 }
 
-message RecordRoundCancelRequest {
+message RecordRoundBeCanceledRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -133,7 +135,7 @@ message RecordRoundCancelRequest {
 
 }
 
-message RecordRoundFinishRequest {
+message RecordRoundFinishedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -177,10 +179,10 @@ service RecorderService {
   rpc RecordShoeStarted(RecordShoeStartedRequest) returns (RecordIDResponse);
 
   // 使用牌靴完畢
-  rpc RecordShoeEnd(RecordShoeEndRequest) returns (google.protobuf.Empty);
+  rpc RecordShoeEnded(RecordShoeEndedRequest) returns (google.protobuf.Empty);
 
   // 開啟新局
-  rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordIDResponse);
+  rpc RecordRoundStarted(RecordRoundStartedRequest) returns (RecordIDResponse);
 
   // 記錄步驟
   rpc RecordRoundSteps(RecordRoundStepsRequest) returns (google.protobuf.Empty);
@@ -189,10 +191,10 @@ service RecorderService {
   rpc RecordRoundResults(RecordRoundResultsRequest) returns (google.protobuf.Empty);
 
   // 此局作廢
-  rpc RecordRoundCancel(RecordRoundCancelRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundBeCanceled(RecordRoundBeCanceledRequest) returns (google.protobuf.Empty);
 
   // 結束此局
-  rpc RecordRoundFinish(RecordRoundFinishRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundFinished(RecordRoundFinishedRequest) returns (google.protobuf.Empty);
 
   // 紀錄路紙
   rpc RecordRoadmap (RecordRoadmapRequest) returns (google.protobuf.Empty);
