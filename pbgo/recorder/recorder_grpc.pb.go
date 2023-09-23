@@ -20,17 +20,17 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	RecorderService_RecordShiftStarted_FullMethodName = "/recorder.RecorderService/RecordShiftStarted"
-	RecorderService_RecordShiftEnded_FullMethodName   = "/recorder.RecorderService/RecordShiftEnded"
-	RecorderService_RecordShoeStarted_FullMethodName  = "/recorder.RecorderService/RecordShoeStarted"
-	RecorderService_RecordShoeEnd_FullMethodName      = "/recorder.RecorderService/RecordShoeEnd"
-	RecorderService_RecordRoundStart_FullMethodName   = "/recorder.RecorderService/RecordRoundStart"
-	RecorderService_RecordRoundSteps_FullMethodName   = "/recorder.RecorderService/RecordRoundSteps"
-	RecorderService_RecordRoundResults_FullMethodName = "/recorder.RecorderService/RecordRoundResults"
-	RecorderService_RecordRoundCancel_FullMethodName  = "/recorder.RecorderService/RecordRoundCancel"
-	RecorderService_RecordRoundFinish_FullMethodName  = "/recorder.RecorderService/RecordRoundFinish"
-	RecorderService_RecordRoadmap_FullMethodName      = "/recorder.RecorderService/RecordRoadmap"
-	RecorderService_RecordRoundVideo_FullMethodName   = "/recorder.RecorderService/RecordRoundVideo"
+	RecorderService_RecordShiftStarted_FullMethodName    = "/recorder.RecorderService/RecordShiftStarted"
+	RecorderService_RecordShiftEnded_FullMethodName      = "/recorder.RecorderService/RecordShiftEnded"
+	RecorderService_RecordShoeStarted_FullMethodName     = "/recorder.RecorderService/RecordShoeStarted"
+	RecorderService_RecordShoeEnded_FullMethodName       = "/recorder.RecorderService/RecordShoeEnded"
+	RecorderService_RecordRoundStarted_FullMethodName    = "/recorder.RecorderService/RecordRoundStarted"
+	RecorderService_RecordRoundSteps_FullMethodName      = "/recorder.RecorderService/RecordRoundSteps"
+	RecorderService_RecordRoundResults_FullMethodName    = "/recorder.RecorderService/RecordRoundResults"
+	RecorderService_RecordRoundBeCanceled_FullMethodName = "/recorder.RecorderService/RecordRoundBeCanceled"
+	RecorderService_RecordRoundFinished_FullMethodName   = "/recorder.RecorderService/RecordRoundFinished"
+	RecorderService_RecordRoadmap_FullMethodName         = "/recorder.RecorderService/RecordRoadmap"
+	RecorderService_RecordRoundVideo_FullMethodName      = "/recorder.RecorderService/RecordRoundVideo"
 )
 
 // RecorderServiceClient is the client API for RecorderService service.
@@ -44,17 +44,17 @@ type RecorderServiceClient interface {
 	// 開始使用牌靴
 	RecordShoeStarted(ctx context.Context, in *RecordShoeStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
 	// 使用牌靴完畢
-	RecordShoeEnd(ctx context.Context, in *RecordShoeEndRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	RecordShoeEnded(ctx context.Context, in *RecordShoeEndedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 開啟新局
-	RecordRoundStart(ctx context.Context, in *RecordRoundStartRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
+	RecordRoundStarted(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error)
 	// 記錄步驟
 	RecordRoundSteps(ctx context.Context, in *RecordRoundStepsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 紀錄結果
 	RecordRoundResults(ctx context.Context, in *RecordRoundResultsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 此局作廢
-	RecordRoundCancel(ctx context.Context, in *RecordRoundCancelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	RecordRoundBeCanceled(ctx context.Context, in *RecordRoundBeCanceledRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 結束此局
-	RecordRoundFinish(ctx context.Context, in *RecordRoundFinishRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	RecordRoundFinished(ctx context.Context, in *RecordRoundFinishedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 紀錄路紙
 	RecordRoadmap(ctx context.Context, in *RecordRoadmapRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// 紀錄回放
@@ -96,18 +96,18 @@ func (c *recorderServiceClient) RecordShoeStarted(ctx context.Context, in *Recor
 	return out, nil
 }
 
-func (c *recorderServiceClient) RecordShoeEnd(ctx context.Context, in *RecordShoeEndRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *recorderServiceClient) RecordShoeEnded(ctx context.Context, in *RecordShoeEndedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, RecorderService_RecordShoeEnd_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RecorderService_RecordShoeEnded_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *recorderServiceClient) RecordRoundStart(ctx context.Context, in *RecordRoundStartRequest, opts ...grpc.CallOption) (*RecordIDResponse, error) {
+func (c *recorderServiceClient) RecordRoundStarted(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*RecordIDResponse, error) {
 	out := new(RecordIDResponse)
-	err := c.cc.Invoke(ctx, RecorderService_RecordRoundStart_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RecorderService_RecordRoundStarted_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -132,18 +132,18 @@ func (c *recorderServiceClient) RecordRoundResults(ctx context.Context, in *Reco
 	return out, nil
 }
 
-func (c *recorderServiceClient) RecordRoundCancel(ctx context.Context, in *RecordRoundCancelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *recorderServiceClient) RecordRoundBeCanceled(ctx context.Context, in *RecordRoundBeCanceledRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, RecorderService_RecordRoundCancel_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RecorderService_RecordRoundBeCanceled_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *recorderServiceClient) RecordRoundFinish(ctx context.Context, in *RecordRoundFinishRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *recorderServiceClient) RecordRoundFinished(ctx context.Context, in *RecordRoundFinishedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, RecorderService_RecordRoundFinish_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RecorderService_RecordRoundFinished_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -179,17 +179,17 @@ type RecorderServiceServer interface {
 	// 開始使用牌靴
 	RecordShoeStarted(context.Context, *RecordShoeStartedRequest) (*RecordIDResponse, error)
 	// 使用牌靴完畢
-	RecordShoeEnd(context.Context, *RecordShoeEndRequest) (*emptypb.Empty, error)
+	RecordShoeEnded(context.Context, *RecordShoeEndedRequest) (*emptypb.Empty, error)
 	// 開啟新局
-	RecordRoundStart(context.Context, *RecordRoundStartRequest) (*RecordIDResponse, error)
+	RecordRoundStarted(context.Context, *RecordRoundStartedRequest) (*RecordIDResponse, error)
 	// 記錄步驟
 	RecordRoundSteps(context.Context, *RecordRoundStepsRequest) (*emptypb.Empty, error)
 	// 紀錄結果
 	RecordRoundResults(context.Context, *RecordRoundResultsRequest) (*emptypb.Empty, error)
 	// 此局作廢
-	RecordRoundCancel(context.Context, *RecordRoundCancelRequest) (*emptypb.Empty, error)
+	RecordRoundBeCanceled(context.Context, *RecordRoundBeCanceledRequest) (*emptypb.Empty, error)
 	// 結束此局
-	RecordRoundFinish(context.Context, *RecordRoundFinishRequest) (*emptypb.Empty, error)
+	RecordRoundFinished(context.Context, *RecordRoundFinishedRequest) (*emptypb.Empty, error)
 	// 紀錄路紙
 	RecordRoadmap(context.Context, *RecordRoadmapRequest) (*emptypb.Empty, error)
 	// 紀錄回放
@@ -210,11 +210,11 @@ func (UnimplementedRecorderServiceServer) RecordShiftEnded(context.Context, *Rec
 func (UnimplementedRecorderServiceServer) RecordShoeStarted(context.Context, *RecordShoeStartedRequest) (*RecordIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordShoeStarted not implemented")
 }
-func (UnimplementedRecorderServiceServer) RecordShoeEnd(context.Context, *RecordShoeEndRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecordShoeEnd not implemented")
+func (UnimplementedRecorderServiceServer) RecordShoeEnded(context.Context, *RecordShoeEndedRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordShoeEnded not implemented")
 }
-func (UnimplementedRecorderServiceServer) RecordRoundStart(context.Context, *RecordRoundStartRequest) (*RecordIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundStart not implemented")
+func (UnimplementedRecorderServiceServer) RecordRoundStarted(context.Context, *RecordRoundStartedRequest) (*RecordIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundStarted not implemented")
 }
 func (UnimplementedRecorderServiceServer) RecordRoundSteps(context.Context, *RecordRoundStepsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundSteps not implemented")
@@ -222,11 +222,11 @@ func (UnimplementedRecorderServiceServer) RecordRoundSteps(context.Context, *Rec
 func (UnimplementedRecorderServiceServer) RecordRoundResults(context.Context, *RecordRoundResultsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundResults not implemented")
 }
-func (UnimplementedRecorderServiceServer) RecordRoundCancel(context.Context, *RecordRoundCancelRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundCancel not implemented")
+func (UnimplementedRecorderServiceServer) RecordRoundBeCanceled(context.Context, *RecordRoundBeCanceledRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundBeCanceled not implemented")
 }
-func (UnimplementedRecorderServiceServer) RecordRoundFinish(context.Context, *RecordRoundFinishRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundFinish not implemented")
+func (UnimplementedRecorderServiceServer) RecordRoundFinished(context.Context, *RecordRoundFinishedRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundFinished not implemented")
 }
 func (UnimplementedRecorderServiceServer) RecordRoadmap(context.Context, *RecordRoadmapRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoadmap not implemented")
@@ -301,38 +301,38 @@ func _RecorderService_RecordShoeStarted_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecorderService_RecordShoeEnd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecordShoeEndRequest)
+func _RecorderService_RecordShoeEnded_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordShoeEndedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RecorderServiceServer).RecordShoeEnd(ctx, in)
+		return srv.(RecorderServiceServer).RecordShoeEnded(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RecorderService_RecordShoeEnd_FullMethodName,
+		FullMethod: RecorderService_RecordShoeEnded_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServiceServer).RecordShoeEnd(ctx, req.(*RecordShoeEndRequest))
+		return srv.(RecorderServiceServer).RecordShoeEnded(ctx, req.(*RecordShoeEndedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecorderService_RecordRoundStart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecordRoundStartRequest)
+func _RecorderService_RecordRoundStarted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordRoundStartedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RecorderServiceServer).RecordRoundStart(ctx, in)
+		return srv.(RecorderServiceServer).RecordRoundStarted(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RecorderService_RecordRoundStart_FullMethodName,
+		FullMethod: RecorderService_RecordRoundStarted_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServiceServer).RecordRoundStart(ctx, req.(*RecordRoundStartRequest))
+		return srv.(RecorderServiceServer).RecordRoundStarted(ctx, req.(*RecordRoundStartedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -373,38 +373,38 @@ func _RecorderService_RecordRoundResults_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecorderService_RecordRoundCancel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecordRoundCancelRequest)
+func _RecorderService_RecordRoundBeCanceled_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordRoundBeCanceledRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RecorderServiceServer).RecordRoundCancel(ctx, in)
+		return srv.(RecorderServiceServer).RecordRoundBeCanceled(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RecorderService_RecordRoundCancel_FullMethodName,
+		FullMethod: RecorderService_RecordRoundBeCanceled_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServiceServer).RecordRoundCancel(ctx, req.(*RecordRoundCancelRequest))
+		return srv.(RecorderServiceServer).RecordRoundBeCanceled(ctx, req.(*RecordRoundBeCanceledRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecorderService_RecordRoundFinish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecordRoundFinishRequest)
+func _RecorderService_RecordRoundFinished_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RecordRoundFinishedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RecorderServiceServer).RecordRoundFinish(ctx, in)
+		return srv.(RecorderServiceServer).RecordRoundFinished(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RecorderService_RecordRoundFinish_FullMethodName,
+		FullMethod: RecorderService_RecordRoundFinished_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServiceServer).RecordRoundFinish(ctx, req.(*RecordRoundFinishRequest))
+		return srv.(RecorderServiceServer).RecordRoundFinished(ctx, req.(*RecordRoundFinishedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -465,12 +465,12 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RecorderService_RecordShoeStarted_Handler,
 		},
 		{
-			MethodName: "RecordShoeEnd",
-			Handler:    _RecorderService_RecordShoeEnd_Handler,
+			MethodName: "RecordShoeEnded",
+			Handler:    _RecorderService_RecordShoeEnded_Handler,
 		},
 		{
-			MethodName: "RecordRoundStart",
-			Handler:    _RecorderService_RecordRoundStart_Handler,
+			MethodName: "RecordRoundStarted",
+			Handler:    _RecorderService_RecordRoundStarted_Handler,
 		},
 		{
 			MethodName: "RecordRoundSteps",
@@ -481,12 +481,12 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RecorderService_RecordRoundResults_Handler,
 		},
 		{
-			MethodName: "RecordRoundCancel",
-			Handler:    _RecorderService_RecordRoundCancel_Handler,
+			MethodName: "RecordRoundBeCanceled",
+			Handler:    _RecorderService_RecordRoundBeCanceled_Handler,
 		},
 		{
-			MethodName: "RecordRoundFinish",
-			Handler:    _RecorderService_RecordRoundFinish_Handler,
+			MethodName: "RecordRoundFinished",
+			Handler:    _RecorderService_RecordRoundFinished_Handler,
 		},
 		{
 			MethodName: "RecordRoadmap",
