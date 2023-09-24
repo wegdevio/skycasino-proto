@@ -82,11 +82,11 @@ type RecordShiftStartedRequest struct {
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
-	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
+	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" yaml:"gameCode" bson:"gameCode"`
 	// 桌代碼
 	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
-	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" yaml:"shiftCode" bson:"shiftCode"`
+	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// 標籤
@@ -248,7 +248,7 @@ type RecordShoeStartedRequest struct {
 	// 遊戲子類型
 	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
+	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" yaml:"gameVersion" bson:"gameVersion"`
 	// 遊戲代碼
 	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
@@ -258,7 +258,7 @@ type RecordShoeStartedRequest struct {
 	// 洗牌代碼
 	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" yaml:"tsStart" bson:"tsStart"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 }
 
 func (x *RecordShoeStartedRequest) Reset() {
@@ -355,7 +355,7 @@ type RecordShoeEndedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
 	TsEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd" yaml:"tsEnd"`
 	// 洗牌類型
@@ -430,7 +430,7 @@ type RecordRoundStartedRequest struct {
 	// 遊戲代碼
 	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
+	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" yaml:"tableCode" bson:"tableCode"`
 	// 排班代碼
 	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 此排班局數
@@ -440,7 +440,7 @@ type RecordRoundStartedRequest struct {
 	// 使用洗牌代碼
 	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 使用此洗牌第幾局，從1開始計算
-	ShoeRound int64 `protobuf:"varint,11,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" yaml:"shoeRound" bson:"shoeRound"`
+	ShoeRound int64 `protobuf:"varint,11,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	// 開始時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// 標籤
@@ -626,7 +626,7 @@ type RecordRoundResultsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 判讀結果
 	Results []*Result `protobuf:"bytes,6,rep,name=results,proto3" json:"results" bson:"results" yaml:"results"`
 }
@@ -683,7 +683,7 @@ type RecordRoundBeCanceledRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
 	TsCancel *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_cancel,json=tsCancel,proto3" json:"tsCancel" bson:"tsCancel" yaml:"tsCancel"`
 	// 取消代碼
