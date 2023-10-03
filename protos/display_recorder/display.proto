@@ -1,0 +1,40 @@
+syntax = "proto3";
+package display_recorder;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "tagger/tagger.proto";
+
+import "recorder/record.proto";
+
+
+message HostUpdateDeviceRecordRoundRequest {
+    recorder.RoundRecord round_record = 1;
+}
+
+message HostUpdateDeviceRecordRoundResponse {
+    recorder.RoundRecord round_record = 1; // this is only if we move the cardreader and keyboard reader to the device
+}
+
+message DisplayCheckDeviceIfExistsUpdatesRequest {
+    int32 lastUpdatedAt = 1;
+}
+
+message DisplayCheckDeviceExistsUpdatesResponse {
+  bool update = 1;
+}
+
+
+
+service DisplayRecorderService {
+  
+  // 建立新排班
+  rpc HostUpdateDeviceRecordRound(HostUpdateDeviceRecordRoundRequest) returns (HostUpdateDeviceRecordRoundResponse);
+
+  // 排班結束
+  rpc HostCheckIfExistsUpdates(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+
+  
+}
