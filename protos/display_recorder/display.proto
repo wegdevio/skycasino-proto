@@ -25,16 +25,22 @@ message DisplayCheckDeviceExistsUpdatesResponse {
   bool update = 1;
 }
 
-
-
-service DisplayRecorderService {
-  
-  // 建立新排班
-  rpc HostUpdateDeviceRecordRound(HostUpdateDeviceRecordRoundRequest) returns (HostUpdateDeviceRecordRoundResponse);
-
-  // 排班結束
-  rpc HostCheckIfExistsUpdates(google.protobuf.Empty) returns (google.protobuf.Empty);
-
-
-  
+message DisplayGetUpdatesFromDeviceResponse {
+  recorder.RoundRecord round_record = 1;
+  int32 lastUpdatedAt = 2;
 }
+
+
+
+  service DisplayRecorderService {
+    
+    // 建立新排班
+    rpc HostUpdateDeviceRecordRound(HostUpdateDeviceRecordRoundRequest) returns (HostUpdateDeviceRecordRoundResponse);
+  
+    // 排班結束
+    rpc DisplayCheckIfExistsUpdates(DisplayCheckDeviceIfExistsUpdatesRequest) returns (DisplayCheckDeviceExistsUpdatesResponse);
+  
+    // 開始使用牌靴
+    rpc DisplayGetUpdatesFromDevice(google.protobuf.Empty) returns (DisplayGetUpdatesFromDeviceResponse);
+      
+  }
