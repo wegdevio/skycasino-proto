@@ -115,9 +115,9 @@ type Card struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id" yaml:"id" bson:"id"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id" bson:"id" yaml:"id"`
 	// 卡牌代碼
-	Code string `protobuf:"bytes,2,opt,name=code,proto3" json:"code" bson:"code" yaml:"code"`
+	Code string `protobuf:"bytes,2,opt,name=code,proto3" json:"code" yaml:"code" bson:"code"`
 	// 順序
 	Index int64 `protobuf:"varint,3,opt,name=index,proto3" json:"index" bson:"index" yaml:"index"`
 	// 可見
@@ -129,7 +129,7 @@ type Card struct {
 	// 簽章
 	Signature *string `protobuf:"bytes,9,opt,name=signature,proto3,oneof" json:"signature" bson:"signature,omitempty" yaml:"signature"`
 	// 簽章方法
-	SignAlgorithm *string `protobuf:"bytes,10,opt,name=sign_algorithm,json=signAlgorithm,proto3,oneof" json:"signAlgorithm" yaml:"signAlgorithm" bson:"signAlgorithm,omitempty"`
+	SignAlgorithm *string `protobuf:"bytes,10,opt,name=sign_algorithm,json=signAlgorithm,proto3,oneof" json:"signAlgorithm" bson:"signAlgorithm,omitempty" yaml:"signAlgorithm"`
 }
 
 func (x *Card) Reset() {
@@ -288,7 +288,7 @@ type StepAction struct {
 	// 動作類型
 	Type StepActionType `protobuf:"varint,3,opt,name=type,proto3,enum=recorder.StepActionType" json:"type" bson:"type" yaml:"type"`
 	// 資源擁有座位。
-	SourceSeat *int32 `protobuf:"varint,4,opt,name=source_seat,json=sourceSeat,proto3,oneof" json:"sourceSeat" bson:"sourceSeat,omitempty" yaml:"sourceSeat"`
+	SourceSeat *int32 `protobuf:"varint,4,opt,name=source_seat,json=sourceSeat,proto3,oneof" json:"sourceSeat" yaml:"sourceSeat" bson:"sourceSeat,omitempty"`
 	// 資源轉移目標座位。
 	TargetSeat *int32 `protobuf:"varint,5,opt,name=target_seat,json=targetSeat,proto3,oneof" json:"targetSeat" bson:"targetSeat,omitempty" yaml:"targetSeat"`
 	// 目標卡牌資源
@@ -298,7 +298,7 @@ type StepAction struct {
 	// key: ResourceTypeCode, value: 分數值。
 	Scores map[int32]int64 `protobuf:"bytes,7,rep,name=scores,proto3" json:"scores" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"scores,omitempty" yaml:"scores"`
 	// （可選）附加資料
-	Data *anypb.Any `protobuf:"bytes,8,opt,name=data,proto3" json:"data" yaml:"data" bson:"data,omitempty"`
+	Data *anypb.Any `protobuf:"bytes,8,opt,name=data,proto3" json:"data" bson:"data,omitempty" yaml:"data"`
 }
 
 func (x *StepAction) Reset() {
@@ -401,7 +401,7 @@ type Step struct {
 	// 取消
 	Cancel *bool `protobuf:"varint,9,opt,name=cancel,proto3,oneof" json:"cancel" bson:"cancel,omitempty" yaml:"cancel"`
 	// 分配毫秒數
-	Duration *int64 `protobuf:"varint,10,opt,name=duration,proto3,oneof" json:"duration" bson:"duration,omitempty" yaml:"duration"`
+	Duration *int64 `protobuf:"varint,10,opt,name=duration,proto3,oneof" json:"duration" yaml:"duration" bson:"duration,omitempty"`
 }
 
 func (x *Step) Reset() {
@@ -492,7 +492,7 @@ type Seat struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 座位功能代碼：SeatCode
-	Code int32 `protobuf:"varint,2,opt,name=code,proto3" json:"code" bson:"code" yaml:"code"`
+	Code int32 `protobuf:"varint,2,opt,name=code,proto3" json:"code" yaml:"code" bson:"code"`
 	// 各類手牌
 	// key: ResourceTypeCode, value: 卡牌陣列
 	Cards map[int32]*CardList `protobuf:"bytes,3,rep,name=cards,proto3" json:"cards" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"cards,omitempty" yaml:"cards"`
@@ -711,15 +711,15 @@ type RoundRecord struct {
 	// 遊戲子類型
 	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
+	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" yaml:"gameVersion" bson:"gameVersion"`
 	// 遊戲代碼
-	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
+	GameCode string `protobuf:"bytes,5,opt,name=game_code,json=gameCode,proto3" json:"gameCode" yaml:"gameCode" bson:"gameCode"`
 	// 桌代碼
 	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 排班代碼
 	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 此排班局數
-	ShiftRound string `protobuf:"bytes,8,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" bson:"shiftRound" yaml:"shiftRound"`
+	ShiftRound int64 `protobuf:"varint,8,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" yaml:"shiftRound" bson:"shiftRound"`
 	// 局代碼
 	RoundCode string `protobuf:"bytes,9,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	// 使用洗牌代碼
@@ -737,7 +737,7 @@ type RoundRecord struct {
 	// 標籤
 	Tags map[string]string `protobuf:"bytes,15,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"tags,omitempty" yaml:"tags"`
 	// 歷程
-	Process []*Step `protobuf:"bytes,16,rep,name=process,proto3" json:"process" yaml:"process" bson:"process,omitempty"`
+	Process []*Step `protobuf:"bytes,16,rep,name=process,proto3" json:"process" bson:"process,omitempty" yaml:"process"`
 	// 判讀
 	Results []*Result `protobuf:"bytes,17,rep,name=results,proto3" json:"results" bson:"results,omitempty" yaml:"results"`
 	// 結束
@@ -751,7 +751,7 @@ type RoundRecord struct {
 	// 取消備註
 	CancelMessage *string `protobuf:"bytes,22,opt,name=cancel_message,json=cancelMessage,proto3,oneof" json:"cancelMessage" bson:"cancelMessage,omitempty" yaml:"cancelMessage"`
 	// 附加媒體
-	Mideas map[string]*URLMedia `protobuf:"bytes,24,rep,name=mideas,proto3" json:"mideas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"mideas" yaml:"mideas"`
+	Mideas map[string]*URLMedia `protobuf:"bytes,24,rep,name=mideas,proto3" json:"mideas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"mideas" bson:"mideas"`
 }
 
 func (x *RoundRecord) Reset() {
@@ -835,11 +835,11 @@ func (x *RoundRecord) GetShiftCode() string {
 	return ""
 }
 
-func (x *RoundRecord) GetShiftRound() string {
+func (x *RoundRecord) GetShiftRound() int64 {
 	if x != nil {
 		return x.ShiftRound
 	}
-	return ""
+	return 0
 }
 
 func (x *RoundRecord) GetRoundCode() string {
@@ -955,7 +955,7 @@ type Deck struct {
 	// 卡牌
 	Cards *CardList `protobuf:"bytes,1,opt,name=cards,proto3" json:"cards" bson:"cards" yaml:"cards"`
 	// 起始位置（削牌後）
-	StartIndex int64 `protobuf:"varint,2,opt,name=start_index,json=startIndex,proto3" json:"startIndex" yaml:"startIndex" bson:"startIndex"`
+	StartIndex int64 `protobuf:"varint,2,opt,name=start_index,json=startIndex,proto3" json:"startIndex" bson:"startIndex" yaml:"startIndex"`
 	// 切牌位置
 	CutIndex *int64 `protobuf:"varint,3,opt,name=cut_index,json=cutIndex,proto3,oneof" json:"cutIndex" bson:"cutIndex,omitempty" yaml:"cutIndex"`
 	// 目前位置
@@ -1033,7 +1033,7 @@ type ShoeRecord struct {
 	// 遊戲類型
 	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
@@ -1041,7 +1041,7 @@ type ShoeRecord struct {
 	// 桌代碼
 	TableCode string `protobuf:"bytes,6,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
-	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" yaml:"shiftCode" bson:"shiftCode"`
+	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 使用洗牌ID
 	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// cardList
@@ -1195,11 +1195,11 @@ type ShiftRecord struct {
 	// 標籤
 	Tags map[string]string `protobuf:"bytes,15,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"tags,omitempty" yaml:"tags"`
 	// 執行遊戲局
-	RoundCodes []string `protobuf:"bytes,9,rep,name=round_codes,json=roundCodes,proto3" json:"roundCodes" yaml:"roundCodes" bson:"roundCodes"`
+	RoundCodes []string `protobuf:"bytes,9,rep,name=round_codes,json=roundCodes,proto3" json:"roundCodes" bson:"roundCodes" yaml:"roundCodes"`
 	// 洗牌
 	ShoeCodes []string `protobuf:"bytes,10,rep,name=shoe_codes,json=shoeCodes,proto3" json:"shoeCodes" bson:"shoeCodes" yaml:"shoeCodes"`
 	// 結束
-	IsEnd bool `protobuf:"varint,18,opt,name=is_end,json=isEnd,proto3" json:"isEnd" yaml:"isEnd" bson:"isEnd"`
+	IsEnd bool `protobuf:"varint,18,opt,name=is_end,json=isEnd,proto3" json:"isEnd" bson:"isEnd" yaml:"isEnd"`
 	// 結束時間
 	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd,omitempty" yaml:"tsEnd"`
 }
@@ -1495,7 +1495,7 @@ var file_recorder_record_proto_rawDesc = []byte{
 	0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x68, 0x69, 0x66, 0x74, 0x5f, 0x63,
 	0x6f, 0x64, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x68, 0x69, 0x66, 0x74,
 	0x43, 0x6f, 0x64, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x68, 0x69, 0x66, 0x74, 0x5f, 0x72, 0x6f,
-	0x75, 0x6e, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x66, 0x74,
+	0x75, 0x6e, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x73, 0x68, 0x69, 0x66, 0x74,
 	0x52, 0x6f, 0x75, 0x6e, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x5f, 0x63,
 	0x6f, 0x64, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x72, 0x6f, 0x75, 0x6e, 0x64,
 	0x43, 0x6f, 0x64, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x68, 0x6f, 0x65, 0x5f, 0x63, 0x6f, 0x64,

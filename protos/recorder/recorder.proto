@@ -3,7 +3,6 @@ package recorder;
 
 import "recorder/record.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/empty.proto";
 
 message RecordIDResponse {
 
@@ -54,6 +53,8 @@ message RecordShoeStartedRequest {
   string game_code = 5;
   // 桌代碼
   string table_code = 6;
+  // 班代碼
+  string shift_code = 7;
   // 洗牌代碼
   string shoe_code = 10;
   // 時間
@@ -61,7 +62,7 @@ message RecordShoeStartedRequest {
 
 }
 
-message RecordShoeEndRequest {
+message RecordShoeEndedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -73,7 +74,7 @@ message RecordShoeEndRequest {
 
 }
 
-message RecordRoundStartRequest {
+message RecordRoundStartedRequest {
 
   // 遊戲類型
   string game_type = 2;
@@ -94,9 +95,11 @@ message RecordRoundStartRequest {
   // 使用洗牌代碼
   string shoe_code = 10;
   // 使用此洗牌第幾局，從1開始計算
-  int64 shuoe_round = 11;
+  int64 shoe_round = 11;
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
+  // 標籤
+  map<string, string> tags = 15;
 
 }
 
@@ -118,7 +121,7 @@ message RecordRoundResultsRequest {
   
 }
 
-message RecordRoundCancelRequest {
+message RecordRoundBeCanceledRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -131,7 +134,7 @@ message RecordRoundCancelRequest {
 
 }
 
-message RecordRoundFinishRequest {
+message RecordRoundFinishedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
@@ -166,36 +169,36 @@ message RecordRoundMediaRequest {
 service RecorderService {
   
   // 建立新排班
-  rpc RecordShiftStarted(RecordShiftStartedRequest) returns (RecordIDResponse);
+  rpc RecordShiftStarted(RecordShiftStartedRequest) returns (ShiftRecord);
 
   // 排班結束
-  rpc RecordShiftEnded(RecordShiftEndedRequest) returns (google.protobuf.Empty);
+  rpc RecordShiftEnded(RecordShiftEndedRequest) returns (ShiftRecord);
 
   // 開始使用牌靴
-  rpc RecordShoeStarted(RecordShoeStartedRequest) returns (RecordIDResponse);
+  rpc RecordShoeStarted(RecordShoeStartedRequest) returns (ShoeRecord);
 
   // 使用牌靴完畢
-  rpc RecordShoeEnd(RecordShoeEndRequest) returns (google.protobuf.Empty);
+  rpc RecordShoeEnded(RecordShoeEndedRequest) returns (ShoeRecord);
 
   // 開啟新局
-  rpc RecordRoundStart(RecordRoundStartRequest) returns (RecordIDResponse);
+  rpc RecordRoundStarted(RecordRoundStartedRequest) returns (RoundRecord);
 
   // 記錄步驟
-  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (RoundRecord);
 
   // 紀錄結果
-  rpc RecordRoundResults(RecordRoundResultsRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundResults(RecordRoundResultsRequest) returns (RoundRecord);
 
   // 此局作廢
-  rpc RecordRoundCancel(RecordRoundCancelRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundBeCanceled(RecordRoundBeCanceledRequest) returns (RoundRecord);
 
   // 結束此局
-  rpc RecordRoundFinish(RecordRoundFinishRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundFinished(RecordRoundFinishedRequest) returns (RoundRecord);
 
   // 紀錄路紙
-  rpc RecordRoadmap (RecordRoadmapRequest) returns (google.protobuf.Empty);
+  rpc RecordRoadmap (RecordRoadmapRequest) returns (RoundRecord);
 
   // 紀錄回放
-  rpc RecordRoundVideo(RecordRoundMediaRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundVideo(RecordRoundMediaRequest) returns (RoundRecord);
   
 }
