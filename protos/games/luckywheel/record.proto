@@ -34,7 +34,7 @@ enum Step {
 
   // PITBOSS 修改骰點
   PITBOSS_MODIFY_BOWL = 16;
-  
+
 }
 
 // 座位功能代碼
@@ -42,7 +42,7 @@ enum Seat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
-  // Dealer 
+  // Dealer
   DEALER = 1;
   // Pitboss
   PITBOSS = 9;
@@ -58,5 +58,68 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
+
+}
+
+// 取消原因
+enum CancelReason {
+
+  // 未指定，沒有取消
+  CANCEL_REASON_UNSPECIFIED = 0;
+  // 取消說明原因
+  NO_REASON = 1;
+
+}
+
+/**
+ * The state of the game flow
+ */
+enum GameState {
+  STATE_IDLE = 0;             // Idle
+  STATE_START = 1;            // Game Starting
+  STATE_COUNTER_START = 2;    // Counuter Started
+  STATE_INPUT = 3;            // Wait for input
+  STATE_END = 7;              // Game Ended
+  STATE_CONFIRM = 8;          // Game Ended
+  STATE_SHUFFLE = 30;          // Shuffle cards
+
+}
+
+/**
+ * The status fo the current game.
+ */
+message GameStatus {
+  string sessionID = 1;         // Unique tableid
+  string roundCode = 2;     // Unique session for the game
+  string tableID = 3;         // Unique tableid
+  GameState state = 4;        // State of the game
+  int64 startTime = 5;        // Time when game start
+  string shoeCode = 6;          // Shoe ID
+  int32 shoe =7;
+  int32 shoeRound =8;
+  // game specify information
+  int32 direction = 10;       // Direction of the input
+  string value = 11;          // Value of the input
+  double angle = 12;          // Angle for blockchain animation
+  double prevangle = 13;      // Previous angle for blockchain animation
+  int64 dealstarttime = 14;   // Deal start time for blockchain
+  int64 dealcountdown = 15;   // Deal count down for  blockchain
+  string maskedcardssn = 16;  // maskedcardssn for blockchain
+  int32 countdown = 30;       // Coundown value
+  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
+
+}
+
+message LwBead {
+  string roundCode = 1;
+  string shoeCode = 2;
+  uint32 shoe = 3;
+  uint32 shoeRound = 4;
+  string result = 5;
+
+  int32 direction = 7;
+  string value = 8;
+
+  map<string, int32> statistics = 32;
 
 }

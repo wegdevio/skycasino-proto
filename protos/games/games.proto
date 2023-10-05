@@ -14,7 +14,7 @@ enum GameType {
   THREECARDS = 18;
   // 牛牛
   BULLFIGHT = 19;
-  
+
   // 番攤
   FANTAN = 20;
 
