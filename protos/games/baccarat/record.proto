@@ -201,8 +201,8 @@ message BaBead {
   bool hasPlayerPair = 16;
   string winType = 17;
 
-  int32 hightLight = 21;
-  string multiplier = 22;
+  int32 highLight = 21;
+  string multiPlier = 22;
 
   map<string, int32> luckys = 31;
   map<string, int32> statistics = 32;
