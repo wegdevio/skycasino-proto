@@ -116,7 +116,7 @@ message DiBead {
   string roundCode = 1;
   string shoeCode = 2;
   uint32 shoe = 3;
-  uint32 round = 4;
+  uint32 shoeRound = 4;
   string result = 5;
 
   repeated int32 dice = 7;
