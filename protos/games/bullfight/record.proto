@@ -145,87 +145,87 @@ enum PatternType {
 
 }
 
-/**
- * The status fo the current game.
- */
-message GameStatus {
-  string sessionID = 1;       // Unique tableid
-  string roundCode = 2;     // Unique session for the game
-  string tableID = 3;         // Unique tableid
-  GameState state = 4;        // State of the game
-  int64 startTime = 5;        // Time when game start
-  string shoeCode = 6;          // Shoe ID
-  int32 shoe = 7;
-  int32 shoeRound = 8;
+// /**
+//  * The status fo the current game.
+//  */
+// message GameStatus {
+//   string sessionID = 1;       // Unique tableid
+//   string roundCode = 2;     // Unique session for the game
+//   string tableID = 3;         // Unique tableid
+//   GameState state = 4;        // State of the game
+//   int64 startTime = 5;        // Time when game start
+//   string shoeCode = 6;          // Shoe ID
+//   int32 shoe = 7;
+//   int32 shoeRound = 8;
 
-  // game specify information
+//   // game specify information
 
-  int32 countdown = 40;       // Coundown value
+//   int32 countdown = 40;       // Coundown value
 
-  string firstCard = 10;          // First card
-  string revealingPosition = 39;  // Next position to be revealed: b1 / b2 /... / z5
-  string b1 = 11;                 // Card slot Banker 1
-  string b2 = 12;                 // Card slot Banker 2
-  string b3 = 13;                 // Card slot Banker 3
-  string b4 = 14;                 // Card slot Banker 4
-  string b5 = 15;                 // Card slot Banker 5
-  string x1 = 16;                 // Card slot PlayerX 1
-  string x2 = 17;                 // Card slot PlayerX 2
-  string x3 = 18;                 // Card slot PlayerX 3
-  string x4 = 19;                 // Card slot PlayerX 4
-  string x5 = 20;                 // Card slot PlayerX 5
-  string y1 = 21;                 // Card slot PlayerY 1
-  string y2 = 22;                 // Card slot PlayerY 2
-  string y3 = 23;                 // Card slot PlayerY 3
-  string y4 = 24;                 // Card slot PlayerY 4
-  string y5 = 25;                 // Card slot PlayerY 5
-  string z1 = 26;                 // Card slot PlayerZ 1
-  string z2 = 27;                 // Card slot PlayerZ 2
-  string z3 = 28;                 // Card slot PlayerZ 3
-  string z4 = 29;                 // Card slot PlayerZ 4
-  string z5 = 30;                 // Card slot PlayerZ 5
-  PatternType bankerType = 31;    // Banker pattern type
-  PatternType playerXType = 32;   // PlayerX pattern type
-  PatternType playerYType = 33;   // PlayerY pattern type
-  PatternType playerZType = 34;   // PlayerZ pattern type
-  WinType playerXWin = 35;        // 0  - none, 1 - player X win, 2 - banker win
-  WinType playerYWin = 36;        // 0  - none, 1 - player Y win, 2 - banker win
-  WinType playerZWin = 37;        // 0  - none, 1 - player Z win, 2 - banker win
+//   string firstCard = 10;          // First card
+//   string revealingPosition = 39;  // Next position to be revealed: b1 / b2 /... / z5
+//   string b1 = 11;                 // Card slot Banker 1
+//   string b2 = 12;                 // Card slot Banker 2
+//   string b3 = 13;                 // Card slot Banker 3
+//   string b4 = 14;                 // Card slot Banker 4
+//   string b5 = 15;                 // Card slot Banker 5
+//   string x1 = 16;                 // Card slot PlayerX 1
+//   string x2 = 17;                 // Card slot PlayerX 2
+//   string x3 = 18;                 // Card slot PlayerX 3
+//   string x4 = 19;                 // Card slot PlayerX 4
+//   string x5 = 20;                 // Card slot PlayerX 5
+//   string y1 = 21;                 // Card slot PlayerY 1
+//   string y2 = 22;                 // Card slot PlayerY 2
+//   string y3 = 23;                 // Card slot PlayerY 3
+//   string y4 = 24;                 // Card slot PlayerY 4
+//   string y5 = 25;                 // Card slot PlayerY 5
+//   string z1 = 26;                 // Card slot PlayerZ 1
+//   string z2 = 27;                 // Card slot PlayerZ 2
+//   string z3 = 28;                 // Card slot PlayerZ 3
+//   string z4 = 29;                 // Card slot PlayerZ 4
+//   string z5 = 30;                 // Card slot PlayerZ 5
+//   PatternType bankerType = 31;    // Banker pattern type
+//   PatternType playerXType = 32;   // PlayerX pattern type
+//   PatternType playerYType = 33;   // PlayerY pattern type
+//   PatternType playerZType = 34;   // PlayerZ pattern type
+//   WinType playerXWin = 35;        // 0  - none, 1 - player X win, 2 - banker win
+//   WinType playerYWin = 36;        // 0  - none, 1 - player Y win, 2 - banker win
+//   WinType playerZWin = 37;        // 0  - none, 1 - player Z win, 2 - banker win
 
-  bool redcard = 90;          // If redcard scan
-  repeated string maskedCardsSN = 103; // masked cards sn slice for blockchan
-  repeated string hashedCards = 104;  // sha256 cards from masked cards sn
-  // bool showFirstCard = 105;           // show first card boolean when new shoe
-  // string firstCard = 106;             // first card of the shoe
-  // int32 currentCardIndex = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
-  // int32 redCardIndex = 108;           // the red card index of the shoe
-  string cosmosShoeID = 109;          // cosmos blockchain id for the shoe
-  int32 hashedLength = 110;           // length of hashedCards
-  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
+//   bool redcard = 90;          // If redcard scan
+//   repeated string maskedCardsSN = 103; // masked cards sn slice for blockchan
+//   repeated string hashedCards = 104;  // sha256 cards from masked cards sn
+//   // bool showFirstCard = 105;           // show first card boolean when new shoe
+//   // string firstCard = 106;             // first card of the shoe
+//   // int32 currentCardIndex = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
+//   // int32 redCardIndex = 108;           // the red card index of the shoe
+//   string cosmosShoeID = 109;          // cosmos blockchain id for the shoe
+//   int32 hashedLength = 110;           // length of hashedCards
+//   map<string, int32> lucky = 150;     // Lucky Number and payout ratio
 
-}
+// }
 
 message OxBead {
-  string roundCode = 1;
-  string shoeCode = 2;
+  string round_code = 1;
+  string shoe_code = 2;
   uint32 shoe = 3;
-  uint32 shoeRound = 4;
+  uint32 shoe_round = 4;
   string result = 5;
 
-  repeated string bankerCards = 7;
-  repeated string playerXCards = 8;
-  repeated string playerYCards = 9;
-  repeated string playerZCards = 10;
-  string firstCard = 11;
+  repeated string banker_cards = 7;
+  repeated string playerX_cards = 8;
+  repeated string playerY_cards = 9;
+  repeated string playerZ_cards = 10;
+  string first_card = 11;
 
-  int32 bankerType = 12;
-  int32 playerXType = 13;
-  int32 playerYType = 14;
-  int32 playerZType = 15;
-  bool playerXWin = 16;
-  bool playerYWin = 17;
-  bool playerZWin = 18;
-  string winType = 19;
+  int32 banker_type = 12;
+  int32 playerx_type = 13;
+  int32 playery_type = 14;
+  int32 playerz_type = 15;
+  bool playerx_win = 16;
+  bool playery_win = 17;
+  bool playerz_win = 18;
+  string win_type = 19;
 
   map<string, int32> statistics = 32;
 
