@@ -174,40 +174,38 @@ message RoundRecord {
   string round_code = 9;
   // 使用洗牌代碼
   string shoe_code = 10;
-  // 靴號
-  int64 shoe = 11;
-  // 使用此洗牌第幾局，從1開始計算
-  int64 shoe_round = 12;
+    // 使用此洗牌第幾局，從1開始計算
+  int64 shoe_round = 11;
   // 開始時間
-  google.protobuf.Timestamp ts_start = 13;
+  google.protobuf.Timestamp ts_start = 12;
   // 座位組
   // key: SeatCode, value: Seat
-  map<int32, Seat> seats = 14 [(tagger.tags) = "bson:\"seats,omitempty\""];
+  map<int32, Seat> seats = 13 [(tagger.tags) = "bson:\"seats,omitempty\""];
   // 玩家入座
   // key: SeatCode, value: 玩家code。
-  map<int32, string> players = 15 [(tagger.tags) = "bson:\"players,omitempty\""];
+  map<int32, string> players = 14 [(tagger.tags) = "bson:\"players,omitempty\""];
   // 標籤
-  map<string, string> tags = 16 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  map<string, string> tags = 15 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
 
   // 歷程
-  repeated Step process = 17 [(tagger.tags) = "bson:\"process,omitempty\""];
+  repeated Step process = 16 [(tagger.tags) = "bson:\"process,omitempty\""];
   // 判讀
-  repeated Result results = 18 [(tagger.tags) = "bson:\"results,omitempty\""];
+  repeated Result results = 17 [(tagger.tags) = "bson:\"results,omitempty\""];
 
   // 結束
-  bool is_end = 19;
+  bool is_end = 18;
   // 結束時間
-  google.protobuf.Timestamp ts_end = 20 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
+  google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
 
   // 取消
-  optional bool cancel = 31 [(tagger.tags) = "bson:\"cancel,omitempty\""];
+  optional bool cancel = 20 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 取消代碼：CancelReasonCode
-  optional string cancel_code = 32 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
+  optional string cancel_code = 21 [(tagger.tags) = "bson:\"cancelCode,omitempty\""];
   // 取消備註
-  optional string cancel_message = 33 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
+  optional string cancel_message = 22 [(tagger.tags) = "bson:\"cancelMessage,omitempty\""];
 
   // 附加媒體
-  map<string, URLMedia> mideas = 41;
+  map<string, URLMedia> mideas = 24;
 
 }
 

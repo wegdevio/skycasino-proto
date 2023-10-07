@@ -3,7 +3,6 @@ package recorder;
 
 import "recorder/record.proto";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/empty.proto";
 
 message RecordIDResponse {
 
@@ -170,36 +169,36 @@ message RecordRoundMediaRequest {
 service RecorderService {
   
   // 建立新排班
-  rpc RecordShiftStarted(RecordShiftStartedRequest) returns (RecordIDResponse);
+  rpc RecordShiftStarted(RecordShiftStartedRequest) returns (ShiftRecord);
 
   // 排班結束
-  rpc RecordShiftEnded(RecordShiftEndedRequest) returns (google.protobuf.Empty);
+  rpc RecordShiftEnded(RecordShiftEndedRequest) returns (ShiftRecord);
 
   // 開始使用牌靴
-  rpc RecordShoeStarted(RecordShoeStartedRequest) returns (RecordIDResponse);
+  rpc RecordShoeStarted(RecordShoeStartedRequest) returns (ShoeRecord);
 
   // 使用牌靴完畢
-  rpc RecordShoeEnded(RecordShoeEndedRequest) returns (google.protobuf.Empty);
+  rpc RecordShoeEnded(RecordShoeEndedRequest) returns (ShoeRecord);
 
   // 開啟新局
-  rpc RecordRoundStarted(RecordRoundStartedRequest) returns (RecordIDResponse);
+  rpc RecordRoundStarted(RecordRoundStartedRequest) returns (RoundRecord);
 
   // 記錄步驟
-  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundSteps(RecordRoundStepsRequest) returns (RoundRecord);
 
   // 紀錄結果
-  rpc RecordRoundResults(RecordRoundResultsRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundResults(RecordRoundResultsRequest) returns (RoundRecord);
 
   // 此局作廢
-  rpc RecordRoundBeCanceled(RecordRoundBeCanceledRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundBeCanceled(RecordRoundBeCanceledRequest) returns (RoundRecord);
 
   // 結束此局
-  rpc RecordRoundFinished(RecordRoundFinishedRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundFinished(RecordRoundFinishedRequest) returns (RoundRecord);
 
   // 紀錄路紙
-  rpc RecordRoadmap (RecordRoadmapRequest) returns (google.protobuf.Empty);
+  rpc RecordRoadmap (RecordRoadmapRequest) returns (RoundRecord);
 
   // 紀錄回放
-  rpc RecordRoundVideo(RecordRoundMediaRequest) returns (google.protobuf.Empty);
+  rpc RecordRoundVideo(RecordRoundMediaRequest) returns (RoundRecord);
   
 }

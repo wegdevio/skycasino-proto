@@ -78,44 +78,6 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
-
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-
-}
-
-/**
- * The state of the game flow
- */
-enum GameState {
-  STATE_IDLE = 0;             // Idle
-  STATE_START = 1;            // Game Starting
-  STATE_COUNTER_START = 2;    // Counuter Started
-  STATE_DRAGON = 3;           // Scan the dragon card
-  STATE_PHOENIX = 4;            // Scan the phoenix card
-  STATE_DRAGON_LAST = 5;           // Scan the dragon extra card
-  STATE_PHOENIX_LAST = 6;            // Scan the phoenix extra card
-  STATE_END = 7;              // Game Ended
-  STATE_CONFIRM = 8;          // Wait for confirm
-  STATE_DISCARD = 9;          // Scane the discard
-  STATE_SHUFFLE = 30;          // Shuffle cards
-
-}
-
-// WinType_PHOENIX 銀 右 莊
-// WinType_DRAGON 金 左 閒
-enum WinType {
-  NULL    = 0;
-  WIN_DRAGON  = 1;
-  WIN_PHOENIX   = 2;
-  WIN_TIE     = 3;
-
-}
-
 // 豹子 > 同花順 > 同花 > 順子 > 對子 > 散牌
 enum CardStyle {
   NONE    = 0;            // 散牌
@@ -128,55 +90,7 @@ enum CardStyle {
 
 }
 
-/**
- * The status fo the current game.
- */
-message GameStatus {
-  string session_id = 1;       // Unique tableid
-  string round_code = 2;     // Unique session for the game
-  string table_id = 3;         // Unique tableid
-  GameState state = 4;        // State of the game
-  int64 start_time = 5;        // Time when game start
-  string shoe_code = 6;          // Shoe ID
-  int32 shoe =7;
-  int32 shoe_round =8;
-  int64 shuffle_time = 9;        // Time when game start
-  int32 countdown = 10;       // Coundown value
-  bool redcard = 11;          // If redcard scan
-  // game specify information
-  string dragon1 = 20;
-  string dragon2 = 21;
-  string dragon3 = 22;
-  string phoenix1 = 23;
-  string phoenix2 = 24;
-  string phoenix3 = 25;
-  map<string,string> dragon_barcode = 26;
-  map<string,string> phoenix_barcode = 27;
-  // results
-  WinType win_type = 30;       // Wintype
-  string dragon_result = 31;
-  string phoenix_result = 32;
-  CardStyle dragon_result_int = 33;
-  CardStyle phoenix_result_int = 34;
-  string dragon_win_value = 35;
-  string phoenix_win_value = 36;
-  map<string,string> barcode_hash = 37;        // store the bardcodehash for that round
-  map<string,string> barcode_sn = 38;           // store the bardcodehash SN for that round
-
-  // blockchain
-  repeated string masked_cards_sn = 103; // masked cards sn slice for blockchan
-  repeated string hashed_cards = 104;  // sha256 cards from masked cards sn
-  bool show_first_card = 105;           // show first card boolean when new shoe
-  string first_card = 106;             // first card of the shoe
-  int32 current_card_index = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
-  int32 red_card_index = 108;           // the red card index of the shoe
-  string cosmos_shoe_id = 109;          // cosmos blockchain id for the shoe
-  int32 hashed_length = 110;           // length of hashedCards
-  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
-
-}
-
-message ZjhBead {
+message ThreeCardsBead {
   string round_code = 1;
   string shoe_code = 2;
   uint32 shoe = 3;

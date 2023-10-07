@@ -73,78 +73,7 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
-
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-
-}
-/**
- * The state of the game flow
- */
-enum GameState {
-  STATE_IDLE = 0;             // Idle
-  STATE_START = 1;            // Game Starting
-  STATE_COUNTER_START = 2;    // Counuter Started
-  STATE_DRAGON = 3;           // Scan the dragon card
-  STATE_TIGER = 4;            // Scan the tiger card
-  STATE_END = 7;              // Game Ended
-  STATE_CONFIRM = 8;          // Wait for confirm
-  STATE_DISCARD = 9;          // Scane the discard
-
-  STATE_SHUFFLE = 30;          // Shuffle cards
-
-}
-
-enum WinType {
-  NULL    = 0;
-  WIN_DRAGON  = 1;
-  WIN_TIGER   = 2;
-  WIN_TIE     = 3;
-
-}
-
-/**
-* The status fo the current game.
-*/
-message GameStatus {
-  string session_id = 1;       // Unique tableid
-  string round_code = 2;     // Unique session for the game
-  string table_id = 3;         // Unique tableid
-  GameState state = 4;        // State of the game
-  int64 start_time = 5;        // Time when game start
-  string shoe_code = 6;          // Shoe ID
-  int32 shoe =7;
-  int32 shoe_round =8;
-  // game specify information
-  string dragon_card = 10;     // Card slot Dragon
-  string tiger_card = 11;      // Card slot Tiger
-  string dragon_barcode = 12;     //  Dragon Barcode
-  string tiger_barcode = 13;      //  Tiger Barcode
-  int32 dragon_point = 20;     // Dragon Point
-  int32 tiger_point = 21;      // Tiger Point
-  int32 countdown = 30;       // Coundown value
-  WinType win_type = 31;       // Wintype
-
-  bool redcard = 90;          // If redcard scan
-
-  repeated string masked_cards_sn = 103; // masked cards sn slice for blockchan
-  repeated string hashed_cards = 104;  // sha256 cards from masked cards sn
-  bool show_first_card = 105;           // show first card boolean when new shoe
-  string first_card = 106;             // first card of the shoe
-  int32 current_card_index = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
-  int32 red_card_index = 108;           // the red card index of the shoe
-  string cosmos_shoe_id = 109;          // cosmos blockchain id for the shoe
-  int32 hashed_length = 110;           // length of hashedCards
-  map<string, int32> scanner_type = 112;  // 0: barcode 1:image recognition
-  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
-
-}
-
-message DtBead {
+message TheBigBattleBead {
   string round_code = 1;
   string shoe_code = 2;
   uint32 shoe = 3;

@@ -61,56 +61,7 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
-
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-
-}
-
-/**
- * The state of the game flow
- */
-enum GameState {
-  STATE_IDLE = 0;             // Idle
-  STATE_START = 1;            // Game Starting
-  STATE_COUNTER_START = 2;    // Counuter Started
-  STATE_INPUT = 3;            // Wait for input
-  STATE_END = 7;              // Game Ended
-  STATE_CONFIRM = 8;          // Game Ended
-  STATE_SHUFFLE = 30;          // Shuffle cards
-
-}
-
-/**
- * The status fo the current game.
- */
-message GameStatus {
-  string session_id = 1;         // Unique tableid
-  string round_code = 2;     // Unique session for the game
-  string table_id = 3;         // Unique tableid
-  GameState state = 4;        // State of the game
-  int64 start_time = 5;        // Time when game start
-  string shoe_code = 6;          // Shoe ID
-  int32 shoe =7;
-  int32 shoe_round =8;
-  // game specify information
-  int32 direction = 10;       // Direction of the input
-  string value = 11;          // Value of the input
-  double angle = 12;          // Angle for blockchain animation
-  double prevangle = 13;      // Previous angle for blockchain animation
-  int64 dealstarttime = 14;   // Deal start time for blockchain
-  int64 dealcountdown = 15;   // Deal count down for  blockchain
-  string maskedcardssn = 16;  // maskedcardssn for blockchain
-  int32 countdown = 30;       // Coundown value
-  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
-
-}
-
-message LwBead {
+message LuckyWheelBead {
   string round_code = 1;
   string shoe_code = 2;
   uint32 shoe = 3;

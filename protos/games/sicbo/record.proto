@@ -61,58 +61,7 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
-
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-
-}
-
-/**
- * The state of the game flow
- */
-enum GameState {
-  STATE_IDLE = 0;             // Idle
-  STATE_START = 1;            // Game Starting
-  STATE_COUNTER_START = 2;    // Counuter Started
-  STATE_INPUT = 3;            // Wait for input
-  STATE_END = 7;              // Game Ended
-  STATE_CONFIRM = 8;          // Game Ended
-  STATE_SHUFFLE = 30;          // Shuffle cards
-
-}
-
-/**
- * The status fo the current game.
- */
-message GameStatus {
-  string session_id = 1;           // Unique tableid
-  string round_code = 2;   	    // Unique session for the game
-  string table_id = 3;     	    // Unique tableid
-  GameState state = 4;    	    // State of the game
-  int64 start_time = 5;    	    // Time when game start
-  string shoe_code = 6;     	        // Shoe ID
-  int32 shoe =7;
-  int32 round =8;
-  int32 dice1 = 10;     	        // Value of the dice 1
-  int32 dice2 = 11;     	        // Value of the dice 2
-  int32 dice3 = 12;     	        // Value of the dice 3
-  int32 total = 13;     	        // Total dice1+dice2+dice3
-  int32 odd = 14;     		    // Odd/Even=1/2
-  int32 size = 15;     	        // Small/Big=1/2
-  int32 countdown = 16;           // Coundown value
-  int32 tie = 17;                 // dice1=dice2=dice3?1:0
-  int64 dealstarttime = 18;   // Deal start time for blockchain
-  int64 dealcountdown = 19;   // Deal count down for  blockchain
-  string maskedcardssn = 20;  // maskedcardssn for blockchain
-  map<string, int32> lucky = 40;   // Lucky Number and payout ratio
-
-}
-
-message DiBead {
+message SicboBead {
   string round_code = 1;
   string shoe_code = 2;
   uint32 shoe = 3;
