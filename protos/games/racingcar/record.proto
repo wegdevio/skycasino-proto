@@ -1,5 +1,5 @@
 syntax = "proto3";
-package games.threecards;
+package games.racingcar;
 
 enum ResourceType {
 
@@ -9,6 +9,8 @@ enum ResourceType {
   SHOE = 1;
   // 例牌
   NORMAL = 2;
+  // 非例牌
+  EXTRA = 3;
 
 }
 
@@ -24,29 +26,49 @@ enum Step {
   // 本局取消
   ROUND_CANCELED = 3;
 
-  // 派發莊家例牌1
-  DEAL_BANKER_1 = 4;
   // 派發閒家例牌1
-  DEAL_PLAYER_1 = 5;
-  // 派發莊家例牌2
-  DEAL_BANKER_2 = 6;
+  DEAL_PLAYER_1 = 4;
+  // 派發莊家例牌1
+  DEAL_BANKER_1 = 5;
   // 派發閒家例牌2
-  DEAL_PLAYER_2 = 7;
-  // 派發莊家例牌3
-  DEAL_BANKER_3 = 8;
-  // 派發閒家例牌3
-  DEAL_PLAYER_3 = 9;
+  DEAL_PLAYER_2 = 6;
+  // 派發莊家例牌2
+  DEAL_BANKER_2 = 7;
 
   // 開放下注
-  OPEN_FOR_BETTING = 10;
+  OPEN_FOR_BETTING = 8;
+  // 倒數
+  COUNTDOWN = 27;
   // 停止下注
-  CLOSE_THE_BETTING = 11;
+  CLOSE_THE_BETTING = 9;
 
-  // 開例牌
+  // 非瞇牌開例牌
   SHOW_NORMAL = 12;
+  // 瞇牌例牌
+  PEEK_NORMAL = 13;
+  // 瞇牌公布例牌
+  PEEK_SHOW_NORMAL = 14;
+
+  // 非瞇牌補閒家牌
+  DEAL_PLAYER_EXTRA = 16;
+  // 瞇牌閒家補牌
+  PEEK_DEAL_PLAYER_EXTRA = 17;
+  // 瞇牌公布閒家補牌
+  PEEK_SHOW_PLAYER_EXTRA = 18;
+
+  // 非瞇牌補莊家牌
+  DEAL_BANKER_EXTRA = 20;
+  // 瞇牌莊家補牌
+  PEEK_DEAL_BANKER_EXTRA= 21;
+  // 瞇牌公布莊家補牌
+  PEEK_SHOW_BANKER_EXTRA= 22;
 
   // PITBOSS 修改派發例牌
   PITBOSS_MODIFY_NORMAL = 24;
+  // PITBOSS 修改派發閒家補牌
+  PITBOSS_MODIFY_PLAYER_EXTRA = 25;
+  // PITBOSS 修改派發莊家補牌
+  PITBOSS_MODIFY_BANKER_EXTRA = 26;
 
 }
 
@@ -57,10 +79,10 @@ enum Seat {
   SEAT_UNSPECIFIED = 0;
   // Dealer
   DEALER = 1;
-  // 莊家
-  BANKER = 2;
   // 閒家
-  PLAYER = 3;
+  PLAYER = 2;
+  // 莊家
+  BANKER = 3;
   // Pitboss
   PITBOSS = 9;
 
@@ -78,36 +100,14 @@ enum ResultRecordType {
 
 }
 
-// 豹子 > 同花順 > 同花 > 順子 > 對子 > 散牌
-enum CardStyle {
-  NONE    = 0;            // 散牌
-  PAIR   = 1;             // 對子
-  STRAIGHT   = 2;         // 順子
-  FLUSH   = 3;            // 同花
-  STRAIGHTF  = 4;         // 順子
-  LEOPARD  = 5;           // 豹子
-  LEOPARD_KILLER  = 6;    // 豹子殺手
-
-}
-
-message ThreeCardsBead {
+message RacingCarBead {
   string round_code = 1;
   string shoe_code = 2;
   uint32 shoe = 3;
   uint32 shoe_round = 4;
   string result = 5;
 
-  repeated string banker_cards = 7;
-  repeated string player_cards = 8;
-
-  string banker_bar_code = 11;
-  string player_bar_code = 12;
-  string banker_style = 13;
-  string player_style = 14;
-  string banker_win_point = 15;
-  string player_win_point = 16;
-  string win_type = 17;
-  string win_style = 18;
+  repeated int32 balls = 7;
 
   map<string, int32> statistics = 32;
 

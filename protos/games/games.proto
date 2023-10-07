@@ -14,7 +14,7 @@ enum GameType {
   THREECARDS = 18;
   // 牛牛
   BULLFIGHT = 19;
-  
+
   // 番攤
   FANTAN = 20;
 
@@ -25,4 +25,9 @@ enum GameType {
   // 幸運輪
   LUCKYWHEEL = 40;
 
+  // 彩票
+  LOTTERY = 50;
+
+  // 賽車
+  RACINGCAR = 51;
 }

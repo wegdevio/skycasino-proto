@@ -105,7 +105,7 @@ message Step {
   optional bool cancel = 9 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 分配毫秒數
   optional int64 duration = 10 [(tagger.tags) = "bson:\"duration,omitempty\""];
-  
+
 }
 
 // 座位
@@ -148,7 +148,7 @@ message URLMedia {
 
   // url
   string url = 3;
-  
+
 }
 
 // 紀錄
@@ -174,7 +174,7 @@ message RoundRecord {
   string round_code = 9;
   // 使用洗牌代碼
   string shoe_code = 10;
-  // 使用此洗牌第幾局，從1開始計算
+    // 使用此洗牌第幾局，從1開始計算
   int64 shoe_round = 11;
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
@@ -252,6 +252,14 @@ message ShoeRecord {
 
 }
 
+// RoadMapColumn
+message RoadMapColumn {
+  repeated google.protobuf.Any beads = 1;
+  int32 column_index = 2;
+  int32 column_length = 3;
+
+}
+
 // 排班
 message ShiftRecord {
 
@@ -279,11 +287,25 @@ message ShiftRecord {
   // 洗牌
   repeated string shoe_codes = 10;
 
-  // TODO: 路紙
-
   // 結束
   bool is_end = 18;
   // 結束時間
   google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
-  
+
+  // TODO: 路紙
+  // string table_code = 21;
+  string shoe_code = 22;
+  int32 total_count = 23;
+  int32 shoe_round_um = 24;
+  // Statistic Map
+  map <string, int32> statistic = 25;
+  map <string, int32> combo_statistic = 26;
+  map <int32, int32> result_count = 27;
+  map <string, int32> lo_show = 28;
+  map <string, int32> lo_no_show = 29;
+  map <string, int32> rc_show = 30;
+  map <string, int32> rc_no_show = 31;
+
+  repeated RoadMapColumn roadmap_columns = 32;
+
 }

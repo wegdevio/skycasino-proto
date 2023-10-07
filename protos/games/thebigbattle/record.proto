@@ -30,7 +30,7 @@ enum Step {
   DEAL_DRAGON_1 = 5;
   // 派發虎例牌
   DEAL_TIGER_1 = 6;
- 
+
   // 開放下注
   OPEN_FOR_BETTING = 9;
   // 停止下注
@@ -52,7 +52,7 @@ enum Seat {
   DRAGON = 1;
   // 虎
   TIGER = 2;
-  // Dealer 
+  // Dealer
   DEALER = 3;
   // Discard
   DISCARD = 4;
@@ -73,12 +73,24 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
+message TheBigBattleBead {
+  string round_code = 1;
+  string shoe_code = 2;
+  uint32 shoe = 3;
+  uint32 shoe_round = 4;
+  string result = 5;
 
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-  
+  repeated string banker_cards = 7;
+  repeated string player_cards = 8;
+
+  string banker_bar_code = 11;
+  string player_bar_code = 12;
+  int32 banker_point = 13;
+  int32 player_point = 14;
+  bool banker_win = 15;
+  bool player_win = 16;
+  string win_type = 17;
+
+  map<string, int32> statistics = 32;
+
 }
