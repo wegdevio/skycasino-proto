@@ -128,53 +128,53 @@ enum CardStyle {
 
 }
 
-// /**
-//  * The status fo the current game.
-//  */
-// message GameStatus {
-//   string sessionID = 1;       // Unique tableid
-//   string roundCode = 2;     // Unique session for the game
-//   string tableID = 3;         // Unique tableid
-//   GameState state = 4;        // State of the game
-//   int64 startTime = 5;        // Time when game start
-//   string shoeCode = 6;          // Shoe ID
-//   int32 shoe =7;
-//   int32 shoeRound =8;
-//   int64 shuffleTime = 9;        // Time when game start
-//   int32 countdown = 10;       // Coundown value
-//   bool redcard = 11;          // If redcard scan
-//   // game specify information
-//   string dragon1 = 20;
-//   string dragon2 = 21;
-//   string dragon3 = 22;
-//   string phoenix1 = 23;
-//   string phoenix2 = 24;
-//   string phoenix3 = 25;
-//   map<string,string> dragonBarcode = 26;
-//   map<string,string> phoenixBarcode = 27;
-//   // results
-//   WinType winType = 30;       // Wintype
-//   string dragonResult = 31;
-//   string phoenixResult = 32;
-//   CardStyle dragonResultInt = 33;
-//   CardStyle phoenixResultInt = 34;
-//   string dragonWinValue = 35;
-//   string phoenixWinValue = 36;
-//   map<string,string> barcodeHash = 37;        // store the bardcodehash for that round
-//   map<string,string> barcodeSN = 38;           // store the bardcodehash SN for that round
+/**
+ * The status fo the current game.
+ */
+message GameStatus {
+  string sessionID = 1;       // Unique tableid
+  string roundCode = 2;     // Unique session for the game
+  string tableID = 3;         // Unique tableid
+  GameState state = 4;        // State of the game
+  int64 startTime = 5;        // Time when game start
+  string shoeCode = 6;          // Shoe ID
+  int32 shoe =7;
+  int32 shoeRound =8;
+  int64 shuffleTime = 9;        // Time when game start
+  int32 countdown = 10;       // Coundown value
+  bool redcard = 11;          // If redcard scan
+  // game specify information
+  string dragon1 = 20;
+  string dragon2 = 21;
+  string dragon3 = 22;
+  string phoenix1 = 23;
+  string phoenix2 = 24;
+  string phoenix3 = 25;
+  map<string,string> dragonBarcode = 26;
+  map<string,string> phoenixBarcode = 27;
+  // results
+  WinType winType = 30;       // Wintype
+  string dragonResult = 31;
+  string phoenixResult = 32;
+  CardStyle dragonResultInt = 33;
+  CardStyle phoenixResultInt = 34;
+  string dragonWinValue = 35;
+  string phoenixWinValue = 36;
+  map<string,string> barcodeHash = 37;        // store the bardcodehash for that round
+  map<string,string> barcodeSN = 38;           // store the bardcodehash SN for that round
 
-//   // blockchain
-//   repeated string maskedCardsSN = 103; // masked cards sn slice for blockchan
-//   repeated string hashedCards = 104;  // sha256 cards from masked cards sn
-//   bool showFirstCard = 105;           // show first card boolean when new shoe
-//   string firstCard = 106;             // first card of the shoe
-//   int32 currentCardIndex = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
-//   int32 redCardIndex = 108;           // the red card index of the shoe
-//   string cosmosShoeID = 109;          // cosmos blockchain id for the shoe
-//   int32 hashedLength = 110;           // length of hashedCards
-//   map<string, int32> lucky = 150;     // Lucky Number and payout ratio
+  // blockchain
+  repeated string maskedCardsSN = 103; // masked cards sn slice for blockchan
+  repeated string hashedCards = 104;  // sha256 cards from masked cards sn
+  bool showFirstCard = 105;           // show first card boolean when new shoe
+  string firstCard = 106;             // first card of the shoe
+  int32 currentCardIndex = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
+  int32 redCardIndex = 108;           // the red card index of the shoe
+  string cosmosShoeID = 109;          // cosmos blockchain id for the shoe
+  int32 hashedLength = 110;           // length of hashedCards
+  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
 
-// }
+}
 
 message ZjhBead {
   string round_code = 1;
