@@ -127,12 +127,12 @@ enum GameState {
  * The status fo the current game.
  */
 message GameStatus {
-  string sessionID = 1;     // Unique tableid
-  string roundCode = 2;   	// Unique session for the game
-  string tableID = 3;     	// Unique tableid
+  string session_id = 1;     // Unique tableid
+  string round_code = 2;   	// Unique session for the game
+  string table_id = 3;     	// Unique tableid
   GameState state = 4;    	// State of the game
-  int64 startTime = 5;    	// Time when game start
-  string shoeCode = 6;     	// Shoe ID
+  int64 start_time = 5;    	// Time when game start
+  string shoe_code = 6;     	// Shoe ID
   int32 ball1 = 10;     	// Value of the ball 1
   int32 ball2 = 11;     	// Value of the ball 2
   int32 ball3 = 12;     	// Value of the ball 3

@@ -149,21 +149,21 @@ enum PatternType {
  * The status fo the current game.
  */
 message GameStatus {
-  string sessionID = 1;       // Unique tableid
-  string roundCode = 2;     // Unique session for the game
-  string tableID = 3;         // Unique tableid
+  string session_idd = 1;       // Unique tableid
+  string round_code = 2;     // Unique session for the game
+  string table_id = 3;         // Unique tableid
   GameState state = 4;        // State of the game
-  int64 startTime = 5;        // Time when game start
-  string shoeCode = 6;          // Shoe ID
+  int64 start_time = 5;        // Time when game start
+  string shoe_code = 6;          // Shoe ID
   int32 shoe = 7;
-  int32 shoeRound = 8;
+  int32 shoe_round = 8;
 
   // game specify information
 
   int32 countdown = 40;       // Coundown value
 
-  string firstCard = 10;          // First card
-  string revealingPosition = 39;  // Next position to be revealed: b1 / b2 /... / z5
+  string first_card = 10;          // First card
+  string revealin_position = 39;  // Next position to be revealed: b1 / b2 /... / z5
   string b1 = 11;                 // Card slot Banker 1
   string b2 = 12;                 // Card slot Banker 2
   string b3 = 13;                 // Card slot Banker 3
@@ -184,23 +184,23 @@ message GameStatus {
   string z3 = 28;                 // Card slot PlayerZ 3
   string z4 = 29;                 // Card slot PlayerZ 4
   string z5 = 30;                 // Card slot PlayerZ 5
-  PatternType bankerType = 31;    // Banker pattern type
-  PatternType playerXType = 32;   // PlayerX pattern type
-  PatternType playerYType = 33;   // PlayerY pattern type
-  PatternType playerZType = 34;   // PlayerZ pattern type
-  WinType playerXWin = 35;        // 0  - none, 1 - player X win, 2 - banker win
-  WinType playerYWin = 36;        // 0  - none, 1 - player Y win, 2 - banker win
-  WinType playerZWin = 37;        // 0  - none, 1 - player Z win, 2 - banker win
+  PatternType banker_type = 31;    // Banker pattern type
+  PatternType player_x_type = 32;   // PlayerX pattern type
+  PatternType player_y_type = 33;   // PlayerY pattern type
+  PatternType player_z_type = 34;   // PlayerZ pattern type
+  WinType player_x_win = 35;        // 0  - none, 1 - player X win, 2 - banker win
+  WinType player_y_win = 36;        // 0  - none, 1 - player Y win, 2 - banker win
+  WinType player_z_win = 37;        // 0  - none, 1 - player Z win, 2 - banker win
 
   bool redcard = 90;          // If redcard scan
-  repeated string maskedCardsSN = 103; // masked cards sn slice for blockchan
-  repeated string hashedCards = 104;  // sha256 cards from masked cards sn
+  repeated string masked_cards_sn = 103; // masked cards sn slice for blockchan
+  repeated string hashed_cards = 104;  // sha256 cards from masked cards sn
   // bool showFirstCard = 105;           // show first card boolean when new shoe
   // string firstCard = 106;             // first card of the shoe
   // int32 currentCardIndex = 107;       // next card to show (i.e. first maskedCardsSN haven't been shown's index)
   // int32 redCardIndex = 108;           // the red card index of the shoe
-  string cosmosShoeID = 109;          // cosmos blockchain id for the shoe
-  int32 hashedLength = 110;           // length of hashedCards
+  string cosmos_shoe_id = 109;          // cosmos blockchain id for the shoe
+  int32 hashed_length = 110;           // length of hashedCards
   map<string, int32> lucky = 150;     // Lucky Number and payout ratio
 
 }
@@ -213,18 +213,18 @@ message OxBead {
   string result = 5;
 
   repeated string banker_cards = 7;
-  repeated string playerX_cards = 8;
-  repeated string playerY_cards = 9;
-  repeated string playerZ_cards = 10;
+  repeated string player_x_cards = 8;
+  repeated string player_y_cards = 9;
+  repeated string player_z_cards = 10;
   string first_card = 11;
 
   int32 banker_type = 12;
-  int32 playerx_type = 13;
-  int32 playery_type = 14;
-  int32 playerz_type = 15;
-  bool playerx_win = 16;
-  bool playery_win = 17;
-  bool playerz_win = 18;
+  int32 player_x_type = 13;
+  int32 player_y_type = 14;
+  int32 player_z_type = 15;
+  bool player_x_win = 16;
+  bool player_y_win = 17;
+  bool player_z_win = 18;
   string win_type = 19;
 
   map<string, int32> statistics = 32;
