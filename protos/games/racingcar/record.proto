@@ -110,43 +110,43 @@ enum CancelReason {
 
 }
 
-// /**
-//  * The state of the game flow
-//  */
-// enum GameState {
-//   STATE_IDLE = 0;             // Idle
-//   STATE_START = 1;            // Game Starting
-//   STATE_COUNTER_START = 2;    // Counuter Started
-//   STATE_INPUT = 3;            // Wait for input
-//   STATE_END = 7;              // Game Ended
-//   STATE_CONFIRM = 8;          // Game Ended
+/**
+ * The state of the game flow
+ */
+enum GameState {
+  STATE_IDLE = 0;             // Idle
+  STATE_START = 1;            // Game Starting
+  STATE_COUNTER_START = 2;    // Counuter Started
+  STATE_INPUT = 3;            // Wait for input
+  STATE_END = 7;              // Game Ended
+  STATE_CONFIRM = 8;          // Game Ended
 
-// }
+}
 
-// /**
-//  * The status fo the current game.
-//  */
-// message GameStatus {
-//   string sessionID = 1;     // Unique tableid
-//   string roundCode = 2;   	// Unique session for the game
-//   string tableID = 3;     	// Unique tableid
-//   GameState state = 4;    	// State of the game
-//   int64 startTime = 5;    	// Time when game start
-//   string shoeCode = 6;     	// Shoe ID
-//   int32 ball1 = 10;     	// Value of the ball 1
-//   int32 ball2 = 11;     	// Value of the ball 2
-//   int32 ball3 = 12;     	// Value of the ball 3
-//   int32 ball4 = 13;     	// Value of the ball 4
-//   int32 ball5 = 14;     	// Value of the ball 5
-//   int32 ball6 = 15;     	// Value of the ball 6
-//   int32 ball7 = 16;     	// Value of the ball 7
-//   int32 ball8 = 17;     	// Value of the ball 8
-//   int32 ball9 = 18;     	// Value of the ball 9
-//   int32 ball10 = 19;     	// Value of the ball 10
-//   int32 countdown = 20;       // Coundown value
-//   map<string, int32> lucky = 150;     // Lucky Number and payout ratio
+/**
+ * The status fo the current game.
+ */
+message GameStatus {
+  string sessionID = 1;     // Unique tableid
+  string roundCode = 2;   	// Unique session for the game
+  string tableID = 3;     	// Unique tableid
+  GameState state = 4;    	// State of the game
+  int64 startTime = 5;    	// Time when game start
+  string shoeCode = 6;     	// Shoe ID
+  int32 ball1 = 10;     	// Value of the ball 1
+  int32 ball2 = 11;     	// Value of the ball 2
+  int32 ball3 = 12;     	// Value of the ball 3
+  int32 ball4 = 13;     	// Value of the ball 4
+  int32 ball5 = 14;     	// Value of the ball 5
+  int32 ball6 = 15;     	// Value of the ball 6
+  int32 ball7 = 16;     	// Value of the ball 7
+  int32 ball8 = 17;     	// Value of the ball 8
+  int32 ball9 = 18;     	// Value of the ball 9
+  int32 ball10 = 19;     	// Value of the ball 10
+  int32 countdown = 20;       // Coundown value
+  map<string, int32> lucky = 150;     // Lucky Number and payout ratio
 
-// }
+}
 
 message RcBead {
   string round_code = 1;
