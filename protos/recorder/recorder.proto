@@ -89,7 +89,7 @@ message RecordRoundStartedRequest {
   // 排班代碼
   string shift_code = 7;
   // 此排班局數
-  string shift_round = 8;
+  int64 shift_round = 8;
   // 局代碼
   string round_code = 9;
   // 使用洗牌代碼

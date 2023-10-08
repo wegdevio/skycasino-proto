@@ -77,7 +77,7 @@ type RecordShiftStartedRequest struct {
 	// 遊戲類型
 	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
@@ -186,9 +186,9 @@ type RecordShiftEndedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 時間
-	TsEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd" yaml:"tsEnd"`
+	TsEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" yaml:"tsEnd" bson:"tsEnd"`
 }
 
 func (x *RecordShiftEndedRequest) Reset() {
@@ -255,7 +255,7 @@ type RecordShoeStartedRequest struct {
 	// 班代碼
 	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 洗牌代碼
-	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" yaml:"shoeCode" bson:"shoeCode"`
+	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 }
@@ -359,7 +359,7 @@ type RecordShoeEndedRequest struct {
 	TsEnd *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd" yaml:"tsEnd"`
 	// 洗牌類型
 	// key: ResourceTypeCode；value: 牌靴
-	Cards map[int32]*Deck `protobuf:"bytes,7,rep,name=cards,proto3" json:"cards" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"cards" yaml:"cards"`
+	Cards map[int32]*Deck `protobuf:"bytes,7,rep,name=cards,proto3" json:"cards" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"cards" bson:"cards"`
 }
 
 func (x *RecordShoeEndedRequest) Reset() {
@@ -423,7 +423,7 @@ type RecordRoundStartedRequest struct {
 	// 遊戲類型
 	GameType string `protobuf:"bytes,2,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,3,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,4,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
@@ -433,9 +433,9 @@ type RecordRoundStartedRequest struct {
 	// 排班代碼
 	ShiftCode string `protobuf:"bytes,7,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 此排班局數
-	ShiftRound string `protobuf:"bytes,8,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" bson:"shiftRound" yaml:"shiftRound"`
+	ShiftRound int64 `protobuf:"varint,8,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" bson:"shiftRound" yaml:"shiftRound"`
 	// 局代碼
-	RoundCode string `protobuf:"bytes,9,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
+	RoundCode string `protobuf:"bytes,9,opt,name=round_code,json=roundCode,proto3" json:"roundCode" yaml:"roundCode" bson:"roundCode"`
 	// 使用洗牌代碼
 	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 使用此洗牌第幾局，從1開始計算
@@ -520,11 +520,11 @@ func (x *RecordRoundStartedRequest) GetShiftCode() string {
 	return ""
 }
 
-func (x *RecordRoundStartedRequest) GetShiftRound() string {
+func (x *RecordRoundStartedRequest) GetShiftRound() int64 {
 	if x != nil {
 		return x.ShiftRound
 	}
-	return ""
+	return 0
 }
 
 func (x *RecordRoundStartedRequest) GetRoundCode() string {
@@ -688,7 +688,7 @@ type RecordRoundBeCanceledRequest struct {
 	// 取消代碼
 	CancelCode string `protobuf:"bytes,6,opt,name=cancel_code,json=cancelCode,proto3" json:"cancelCode" bson:"cancelCode" yaml:"cancelCode"`
 	// 取消備註
-	CancelMessage string `protobuf:"bytes,7,opt,name=cancel_message,json=cancelMessage,proto3" json:"cancelMessage" yaml:"cancelMessage" bson:"cancelMessage"`
+	CancelMessage string `protobuf:"bytes,7,opt,name=cancel_message,json=cancelMessage,proto3" json:"cancelMessage" bson:"cancelMessage" yaml:"cancelMessage"`
 }
 
 func (x *RecordRoundBeCanceledRequest) Reset() {
@@ -757,7 +757,7 @@ type RecordRoundFinishedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"`
 	// 時間
 	TsFinish *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=ts_finish,json=tsFinish,proto3" json:"tsFinish" bson:"tsFinish" yaml:"tsFinish"`
 }
@@ -815,7 +815,7 @@ type RecordRoadmapRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 班紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" yaml:"recordId" bson:"recordId"` // TODO:
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"` // TODO:
 }
 
 func (x *RecordRoadmapRequest) Reset() {
@@ -866,9 +866,9 @@ type RecordRoundMediaRequest struct {
 	// 遊戲局紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 設定
-	Set map[string]*URLMedia `protobuf:"bytes,2,rep,name=set,proto3" json:"set" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"set" bson:"set"`
+	Set map[string]*URLMedia `protobuf:"bytes,2,rep,name=set,proto3" json:"set" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"set" yaml:"set"`
 	// 增加
-	Add []*URLMedia `protobuf:"bytes,3,rep,name=add,proto3" json:"add" bson:"add" yaml:"add"`
+	Add []*URLMedia `protobuf:"bytes,3,rep,name=add,proto3" json:"add" yaml:"add" bson:"add"`
 	// 移除
 	Remove []string `protobuf:"bytes,4,rep,name=remove,proto3" json:"remove" bson:"remove" yaml:"remove"`
 }
@@ -1025,7 +1025,7 @@ var file_recorder_recorder_proto_rawDesc = []byte{
 	0x09, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x68,
 	0x69, 0x66, 0x74, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
 	0x73, 0x68, 0x69, 0x66, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x73, 0x68, 0x69,
-	0x66, 0x74, 0x5f, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x66, 0x74, 0x5f, 0x72, 0x6f, 0x75, 0x6e, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a,
 	0x73, 0x68, 0x69, 0x66, 0x74, 0x52, 0x6f, 0x75, 0x6e, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x72, 0x6f,
 	0x75, 0x6e, 0x64, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
 	0x72, 0x6f, 0x75, 0x6e, 0x64, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x68, 0x6f,
