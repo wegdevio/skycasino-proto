@@ -330,7 +330,7 @@ type BaccaratBead struct {
 
 	RoundCode     string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	ShoeCode      string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
-	Shoe          uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
+	Shoe          uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" yaml:"shoe" bson:"shoe"`
 	ShoeRound     uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	Result        string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	BankerCards   []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
@@ -339,9 +339,9 @@ type BaccaratBead struct {
 	PlayerPoint   int32            `protobuf:"varint,12,opt,name=player_point,json=playerPoint,proto3" json:"playerPoint" bson:"playerPoint" yaml:"playerPoint"`
 	BankerWin     bool             `protobuf:"varint,13,opt,name=banker_win,json=bankerWin,proto3" json:"bankerWin" bson:"bankerWin" yaml:"bankerWin"`
 	PlayerWin     bool             `protobuf:"varint,14,opt,name=player_win,json=playerWin,proto3" json:"playerWin" bson:"playerWin" yaml:"playerWin"`
-	HasBankerPair bool             `protobuf:"varint,15,opt,name=has_banker_pair,json=hasBankerPair,proto3" json:"hasBankerPair" yaml:"hasBankerPair" bson:"hasBankerPair"`
+	HasBankerPair bool             `protobuf:"varint,15,opt,name=has_banker_pair,json=hasBankerPair,proto3" json:"hasBankerPair" bson:"hasBankerPair" yaml:"hasBankerPair"`
 	HasPlayerPair bool             `protobuf:"varint,16,opt,name=has_player_pair,json=hasPlayerPair,proto3" json:"hasPlayerPair" bson:"hasPlayerPair" yaml:"hasPlayerPair"`
-	WinType       string           `protobuf:"bytes,17,opt,name=win_type,json=winType,proto3" json:"winType" yaml:"winType" bson:"winType"`
+	WinType       string           `protobuf:"bytes,17,opt,name=win_type,json=winType,proto3" json:"winType" bson:"winType" yaml:"winType"`
 	HighLight     int32            `protobuf:"varint,21,opt,name=high_light,json=highLight,proto3" json:"highLight" bson:"highLight" yaml:"highLight"`
 	MultiPlier    string           `protobuf:"bytes,22,opt,name=multi_plier,json=multiPlier,proto3" json:"multiPlier" bson:"multiPlier" yaml:"multiPlier"`
 	Luckys        map[string]int32 `protobuf:"bytes,31,rep,name=luckys,proto3" json:"luckys" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"luckys" yaml:"luckys"`
