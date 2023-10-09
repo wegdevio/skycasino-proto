@@ -57,6 +57,8 @@ message RecordShoeStartedRequest {
   string shift_code = 7;
   // 洗牌代碼
   string shoe_code = 10;
+  // cardList
+  map<int32, Deck> decks = 11;
   // 時間
   google.protobuf.Timestamp ts_start = 12;
 
@@ -68,9 +70,6 @@ message RecordShoeEndedRequest {
   bytes record_id = 1;
   // 時間
   google.protobuf.Timestamp ts_end = 5;
-  // 洗牌類型
-  // key: ResourceTypeCode；value: 牌靴
-  map<int32, Deck> cards = 7;
 
 }
 
