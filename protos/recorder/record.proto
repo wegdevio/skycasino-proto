@@ -68,8 +68,8 @@ enum StepActionType {
 // 執行動作：對某些資源進行增、刪、移轉
 message StepAction {
 
-  // 行為說明代碼：StepActionCode
-  int32 code = 2;
+  // 行為說明代碼
+  string code = 2;
   // 動作類型
   StepActionType type = 3;
   // 資源擁有座位。

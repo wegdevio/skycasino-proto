@@ -287,12 +287,12 @@ type TheBigBattleBead struct {
 	Result        string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	BankerCards   []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
 	PlayerCards   []string         `protobuf:"bytes,8,rep,name=player_cards,json=playerCards,proto3" json:"playerCards" bson:"playerCards" yaml:"playerCards"`
-	BankerBarCode string           `protobuf:"bytes,11,opt,name=banker_bar_code,json=bankerBarCode,proto3" json:"bankerBarCode" yaml:"bankerBarCode" bson:"bankerBarCode"`
+	BankerBarCode string           `protobuf:"bytes,11,opt,name=banker_bar_code,json=bankerBarCode,proto3" json:"bankerBarCode" bson:"bankerBarCode" yaml:"bankerBarCode"`
 	PlayerBarCode string           `protobuf:"bytes,12,opt,name=player_bar_code,json=playerBarCode,proto3" json:"playerBarCode" bson:"playerBarCode" yaml:"playerBarCode"`
-	BankerPoint   int32            `protobuf:"varint,13,opt,name=banker_point,json=bankerPoint,proto3" json:"bankerPoint" yaml:"bankerPoint" bson:"bankerPoint"`
+	BankerPoint   int32            `protobuf:"varint,13,opt,name=banker_point,json=bankerPoint,proto3" json:"bankerPoint" bson:"bankerPoint" yaml:"bankerPoint"`
 	PlayerPoint   int32            `protobuf:"varint,14,opt,name=player_point,json=playerPoint,proto3" json:"playerPoint" bson:"playerPoint" yaml:"playerPoint"`
 	BankerWin     bool             `protobuf:"varint,15,opt,name=banker_win,json=bankerWin,proto3" json:"bankerWin" bson:"bankerWin" yaml:"bankerWin"`
-	PlayerWin     bool             `protobuf:"varint,16,opt,name=player_win,json=playerWin,proto3" json:"playerWin" yaml:"playerWin" bson:"playerWin"`
+	PlayerWin     bool             `protobuf:"varint,16,opt,name=player_win,json=playerWin,proto3" json:"playerWin" bson:"playerWin" yaml:"playerWin"`
 	WinType       string           `protobuf:"bytes,17,opt,name=win_type,json=winType,proto3" json:"winType" bson:"winType" yaml:"winType"`
 	Statistics    map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
 }
