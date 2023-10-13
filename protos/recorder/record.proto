@@ -8,7 +8,7 @@ import "tagger/tagger.proto";
 // 卡牌，代表在此局中使用的各類物品
 message Card {
 
-  // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
+  // 卡牌ID：牌唯一碼
   string id = 1;
   // 卡牌代碼
   string code = 2;
