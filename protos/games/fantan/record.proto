@@ -34,7 +34,7 @@ enum Step {
 
   // PITBOSS 修改骰點
   PITBOSS_MODIFY_BOWL = 16;
-  
+
 }
 
 // 座位功能代碼
@@ -42,7 +42,7 @@ enum Seat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
-  // Dealer 
+  // Dealer
   DEALER = 1;
   // Pitboss
   PITBOSS = 9;
@@ -58,5 +58,21 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
+
+}
+
+message FantanBead {
+  string round_code = 1;
+  string shoe_code = 2;
+  uint32 shoe = 3;
+  uint32 shoe_round = 4;
+  string result = 5;
+
+  int32 count = 7;
+  int32 fan = 8;
+  int32 odd = 9;
+  string win_type = 10;
+
+  map<string, int32> statistics = 32;
 
 }

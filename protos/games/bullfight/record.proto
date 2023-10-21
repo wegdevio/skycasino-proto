@@ -72,7 +72,7 @@ enum Seat {
   PLAYER2 = 4;
   // 玩家3
   PLAYER3 = 5;
-  // Dealer 
+  // Dealer
   DEALER = 6;
   // Pitboss
   PITBOSS = 9;
@@ -91,12 +91,28 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
+message BullfightBead {
+  string round_code = 1;
+  string shoe_code = 2;
+  uint32 shoe = 3;
+  uint32 shoe_round = 4;
+  string result = 5;
 
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-  
+  repeated string banker_cards = 7;
+  repeated string player_x_cards = 8;
+  repeated string player_y_cards = 9;
+  repeated string player_z_cards = 10;
+  string first_card = 11;
+
+  int32 banker_type = 12;
+  int32 player_x_type = 13;
+  int32 player_y_type = 14;
+  int32 player_z_type = 15;
+  bool player_x_win = 16;
+  bool player_y_win = 17;
+  bool player_z_win = 18;
+  string win_type = 19;
+
+  map<string, int32> statistics = 32;
+
 }

@@ -8,7 +8,7 @@ import "tagger/tagger.proto";
 // 卡牌，代表在此局中使用的各類物品
 message Card {
 
-  // 卡牌ID：牌唯一碼，同ID表示同一張實體牌。不使用此欄位填0。
+  // 卡牌ID：牌唯一碼
   string id = 1;
   // 卡牌代碼
   string code = 2;
@@ -68,8 +68,8 @@ enum StepActionType {
 // 執行動作：對某些資源進行增、刪、移轉
 message StepAction {
 
-  // 行為說明代碼：StepActionCode
-  int32 code = 2;
+  // 行為說明代碼
+  string code = 2;
   // 動作類型
   StepActionType type = 3;
   // 資源擁有座位。
@@ -105,7 +105,7 @@ message Step {
   optional bool cancel = 9 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 分配毫秒數
   optional int64 duration = 10 [(tagger.tags) = "bson:\"duration,omitempty\""];
-  
+
 }
 
 // 座位
@@ -148,7 +148,18 @@ message URLMedia {
 
   // url
   string url = 3;
-  
+
+}
+
+// 標籤
+message Tag {
+
+  // 鍵
+  string key = 1;
+
+  // 值
+  string value = 2;
+
 }
 
 // 紀錄
@@ -174,7 +185,7 @@ message RoundRecord {
   string round_code = 9;
   // 使用洗牌代碼
   string shoe_code = 10;
-  // 使用此洗牌第幾局，從1開始計算
+    // 使用此洗牌第幾局，從1開始計算
   int64 shoe_round = 11;
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
@@ -185,7 +196,7 @@ message RoundRecord {
   // key: SeatCode, value: 玩家code。
   map<int32, string> players = 14 [(tagger.tags) = "bson:\"players,omitempty\""];
   // 標籤
-  map<string, string> tags = 15 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  repeated Tag tags = 15;
 
   // 歷程
   repeated Step process = 16 [(tagger.tags) = "bson:\"process,omitempty\""];
@@ -272,18 +283,16 @@ message ShiftRecord {
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
   // 標籤
-  map<string, string> tags = 15 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  repeated Tag tags = 15;
 
   // 執行遊戲局
   repeated string round_codes = 9;
   // 洗牌
   repeated string shoe_codes = 10;
 
-  // TODO: 路紙
-
   // 結束
   bool is_end = 18;
   // 結束時間
   google.protobuf.Timestamp ts_end = 19 [(tagger.tags) = "bson:\"tsEnd,omitempty\"" ];
-  
+
 }

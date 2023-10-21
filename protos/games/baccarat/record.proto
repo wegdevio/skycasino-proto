@@ -69,7 +69,7 @@ enum Step {
   PITBOSS_MODIFY_PLAYER_EXTRA = 25;
   // PITBOSS 修改派發莊家補牌
   PITBOSS_MODIFY_BANKER_EXTRA = 26;
-  
+
 }
 
 // 座位功能代碼
@@ -100,12 +100,28 @@ enum ResultRecordType {
 
 }
 
-// 取消原因
-enum CancelReason {
+message BaccaratBead {
+  string round_code = 1;
+  string shoe_code = 2;
+  uint32 shoe = 3;
+  uint32 shoe_round = 4;
+  string result = 5;
 
-  // 未指定，沒有取消
-  CANCEL_REASON_UNSPECIFIED = 0;
-  // 取消說明原因
-  NO_REASON = 1;
-  
+  repeated string banker_cards = 7;
+  repeated string player_cards = 8;
+
+  int32 banker_point = 11;
+  int32 player_point = 12;
+  bool banker_win = 13;
+  bool player_win = 14;
+  bool has_banker_pair = 15;
+  bool has_player_pair = 16;
+  string win_type = 17;
+
+  int32 high_light = 21;
+  string multi_plier = 22;
+
+  map<string, int32> luckys = 31;
+  map<string, int32> statistics = 32;
+
 }
