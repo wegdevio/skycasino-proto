@@ -151,6 +151,17 @@ message URLMedia {
 
 }
 
+// 標籤
+message Tag {
+
+  // 鍵
+  string key = 1;
+
+  // 值
+  string value = 2;
+
+}
+
 // 紀錄
 message RoundRecord {
 
@@ -185,7 +196,7 @@ message RoundRecord {
   // key: SeatCode, value: 玩家code。
   map<int32, string> players = 14 [(tagger.tags) = "bson:\"players,omitempty\""];
   // 標籤
-  map<string, string> tags = 15 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  repeated Tag tags = 15;
 
   // 歷程
   repeated Step process = 16 [(tagger.tags) = "bson:\"process,omitempty\""];
@@ -272,7 +283,7 @@ message ShiftRecord {
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
   // 標籤
-  map<string, string> tags = 15 [(tagger.tags) = "bson:\"tags,omitempty\"" ];
+  repeated Tag tags = 15;
 
   // 執行遊戲局
   repeated string round_codes = 9;

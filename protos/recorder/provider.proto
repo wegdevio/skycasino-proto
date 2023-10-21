@@ -160,7 +160,7 @@ message GameProvide {
   string game_code = 4;
 
   // 標籤
-  map<string, string> tags = 5;
+  repeated Tag tags = 15;
 
   // 維護中
   bool maintenance = 7;

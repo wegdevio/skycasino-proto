@@ -28,7 +28,7 @@ message RecordShiftStartedRequest {
   // 時間
   google.protobuf.Timestamp ts_start = 12;
   // 標籤
-  map<string, string> tags = 15;
+  repeated Tag tags = 15;
 
 }
 
@@ -98,7 +98,7 @@ message RecordRoundStartedRequest {
   // 開始時間
   google.protobuf.Timestamp ts_start = 12;
   // 標籤
-  map<string, string> tags = 15;
+  repeated Tag tags = 15;
 
 }
 
