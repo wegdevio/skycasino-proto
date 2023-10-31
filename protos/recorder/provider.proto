@@ -136,15 +136,23 @@ message FetchRoundRecordResponse {
 
 service RecorderReadService {
   
-  // 讀取班次紀錄
+  // 讀取班次紀錄list
   rpc FetchShiftRecord(FetchShiftRecordRequest) returns (FetchShiftRecordResponse);
 
-  // 讀牌靴紀錄
+  // 讀取最新班次紀錄
+  rpc FetchLastOneShiftRecord(FetchShiftRecordRequest) returns (FetchShiftRecordResponse);
+
+  // 讀牌靴紀錄list
   rpc FetchShoeRecord(FetchShoeRecordRequest) returns (FetchShoeRecordResponse);
 
-  // 讀遊戲局號紀錄
+  // 讀最新牌靴紀錄
+  rpc FetchLastOneShoeRecord(FetchShoeRecordRequest) returns (FetchShoeRecordResponse);
+
+  // 讀遊戲局號紀錄list
   rpc FetchRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
 
+  // 讀最新遊戲局號紀錄
+  rpc FetchLastOneRoundRecord(FetchRoundRecordRequest) returns (FetchRoundRecordResponse);
 }
 
 // 遊戲供應
