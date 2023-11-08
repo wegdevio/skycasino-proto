@@ -235,7 +235,7 @@ message FetchGameProvideRequest {
 
 message FetchGameProvideResponse {
   // 桌列表
-  GameProvide game_provides = 1;
+  GameProvide game_provide = 1;
 }
 
 // 遊戲供應商需要開放出來的被動接口
