@@ -256,14 +256,14 @@ type LuckyWheelBead struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
-	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
-	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
-	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
-	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
-	Direction  int32            `protobuf:"varint,7,opt,name=direction,proto3" json:"direction" bson:"direction" yaml:"direction"`
-	Value      string           `protobuf:"bytes,8,opt,name=value,proto3" json:"value" yaml:"value" bson:"value"`
-	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
+	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"round_code,omitempty"`
+	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoe_code,omitempty"`
+	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe,omitempty"`
+	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoe_round,omitempty"`
+	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result,omitempty"`
+	Direction  int32            `protobuf:"varint,7,opt,name=direction,proto3" json:"direction,omitempty"`
+	Value      string           `protobuf:"bytes,8,opt,name=value,proto3" json:"value,omitempty"`
+	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 }
 
 func (x *LuckyWheelBead) Reset() {

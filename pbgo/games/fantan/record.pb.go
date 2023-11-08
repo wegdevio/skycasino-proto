@@ -256,16 +256,16 @@ type FantanBead struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
-	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
-	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
-	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
-	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
-	Count      int32            `protobuf:"varint,7,opt,name=count,proto3" json:"count" bson:"count" yaml:"count"`
-	Fan        int32            `protobuf:"varint,8,opt,name=fan,proto3" json:"fan" bson:"fan" yaml:"fan"`
-	Odd        int32            `protobuf:"varint,9,opt,name=odd,proto3" json:"odd" bson:"odd" yaml:"odd"`
-	WinType    string           `protobuf:"bytes,10,opt,name=win_type,json=winType,proto3" json:"winType" bson:"winType" yaml:"winType"`
-	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
+	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"round_code,omitempty"`
+	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoe_code,omitempty"`
+	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe,omitempty"`
+	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoe_round,omitempty"`
+	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result,omitempty"`
+	Count      int32            `protobuf:"varint,7,opt,name=count,proto3" json:"count,omitempty"`
+	Fan        int32            `protobuf:"varint,8,opt,name=fan,proto3" json:"fan,omitempty"`
+	Odd        int32            `protobuf:"varint,9,opt,name=odd,proto3" json:"odd,omitempty"`
+	WinType    string           `protobuf:"bytes,10,opt,name=win_type,json=winType,proto3" json:"win_type,omitempty"`
+	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 }
 
 func (x *FantanBead) Reset() {
