@@ -309,6 +309,7 @@ var RecorderReadService_ServiceDesc = grpc.ServiceDesc{
 const (
 	ProviderService_FetchGameProvideList_FullMethodName = "/recorder.ProviderService/FetchGameProvideList"
 	ProviderService_FetchCurrentGame_FullMethodName     = "/recorder.ProviderService/FetchCurrentGame"
+	ProviderService_FetchGameProvide_FullMethodName     = "/recorder.ProviderService/FetchGameProvide"
 )
 
 // ProviderServiceClient is the client API for ProviderService service.
@@ -319,6 +320,8 @@ type ProviderServiceClient interface {
 	FetchGameProvideList(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*FetchGameProvideListResponse, error)
 	// 讀即時遊戲桌資訊
 	FetchCurrentGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
+	// 取得單一即時遊戲資訊
+	FetchGameProvide(ctx context.Context, in *FetchGameProvideRequest, opts ...grpc.CallOption) (*FetchGameProvideResponse, error)
 }
 
 type providerServiceClient struct {
@@ -347,6 +350,15 @@ func (c *providerServiceClient) FetchCurrentGame(ctx context.Context, in *FetchC
 	return out, nil
 }
 
+func (c *providerServiceClient) FetchGameProvide(ctx context.Context, in *FetchGameProvideRequest, opts ...grpc.CallOption) (*FetchGameProvideResponse, error) {
+	out := new(FetchGameProvideResponse)
+	err := c.cc.Invoke(ctx, ProviderService_FetchGameProvide_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServiceServer is the server API for ProviderService service.
 // All implementations must embed UnimplementedProviderServiceServer
 // for forward compatibility
@@ -355,6 +367,8 @@ type ProviderServiceServer interface {
 	FetchGameProvideList(context.Context, *emptypb.Empty) (*FetchGameProvideListResponse, error)
 	// 讀即時遊戲桌資訊
 	FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error)
+	// 取得單一即時遊戲資訊
+	FetchGameProvide(context.Context, *FetchGameProvideRequest) (*FetchGameProvideResponse, error)
 	mustEmbedUnimplementedProviderServiceServer()
 }
 
@@ -367,6 +381,9 @@ func (UnimplementedProviderServiceServer) FetchGameProvideList(context.Context, 
 }
 func (UnimplementedProviderServiceServer) FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchCurrentGame not implemented")
+}
+func (UnimplementedProviderServiceServer) FetchGameProvide(context.Context, *FetchGameProvideRequest) (*FetchGameProvideResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchGameProvide not implemented")
 }
 func (UnimplementedProviderServiceServer) mustEmbedUnimplementedProviderServiceServer() {}
 
@@ -417,6 +434,24 @@ func _ProviderService_FetchCurrentGame_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProviderService_FetchGameProvide_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchGameProvideRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServiceServer).FetchGameProvide(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProviderService_FetchGameProvide_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServiceServer).FetchGameProvide(ctx, req.(*FetchGameProvideRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProviderService_ServiceDesc is the grpc.ServiceDesc for ProviderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -431,6 +466,10 @@ var ProviderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FetchCurrentGame",
 			Handler:    _ProviderService_FetchCurrentGame_Handler,
+		},
+		{
+			MethodName: "FetchGameProvide",
+			Handler:    _ProviderService_FetchGameProvide_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

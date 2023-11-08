@@ -229,6 +229,15 @@ message FetchCurrentGameResponse {
 
 }
 
+message FetchGameProvideRequest {
+  string game_codes = 1;
+}
+
+message FetchGameProvideResponse {
+  // 桌列表
+  GameProvide game_provides = 1;
+}
+
 // 遊戲供應商需要開放出來的被動接口
 service ProviderService {
   
@@ -238,4 +247,6 @@ service ProviderService {
   // 讀即時遊戲桌資訊
   rpc FetchCurrentGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
 
+  // 取得單一即時遊戲資訊
+  rpc FetchGameProvide(FetchGameProvideRequest) returns (FetchGameProvideResponse);
 }
