@@ -177,6 +177,10 @@ message GameProvide {
   bool close = 8;
 }
 
+message FetchGameProvideListRequest {
+  string platform = 1;
+}
+
 message FetchGameProvideListResponse {
   
   // 桌列表
@@ -230,7 +234,9 @@ message FetchCurrentGameResponse {
 }
 
 message FetchGameProvideRequest {
-  string game_codes = 1;
+  string platform = 1;
+
+  string game_codes = 2;
 }
 
 message FetchGameProvideResponse {
@@ -242,11 +248,12 @@ message FetchGameProvideResponse {
 service ProviderService {
   
   // 取得即時遊戲列表
-  rpc FetchGameProvideList(google.protobuf.Empty) returns (FetchGameProvideListResponse);
+  rpc FetchGameProvideList(FetchGameProvideListRequest) returns (FetchGameProvideListResponse);
+
+  // 取得單一即時遊戲資訊
+  rpc FetchGameProvide(FetchGameProvideRequest) returns (FetchGameProvideResponse);
 
   // 讀即時遊戲桌資訊
   rpc FetchCurrentGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
 
-  // 取得單一即時遊戲資訊
-  rpc FetchGameProvide(FetchGameProvideRequest) returns (FetchGameProvideResponse);
 }
