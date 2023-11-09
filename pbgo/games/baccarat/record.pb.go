@@ -328,24 +328,24 @@ type BaccaratBead struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoundCode     string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"round_code,omitempty"`
-	ShoeCode      string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoe_code,omitempty"`
-	Shoe          uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe,omitempty"`
-	ShoeRound     uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoe_round,omitempty"`
-	Result        string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result,omitempty"`
-	BankerCards   []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"banker_cards,omitempty"`
-	PlayerCards   []string         `protobuf:"bytes,8,rep,name=player_cards,json=playerCards,proto3" json:"player_cards,omitempty"`
-	BankerPoint   int32            `protobuf:"varint,11,opt,name=banker_point,json=bankerPoint,proto3" json:"banker_point,omitempty"`
-	PlayerPoint   int32            `protobuf:"varint,12,opt,name=player_point,json=playerPoint,proto3" json:"player_point,omitempty"`
-	BankerWin     bool             `protobuf:"varint,13,opt,name=banker_win,json=bankerWin,proto3" json:"banker_win,omitempty"`
-	PlayerWin     bool             `protobuf:"varint,14,opt,name=player_win,json=playerWin,proto3" json:"player_win,omitempty"`
-	HasBankerPair bool             `protobuf:"varint,15,opt,name=has_banker_pair,json=hasBankerPair,proto3" json:"has_banker_pair,omitempty"`
-	HasPlayerPair bool             `protobuf:"varint,16,opt,name=has_player_pair,json=hasPlayerPair,proto3" json:"has_player_pair,omitempty"`
-	WinType       string           `protobuf:"bytes,17,opt,name=win_type,json=winType,proto3" json:"win_type,omitempty"`
-	HighLight     int32            `protobuf:"varint,21,opt,name=high_light,json=highLight,proto3" json:"high_light,omitempty"`
-	MultiPlier    string           `protobuf:"bytes,22,opt,name=multi_plier,json=multiPlier,proto3" json:"multi_plier,omitempty"`
-	Luckys        map[string]int32 `protobuf:"bytes,31,rep,name=luckys,proto3" json:"luckys,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
-	Statistics    map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+	RoundCode     string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
+	ShoeCode      string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
+	Shoe          uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" yaml:"shoe" bson:"shoe"`
+	ShoeRound     uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
+	Result        string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" yaml:"result" bson:"result"`
+	BankerCards   []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
+	PlayerCards   []string         `protobuf:"bytes,8,rep,name=player_cards,json=playerCards,proto3" json:"playerCards" bson:"playerCards" yaml:"playerCards"`
+	BankerPoint   int32            `protobuf:"varint,11,opt,name=banker_point,json=bankerPoint,proto3" json:"bankerPoint" bson:"bankerPoint" yaml:"bankerPoint"`
+	PlayerPoint   int32            `protobuf:"varint,12,opt,name=player_point,json=playerPoint,proto3" json:"playerPoint" bson:"playerPoint" yaml:"playerPoint"`
+	BankerWin     bool             `protobuf:"varint,13,opt,name=banker_win,json=bankerWin,proto3" json:"bankerWin" bson:"bankerWin" yaml:"bankerWin"`
+	PlayerWin     bool             `protobuf:"varint,14,opt,name=player_win,json=playerWin,proto3" json:"playerWin" bson:"playerWin" yaml:"playerWin"`
+	HasBankerPair bool             `protobuf:"varint,15,opt,name=has_banker_pair,json=hasBankerPair,proto3" json:"hasBankerPair" bson:"hasBankerPair" yaml:"hasBankerPair"`
+	HasPlayerPair bool             `protobuf:"varint,16,opt,name=has_player_pair,json=hasPlayerPair,proto3" json:"hasPlayerPair" bson:"hasPlayerPair" yaml:"hasPlayerPair"`
+	WinType       string           `protobuf:"bytes,17,opt,name=win_type,json=winType,proto3" json:"winType" bson:"winType" yaml:"winType"`
+	HighLight     int32            `protobuf:"varint,21,opt,name=high_light,json=highLight,proto3" json:"highLight" bson:"highLight" yaml:"highLight"`
+	MultiPlier    string           `protobuf:"bytes,22,opt,name=multi_plier,json=multiPlier,proto3" json:"multiPlier" bson:"multiPlier" yaml:"multiPlier"`
+	Luckys        map[string]int32 `protobuf:"bytes,31,rep,name=luckys,proto3" json:"luckys" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"luckys" yaml:"luckys"`
+	Statistics    map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
 }
 
 func (x *BaccaratBead) Reset() {
