@@ -173,8 +173,8 @@ message GameProvide {
   // 維護中
   bool maintenance = 7;
 
-  // 離線中
-  bool offline = 8;
+  // 關閉中
+  bool close = 8;
 }
 
 message FetchGameProvideListResponse {
