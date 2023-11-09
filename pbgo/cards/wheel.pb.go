@@ -27,13 +27,13 @@ const (
 	Wheel_WHEEL_UNSPECIFIED Wheel = 0
 	// 24格 1 倍
 	Wheel_WHEEL24X1 Wheel = 1
-	// 12格 1 倍
+	// 12格 3 倍
 	Wheel_WHEEL12X3 Wheel = 2
-	// 8格 1 倍
+	// 8格 5 倍
 	Wheel_WHEEL8X5 Wheel = 3
-	// 4格 1 倍
+	// 4格 10 倍
 	Wheel_WHEEL4X10 Wheel = 4
-	// 2格 1 倍
+	// 2格 20 倍
 	Wheel_WHEEL2X20 Wheel = 5
 	// 1格 45 倍
 	Wheel_WHEELAX45 Wheel = 6
