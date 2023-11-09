@@ -167,9 +167,6 @@ message GameProvide {
   // 遊戲代碼
   string game_code = 4;
 
-  // 標籤
-  repeated Tag tags = 15;
-
   // 維護中
   bool maintenance = 7;
 
