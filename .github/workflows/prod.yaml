@@ -11,7 +11,7 @@ on:  # 觸發條件
 jobs:
 
   version:  # 工作名稱
-    uses: sky-platform/workflow/.github/workflows/tag-prod.yaml@main
+    uses: ./.github/workflows/tag-prod.yaml@main
     permissions:
       contents: write
     secrets: inherit
@@ -19,7 +19,7 @@ jobs:
   build:
     if: github.event.pull_request.merged == true
     needs: version
-    uses: sky-platform/workflow/.github/workflows/packages-pnpm.yaml@main
+    uses: ./.github/workflows/packages-pnpm.yaml@main
     permissions:
       contents: read  # This is required for actions/checkout
       packages: write # This is required for publish package to github package
