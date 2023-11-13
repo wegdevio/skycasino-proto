@@ -1,0 +1,55 @@
+# Production 是上線階段，當releases/** 或是 bugfix/*分支，使用pull request 方式合到release/*時，打包Alpha進行部署並通知QAteam測試
+name: Production  # 工作流程的名稱
+
+on:  # 觸發條件
+  workflow_call:   # 當有 pull_request 事件時觸發
+    outputs:
+      version:
+        description: "產生的版本號，沒有v"
+        value: ${{ jobs.version.outputs.version }}
+
+env:
+  VERSION:
+  LATEST_TAG:
+  TAG:
+
+jobs:
+
+  check-merged-from-releases:
+    if: github.event.pull_request.merged == false || startsWith(github.head_ref, 'releases/') == false
+    runs-on: ubuntu-latest  # 在 Ubuntu 最新版本上執行
+    steps:  # 步驟
+    - name: Pull Request 未合併，或並非來自於releases/**分支，終止Action # 檢查程式庫
+      run: |
+        throw "Pull Request 未合併，或並非來自於releases/**分支，終止Action"
+
+  version:  # 工作名稱
+    if: github.event.pull_request.merged && startsWith(github.head_ref, 'releases/')
+    runs-on: ubuntu-latest  # 在 Ubuntu 最新版本上執行
+    permissions:
+      contents: write  # This is required for actions/checkout
+    outputs:
+      version: ${{ env.VERSION }}
+    steps:  # 步驟
+      - name: 01.Checkout Repository 檢查程式庫 # 檢查程式庫
+        uses: actions/checkout@v3  # 使用 GitHub 官方的 checkout 行動
+
+      - name: 02.Get Release Version 取得發佈版本號碼  # 取得發佈版本號碼
+        id: get_release_version  # 設定步驟的 ID，以便在其他步驟中引用
+        run: |
+          version=$(echo "${{ github.event.pull_request.head.ref }}" | sed -n 's/.*releases\/\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')  # 從分支名稱中提取版本號碼
+          echo "發佈版本號碼為 $version"  # 印出發佈版本號碼
+          echo "VERSION=$version" >> $GITHUB_ENV  # 將發佈版本號碼儲存到環境文件中，以供其他步驟使用
+          echo "TAG=v$version" >> $GITHUB_ENV  # 將生成的 beta 標籤儲存到環境變數中，以供其他步驟使用
+
+      - name: 05.Create and Push Tag 創建並推送標籤 # 創建並推送標籤
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          updateOnlyUnreleased: true
+          commit: ${{ github.sha }}
+          tag: ${{ env.TAG }}  # 使用生成的 beta 標籤作為標籤名稱
+          makeLatest: true
+          name: Release ${{ env.VERSION }}  # 標籤的發佈名稱
+          body: |
+            This is an Release.

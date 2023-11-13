@@ -1,0 +1,70 @@
+name: Publish package to GitHub Packages
+
+on: 
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v3
+
+      # Setup .npmrc file to publish to GitHub Packages
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@sky-platform'
+
+      # 參考 https://github.com/pnpm/action-setup
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        env:
+          STORE_PATH: $(pnpm store path --silent)
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Set up buf
+        uses: bufbuild/buf-setup-action@v1.26.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Set package.json version
+        id: package-version
+        uses: jaywcjlove/github-action-package@main
+        with:
+          data: |
+            {
+              "version": "${{ inputs.version }}"
+            }
+
+      - name: Publish package
+        run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

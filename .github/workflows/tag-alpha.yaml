@@ -1,0 +1,84 @@
+# Alpha 是內測階段，當features/* 或是 bugfix/*分支，使用pull request 方式合到release/*時，打包Alpha進行部署並通知QAteam測試
+name: Release Alpha Tag  # 工作流程的名稱
+
+on:               # 觸發條件
+  workflow_call:   # 當有 pull_request 事件時觸發
+    outputs:
+      version:
+        description: "產生的版本號，沒有v"
+        value: ${{ jobs.version.outputs.version }}
+
+env:
+  VERSION:
+  LATEST_TAG:
+  ALPHA_TAG:
+
+jobs:
+  
+  check-merged:
+    if: github.event.pull_request.merged == false
+    runs-on: ubuntu-latest  # 在 Ubuntu 最新版本上執行
+    steps:  # 步驟
+    - name: Pull Request 未合併，終止Action # 檢查程式庫
+      run: |
+        throw "Pull Request 未合併，終止Action"
+
+  version:  # 工作名稱
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest  # 在 Ubuntu 最新版本上執行
+    permissions:
+      contents: write  # This is required for actions/checkout
+    outputs:
+      version: ${{ env.VERSION }}
+    steps:  # 步驟
+      - name: 01.Checkout Repository 檢查程式庫   # 檢查程式庫
+        uses: actions/checkout@v3               # 使用 GitHub 官方的 checkout 行動
+
+      - name: 02.Get Release Version 取得發佈版本號碼   # 取得發佈版本號碼
+        id: get_release_version                       # 設定步驟的 ID，以便在其他步驟中引用
+        run: |
+          version=$(echo "${{ github.ref }}" | sed -n 's/.*releases\/\([0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')  # 從分支名稱中提取版本號碼
+          echo "發佈版本號碼為 $version"                                                                      # 印出發佈版本號碼
+          echo "release_version=$version" >> $GITHUB_ENV                                                    # 將發佈版本號碼儲存到環境文件中，以供其他步驟使用
+
+      - name: 03.Get Latest Tag 取得最新標籤  # 取得最新標籤
+        id: get_latest_tag                  # 步驟 ID：get_latest_tag
+        run: |
+          git fetch --tags --prune --depth=1                                                            # 取得遠端標籤並清理歷史
+          latest_tag=$(git tag --list --sort=v:refname | grep v$release_version | grep alpha |tail -n1)  # 取得最新的標籤
+          if [[ $latest_tag =~ ^v([0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z]+\.[0-9]+)?) ]]; then                  # 使用正則表達式匹配標籤格式
+            latest_tag=${BASH_REMATCH[1]}                                                               # 提取匹配的標籤部分
+          else
+            latest_tag="0.0.0"                                                                          # 如果無法匹配，設置為預設的初始標籤 "0.0.0"
+          fi
+          echo "最新標籤為 $latest_tag"                                                                   # 印出最新的標籤
+          echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV                                                  # 將最新標籤儲存到環境變數中，以供其他步驟使用
+
+      - name: 04.Generate Alpha Tag 生成 alpha 標籤  # 生成 alpha 標籤
+        id: generate_tag                            # 設定步驟的 ID，以便在其他步驟中引用
+        run: |
+          latest_tag=${{ env.LATEST_TAG }}                       # 從環境變數中取得最新標籤
+          alpha_version=$(echo $latest_tag | grep -oE '[0-9]+$')  # 從最新標籤中取得版本號，使用正則表達式匹配數字部分
+          next_alpha_version=$((alpha_version + 1))               # 將版本號加一，生成下一個 alpha 版本號
+          version="$release_version-alpha.$next_alpha_version"    # 生成 alpha 版本號
+          alpha_tag="v$version"                                         # 將生成的 alpha 版本號組合成完整的標籤
+          echo "生成的 alpha 標籤為：$alpha_tag"                    # 印出生成的 alpha 標籤
+          echo "VERSION=$version" >> $GITHUB_ENV                  # 將生成的 alpha 標籤儲存到環境變數中，以供其他步驟使用
+          echo "ALPHA_TAG=$alpha_tag" >> $GITHUB_ENV              # 將生成的 alpha 標籤儲存到環境變數中，以供其他步驟使用
+
+      - name: 05.Create and Push Tag 創建並推送標籤 # 創建並推送標籤
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          updateOnlyUnreleased: true
+          prerelease: true 
+          commit: ${{ github.sha }}
+          tag: ${{ env.ALPHA_TAG }}             # 使用生成的 alpha 標籤作為標籤名稱
+          name: Alpha  ${{ env.VERSION }}  # 標籤的發佈名稱
+          body: |
+            This is an Alpha.
+
+      - name: Test github.event.pull_request.head.sha
+        run: |
+          echo github.event.pull_request.head.sha=${{ github.event.pull_request.head.sha }}
+          echo github.sha = ${{ github.sha }}
