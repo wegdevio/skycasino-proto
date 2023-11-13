@@ -265,7 +265,7 @@ type FantanBead struct {
 	Fan        int32            `protobuf:"varint,8,opt,name=fan,proto3" json:"fan" bson:"fan" yaml:"fan"`
 	Odd        int32            `protobuf:"varint,9,opt,name=odd,proto3" json:"odd" bson:"odd" yaml:"odd"`
 	WinType    string           `protobuf:"bytes,10,opt,name=win_type,json=winType,proto3" json:"winType" bson:"winType" yaml:"winType"`
-	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" yaml:"statistics" bson:"statistics"`
+	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
 }
 
 func (x *FantanBead) Reset() {
