@@ -320,15 +320,15 @@ type BullfightBead struct {
 	RoundCode    string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	ShoeCode     string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	Shoe         uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
-	ShoeRound    uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" yaml:"shoeRound" bson:"shoeRound"`
-	Result       string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" yaml:"result" bson:"result"`
+	ShoeRound    uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
+	Result       string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	BankerCards  []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
-	PlayerXCards []string         `protobuf:"bytes,8,rep,name=player_x_cards,json=playerXCards,proto3" json:"playerXCards" yaml:"playerXCards" bson:"playerXCards"`
+	PlayerXCards []string         `protobuf:"bytes,8,rep,name=player_x_cards,json=playerXCards,proto3" json:"playerXCards" bson:"playerXCards" yaml:"playerXCards"`
 	PlayerYCards []string         `protobuf:"bytes,9,rep,name=player_y_cards,json=playerYCards,proto3" json:"playerYCards" bson:"playerYCards" yaml:"playerYCards"`
 	PlayerZCards []string         `protobuf:"bytes,10,rep,name=player_z_cards,json=playerZCards,proto3" json:"playerZCards" bson:"playerZCards" yaml:"playerZCards"`
 	FirstCard    string           `protobuf:"bytes,11,opt,name=first_card,json=firstCard,proto3" json:"firstCard" bson:"firstCard" yaml:"firstCard"`
 	BankerType   int32            `protobuf:"varint,12,opt,name=banker_type,json=bankerType,proto3" json:"bankerType" bson:"bankerType" yaml:"bankerType"`
-	PlayerXType  int32            `protobuf:"varint,13,opt,name=player_x_type,json=playerXType,proto3" json:"playerXType" yaml:"playerXType" bson:"playerXType"`
+	PlayerXType  int32            `protobuf:"varint,13,opt,name=player_x_type,json=playerXType,proto3" json:"playerXType" bson:"playerXType" yaml:"playerXType"`
 	PlayerYType  int32            `protobuf:"varint,14,opt,name=player_y_type,json=playerYType,proto3" json:"playerYType" bson:"playerYType" yaml:"playerYType"`
 	PlayerZType  int32            `protobuf:"varint,15,opt,name=player_z_type,json=playerZType,proto3" json:"playerZType" bson:"playerZType" yaml:"playerZType"`
 	PlayerXWin   bool             `protobuf:"varint,16,opt,name=player_x_win,json=playerXWin,proto3" json:"playerXWin" bson:"playerXWin" yaml:"playerXWin"`
