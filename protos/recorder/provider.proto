@@ -178,7 +178,7 @@ enum GameNotifyType {
   NOTIFY_SHIFT_START = 6;
 
   // 通知遊戲班結束
-  NOTIRY_SHIFT_END = 7;
+  NOTIFY_SHIFT_END = 7;
 
   // 通知遊戲換靴
   NOTIFY_SHOE_CHANGE = 8;
@@ -239,7 +239,10 @@ message GameProvide {
 }
 
 message FetchGameProvideListRequest {
+
+  // 平台
   string platform = 1;
+
 }
 
 message FetchGameProvideListResponse {
