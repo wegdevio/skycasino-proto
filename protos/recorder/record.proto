@@ -88,6 +88,20 @@ message StepAction {
 
 }
 
+// 下注步驟
+enum BetStep {
+
+  // 未指定，此步驟與下注無關
+  BET_STEP_UNSPECIFIED = 0;
+  
+  // 開始下注
+  ROUND_BET = 1;
+
+  // 停止下注
+  NO_MORE_BET = 2;
+
+}
+
 // 遊戲步驟
 message Step {
 
@@ -105,6 +119,8 @@ message Step {
   optional bool cancel = 9 [(tagger.tags) = "bson:\"cancel,omitempty\""];
   // 分配毫秒數
   optional int64 duration = 10 [(tagger.tags) = "bson:\"duration,omitempty\""];
+  // 下注動作
+  BetStep bet_step = 11;
 
 }
 
@@ -217,6 +233,9 @@ message RoundRecord {
 
   // 附加媒體
   map<string, URLMedia> mideas = 24;
+
+  // 下注狀態
+  BetStep bet_step = 25;
 
 }
 
