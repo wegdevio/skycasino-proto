@@ -235,11 +235,6 @@ message GameProvide {
 
   // 附加媒體
   map<string, URLMedia> map_mideas = 24;
-
-  bool dealerLogin = 10;
-  bool dealerLogout = 11;
-  bool mediaStart = 12;
-  bool mediaStop = 13;
 }
 
 message FetchGameProvideListRequest {

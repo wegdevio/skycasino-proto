@@ -330,7 +330,7 @@ type RacingCarBead struct {
 
 	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
-	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" yaml:"shoe" bson:"shoe"`
+	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
 	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	Balls      []int32          `protobuf:"varint,7,rep,packed,name=balls,proto3" json:"balls" bson:"balls" yaml:"balls"`
