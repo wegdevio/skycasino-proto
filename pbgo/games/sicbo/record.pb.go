@@ -257,16 +257,16 @@ type SicboBead struct {
 	unknownFields protoimpl.UnknownFields
 
 	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
-	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
+	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" yaml:"shoeCode" bson:"shoeCode"`
 	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
 	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	Dice       []int32          `protobuf:"varint,7,rep,packed,name=dice,proto3" json:"dice" bson:"dice" yaml:"dice"`
-	Total      int32            `protobuf:"varint,11,opt,name=total,proto3" json:"total" bson:"total" yaml:"total"`
+	Total      int32            `protobuf:"varint,11,opt,name=total,proto3" json:"total" yaml:"total" bson:"total"`
 	Odd        int32            `protobuf:"varint,12,opt,name=odd,proto3" json:"odd" bson:"odd" yaml:"odd"`
 	Size       int32            `protobuf:"varint,13,opt,name=size,proto3" json:"size" bson:"size" yaml:"size"`
 	Tie        int32            `protobuf:"varint,14,opt,name=tie,proto3" json:"tie" bson:"tie" yaml:"tie"`
-	Odds       int32            `protobuf:"varint,15,opt,name=odds,proto3" json:"odds" bson:"odds" yaml:"odds"`
+	Odds       int32            `protobuf:"varint,15,opt,name=odds,proto3" json:"odds" yaml:"odds" bson:"odds"`
 	Luckys     map[string]int32 `protobuf:"bytes,31,rep,name=luckys,proto3" json:"luckys" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"luckys" yaml:"luckys"`
 	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
 }

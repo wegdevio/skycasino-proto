@@ -328,12 +328,12 @@ type LotteryBead struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" yaml:"roundCode" bson:"roundCode"`
+	RoundCode  string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	ShoeCode   string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
-	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
+	Shoe       uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" yaml:"shoe" bson:"shoe"`
 	ShoeRound  uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
-	Balls      []int32          `protobuf:"varint,7,rep,packed,name=balls,proto3" json:"balls" yaml:"balls" bson:"balls"`
+	Balls      []int32          `protobuf:"varint,7,rep,packed,name=balls,proto3" json:"balls" bson:"balls" yaml:"balls"`
 	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
 }
 
