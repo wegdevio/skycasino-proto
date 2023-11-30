@@ -263,7 +263,7 @@ type LuckyWheelBead struct {
 	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	Direction  int32            `protobuf:"varint,7,opt,name=direction,proto3" json:"direction" bson:"direction" yaml:"direction"`
 	Value      string           `protobuf:"bytes,8,opt,name=value,proto3" json:"value" bson:"value" yaml:"value"`
-	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" yaml:"statistics" bson:"statistics"`
+	Statistics map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
 }
 
 func (x *LuckyWheelBead) Reset() {

@@ -168,47 +168,53 @@ enum GameNotifyType {
   // 通知遊戲關閉
   NOTIFY_GAME_CLOSE = 3;
 
-  // 通知遊戲荷官異動
-  NOTIFY_GAME_DEALER = 4;
+  // 通知遊戲荷官登入
+  NOTIFY_GAME_DEALER_LOGIN = 4;
 
-  // 通知遊戲媒體異動
-  NOTIFY_GAME_MEDIA = 5;
+  // 通知遊戲荷官登出
+  NOTIFY_GAME_DEALER_LOGOUT = 5;
+
+  // 通知遊戲媒體開始錄影
+  NOTIFY_GAME_MEDIA_START = 6;
+
+  // 通知遊戲媒體結束錄影
+  NOTIFY_GAME_MEDIA_STOP = 7;
 
   // 通知遊戲班開始
-  NOTIFY_SHIFT_START = 6;
+  NOTIFY_SHIFT_START = 8;
 
   // 通知遊戲班結束
-  NOTIFY_SHIFT_END = 7;
+  NOTIFY_SHIFT_END = 9;
 
   // 通知遊戲換靴
-  NOTIFY_SHOE_CHANGE = 8;
+  NOTIFY_SHOE_CHANGE = 10;
 
   // 通知新靴開始
-  NOTIFY_SHOE_START = 9;
+  NOTIFY_SHOE_START = 11;
 
   // 通知此靴結束
-  NOTIFY_SHOE_END = 10;
+  NOTIFY_SHOE_END = 12;
 
   // 新局開始
-  NOTIFY_ROUND_START = 11;
+  NOTIFY_ROUND_START = 13;
 
   // 通知遊戲局開始下注
-  NOTIFY_ROUND_BET = 12;
+  NOTIFY_ROUND_BET = 14;
 
   // 通知遊戲局結束下注
-  NOTIFY_ROUND_NO_MORE_BET = 13;
+  NOTIFY_ROUND_NO_MORE_BET = 15;
 
   // 通知遊戲局進行步驟
-  NOTIFY_ROUND_STEP = 14;
+  NOTIFY_ROUND_STEP = 16;
 
   // 遊戲局完成
-  NOTIFY_ROUND_FINISH = 15;
+  NOTIFY_ROUND_FINISH = 17;
 
   // 通知遊戲局取消
-  NOTIFY_ROUND_CANCEL = 16;
+  NOTIFY_ROUND_CANCEL = 18;
 
   // 通知遊戲局回放連結
-  NOTIFY_ROUND_PLAYBACK = 17;
+  NOTIFY_ROUND_PLAYBACK = 19;
 
 }
 
@@ -235,7 +241,6 @@ message GameProvide {
 
   // 附加媒體
   map<string, URLMedia> map_mideas = 24;
-
 }
 
 message FetchGameProvideListRequest {

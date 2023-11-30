@@ -336,7 +336,7 @@ type BaccaratBead struct {
 	BankerCards   []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
 	PlayerCards   []string         `protobuf:"bytes,8,rep,name=player_cards,json=playerCards,proto3" json:"playerCards" bson:"playerCards" yaml:"playerCards"`
 	BankerPoint   int32            `protobuf:"varint,11,opt,name=banker_point,json=bankerPoint,proto3" json:"bankerPoint" yaml:"bankerPoint" bson:"bankerPoint"`
-	PlayerPoint   int32            `protobuf:"varint,12,opt,name=player_point,json=playerPoint,proto3" json:"playerPoint" yaml:"playerPoint" bson:"playerPoint"`
+	PlayerPoint   int32            `protobuf:"varint,12,opt,name=player_point,json=playerPoint,proto3" json:"playerPoint" bson:"playerPoint" yaml:"playerPoint"`
 	BankerWin     bool             `protobuf:"varint,13,opt,name=banker_win,json=bankerWin,proto3" json:"bankerWin" bson:"bankerWin" yaml:"bankerWin"`
 	PlayerWin     bool             `protobuf:"varint,14,opt,name=player_win,json=playerWin,proto3" json:"playerWin" bson:"playerWin" yaml:"playerWin"`
 	HasBankerPair bool             `protobuf:"varint,15,opt,name=has_banker_pair,json=hasBankerPair,proto3" json:"hasBankerPair" bson:"hasBankerPair" yaml:"hasBankerPair"`
