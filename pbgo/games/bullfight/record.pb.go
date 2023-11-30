@@ -318,8 +318,8 @@ type BullfightBead struct {
 	unknownFields protoimpl.UnknownFields
 
 	RoundCode    string           `protobuf:"bytes,1,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
-	ShoeCode     string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" yaml:"shoeCode" bson:"shoeCode"`
-	Shoe         uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
+	ShoeCode     string           `protobuf:"bytes,2,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
+	Shoe         uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" yaml:"shoe" bson:"shoe"`
 	ShoeRound    uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	Result       string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	BankerCards  []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
@@ -329,7 +329,7 @@ type BullfightBead struct {
 	FirstCard    string           `protobuf:"bytes,11,opt,name=first_card,json=firstCard,proto3" json:"firstCard" bson:"firstCard" yaml:"firstCard"`
 	BankerType   int32            `protobuf:"varint,12,opt,name=banker_type,json=bankerType,proto3" json:"bankerType" bson:"bankerType" yaml:"bankerType"`
 	PlayerXType  int32            `protobuf:"varint,13,opt,name=player_x_type,json=playerXType,proto3" json:"playerXType" bson:"playerXType" yaml:"playerXType"`
-	PlayerYType  int32            `protobuf:"varint,14,opt,name=player_y_type,json=playerYType,proto3" json:"playerYType" yaml:"playerYType" bson:"playerYType"`
+	PlayerYType  int32            `protobuf:"varint,14,opt,name=player_y_type,json=playerYType,proto3" json:"playerYType" bson:"playerYType" yaml:"playerYType"`
 	PlayerZType  int32            `protobuf:"varint,15,opt,name=player_z_type,json=playerZType,proto3" json:"playerZType" bson:"playerZType" yaml:"playerZType"`
 	PlayerXWin   bool             `protobuf:"varint,16,opt,name=player_x_win,json=playerXWin,proto3" json:"playerXWin" bson:"playerXWin" yaml:"playerXWin"`
 	PlayerYWin   bool             `protobuf:"varint,17,opt,name=player_y_win,json=playerYWin,proto3" json:"playerYWin" bson:"playerYWin" yaml:"playerYWin"`
