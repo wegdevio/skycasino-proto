@@ -37,18 +37,6 @@ enum Step {
 
 }
 
-// 座位功能代碼
-enum Seat {
-
-  // 未指定
-  SEAT_UNSPECIFIED = 0;
-  // Dealer
-  DEALER = 1;
-  // Pitboss
-  PITBOSS = 9;
-
-}
-
 // 結果紀錄類型代碼
 enum ResultRecordType {
 
