@@ -218,6 +218,19 @@ enum GameNotifyType {
 
 }
 
+enum SeatProvide {
+
+  // 未指定
+  SEAT_UNSPECIFIED = 0;
+
+  // Dealer 
+  DEALER = 1;
+
+  // Pitboss
+  PITBOSS = 9;
+
+}
+
 // 遊戲供應
 message GameProvide {
 
@@ -241,6 +254,10 @@ message GameProvide {
 
   // 附加媒體
   map<string, URLMedia> map_mideas = 24;
+
+  // 玩家入座
+  map<int32, string> players = 25;
+
 }
 
 message FetchGameProvideListRequest {

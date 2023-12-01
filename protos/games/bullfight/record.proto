@@ -58,7 +58,7 @@ enum Step {
 }
 
 // 座位功能代碼
-enum Seat {
+enum GameSeat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
@@ -72,10 +72,6 @@ enum Seat {
   PLAYER2 = 4;
   // 玩家3
   PLAYER3 = 5;
-  // Dealer
-  DEALER = 6;
-  // Pitboss
-  PITBOSS = 9;
 
 }
 

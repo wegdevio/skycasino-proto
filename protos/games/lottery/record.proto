@@ -77,14 +77,10 @@ enum Seat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
-  // Dealer
-  DEALER = 1;
   // 閒家
   PLAYER = 2;
   // 莊家
   BANKER = 3;
-  // Pitboss
-  PITBOSS = 9;
 
 }
 
