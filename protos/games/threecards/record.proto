@@ -51,7 +51,7 @@ enum Step {
 }
 
 // 座位功能代碼
-enum Seat {
+enum GameSeat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
