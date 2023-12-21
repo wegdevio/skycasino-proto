@@ -259,6 +259,15 @@ message GameProvide {
   map<int32, string> players = 25;
 
 }
+message PlatFromGameProvide {
+  string game_type = 2;
+  string game_subtype = 3;
+  string game_code = 4;
+  repeated Tag tags = 5;
+  string maintenanceRound = 6;
+  bool maintenance = 7;
+  bool close = 8;
+}
 
 message FetchGameProvideListRequest {
 
