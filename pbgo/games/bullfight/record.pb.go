@@ -28,7 +28,7 @@ const (
 	// 經典
 	GameSubtype_BULLFIGHT_CLASSIC GameSubtype = 1
 	// 區塊鏈牛牛
-	GameSubtype_BLOCKCHAIN_BULLFIGHT GameSubtype = 16
+	GameSubtype_BULLFIGHT_BLOCKCHAIN GameSubtype = 16
 )
 
 // Enum value maps for GameSubtype.
@@ -36,12 +36,12 @@ var (
 	GameSubtype_name = map[int32]string{
 		0:  "BULLFIGHT_TYPE_UNSPECIFIED",
 		1:  "BULLFIGHT_CLASSIC",
-		16: "BLOCKCHAIN_BULLFIGHT",
+		16: "BULLFIGHT_BLOCKCHAIN",
 	}
 	GameSubtype_value = map[string]int32{
 		"BULLFIGHT_TYPE_UNSPECIFIED": 0,
 		"BULLFIGHT_CLASSIC":          1,
-		"BLOCKCHAIN_BULLFIGHT":       16,
+		"BULLFIGHT_BLOCKCHAIN":       16,
 	}
 )
 
@@ -366,7 +366,7 @@ type BullfightBead struct {
 	Shoe         uint32           `protobuf:"varint,3,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
 	ShoeRound    uint32           `protobuf:"varint,4,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	Result       string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
-	BankerCards  []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" yaml:"bankerCards" bson:"bankerCards"`
+	BankerCards  []string         `protobuf:"bytes,7,rep,name=banker_cards,json=bankerCards,proto3" json:"bankerCards" bson:"bankerCards" yaml:"bankerCards"`
 	PlayerXCards []string         `protobuf:"bytes,8,rep,name=player_x_cards,json=playerXCards,proto3" json:"playerXCards" bson:"playerXCards" yaml:"playerXCards"`
 	PlayerYCards []string         `protobuf:"bytes,9,rep,name=player_y_cards,json=playerYCards,proto3" json:"playerYCards" bson:"playerYCards" yaml:"playerYCards"`
 	PlayerZCards []string         `protobuf:"bytes,10,rep,name=player_z_cards,json=playerZCards,proto3" json:"playerZCards" bson:"playerZCards" yaml:"playerZCards"`
@@ -376,7 +376,7 @@ type BullfightBead struct {
 	PlayerYType  int32            `protobuf:"varint,14,opt,name=player_y_type,json=playerYType,proto3" json:"playerYType" bson:"playerYType" yaml:"playerYType"`
 	PlayerZType  int32            `protobuf:"varint,15,opt,name=player_z_type,json=playerZType,proto3" json:"playerZType" bson:"playerZType" yaml:"playerZType"`
 	PlayerXWin   bool             `protobuf:"varint,16,opt,name=player_x_win,json=playerXWin,proto3" json:"playerXWin" bson:"playerXWin" yaml:"playerXWin"`
-	PlayerYWin   bool             `protobuf:"varint,17,opt,name=player_y_win,json=playerYWin,proto3" json:"playerYWin" yaml:"playerYWin" bson:"playerYWin"`
+	PlayerYWin   bool             `protobuf:"varint,17,opt,name=player_y_win,json=playerYWin,proto3" json:"playerYWin" bson:"playerYWin" yaml:"playerYWin"`
 	PlayerZWin   bool             `protobuf:"varint,18,opt,name=player_z_win,json=playerZWin,proto3" json:"playerZWin" bson:"playerZWin" yaml:"playerZWin"`
 	WinType      string           `protobuf:"bytes,19,opt,name=win_type,json=winType,proto3" json:"winType" bson:"winType" yaml:"winType"`
 	Statistics   map[string]int32 `protobuf:"bytes,32,rep,name=statistics,proto3" json:"statistics" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"statistics" yaml:"statistics"`
@@ -604,8 +604,8 @@ var file_games_bullfight_record_proto_rawDesc = []byte{
 	0x46, 0x49, 0x47, 0x48, 0x54, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45,
 	0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x15, 0x0a, 0x11, 0x42, 0x55, 0x4c, 0x4c,
 	0x46, 0x49, 0x47, 0x48, 0x54, 0x5f, 0x43, 0x4c, 0x41, 0x53, 0x53, 0x49, 0x43, 0x10, 0x01, 0x12,
-	0x18, 0x0a, 0x14, 0x42, 0x4c, 0x4f, 0x43, 0x4b, 0x43, 0x48, 0x41, 0x49, 0x4e, 0x5f, 0x42, 0x55,
-	0x4c, 0x4c, 0x46, 0x49, 0x47, 0x48, 0x54, 0x10, 0x10, 0x2a, 0x43, 0x0a, 0x0c, 0x52, 0x65, 0x73,
+	0x18, 0x0a, 0x14, 0x42, 0x55, 0x4c, 0x4c, 0x46, 0x49, 0x47, 0x48, 0x54, 0x5f, 0x42, 0x4c, 0x4f,
+	0x43, 0x4b, 0x43, 0x48, 0x41, 0x49, 0x4e, 0x10, 0x10, 0x2a, 0x43, 0x0a, 0x0c, 0x52, 0x65, 0x73,
 	0x6f, 0x75, 0x72, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x19, 0x52, 0x45, 0x53,
 	0x4f, 0x55, 0x52, 0x43, 0x45, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45,
 	0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x53, 0x48, 0x4f, 0x45,
