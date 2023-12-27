@@ -9,7 +9,7 @@ enum GameSubtype {
   BULLFIGHT_CLASSIC = 1;
 
   // 區塊鏈牛牛
-  BLOCKCHAIN_BULLFIGHT = 16;
+  BULLFIGHT_BLOCKCHAIN = 16;
 }
 
 enum ResourceType {
