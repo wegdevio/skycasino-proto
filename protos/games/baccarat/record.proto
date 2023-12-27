@@ -1,6 +1,34 @@
 syntax = "proto3";
 package games.baccarat;
 
+enum GameSubtype {
+    // 未指定
+    BACCARAT_TYPE_UNSPECIFIED = 0;
+
+    // 經典百家樂
+    BACCARAT_CLASSIC = 1;
+    // 傳統百家樂
+    BACCARAT_TRADITIONAL = 2;
+    // 極速百家樂
+    BACCARAT_SPEED = 3;
+    // 保險百家樂
+    BACCARAT_INSURANCE = 4;
+    // 瞇牌百家樂
+    BACCARAT_PEEK = 8;
+    // 財神百家樂
+    BACCARAT_FORTUNE = 12;
+  
+    // 閃電百家樂
+    BACCARAT_LIGHTNING = 13;
+  
+    // 區塊鏈百家樂
+    BACCARAT_BLOCKCHAIN = 16;
+    // 區塊鏈極速百家樂
+    BACCARAT_SPEED_BLOCKCHAIN = 18;
+    // 區塊鏈瞇牌百家樂
+    BACCARAT_PEEK_BLOCKCHAIN= 24;
+}
+
 enum ResourceType {
 
   // 未指定

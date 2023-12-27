@@ -1,6 +1,22 @@
 syntax = "proto3";
 package games.thebigbattle;
 
+enum GameSubtype {
+  // 未指定
+  THEBIGBATTLE_TYPE_UNSPECIFIED = 0;
+
+  // 經典
+  THEBIGBATTLE_CLASSIC = 1;
+
+  // 極速龍虎
+  THEBIGBATTLE_SPEED = 3;
+
+  // 區塊鏈龍虎
+  BLOCKCHAIN_THEBIGBATTLE = 16;
+  // 區塊鏈極速龍虎
+  BLOCKCHAIN_THEBIGBATTLE_SPEED = 18;
+}
+
 enum ResourceType {
 
   // 未指定

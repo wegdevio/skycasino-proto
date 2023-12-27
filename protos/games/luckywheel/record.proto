@@ -1,6 +1,17 @@
 syntax = "proto3";
 package games.luckywheel;
 
+enum GameSubtype {
+  // 未指定
+  LUCKYWHEEL_TYPE_UNSPECIFIED = 0;
+
+  // 麻將幸運輪
+  LUCKYWHEEL_MAHJONG = 1;
+
+  // 彩虹幸運輪
+  LUCKYWHEEL_RAINBOW = 2;
+}
+
 enum ResourceType {
 
   // 未指定

@@ -1,6 +1,23 @@
 syntax = "proto3";
 package games.roulette;
 
+enum GameSubtype {
+  // 未指定
+  ROULETTE_TYPE_UNSPECIFIED = 0;
+
+  // 輪盤
+  ROULETTE_CLASSIC = 1;
+
+  // 輪盤
+  ROULETTE_FORTUNE = 2;
+
+  // 閃電輪盤
+  ROULETTE_LIGHTNING = 3;
+
+  // 區塊鏈輪盤
+  ROULETTE_CLASSIC_BLOCKCHAIN = 16;
+}
+
 enum ResourceType {
 
   // 未指定

@@ -1,6 +1,17 @@
 syntax = "proto3";
 package games.fantan;
 
+enum GameSubtype {
+   // 未指定
+   FANTAN_TYPE_UNSPECIFIED = 0;
+
+   // 番攤
+   FANTAN_CLASSIC = 1;
+ 
+   // 區塊鏈番攤
+   FANTAN_BLOCKCHAIN = 16;
+}
+
 enum ResourceType {
 
   // 未指定
