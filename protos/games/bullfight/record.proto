@@ -1,6 +1,17 @@
 syntax = "proto3";
 package games.bullfight;
 
+enum GameSubtype {
+  // 未指定
+  BULLFIGHT_TYPE_UNSPECIFIED = 0;
+
+  // 經典
+  BULLFIGHT_CLASSIC = 1;
+
+  // 區塊鏈牛牛
+  BLOCKCHAIN_BULLFIGHT = 16;
+}
+
 enum ResourceType {
 
   // 未指定

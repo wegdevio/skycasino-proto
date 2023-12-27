@@ -1,6 +1,17 @@
 syntax = "proto3";
 package games.threecards;
 
+enum GameSubtype {
+  // 未指定
+  THREECARDS_TYPE_UNSPECIFIED = 0;
+
+  // 經典(2人)
+  THREECARDS_CLASSIC = 1;
+
+  // 區塊鏈炸金花(2人)
+  THREECARDS_BLOCKCHAIN = 16;
+}
+
 enum ResourceType {
 
   // 未指定

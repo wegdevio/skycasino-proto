@@ -1,6 +1,12 @@
 syntax = "proto3";
 package games.racingcar;
 
+enum GameSubtype {
+  // 未指定
+  RACINGCAR_TYPE_UNSPECIFIED = 0;
+
+}
+
 enum ResourceType {
 
   // 未指定
