@@ -28,7 +28,6 @@ const (
 	RecorderService_RecordRoundResults_FullMethodName    = "/recorder.RecorderService/RecordRoundResults"
 	RecorderService_RecordRoundBeCanceled_FullMethodName = "/recorder.RecorderService/RecordRoundBeCanceled"
 	RecorderService_RecordRoundFinished_FullMethodName   = "/recorder.RecorderService/RecordRoundFinished"
-	RecorderService_RecordRoadmap_FullMethodName         = "/recorder.RecorderService/RecordRoadmap"
 	RecorderService_RecordRoundVideo_FullMethodName      = "/recorder.RecorderService/RecordRoundVideo"
 )
 
@@ -54,8 +53,6 @@ type RecorderServiceClient interface {
 	RecordRoundBeCanceled(ctx context.Context, in *RecordRoundBeCanceledRequest, opts ...grpc.CallOption) (*RoundRecord, error)
 	// 結束此局
 	RecordRoundFinished(ctx context.Context, in *RecordRoundFinishedRequest, opts ...grpc.CallOption) (*RoundRecord, error)
-	// 紀錄路紙
-	RecordRoadmap(ctx context.Context, in *RecordRoadmapRequest, opts ...grpc.CallOption) (*RoundRecord, error)
 	// 紀錄回放
 	RecordRoundVideo(ctx context.Context, in *RecordRoundMediaRequest, opts ...grpc.CallOption) (*RoundRecord, error)
 }
@@ -149,15 +146,6 @@ func (c *recorderServiceClient) RecordRoundFinished(ctx context.Context, in *Rec
 	return out, nil
 }
 
-func (c *recorderServiceClient) RecordRoadmap(ctx context.Context, in *RecordRoadmapRequest, opts ...grpc.CallOption) (*RoundRecord, error) {
-	out := new(RoundRecord)
-	err := c.cc.Invoke(ctx, RecorderService_RecordRoadmap_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *recorderServiceClient) RecordRoundVideo(ctx context.Context, in *RecordRoundMediaRequest, opts ...grpc.CallOption) (*RoundRecord, error) {
 	out := new(RoundRecord)
 	err := c.cc.Invoke(ctx, RecorderService_RecordRoundVideo_FullMethodName, in, out, opts...)
@@ -189,8 +177,6 @@ type RecorderServiceServer interface {
 	RecordRoundBeCanceled(context.Context, *RecordRoundBeCanceledRequest) (*RoundRecord, error)
 	// 結束此局
 	RecordRoundFinished(context.Context, *RecordRoundFinishedRequest) (*RoundRecord, error)
-	// 紀錄路紙
-	RecordRoadmap(context.Context, *RecordRoadmapRequest) (*RoundRecord, error)
 	// 紀錄回放
 	RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*RoundRecord, error)
 	mustEmbedUnimplementedRecorderServiceServer()
@@ -226,9 +212,6 @@ func (UnimplementedRecorderServiceServer) RecordRoundBeCanceled(context.Context,
 }
 func (UnimplementedRecorderServiceServer) RecordRoundFinished(context.Context, *RecordRoundFinishedRequest) (*RoundRecord, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundFinished not implemented")
-}
-func (UnimplementedRecorderServiceServer) RecordRoadmap(context.Context, *RecordRoadmapRequest) (*RoundRecord, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecordRoadmap not implemented")
 }
 func (UnimplementedRecorderServiceServer) RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*RoundRecord, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundVideo not implemented")
@@ -408,24 +391,6 @@ func _RecorderService_RecordRoundFinished_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RecorderService_RecordRoadmap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RecordRoadmapRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RecorderServiceServer).RecordRoadmap(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RecorderService_RecordRoadmap_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RecorderServiceServer).RecordRoadmap(ctx, req.(*RecordRoadmapRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RecorderService_RecordRoundVideo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RecordRoundMediaRequest)
 	if err := dec(in); err != nil {
@@ -486,10 +451,6 @@ var RecorderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecordRoundFinished",
 			Handler:    _RecorderService_RecordRoundFinished_Handler,
-		},
-		{
-			MethodName: "RecordRoadmap",
-			Handler:    _RecorderService_RecordRoadmap_Handler,
 		},
 		{
 			MethodName: "RecordRoundVideo",

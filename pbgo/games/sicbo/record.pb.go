@@ -270,8 +270,8 @@ type SicboBead struct {
 	Result     string           `protobuf:"bytes,5,opt,name=result,proto3" json:"result" bson:"result" yaml:"result"`
 	Dice       []int32          `protobuf:"varint,7,rep,packed,name=dice,proto3" json:"dice" bson:"dice" yaml:"dice"`
 	Total      int32            `protobuf:"varint,11,opt,name=total,proto3" json:"total" bson:"total" yaml:"total"`
-	Odd        int32            `protobuf:"varint,12,opt,name=odd,proto3" json:"odd" yaml:"odd" bson:"odd"`
-	Size       int32            `protobuf:"varint,13,opt,name=size,proto3" json:"size" bson:"size" yaml:"size"`
+	Odd        int32            `protobuf:"varint,12,opt,name=odd,proto3" json:"odd" bson:"odd" yaml:"odd"`
+	Size       int32            `protobuf:"varint,13,opt,name=size,proto3" json:"size" yaml:"size" bson:"size"`
 	Tie        int32            `protobuf:"varint,14,opt,name=tie,proto3" json:"tie" bson:"tie" yaml:"tie"`
 	Odds       int32            `protobuf:"varint,15,opt,name=odds,proto3" json:"odds" bson:"odds" yaml:"odds"`
 	Luckys     map[string]int32 `protobuf:"bytes,31,rep,name=luckys,proto3" json:"luckys" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3" bson:"luckys" yaml:"luckys"`
