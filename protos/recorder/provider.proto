@@ -171,17 +171,8 @@ enum GameNotifyType {
   // 未指定
   GAME_NOTIFY_TYPE_UNSPECIFIED = 0;
 
-  // 通知遊戲上線
-  NOTIFY_GAME_ONLINE = 1;
-
-  // 通知遊戲維護
-  NOTIFY_GAME_WILL_MAINTENANCE = 2;
-
-  // 通知遊戲維護
-  NOTIFY_GAME_MAINTENANCE = 3;
-
-  // 通知遊戲關閉
-  NOTIFY_GAME_CLOSE = 4;
+  // 通知遊戲供應狀況改變
+  NOTIFY_GAME_PROVIDE_STATE_CHANGE = 1;
 
   // 通知遊戲荷官登入
   NOTIFY_GAME_DEALER_LOGIN = 6;
