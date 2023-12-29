@@ -49,9 +49,9 @@ enum Step {
   DEAL_PLAYER_3 = 9;
 
   // 開放下注
-  OPEN_FOR_BETTING = 10;
+  ROUND_BET = 10;
   // 停止下注
-  CLOSE_THE_BETTING = 11;
+  NO_MORE_BET = 11;
 
   // 開例牌
   SHOW_NORMAL = 12;
@@ -94,28 +94,5 @@ enum CardStyle {
   STRAIGHTF  = 4;         // 順子
   LEOPARD  = 5;           // 豹子
   LEOPARD_KILLER  = 6;    // 豹子殺手
-
-}
-
-message ThreeCardsBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated string banker_cards = 7;
-  repeated string player_cards = 8;
-
-  string banker_bar_code = 11;
-  string player_bar_code = 12;
-  string banker_style = 13;
-  string player_style = 14;
-  string banker_win_point = 15;
-  string player_win_point = 16;
-  string win_type = 17;
-  string win_style = 18;
-
-  map<string, int32> statistics = 32;
 
 }

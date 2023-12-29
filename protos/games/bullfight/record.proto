@@ -47,9 +47,9 @@ enum Step {
   DEAL_PLAYER_3 = 8;
 
   // 開放下注
-  OPEN_FOR_BETTING = 9;
+  ROUND_BET = 9;
   // 停止下注
-  CLOSE_THE_BETTING = 10;
+  NO_MORE_BET = 10;
 
   // 開莊家1例牌
   SHOW_BANKER_1 = 12;
@@ -95,31 +95,5 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
-
-}
-
-message BullfightBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated string banker_cards = 7;
-  repeated string player_x_cards = 8;
-  repeated string player_y_cards = 9;
-  repeated string player_z_cards = 10;
-  string first_card = 11;
-
-  int32 banker_type = 12;
-  int32 player_x_type = 13;
-  int32 player_y_type = 14;
-  int32 player_z_type = 15;
-  bool player_x_win = 16;
-  bool player_y_win = 17;
-  bool player_z_win = 18;
-  string win_type = 19;
-
-  map<string, int32> statistics = 32;
 
 }
