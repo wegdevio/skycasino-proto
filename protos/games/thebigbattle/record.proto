@@ -13,6 +13,7 @@ enum GameSubtype {
 
   // 區塊鏈龍虎
   THEBIGBATTLE_BLOCKCHAIN = 16;
+  
   // 區塊鏈極速龍虎
   THEBIGBATTLE_SPEED_BLOCKCHAIN = 18;
 }
@@ -48,9 +49,9 @@ enum Step {
   DEAL_TIGER_1 = 6;
 
   // 開放下注
-  OPEN_FOR_BETTING = 9;
+  ROUND_BET = 9;
   // 停止下注
-  CLOSE_THE_BETTING = 10;
+  NO_MORE_BET = 10;
 
   // 開例牌
   SHOW_NORMAL = 12;
@@ -82,27 +83,5 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
-
-}
-
-message TheBigBattleBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated string banker_cards = 7;
-  repeated string player_cards = 8;
-
-  string banker_bar_code = 11;
-  string player_bar_code = 12;
-  int32 banker_point = 13;
-  int32 player_point = 14;
-  bool banker_win = 15;
-  bool player_win = 16;
-  string win_type = 17;
-
-  map<string, int32> statistics = 32;
 
 }

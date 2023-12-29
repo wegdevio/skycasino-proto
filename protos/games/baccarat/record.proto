@@ -7,24 +7,25 @@ enum GameSubtype {
 
     // 經典百家樂
     BACCARAT_CLASSIC = 1;
+
     // 傳統百家樂
     BACCARAT_TRADITIONAL = 2;
+
     // 極速百家樂
     BACCARAT_SPEED = 3;
-    // 保險百家樂
-    BACCARAT_INSURANCE = 4;
+
     // 瞇牌百家樂
     BACCARAT_PEEK = 8;
+
     // 財神百家樂
     BACCARAT_FORTUNE = 12;
   
-    // 閃電百家樂
-    BACCARAT_LIGHTNING = 13;
-  
     // 區塊鏈百家樂
     BACCARAT_BLOCKCHAIN = 16;
+
     // 區塊鏈極速百家樂
     BACCARAT_SPEED_BLOCKCHAIN = 18;
+    
     // 區塊鏈瞇牌百家樂
     BACCARAT_PEEK_BLOCKCHAIN= 24;
 }
@@ -64,11 +65,9 @@ enum Step {
   DEAL_BANKER_2 = 7;
 
   // 開放下注
-  OPEN_FOR_BETTING = 8;
-  // 倒數
-  COUNTDOWN = 27;
+  ROUND_BET = 8;
   // 停止下注
-  CLOSE_THE_BETTING = 9;
+  NO_MORE_BET = 9;
 
   // 非瞇牌開例牌
   SHOW_NORMAL = 12;
@@ -121,31 +120,5 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
-
-}
-
-message BaccaratBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated string banker_cards = 7;
-  repeated string player_cards = 8;
-
-  int32 banker_point = 11;
-  int32 player_point = 12;
-  bool banker_win = 13;
-  bool player_win = 14;
-  bool has_banker_pair = 15;
-  bool has_player_pair = 16;
-  string win_type = 17;
-
-  int32 high_light = 21;
-  string multi_plier = 22;
-
-  map<string, int32> luckys = 31;
-  map<string, int32> statistics = 32;
 
 }

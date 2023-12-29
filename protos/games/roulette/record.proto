@@ -8,11 +8,8 @@ enum GameSubtype {
   // 輪盤
   ROULETTE_CLASSIC = 1;
 
-  // 輪盤
+  // 財神輪盤
   ROULETTE_FORTUNE = 2;
-
-  // 閃電輪盤
-  ROULETTE_LIGHTNING = 3;
 
   // 區塊鏈輪盤
   ROULETTE_CLASSIC_BLOCKCHAIN = 16;
@@ -42,9 +39,9 @@ enum Step {
   ROUND_CANCELED = 3;
 
   // 開放下注
-  OPEN_FOR_BETTING = 4;
+  ROUND_BET = 4;
   // 停止下注
-  CLOSE_THE_BETTING = 5;
+  NO_MORE_BET = 5;
 
   // 轉盤
   SPIN_WHEEL = 8;
@@ -73,21 +70,5 @@ enum CancelReason {
   CANCEL_REASON_UNSPECIFIED = 0;
   // 取消說明原因
   NO_REASON = 1;
-
-}
-
-message RouletteBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  string raw = 7;
-  int32 value = 8;
-  int32 direction = 9;
-
-  map<string, int32> luckys = 31;
-  map<string, int32> statistics = 32;
 
 }

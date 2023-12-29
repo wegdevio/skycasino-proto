@@ -25,9 +25,4 @@ enum GameType {
   // 幸運輪
   LUCKYWHEEL = 40;
 
-  // 彩票
-  LOTTERY = 50;
-
-  // 賽車
-  RACINGCAR = 51;
 }

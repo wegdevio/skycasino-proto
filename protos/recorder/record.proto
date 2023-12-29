@@ -100,6 +100,8 @@ enum BetStep {
   // 停止下注
   NO_MORE_BET = 2;
 
+  // 開牌
+  RESULT = 3;
 }
 
 // 遊戲步驟
@@ -239,6 +241,9 @@ message RoundRecord {
 
   // 附加媒體
   map<string, URLMedia> mideas = 28;
+
+  // 財神倍率
+  map<string, int64> fortune_rates = 29;
 
 }
 

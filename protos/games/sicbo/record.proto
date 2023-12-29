@@ -2,6 +2,7 @@ syntax = "proto3";
 package games.sicbo;
 
 enum GameSubtype {
+  
   // 未指定
   SICBO_TYPE_UNSPECIFIED = 0;
 
@@ -10,9 +11,6 @@ enum GameSubtype {
   
   // 財神骰寶
   SICBO_FORTUNE = 2;
-
-  // 閃電骰寶
-  SICBO_LIGHTNING = 3;
 
   // 區塊鏈骰寶
   SICBO_BLOCKCHAIN = 16;
@@ -42,9 +40,9 @@ enum Step {
   ROUND_CANCELED = 3;
 
   // 開放下注
-  OPEN_FOR_BETTING = 4;
+  ROUND_BET = 4;
   // 停止下注
-  CLOSE_THE_BETTING = 5;
+  NO_MORE_BET = 5;
 
   // 擲骰
   THROW_DICE = 8;
@@ -63,25 +61,5 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
-
-}
-
-message SicboBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated int32 dice = 7;
-
-  int32 total = 11;
-  int32 odd = 12;
-  int32 size = 13;
-  int32 tie = 14;
-  int32 odds = 15;
-
-  map<string, int32> luckys = 31;
-  map<string, int32> statistics = 32;
 
 }
