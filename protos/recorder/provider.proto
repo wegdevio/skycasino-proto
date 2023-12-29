@@ -174,20 +174,20 @@ enum GameNotifyType {
   // 通知遊戲供應狀況改變
   NOTIFY_GAME_PROVIDE_STATE_CHANGE = 1;
 
-  // 通知遊戲荷官登入
+  // 通知遊戲流程荷官登入
   NOTIFY_GAME_DEALER_LOGIN = 6;
 
-  // 通知遊戲荷官登出
+  // 通知遊戲流程荷官登出
   NOTIFY_GAME_DEALER_LOGOUT = 7;
 
+  // 通知遊戲流程開始換靴，更換結束呼叫 NOTIFY_SHOE_START
+  NOTIFY_GAME_CHANGING_SHOE = 8;
+
   // 通知遊戲班開始
-  NOTIFY_SHIFT_START = 8;
+  NOTIFY_SHIFT_START = 9;
 
   // 通知遊戲班結束
-  NOTIFY_SHIFT_END = 9;
-
-  // 通知遊戲換靴
-  NOTIFY_SHOE_CHANGE = 10;
+  NOTIFY_SHIFT_END = 10;
 
   // 通知新靴開始
   NOTIFY_SHOE_START = 11;
@@ -286,18 +286,25 @@ message PlatFromGameProvide {
 
   // 遊戲供應
   string supplier = 2;
+
   // 遊戲類型
   string game_type = 3;
+
   // 遊戲子類型
   string game_subtype = 4;
+
   // 遊戲版本
   string game_version = 5;
+
   // 遊戲代碼
   string game_code = 6;
+
   // 標籤
   repeated Tag tags = 13;
+
   // 狀態
   GameProvideState state = 17;
+
   // 最後一局
   string last_round_code = 12;
 
