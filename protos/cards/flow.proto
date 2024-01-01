@@ -1,0 +1,20 @@
+syntax = "proto3";
+package cards;
+
+enum FlowCard {
+
+  // 未指定
+  FLOW_CARD_UNSPECIFIED = 0;
+
+  // -- 洗牌
+
+  // 第一張牌
+  FLOW_FIRST = 6;
+
+  // 削牌張數
+  FLOW_PARE_COUNT = 4;
+
+  // 切牌
+  FLOW_CUT = 5;
+
+}

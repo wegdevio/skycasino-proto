@@ -218,25 +218,6 @@ enum GameNotifyType {
 
 }
 
-enum SeatProvide {
-
-  // 未指定
-  SEAT_UNSPECIFIED = 0;
-
-  // Dealer 
-  DEALER = 1;
-
-  // Pitboss
-  PITBOSS = 2;
-
-  // 上一位 Dealer 
-  PREVIOUS_DEALER = 9;
-
-  // 上一位 PITBOSS
-  PREVIOUS_PITBOSS = 10;
-
-}
-
 enum GameProvideState {
 
   // 未指定

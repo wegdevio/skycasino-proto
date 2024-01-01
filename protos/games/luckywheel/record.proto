@@ -12,17 +12,6 @@ enum GameSubtype {
   LUCKYWHEEL_RAINBOW = 2;
 }
 
-enum ResourceType {
-
-  // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 輪盤
-  WHEEL = 2;
-
-}
-
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
 enum Step {
 

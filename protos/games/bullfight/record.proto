@@ -12,17 +12,6 @@ enum GameSubtype {
   BULLFIGHT_BLOCKCHAIN = 16;
 }
 
-enum ResourceType {
-
-  // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 例牌
-  NORMAL = 2;
-
-}
-
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
 enum Step {
 
@@ -73,16 +62,18 @@ enum GameSeat {
 
   // 未指定
   SEAT_UNSPECIFIED = 0;
-  // 起始牌
-  FISRTCARD = 1;
-  // 莊家
-  BANKER = 2;
+
   // 玩家1
-  PLAYER1 = 3;
+  PLAYER1 = 1;
+
   // 玩家2
-  PLAYER2 = 4;
+  PLAYER2 = 2;
+
   // 玩家3
-  PLAYER3 = 5;
+  PLAYER3 = 3;
+
+  // 莊家
+  BANKER = 16;
 
 }
 
