@@ -50,18 +50,6 @@ enum Step {
 
 }
 
-// 座位功能代碼
-enum GameSeat {
-
-  // 未指定
-  SEAT_UNSPECIFIED = 0;
-  // 莊家
-  BANKER = 2;
-  // 閒家
-  PLAYER = 3;
-
-}
-
 // 結果紀錄類型代碼
 enum ResultRecordType {
 

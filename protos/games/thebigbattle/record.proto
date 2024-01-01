@@ -49,20 +49,6 @@ enum Step {
   PITBOSS_MODIFY_NORMAL = 24;
 }
 
-// 座位功能代碼
-enum GameSeat {
-
-  // 未指定
-  SEAT_UNSPECIFIED = 0;
-  // 龍
-  DRAGON = 1;
-  // 虎
-  TIGER = 2;
-  // Discard
-  DISCARD = 4;
-
-}
-
 // 結果紀錄類型代碼
 enum ResultRecordType {
 
