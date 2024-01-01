@@ -49,6 +49,18 @@ enum FlowSeat {
   // 上一位 PITBOSS
   PREVIOUS_PITBOSS = 67;
 
+  // 玩家
+  PLAYER = 68;
+
+  // 莊家
+  BANKER = 69;
+
+  // 左方
+  LEFT = 70;
+
+  // 右方
+  RIGHT = 71;
+
   // 流程控制牌
   CONTROL = 96;
 
@@ -67,5 +79,14 @@ enum ResourceType {
 
   // 場上
   FIELD = 66;
+
+  // 第一張牌
+  FIRST_CARD = 67;
+
+  // 切牌
+  SHOE_CUT = 68;
+
+  // 棄牌
+  DISCARD = 69;
 
 }
