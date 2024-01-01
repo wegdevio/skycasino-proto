@@ -18,19 +18,6 @@ enum GameSubtype {
   THEBIGBATTLE_SPEED_BLOCKCHAIN = 18;
 }
 
-enum ResourceType {
-
-  // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 例牌
-  NORMAL = 2;
-  // 流程
-  FLOW = 4;
-
-}
-
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
 enum Step {
 
