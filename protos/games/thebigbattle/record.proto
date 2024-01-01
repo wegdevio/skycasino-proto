@@ -26,6 +26,8 @@ enum ResourceType {
   SHOE = 1;
   // 例牌
   NORMAL = 2;
+  // 流程
+  FLOW = 4;
 
 }
 

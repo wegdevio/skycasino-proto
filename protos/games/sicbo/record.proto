@@ -16,17 +16,6 @@ enum GameSubtype {
   SICBO_BLOCKCHAIN = 16;
 }
 
-enum ResourceType {
-
-  // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 碗公
-  BOWL = 2;
-
-}
-
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
 enum Step {
 
