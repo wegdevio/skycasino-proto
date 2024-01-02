@@ -103,6 +103,8 @@ message RecordRoundStartedRequest {
   string round_code = 12;
   // 標籤
   repeated Tag tags = 13;
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 16;
 
 }
 

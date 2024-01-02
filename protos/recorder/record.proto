@@ -201,7 +201,7 @@ message RoundRecord {
   string shift_code = 8;
   // 此排班局數
   int64 shift_round = 9;
-  // 使用洗牌代碼
+  // 使用靴代碼
   string shoe_code = 10;
     // 使用此洗牌第幾局，從1開始計算
   int64 shoe_round = 11;

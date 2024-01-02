@@ -75,6 +75,8 @@ message FetchShoeRecordRequest {
   optional string table_code = 7;
   // 班代碼
   optional string shift_code = 8;
+  // 靴代碼
+  optional string shoe_code = 10;
 
   // 允許的紀錄ID
   repeated bytes record_ids = 24;
@@ -90,6 +92,8 @@ message FetchShoeRecordRequest {
   repeated string table_codes = 30;
   // 允許的班代碼
   repeated string shift_codes = 31;
+  // 允許的靴代碼
+  repeated string shoe_codes = 33;
 
   // 查詢限制
   RecordQuery query = 36;
@@ -116,6 +120,8 @@ message FetchRoundRecordRequest {
   optional string table_code = 7;
   // 班代碼
   optional string shift_code = 8;
+  // 靴代碼
+  optional string shoe_code = 10;
   // 局代碼
   optional string round_code = 12;
 
@@ -133,6 +139,8 @@ message FetchRoundRecordRequest {
   repeated string table_codes = 30;
   // 允許的班代碼
   repeated string shift_codes = 31;
+  // 允許的靴代碼
+  repeated string shoe_codes = 33;
   // 允許的局代碼
   repeated string round_codes = 35;
 
