@@ -267,31 +267,6 @@ message GameProvide {
   // 附加媒體
   map<string, URLMedia> mideas = 28;
 
-}
-
-message PlatFromGameProvide {
-
-  // 遊戲供應
-  string supplier = 2;
-
-  // 遊戲類型
-  string game_type = 3;
-
-  // 遊戲子類型
-  string game_subtype = 4;
-
-  // 遊戲版本
-  string game_version = 5;
-
-  // 遊戲代碼
-  string game_code = 6;
-
-  // 標籤
-  repeated Tag tags = 13;
-
-  // 狀態
-  GameProvideState state = 17;
-
   // 最後一局
   string last_round_code = 12;
 
