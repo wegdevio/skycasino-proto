@@ -23,29 +23,35 @@ enum Step {
 
   // 未指定
   STEP_UNSPECIFIED = 0;
+
   // 本局開始
   ROUND_START = 1;
+
   // 本局完成
   ROUND_FINISHED = 2;
+
   // 本局取消
   ROUND_CANCELED = 3;
 
   // 捨牌1
   DEAL_DISCARD_1 = 4;
-  // 派發龍例牌
-  DEAL_DRAGON_1 = 5;
-  // 派發虎例牌
-  DEAL_TIGER_1 = 6;
+
+  // 派發左側玩家手牌
+  DEAL_LEFT = 8;
+
+  // 派發右側玩家手牌
+  DEAL_RIGHT = 9;
 
   // 開放下注
-  ROUND_BET = 9;
+  ROUND_BET = 12;
+
   // 停止下注
-  NO_MORE_BET = 10;
+  NO_MORE_BET = 13;
 
-  // 開例牌
-  SHOW_NORMAL = 12;
+  // 開手牌
+  SHOW_HAND = 16;
 
-  // PITBOSS 修改派發例牌
+  // PITBOSS 修改派發手牌
   PITBOSS_MODIFY_NORMAL = 24;
 }
 

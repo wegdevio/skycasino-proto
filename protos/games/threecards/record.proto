@@ -17,35 +17,53 @@ enum Step {
 
   // 未指定
   STEP_UNSPECIFIED = 0;
+
   // 本局開始
   ROUND_START = 1;
+
   // 本局完成
   ROUND_FINISHED = 2;
+
   // 本局取消
   ROUND_CANCELED = 3;
 
-  // 派發莊家例牌1
-  DEAL_BANKER_1 = 4;
-  // 派發閒家例牌1
-  DEAL_PLAYER_1 = 5;
-  // 派發莊家例牌2
-  DEAL_BANKER_2 = 6;
-  // 派發閒家例牌2
-  DEAL_PLAYER_2 = 7;
-  // 派發莊家例牌3
-  DEAL_BANKER_3 = 8;
-  // 派發閒家例牌3
-  DEAL_PLAYER_3 = 9;
+  // 派發左側玩家手牌1
+  DEAL_LEFT_1 = 4;
+
+  // 派發右側玩家手牌1
+  DEAL_RIGHT_1 = 5;
+
+  // 派發左側玩家手牌2
+  DEAL_LEFT_2 = 6;
+
+  // 派發右側玩家手牌2
+  DEAL_RIGHT_2 = 7;
+
+  // 派發左側玩家手牌3
+  DEAL_LEFT_3 = 8;
+
+  // 派發右側玩家手牌3
+  DEAL_RIGHT_3 = 9;
 
   // 開放下注
-  ROUND_BET = 10;
+  ROUND_BET = 12;
+
   // 停止下注
-  NO_MORE_BET = 11;
+  NO_MORE_BET = 13;
 
-  // 開例牌
-  SHOW_NORMAL = 12;
+  // 開左側玩家手牌1、2
+  SHOW_LEFT_12 = 16;
 
-  // PITBOSS 修改派發例牌
+  // 開右側玩家手牌1、2
+  SHOW_RIGHT_12 = 17;
+
+  // 開左側玩家手牌3
+  SHOW_LEFT_3 = 18;
+
+  // 開右側玩家手牌3
+  SHOW_RIGHT_3 = 19;
+
+  // PITBOSS 修改派發手牌
   PITBOSS_MODIFY_NORMAL = 24;
 
 }
