@@ -27,8 +27,11 @@ enum Step {
   // 本局開始
   ROUND_START = 1;
 
+  // 本局完成
+  ROUND_FINISHED = 2;
+  
   // 展示第一張牌
-  SHOW_FIRST_CARD = 2;
+  SHOW_FIRST_CARD = 3;
 
   // 捨牌1
   DEAL_DISCARD_1 = 4;

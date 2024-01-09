@@ -182,7 +182,7 @@ type Card struct {
 	// 橫放、直放...
 	Status *int64 `protobuf:"varint,5,opt,name=status,proto3,oneof" json:"status" bson:"status,omitempty" yaml:"status"`
 	// 明文
-	PlainText *string `protobuf:"bytes,8,opt,name=plain_text,json=plainText,proto3,oneof" json:"plainText" yaml:"plainText" bson:"plainText,omitempty"`
+	PlainText *string `protobuf:"bytes,8,opt,name=plain_text,json=plainText,proto3,oneof" json:"plainText" bson:"plainText,omitempty" yaml:"plainText"`
 	// 簽章
 	Signature *string `protobuf:"bytes,9,opt,name=signature,proto3,oneof" json:"signature" bson:"signature,omitempty" yaml:"signature"`
 	// 簽章方法
@@ -782,7 +782,7 @@ type Tag struct {
 	// 鍵
 	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key" bson:"key" yaml:"key"`
 	// 值
-	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value" bson:"value" yaml:"value"`
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value" yaml:"value" bson:"value"`
 }
 
 func (x *Tag) Reset() {
@@ -854,17 +854,17 @@ type RoundRecord struct {
 	// 班代碼
 	ShiftCode string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 此排班局數
-	ShiftRound int64 `protobuf:"varint,9,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" yaml:"shiftRound" bson:"shiftRound"`
+	ShiftRound int64 `protobuf:"varint,9,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" bson:"shiftRound" yaml:"shiftRound"`
 	// 使用靴代碼
-	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" yaml:"shoeCode" bson:"shoeCode"`
+	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 使用此洗牌第幾局，從1開始計算
-	ShoeRound int64 `protobuf:"varint,11,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
+	ShoeRound int64 `protobuf:"varint,11,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" yaml:"shoeRound" bson:"shoeRound"`
 	// 局代碼
 	RoundCode string `protobuf:"bytes,12,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	// 標籤
 	Tags []*Tag `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags" bson:"tags" yaml:"tags"`
 	// 開始時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" yaml:"tsStart" bson:"tsStart"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// 下注狀態
 	BetStep BetStep `protobuf:"varint,17,opt,name=bet_step,json=betStep,proto3,enum=recorder.BetStep" json:"betStep" bson:"betStep" yaml:"betStep"`
 	// 座位組
@@ -878,13 +878,13 @@ type RoundRecord struct {
 	// 判讀
 	Results []*Result `protobuf:"bytes,27,rep,name=results,proto3" json:"results" bson:"results,omitempty" yaml:"results"`
 	// 結束
-	IsEnd bool `protobuf:"varint,18,opt,name=is_end,json=isEnd,proto3" json:"isEnd" yaml:"isEnd" bson:"isEnd"`
+	IsEnd bool `protobuf:"varint,18,opt,name=is_end,json=isEnd,proto3" json:"isEnd" bson:"isEnd" yaml:"isEnd"`
 	// 結束時間
-	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" yaml:"tsEnd" bson:"tsEnd,omitempty"`
+	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd,omitempty" yaml:"tsEnd"`
 	// 取消
 	Cancel *bool `protobuf:"varint,20,opt,name=cancel,proto3,oneof" json:"cancel" bson:"cancel,omitempty" yaml:"cancel"`
 	// 取消代碼：CancelReasonCode
-	CancelCode *string `protobuf:"bytes,21,opt,name=cancel_code,json=cancelCode,proto3,oneof" json:"cancelCode" yaml:"cancelCode" bson:"cancelCode,omitempty"`
+	CancelCode *string `protobuf:"bytes,21,opt,name=cancel_code,json=cancelCode,proto3,oneof" json:"cancelCode" bson:"cancelCode,omitempty" yaml:"cancelCode"`
 	// 取消備註
 	CancelMessage *string `protobuf:"bytes,22,opt,name=cancel_message,json=cancelMessage,proto3,oneof" json:"cancelMessage" bson:"cancelMessage,omitempty" yaml:"cancelMessage"`
 	// 附加媒體
@@ -1119,7 +1119,7 @@ type Deck struct {
 	// 切牌位置
 	CutIndex *int64 `protobuf:"varint,3,opt,name=cut_index,json=cutIndex,proto3,oneof" json:"cutIndex" bson:"cutIndex,omitempty" yaml:"cutIndex"`
 	// 目前位置
-	Index int64 `protobuf:"varint,4,opt,name=index,proto3" json:"index" yaml:"index" bson:"index"`
+	Index int64 `protobuf:"varint,4,opt,name=index,proto3" json:"index" bson:"index" yaml:"index"`
 }
 
 func (x *Deck) Reset() {
@@ -1195,13 +1195,13 @@ type ShoeRecord struct {
 	// 遊戲類型
 	GameType string `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
 	GameVersion string `protobuf:"bytes,5,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
 	GameCode string `protobuf:"bytes,6,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
+	TableCode string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3" json:"tableCode" yaml:"tableCode" bson:"tableCode"`
 	// 班代碼
 	ShiftCode string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 使用洗牌代碼
@@ -1366,9 +1366,9 @@ type ShiftRecord struct {
 	// 標籤
 	Tags []*Tag `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags" bson:"tags" yaml:"tags"`
 	// 執行遊戲局
-	RoundCodes []string `protobuf:"bytes,24,rep,name=round_codes,json=roundCodes,proto3" json:"roundCodes" yaml:"roundCodes" bson:"roundCodes"`
+	RoundCodes []string `protobuf:"bytes,24,rep,name=round_codes,json=roundCodes,proto3" json:"roundCodes" bson:"roundCodes" yaml:"roundCodes"`
 	// 洗牌
-	ShoeCodes []string `protobuf:"bytes,25,rep,name=shoe_codes,json=shoeCodes,proto3" json:"shoeCodes" yaml:"shoeCodes" bson:"shoeCodes"`
+	ShoeCodes []string `protobuf:"bytes,25,rep,name=shoe_codes,json=shoeCodes,proto3" json:"shoeCodes" bson:"shoeCodes" yaml:"shoeCodes"`
 	// 結束
 	IsEnd bool `protobuf:"varint,18,opt,name=is_end,json=isEnd,proto3" json:"isEnd" bson:"isEnd" yaml:"isEnd"`
 	// 結束時間
