@@ -27,11 +27,8 @@ enum Step {
   // 本局開始
   ROUND_START = 1;
 
-  // 本局完成
-  ROUND_FINISHED = 2;
-
-  // 本局取消
-  ROUND_CANCELED = 3;
+  // 展示第一張牌
+  SHOW_FIRST_CARD = 2;
 
   // 捨牌1
   DEAL_DISCARD_1 = 4;
@@ -48,8 +45,14 @@ enum Step {
   // 停止下注
   NO_MORE_BET = 13;
 
-  // 開手牌
+  // 開玩家手牌
   SHOW_HAND = 16;
+
+  // 開左側玩家手牌
+  SHOW_LEFT = 17;
+
+  // 開右側玩家手牌
+  SHOW_RIGHT = 18;
 
   // PITBOSS 修改派發手牌
   PITBOSS_MODIFY_NORMAL = 24;

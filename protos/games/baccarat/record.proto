@@ -50,10 +50,9 @@ enum Step {
   STEP_UNSPECIFIED = 0;
   // 本局開始
   ROUND_START = 1;
-  // 本局完成
-  ROUND_FINISHED = 2;
-  // 本局取消
-  ROUND_CANCELED = 3;
+  
+  // 展示第一張牌
+  SHOW_FIRST_CARD = 2;
 
   // 派發閒家例牌1
   DEAL_PLAYER_1 = 4;
