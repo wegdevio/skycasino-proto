@@ -32,8 +32,12 @@ message Card {
 message CardList {
 
   string card_type = 1;
+
   // 列表
   repeated Card list = 2;
+
+  // 牌型
+  repeated string patterns = 3;
 
 }
 
@@ -98,10 +102,10 @@ enum BetStep {
   ROUND_BET = 1;
 
   // 停止下注
-  NO_MORE_BET = 2;
+  NO_MORE_BET = 3;
 
-  // 開牌
-  RESULT = 3;
+  // 牌異動
+  CARD = 4;
 }
 
 // 遊戲步驟
