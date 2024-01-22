@@ -195,7 +195,7 @@ type RecordQuery struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 查詢起時
-	TsFrom *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=ts_from,json=tsFrom,proto3" json:"tsFrom" bson:"tsFrom" yaml:"tsFrom"`
+	TsFrom *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=ts_from,json=tsFrom,proto3" json:"tsFrom" yaml:"tsFrom" bson:"tsFrom"`
 	// 查詢終時
 	TsTo *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=ts_to,json=tsTo,proto3" json:"tsTo" bson:"tsTo" yaml:"tsTo"`
 	// 筆數
@@ -272,9 +272,9 @@ type FetchShiftRecordRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3,oneof" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 遊戲供應
-	Supplier *string `protobuf:"bytes,2,opt,name=supplier,proto3,oneof" json:"supplier" yaml:"supplier" bson:"supplier"`
+	Supplier *string `protobuf:"bytes,2,opt,name=supplier,proto3,oneof" json:"supplier" bson:"supplier" yaml:"supplier"`
 	// 遊戲類型
-	GameType *string `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3,oneof" json:"gameType" bson:"gameType" yaml:"gameType"`
+	GameType *string `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3,oneof" json:"gameType" yaml:"gameType" bson:"gameType"`
 	// 遊戲子類型
 	GameSubtype *string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3,oneof" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲代碼
@@ -296,7 +296,7 @@ type FetchShiftRecordRequest struct {
 	// 允許的桌代碼
 	TableCodes []string `protobuf:"bytes,30,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" bson:"tableCodes" yaml:"tableCodes"`
 	// 允許的班代碼
-	ShiftCodes []string `protobuf:"bytes,31,rep,name=shift_codes,json=shiftCodes,proto3" json:"shiftCodes" yaml:"shiftCodes" bson:"shiftCodes"`
+	ShiftCodes []string `protobuf:"bytes,31,rep,name=shift_codes,json=shiftCodes,proto3" json:"shiftCodes" bson:"shiftCodes" yaml:"shiftCodes"`
 	// 查詢限制
 	Query *RecordQuery `protobuf:"bytes,36,opt,name=query,proto3" json:"query" bson:"query" yaml:"query"`
 }
@@ -503,7 +503,7 @@ type FetchShoeRecordRequest struct {
 	// 桌代碼
 	TableCode *string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3,oneof" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
-	ShiftCode *string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3,oneof" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
+	ShiftCode *string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3,oneof" json:"shiftCode" yaml:"shiftCode" bson:"shiftCode"`
 	// 靴代碼
 	ShoeCode *string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3,oneof" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 允許的紀錄ID
@@ -730,7 +730,7 @@ type FetchRoundRecordRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 紀錄ID
-	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3,oneof" json:"recordId" yaml:"recordId" bson:"recordId"`
+	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3,oneof" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 遊戲供應
 	Supplier *string `protobuf:"bytes,2,opt,name=supplier,proto3,oneof" json:"supplier" bson:"supplier" yaml:"supplier"`
 	// 遊戲類型
@@ -742,25 +742,25 @@ type FetchRoundRecordRequest struct {
 	// 桌代碼
 	TableCode *string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3,oneof" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
-	ShiftCode *string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3,oneof" json:"shiftCode" yaml:"shiftCode" bson:"shiftCode"`
+	ShiftCode *string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3,oneof" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 靴代碼
 	ShoeCode *string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3,oneof" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
 	// 局代碼
 	RoundCode *string `protobuf:"bytes,12,opt,name=round_code,json=roundCode,proto3,oneof" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
 	// 允許的紀錄ID
-	RecordIds [][]byte `protobuf:"bytes,24,rep,name=record_ids,json=recordIds,proto3" json:"recordIds" bson:"recordIds" yaml:"recordIds"`
+	RecordIds [][]byte `protobuf:"bytes,24,rep,name=record_ids,json=recordIds,proto3" json:"recordIds" yaml:"recordIds" bson:"recordIds"`
 	// 允許的遊戲供應
-	Suppliers []string `protobuf:"bytes,25,rep,name=suppliers,proto3" json:"suppliers" yaml:"suppliers" bson:"suppliers"`
+	Suppliers []string `protobuf:"bytes,25,rep,name=suppliers,proto3" json:"suppliers" bson:"suppliers" yaml:"suppliers"`
 	// 允許的遊戲類型
 	GameTypes []string `protobuf:"bytes,26,rep,name=game_types,json=gameTypes,proto3" json:"gameTypes" bson:"gameTypes" yaml:"gameTypes"`
 	// 允許的遊戲子類型
 	GameSubtypes []string `protobuf:"bytes,27,rep,name=game_subtypes,json=gameSubtypes,proto3" json:"gameSubtypes" bson:"gameSubtypes" yaml:"gameSubtypes"`
 	// 允許的遊戲代碼
-	GameCodes []string `protobuf:"bytes,29,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" yaml:"gameCodes" bson:"gameCodes"`
+	GameCodes []string `protobuf:"bytes,29,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" bson:"gameCodes" yaml:"gameCodes"`
 	// 允許的桌代碼
-	TableCodes []string `protobuf:"bytes,30,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" bson:"tableCodes" yaml:"tableCodes"`
+	TableCodes []string `protobuf:"bytes,30,rep,name=table_codes,json=tableCodes,proto3" json:"tableCodes" yaml:"tableCodes" bson:"tableCodes"`
 	// 允許的班代碼
-	ShiftCodes []string `protobuf:"bytes,31,rep,name=shift_codes,json=shiftCodes,proto3" json:"shiftCodes" bson:"shiftCodes" yaml:"shiftCodes"`
+	ShiftCodes []string `protobuf:"bytes,31,rep,name=shift_codes,json=shiftCodes,proto3" json:"shiftCodes" yaml:"shiftCodes" bson:"shiftCodes"`
 	// 允許的靴代碼
 	ShoeCodes []string `protobuf:"bytes,33,rep,name=shoe_codes,json=shoeCodes,proto3" json:"shoeCodes" yaml:"shoeCodes" bson:"shoeCodes"`
 	// 允許的局代碼
@@ -1108,7 +1108,7 @@ type FetchGameProvideListRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 平台
-	Platform string `protobuf:"bytes,1,opt,name=platform,proto3" json:"platform" bson:"platform" yaml:"platform"`
+	Platform string `protobuf:"bytes,1,opt,name=platform,proto3" json:"platform" yaml:"platform" bson:"platform"`
 }
 
 func (x *FetchGameProvideListRequest) Reset() {
@@ -1288,11 +1288,11 @@ type FetchCurrentGameRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 查詢的遊戲代號
-	GameCodes []string `protobuf:"bytes,1,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" yaml:"gameCodes" bson:"gameCodes"`
+	GameCodes []string `protobuf:"bytes,1,rep,name=game_codes,json=gameCodes,proto3" json:"gameCodes" bson:"gameCodes" yaml:"gameCodes"`
 	// 返回班表資訊
-	Shift bool `protobuf:"varint,7,opt,name=shift,proto3" json:"shift" yaml:"shift" bson:"shift"`
+	Shift bool `protobuf:"varint,7,opt,name=shift,proto3" json:"shift" bson:"shift" yaml:"shift"`
 	// 返回牌靴資訊
-	Shoe bool `protobuf:"varint,10,opt,name=shoe,proto3" json:"shoe" bson:"shoe" yaml:"shoe"`
+	Shoe bool `protobuf:"varint,10,opt,name=shoe,proto3" json:"shoe" yaml:"shoe" bson:"shoe"`
 	// 返回直播網址
 	Stream bool `protobuf:"varint,3,opt,name=stream,proto3" json:"stream" bson:"stream" yaml:"stream"`
 }
@@ -1365,7 +1365,7 @@ type FetchCurrentGameResponse struct {
 	// Table Code 對應的當下 Current Table
 	MapCurrentGames map[string]*CurrentGame `protobuf:"bytes,1,rep,name=map_current_games,json=mapCurrentGames,proto3" json:"mapCurrentGames" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"mapCurrentGames" yaml:"mapCurrentGames"`
 	// 時間戳
-	Ts *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=ts,proto3" json:"ts" yaml:"ts" bson:"ts"`
+	Ts *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=ts,proto3" json:"ts" bson:"ts" yaml:"ts"`
 }
 
 func (x *FetchCurrentGameResponse) Reset() {

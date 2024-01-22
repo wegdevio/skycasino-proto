@@ -57,6 +57,8 @@ enum Step {
   // 開右側玩家手牌
   SHOW_RIGHT = 18;
 
+  DEALER_CONFIRM = 20;
+
   // PITBOSS 修改派發手牌
   PITBOSS_MODIFY_NORMAL = 24;
 }
