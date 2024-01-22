@@ -70,11 +70,16 @@ enum Step {
   NO_MORE_BET = 9;
 
   // 非瞇牌開例牌
-  SHOW_NORMAL = 12;
+  SHOW_NORMAL = 11;
+  // 開 莊牌
+  SHOW_BANKER = 12;
+  // 開 閒牌
+  SHOW_PLAYER = 13;
+
   // 瞇牌例牌
-  PEEK_NORMAL = 13;
+  PEEK_NORMAL = 14;
   // 瞇牌公布例牌
-  PEEK_SHOW_NORMAL = 14;
+  PEEK_SHOW_NORMAL = 15;
 
   // 非瞇牌補閒家牌
   DEAL_PLAYER_EXTRA = 16;
