@@ -22,28 +22,36 @@ message FetchShiftRecordRequest {
 
   // 紀錄ID
   optional bytes record_id = 1;
+  // 遊戲供應
+  optional string supplier = 2;
   // 遊戲類型
-  optional string game_type = 2;
+  optional string game_type = 3;
   // 遊戲子類型
-  optional string game_subtype = 3;
+  optional string game_subtype = 4;
   // 遊戲代碼
-  optional string game_code = 5;
+  optional string game_code = 6;
   // 桌代碼
-  optional string table_code = 6;
+  optional string table_code = 7;
+  // 班代碼
+  optional string shift_code = 8;
 
   // 允許的紀錄ID
-  repeated bytes record_ids = 9;
+  repeated bytes record_ids = 24;
+  // 允許的遊戲供應
+  repeated string suppliers = 25;
   // 允許的遊戲類型
-  repeated string game_types = 10;
+  repeated string game_types = 26;
   // 允許的遊戲子類型
-  repeated string game_subtypes = 11;
+  repeated string game_subtypes = 27;
   // 允許的遊戲代碼
-  repeated string game_codes = 13;
+  repeated string game_codes = 29;
   // 允許的桌代碼
-  repeated string table_codes = 14;
+  repeated string table_codes = 30;
+  // 允許的班代碼
+  repeated string shift_codes = 31;
 
   // 查詢限制
-  RecordQuery query = 20;
+  RecordQuery query = 36;
 
 }
 
@@ -55,36 +63,40 @@ message FetchShoeRecordRequest {
 
   // 紀錄ID
   optional bytes record_id = 1;
+  // 遊戲供應
+  optional string supplier = 2;
   // 遊戲類型
-  optional string game_type = 2;
+  optional string game_type = 3;
   // 遊戲子類型
-  optional string game_subtype = 3;
+  optional string game_subtype = 4;
   // 遊戲代碼
-  optional string game_code = 5;
+  optional string game_code = 6;
   // 桌代碼
-  optional string table_code = 6;
+  optional string table_code = 7;
   // 班代碼
-  optional string shift_code = 7;
-  // 洗牌代碼
-  optional string shoe_code = 8;
+  optional string shift_code = 8;
+  // 靴代碼
+  optional string shoe_code = 10;
 
   // 允許的紀錄ID
-  repeated bytes record_ids = 9;
+  repeated bytes record_ids = 24;
+  // 允許的遊戲供應
+  repeated string suppliers = 25;
   // 允許的遊戲類型
-  repeated string game_types = 10;
+  repeated string game_types = 26;
   // 允許的遊戲子類型
-  repeated string game_subtypes = 11;
+  repeated string game_subtypes = 27;
   // 允許的遊戲代碼
-  repeated string game_codes = 13;
+  repeated string game_codes = 29;
   // 允許的桌代碼
-  repeated string table_codes = 14;
+  repeated string table_codes = 30;
   // 允許的班代碼
-  repeated string shift_codes = 15;
-  // 允許的洗牌代碼
-  repeated string shoe_codes = 16;
+  repeated string shift_codes = 31;
+  // 允許的靴代碼
+  repeated string shoe_codes = 33;
 
   // 查詢限制
-  RecordQuery query = 20;
+  RecordQuery query = 36;
 
 }
 
@@ -96,36 +108,44 @@ message FetchRoundRecordRequest {
 
   // 紀錄ID
   optional bytes record_id = 1;
+  // 遊戲供應
+  optional string supplier = 2;
   // 遊戲類型
-  optional string game_type = 2;
+  optional string game_type = 3;
   // 遊戲子類型
-  optional string game_subtype = 3;
+  optional string game_subtype = 4;
   // 遊戲代碼
-  optional string game_code = 5;
+  optional string game_code = 6;
   // 桌代碼
-  optional string table_code = 6;
+  optional string table_code = 7;
   // 班代碼
-  optional string shift_code = 7;
+  optional string shift_code = 8;
+  // 靴代碼
+  optional string shoe_code = 10;
   // 局代碼
-  optional string round_code = 8;
+  optional string round_code = 12;
 
   // 允許的紀錄ID
-  repeated bytes record_ids = 9;
+  repeated bytes record_ids = 24;
+  // 允許的遊戲供應
+  repeated string suppliers = 25;
   // 允許的遊戲類型
-  repeated string game_types = 10;
+  repeated string game_types = 26;
   // 允許的遊戲子類型
-  repeated string game_subtypes = 11;
+  repeated string game_subtypes = 27;
   // 允許的遊戲代碼
-  repeated string game_codes = 13;
+  repeated string game_codes = 29;
   // 允許的桌代碼
-  repeated string table_codes = 14;
+  repeated string table_codes = 30;
   // 允許的班代碼
-  repeated string shift_codes = 15;
+  repeated string shift_codes = 31;
+  // 允許的靴代碼
+  repeated string shoe_codes = 33;
   // 允許的局代碼
-  repeated string round_codes = 16;
+  repeated string round_codes = 35;
 
   // 查詢限制
-  RecordQuery query = 20;
+  RecordQuery query = 36;
 
 }
 
@@ -159,35 +179,23 @@ enum GameNotifyType {
   // 未指定
   GAME_NOTIFY_TYPE_UNSPECIFIED = 0;
 
-  // 通知遊戲上線
-  NOTIFY_GAME_ONLINE = 1;
+  // 通知遊戲供應狀況改變
+  NOTIFY_GAME_PROVIDE_STATE_CHANGE = 1;
 
-  // 通知遊戲維護
-  NOTIFY_GAME_MAINTENANCE = 2;
+  // 通知遊戲流程荷官登入
+  NOTIFY_GAME_DEALER_LOGIN = 6;
 
-  // 通知遊戲關閉
-  NOTIFY_GAME_CLOSE = 3;
+  // 通知遊戲流程荷官登出
+  NOTIFY_GAME_DEALER_LOGOUT = 7;
 
-  // 通知遊戲荷官登入
-  NOTIFY_GAME_DEALER_LOGIN = 4;
-
-  // 通知遊戲荷官登出
-  NOTIFY_GAME_DEALER_LOGOUT = 5;
-
-  // 通知遊戲媒體開始錄影
-  NOTIFY_GAME_MEDIA_START = 6;
-
-  // 通知遊戲媒體結束錄影
-  NOTIFY_GAME_MEDIA_STOP = 7;
+  // 通知遊戲流程開始換靴，更換結束呼叫 NOTIFY_SHOE_START
+  NOTIFY_GAME_CHANGING_SHOE = 8;
 
   // 通知遊戲班開始
-  NOTIFY_SHIFT_START = 8;
+  NOTIFY_SHIFT_START = 9;
 
   // 通知遊戲班結束
-  NOTIFY_SHIFT_END = 9;
-
-  // 通知遊戲換靴
-  NOTIFY_SHOE_CHANGE = 10;
+  NOTIFY_SHIFT_END = 10;
 
   // 通知新靴開始
   NOTIFY_SHOE_START = 11;
@@ -218,45 +226,57 @@ enum GameNotifyType {
 
 }
 
-enum SeatProvide {
+enum GameProvideState {
 
   // 未指定
-  SEAT_UNSPECIFIED = 0;
+  GAME_PROVIDE_STATE_UNSPECIFIED = 0;
 
-  // Dealer 
-  DEALER = 1;
+  // 提供
+  GAME_PROVIDE_AVAILABLE = 1;
 
-  // Pitboss
-  PITBOSS = 9;
+  // 此局結束後維護
+  GAME_PROVIDE_MAINTEN_AFTER_ROUND = 2;
+
+  // 維護
+  GAME_PROVIDE_IN_MAINTENANCE = 3;
+
+  // 此局結束後關閉
+  GAME_PROVIDE_CLOSE_AFTER_ROUND = 4;
+
+  // 此局結束後關閉
+  GAME_PROVIDE_CLOSE = 5;
 
 }
 
 // 遊戲供應
 message GameProvide {
 
+  // 遊戲供應
+  string supplier = 2;
+
   // 遊戲類型
-  string game_type = 2;
+  string game_type = 3;
 
   // 遊戲子類型
-  string game_subtype = 3;
+  string game_subtype = 4;
 
   // 遊戲代碼
-  string game_code = 4;
+  string game_code = 6;
 
   // 標籤
-  repeated Tag tags = 15;
+  repeated Tag tags = 13;
 
-  // 維護中
-  bool maintenance = 7;
-
-  // 關閉中
-  bool close = 8;
-
-  // 附加媒體
-  map<string, URLMedia> map_mideas = 24;
+  // 狀態
+  GameProvideState state = 17;
 
   // 玩家入座
   map<int32, string> players = 25;
+
+  // 附加媒體
+  map<string, URLMedia> mideas = 28;
+
+  // 最後一局
+  string last_round_code = 12;
 
 }
 

@@ -19,7 +19,7 @@ jobs:
       packages: write
     steps:
       - name: Check Out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Setup .npmrc file to publish to GitHub Packages
       - name: Setup Node
@@ -28,7 +28,7 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@sky-platform'
+          scope: '@wegdevio'
 
       # 參考 https://github.com/pnpm/action-setup
       - name: Setup pnpm

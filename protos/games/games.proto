@@ -8,10 +8,13 @@ enum GameType {
 
   // 百家樂
   BACCARAT = 16;
+
   // 龍虎鬥
   THEBIGBATTLE = 17;
+
   // 炸金花
   THREECARDS = 18;
+
   // 牛牛
   BULLFIGHT = 19;
 
@@ -20,14 +23,70 @@ enum GameType {
 
   // 骰寶
   SICBO = 32;
+
   // 輪盤
   ROULETTE = 36;
+
   // 幸運輪
   LUCKYWHEEL = 40;
 
-  // 彩票
-  LOTTERY = 50;
+}
 
-  // 賽車
-  RACINGCAR = 51;
+enum FlowSeat {
+
+  // 未指定
+  SEAT_UNSPECIFIED = 0;
+
+  // Dealer
+  DEALER = 64;
+
+  // 上一位 Dealer 
+  PREVIOUS_DEALER = 65;
+
+  // Pitboss
+  PITBOSS = 66;
+
+  // 上一位 PITBOSS
+  PREVIOUS_PITBOSS = 67;
+
+  // 玩家
+  PLAYER = 68;
+
+  // 莊家
+  BANKER = 69;
+
+  // 左方
+  LEFT = 70;
+
+  // 右方
+  RIGHT = 71;
+
+  // 流程控制牌
+  CONTROL = 96;
+
+}
+
+enum ResourceType {
+
+  // 未指定
+  RESOURCE_TYPE_UNSPECIFIED = 0;
+  
+  // 牌靴
+  SHOE = 64;
+
+  // 手牌
+  HAND = 65;
+
+  // 場上
+  FIELD = 66;
+
+  // 第一張牌
+  FIRST_CARD = 67;
+
+  // 切牌
+  SHOE_CUT = 68;
+
+  // 棄牌
+  DISCARD = 69;
+
 }

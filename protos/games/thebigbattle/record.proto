@@ -1,15 +1,21 @@
 syntax = "proto3";
 package games.thebigbattle;
 
-enum ResourceType {
-
+enum GameSubtype {
   // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 例牌
-  NORMAL = 2;
+  THEBIGBATTLE_TYPE_UNSPECIFIED = 0;
 
+  // 經典
+  THEBIGBATTLE_CLASSIC = 1;
+
+  // 極速龍虎
+  THEBIGBATTLE_SPEED = 3;
+
+  // 區塊鏈龍虎
+  THEBIGBATTLE_BLOCKCHAIN = 16;
+  
+  // 區塊鏈極速龍虎
+  THEBIGBATTLE_SPEED_BLOCKCHAIN = 18;
 }
 
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
@@ -17,44 +23,44 @@ enum Step {
 
   // 未指定
   STEP_UNSPECIFIED = 0;
+
   // 本局開始
   ROUND_START = 1;
+
   // 本局完成
   ROUND_FINISHED = 2;
-  // 本局取消
-  ROUND_CANCELED = 3;
+  
+  // 展示第一張牌
+  SHOW_FIRST_CARD = 3;
 
   // 捨牌1
   DEAL_DISCARD_1 = 4;
-  // 派發龍例牌
-  DEAL_DRAGON_1 = 5;
-  // 派發虎例牌
-  DEAL_TIGER_1 = 6;
+
+  // 派發左側玩家手牌
+  DEAL_LEFT = 8;
+
+  // 派發右側玩家手牌
+  DEAL_RIGHT = 9;
 
   // 開放下注
-  OPEN_FOR_BETTING = 9;
+  ROUND_BET = 12;
+
   // 停止下注
-  CLOSE_THE_BETTING = 10;
+  NO_MORE_BET = 13;
 
-  // 開例牌
-  SHOW_NORMAL = 12;
+  // 開玩家手牌
+  SHOW_HAND = 16;
 
-  // PITBOSS 修改派發例牌
+  // 開左側玩家手牌
+  SHOW_LEFT = 17;
+
+  // 開右側玩家手牌
+  SHOW_RIGHT = 18;
+
+  DEALER_CONFIRM = 20;
+
+  // PITBOSS 修改派發手牌
   PITBOSS_MODIFY_NORMAL = 24;
-}
-
-// 座位功能代碼
-enum Seat {
-
-  // 未指定
-  SEAT_UNSPECIFIED = 0;
-  // 龍
-  DRAGON = 1;
-  // 虎
-  TIGER = 2;
-  // Discard
-  DISCARD = 4;
-
 }
 
 // 結果紀錄類型代碼
@@ -66,27 +72,5 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
-
-}
-
-message TheBigBattleBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated string banker_cards = 7;
-  repeated string player_cards = 8;
-
-  string banker_bar_code = 11;
-  string player_bar_code = 12;
-  int32 banker_point = 13;
-  int32 player_point = 14;
-  bool banker_win = 15;
-  bool player_win = 16;
-  string win_type = 17;
-
-  map<string, int32> statistics = 32;
 
 }
