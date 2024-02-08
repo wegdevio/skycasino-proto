@@ -309,6 +309,8 @@ const (
 	ProviderService_FetchGameProvideList_FullMethodName = "/recorder.ProviderService/FetchGameProvideList"
 	ProviderService_FetchGameProvide_FullMethodName     = "/recorder.ProviderService/FetchGameProvide"
 	ProviderService_FetchCurrentGame_FullMethodName     = "/recorder.ProviderService/FetchCurrentGame"
+	ProviderService_VerifyGame_FullMethodName           = "/recorder.ProviderService/VerifyGame"
+	ProviderService_GetLiveStreamMedia_FullMethodName   = "/recorder.ProviderService/GetLiveStreamMedia"
 )
 
 // ProviderServiceClient is the client API for ProviderService service.
@@ -321,6 +323,10 @@ type ProviderServiceClient interface {
 	FetchGameProvide(ctx context.Context, in *FetchGameProvideRequest, opts ...grpc.CallOption) (*FetchGameProvideResponse, error)
 	// 讀即時遊戲桌資訊
 	FetchCurrentGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
+	// 驗證
+	VerifyGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
+	// 直播網址
+	GetLiveStreamMedia(ctx context.Context, in *GetLiveStreamMediaRequest, opts ...grpc.CallOption) (*GetLiveStreamMediaResponse, error)
 }
 
 type providerServiceClient struct {
@@ -358,6 +364,24 @@ func (c *providerServiceClient) FetchCurrentGame(ctx context.Context, in *FetchC
 	return out, nil
 }
 
+func (c *providerServiceClient) VerifyGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error) {
+	out := new(FetchCurrentGameResponse)
+	err := c.cc.Invoke(ctx, ProviderService_VerifyGame_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *providerServiceClient) GetLiveStreamMedia(ctx context.Context, in *GetLiveStreamMediaRequest, opts ...grpc.CallOption) (*GetLiveStreamMediaResponse, error) {
+	out := new(GetLiveStreamMediaResponse)
+	err := c.cc.Invoke(ctx, ProviderService_GetLiveStreamMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServiceServer is the server API for ProviderService service.
 // All implementations must embed UnimplementedProviderServiceServer
 // for forward compatibility
@@ -368,6 +392,10 @@ type ProviderServiceServer interface {
 	FetchGameProvide(context.Context, *FetchGameProvideRequest) (*FetchGameProvideResponse, error)
 	// 讀即時遊戲桌資訊
 	FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error)
+	// 驗證
+	VerifyGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error)
+	// 直播網址
+	GetLiveStreamMedia(context.Context, *GetLiveStreamMediaRequest) (*GetLiveStreamMediaResponse, error)
 	mustEmbedUnimplementedProviderServiceServer()
 }
 
@@ -383,6 +411,12 @@ func (UnimplementedProviderServiceServer) FetchGameProvide(context.Context, *Fet
 }
 func (UnimplementedProviderServiceServer) FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchCurrentGame not implemented")
+}
+func (UnimplementedProviderServiceServer) VerifyGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyGame not implemented")
+}
+func (UnimplementedProviderServiceServer) GetLiveStreamMedia(context.Context, *GetLiveStreamMediaRequest) (*GetLiveStreamMediaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLiveStreamMedia not implemented")
 }
 func (UnimplementedProviderServiceServer) mustEmbedUnimplementedProviderServiceServer() {}
 
@@ -451,6 +485,42 @@ func _ProviderService_FetchCurrentGame_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProviderService_VerifyGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchCurrentGameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServiceServer).VerifyGame(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProviderService_VerifyGame_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServiceServer).VerifyGame(ctx, req.(*FetchCurrentGameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProviderService_GetLiveStreamMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetLiveStreamMediaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServiceServer).GetLiveStreamMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProviderService_GetLiveStreamMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServiceServer).GetLiveStreamMedia(ctx, req.(*GetLiveStreamMediaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProviderService_ServiceDesc is the grpc.ServiceDesc for ProviderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -469,6 +539,14 @@ var ProviderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FetchCurrentGame",
 			Handler:    _ProviderService_FetchCurrentGame_Handler,
+		},
+		{
+			MethodName: "VerifyGame",
+			Handler:    _ProviderService_VerifyGame_Handler,
+		},
+		{
+			MethodName: "GetLiveStreamMedia",
+			Handler:    _ProviderService_GetLiveStreamMedia_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
