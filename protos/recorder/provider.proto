@@ -379,6 +379,7 @@ message VerifyGameRequest {
 
   // 顯示名稱
   string name = 3;
+  
 }
 
 message GetLiveStreamMediaRequest {
