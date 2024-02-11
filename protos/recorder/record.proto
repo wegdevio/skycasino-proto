@@ -173,17 +173,6 @@ message URLMedia {
 
 }
 
-// 標籤
-message Tag {
-
-  // 鍵
-  string key = 1;
-
-  // 值
-  string value = 2;
-
-}
-
 // 紀錄
 message RoundRecord {
 
@@ -212,7 +201,7 @@ message RoundRecord {
   // 局代碼
   string round_code = 12;
   // 標籤
-  repeated Tag tags = 13;
+  map<string, string> tags = 13;
   // 開始時間
   google.protobuf.Timestamp ts_start = 16;
   
@@ -319,7 +308,7 @@ message ShiftRecord {
   // 開始時間
   google.protobuf.Timestamp ts_start = 16;
   // 標籤
-  repeated Tag tags = 13;
+  map<string, string> tags = 13;
 
   // 執行遊戲局
   repeated string round_codes = 24;
