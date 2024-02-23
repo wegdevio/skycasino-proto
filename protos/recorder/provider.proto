@@ -248,6 +248,20 @@ enum GameProvideState {
 
 }
 
+// 直播資訊
+message LiveStreamParams {
+
+  // 串流代碼
+  string code = 1;
+
+  // 應用
+  string app = 2;
+  
+  // 頻道
+  string channel = 3;
+
+}
+
 // 遊戲供應
 message GameProvide {
 
@@ -264,7 +278,7 @@ message GameProvide {
   string game_code = 6;
 
   // 標籤
-  repeated Tag tags = 13;
+  map<string, string> tags = 13;
 
   // 狀態
   GameProvideState state = 17;
@@ -274,6 +288,9 @@ message GameProvide {
 
   // 附加媒體
   map<string, URLMedia> mideas = 28;
+
+  // 直播參數
+  map<string, LiveStreamParams> live_streams = 29;
 
   // 最後一局
   string last_round_code = 12;
@@ -309,7 +326,7 @@ message CurrentGame {
   optional ShoeRecord shoe = 10;
 
   // 附加媒體
-  map<string, URLMedia> map_mideas = 24;
+  map<string, URLMedia> mideas = 28;
 
 }
 
@@ -342,12 +359,62 @@ message FetchCurrentGameResponse {
 message FetchGameProvideRequest {
   string platform = 1;
 
-  string game_codes = 2;
+  string game_code = 2;
 }
 
 message FetchGameProvideResponse {
+  
   // 桌列表
   GameProvide game_provide = 1;
+
+}
+
+message VerifyGameRequest {
+  
+  // 遊戲代碼
+  string game_code = 1;
+
+  // e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12
+  repeated string pattern = 2;
+
+  // 顯示名稱
+  string name = 3;
+  
+}
+
+message GetLiveStreamMediaRequest {
+
+  // 遊戲代碼
+  string game_code = 1;
+
+  // 直播參數
+  LiveStreamParams live_stream_params = 2;
+
+  // IP
+  string ip = 3;
+
+  // IP City
+  string city = 4;
+
+  // IP Region
+  string region = 5;
+
+  // IP Country
+  string country = 6;
+
+  // 平台
+  string platform_code = 8;
+
+}
+
+message GetLiveStreamMediaResponse {
+
+  // 遊戲代碼
+  string game_code = 1;
+
+  // 附加媒體
+  map<string, URLMedia> mideas = 28;
+
 }
 
 // 遊戲供應商需要開放出來的被動接口
@@ -361,5 +428,11 @@ service ProviderService {
 
   // 讀即時遊戲桌資訊
   rpc FetchCurrentGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
+
+  // 驗證
+  rpc VerifyGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
+
+  // 直播網址
+  rpc GetLiveStreamMedia(GetLiveStreamMediaRequest) returns (GetLiveStreamMediaResponse);
 
 }
