@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -57,7 +58,7 @@ type RecorderServiceClient interface {
 	// 紀錄回放
 	RecordRoundVideo(ctx context.Context, in *RecordRoundMediaRequest, opts ...grpc.CallOption) (*RoundRecord, error)
 	//捕獲單幀。玩家登入時使用
-	RecordCaptureFrame(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*RoundRecord, error)
+	RecordCaptureFrame(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type recorderServiceClient struct {
@@ -158,8 +159,8 @@ func (c *recorderServiceClient) RecordRoundVideo(ctx context.Context, in *Record
 	return out, nil
 }
 
-func (c *recorderServiceClient) RecordCaptureFrame(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*RoundRecord, error) {
-	out := new(RoundRecord)
+func (c *recorderServiceClient) RecordCaptureFrame(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, RecorderService_RecordCaptureFrame_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -192,7 +193,7 @@ type RecorderServiceServer interface {
 	// 紀錄回放
 	RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*RoundRecord, error)
 	//捕獲單幀。玩家登入時使用
-	RecordCaptureFrame(context.Context, *RecordRoundStartedRequest) (*RoundRecord, error)
+	RecordCaptureFrame(context.Context, *RecordRoundStartedRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedRecorderServiceServer()
 }
 
@@ -230,7 +231,7 @@ func (UnimplementedRecorderServiceServer) RecordRoundFinished(context.Context, *
 func (UnimplementedRecorderServiceServer) RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*RoundRecord, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordRoundVideo not implemented")
 }
-func (UnimplementedRecorderServiceServer) RecordCaptureFrame(context.Context, *RecordRoundStartedRequest) (*RoundRecord, error) {
+func (UnimplementedRecorderServiceServer) RecordCaptureFrame(context.Context, *RecordRoundStartedRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecordCaptureFrame not implemented")
 }
 func (UnimplementedRecorderServiceServer) mustEmbedUnimplementedRecorderServiceServer() {}
