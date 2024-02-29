@@ -1,15 +1,15 @@
 syntax = "proto3";
 package games.threecards;
 
-enum ResourceType {
-
+enum GameSubtype {
   // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 例牌
-  NORMAL = 2;
+  THREECARDS_TYPE_UNSPECIFIED = 0;
 
+  // 經典(2人)
+  THREECARDS_CLASSIC = 1;
+
+  // 區塊鏈炸金花(2人)
+  THREECARDS_BLOCKCHAIN = 16;
 }
 
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
@@ -17,48 +17,55 @@ enum Step {
 
   // 未指定
   STEP_UNSPECIFIED = 0;
+
   // 本局開始
   ROUND_START = 1;
+
   // 本局完成
   ROUND_FINISHED = 2;
+
   // 本局取消
   ROUND_CANCELED = 3;
 
-  // 派發莊家例牌1
-  DEAL_BANKER_1 = 4;
-  // 派發閒家例牌1
-  DEAL_PLAYER_1 = 5;
-  // 派發莊家例牌2
-  DEAL_BANKER_2 = 6;
-  // 派發閒家例牌2
-  DEAL_PLAYER_2 = 7;
-  // 派發莊家例牌3
-  DEAL_BANKER_3 = 8;
-  // 派發閒家例牌3
-  DEAL_PLAYER_3 = 9;
+  // 派發左側玩家手牌1
+  DEAL_LEFT_1 = 4;
+
+  // 派發右側玩家手牌1
+  DEAL_RIGHT_1 = 5;
+
+  // 派發左側玩家手牌2
+  DEAL_LEFT_2 = 6;
+
+  // 派發右側玩家手牌2
+  DEAL_RIGHT_2 = 7;
+
+  // 派發左側玩家手牌3
+  DEAL_LEFT_3 = 8;
+
+  // 派發右側玩家手牌3
+  DEAL_RIGHT_3 = 9;
 
   // 開放下注
-  OPEN_FOR_BETTING = 10;
+  ROUND_BET = 12;
+
   // 停止下注
-  CLOSE_THE_BETTING = 11;
+  NO_MORE_BET = 13;
 
-  // 開例牌
-  SHOW_NORMAL = 12;
+  // 開左側玩家手牌1、2
+  SHOW_LEFT_12 = 16;
 
-  // PITBOSS 修改派發例牌
+  // 開右側玩家手牌1、2
+  SHOW_RIGHT_12 = 17;
+
+  // 開左側玩家手牌3
+  SHOW_LEFT_3 = 18;
+
+  // 開右側玩家手牌3
+  SHOW_RIGHT_3 = 19;
+
+  DEALER_CONFIRM = 20;
+  // PITBOSS 修改派發手牌
   PITBOSS_MODIFY_NORMAL = 24;
-
-}
-
-// 座位功能代碼
-enum Seat {
-
-  // 未指定
-  SEAT_UNSPECIFIED = 0;
-  // 莊家
-  BANKER = 2;
-  // 閒家
-  PLAYER = 3;
 
 }
 
@@ -83,28 +90,5 @@ enum CardStyle {
   STRAIGHTF  = 4;         // 順子
   LEOPARD  = 5;           // 豹子
   LEOPARD_KILLER  = 6;    // 豹子殺手
-
-}
-
-message ThreeCardsBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  repeated string banker_cards = 7;
-  repeated string player_cards = 8;
-
-  string banker_bar_code = 11;
-  string player_bar_code = 12;
-  string banker_style = 13;
-  string player_style = 14;
-  string banker_win_point = 15;
-  string player_win_point = 16;
-  string win_type = 17;
-  string win_style = 18;
-
-  map<string, int32> statistics = 32;
 
 }

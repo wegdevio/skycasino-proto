@@ -1,15 +1,15 @@
 syntax = "proto3";
 package games.fantan;
 
-enum ResourceType {
+enum GameSubtype {
+   // 未指定
+   FANTAN_TYPE_UNSPECIFIED = 0;
 
-  // 未指定
-  RESOURCE_TYPE_UNSPECIFIED = 0;
-  // 牌靴
-  SHOE = 1;
-  // 碗公
-  BOWL = 2;
-
+   // 番攤
+   FANTAN_CLASSIC = 1;
+ 
+   // 區塊鏈番攤
+   FANTAN_BLOCKCHAIN = 16;
 }
 
 // 步驟，依據遊戲供應商邏輯，不是每個步驟都會走到
@@ -25,9 +25,9 @@ enum Step {
   ROUND_CANCELED = 3;
 
   // 開放下注
-  OPEN_FOR_BETTING = 4;
+  ROUND_BET = 4;
   // 停止下注
-  CLOSE_THE_BETTING = 5;
+  NO_MORE_BET = 5;
 
   // 抓籽
   GRAB_DICE_AMOUNT = 8;
@@ -46,21 +46,5 @@ enum ResultRecordType {
   ROUND_FINISH = 1;
   // Pitboss 修正
   PITBOSS_MODIFY_RESULT = 2;
-
-}
-
-message FantanBead {
-  string round_code = 1;
-  string shoe_code = 2;
-  uint32 shoe = 3;
-  uint32 shoe_round = 4;
-  string result = 5;
-
-  int32 count = 7;
-  int32 fan = 8;
-  int32 odd = 9;
-  string win_type = 10;
-
-  map<string, int32> statistics = 32;
 
 }

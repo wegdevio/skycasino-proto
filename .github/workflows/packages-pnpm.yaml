@@ -19,16 +19,16 @@ jobs:
       packages: write
     steps:
       - name: Check Out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Setup .npmrc file to publish to GitHub Packages
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18.x'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@sky-platform'
+          scope: '@wegdevio'
 
       # 參考 https://github.com/pnpm/action-setup
       - name: Setup pnpm
@@ -38,7 +38,7 @@ jobs:
           run_install: false
 
       - name: Setup pnpm cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           STORE_PATH: $(pnpm store path --silent)
         with:
@@ -48,7 +48,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Set up buf
-        uses: bufbuild/buf-setup-action@v1.26.1
+        uses: bufbuild/buf-setup-action@v1.29.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 

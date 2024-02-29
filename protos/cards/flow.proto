@@ -1,0 +1,15 @@
+syntax = "proto3";
+package cards;
+
+enum FlowCard {
+
+  // 未指定
+  FLOW_CARD_UNSPECIFIED = 0;
+
+  // 新靴
+  FLOW_NEW_SHOE = 1;
+
+  // 最後一局
+  FLOW_SHOE_CUT = 2;
+
+}

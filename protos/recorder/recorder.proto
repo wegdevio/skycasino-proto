@@ -13,22 +13,24 @@ message RecordIDResponse {
 
 message RecordShiftStartedRequest {
 
+  // 遊戲供應
+  string supplier = 2;
   // 遊戲類型
-  string game_type = 2;
+  string game_type = 3;
   // 遊戲子類型
-  string game_subtype = 3;
+  string game_subtype = 4;
   // 遊戲版本
-  string game_version = 4;
+  string game_version = 5;
   // 遊戲代碼
-  string game_code = 5;
+  string game_code = 6;
   // 桌代碼
-  string table_code = 6;
+  string table_code = 7;
   // 班代碼
-  string shift_code = 7;
-  // 時間
-  google.protobuf.Timestamp ts_start = 12;
+  string shift_code = 8;
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 16;
   // 標籤
-  repeated Tag tags = 15;
+  map<string, string> tags = 13;
 
 }
 
@@ -36,31 +38,33 @@ message RecordShiftEndedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
-  // 時間
-  google.protobuf.Timestamp ts_end = 5;
+  // 結束時間
+  google.protobuf.Timestamp ts_end = 19;
 
 }
 
 message RecordShoeStartedRequest {
 
+  // 遊戲供應
+  string supplier = 2;
   // 遊戲類型
-  string game_type = 2;
+  string game_type = 3;
   // 遊戲子類型
-  string game_subtype = 3;
+  string game_subtype = 4;
   // 遊戲版本
-  string game_version = 4;
+  string game_version = 5;
   // 遊戲代碼
-  string game_code = 5;
+  string game_code = 6;
   // 桌代碼
-  string table_code = 6;
+  string table_code = 7;
   // 班代碼
-  string shift_code = 7;
-  // 洗牌代碼
+  string shift_code = 8;
+  // 使用洗牌代碼
   string shoe_code = 10;
+  // 此牌靴開始使用時間
+  google.protobuf.Timestamp ts_start = 16;
   // cardList
-  map<int32, Deck> decks = 11;
-  // 時間
-  google.protobuf.Timestamp ts_start = 12;
+  map<int32, Deck> decks = 24;
 
 }
 
@@ -68,37 +72,39 @@ message RecordShoeEndedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
-  // 時間
-  google.protobuf.Timestamp ts_end = 5;
+  // 牌靴使用完畢時間
+  google.protobuf.Timestamp ts_end = 19;
 
 }
 
 message RecordRoundStartedRequest {
 
+  // 遊戲供應
+  string supplier = 2;
   // 遊戲類型
-  string game_type = 2;
+  string game_type = 3;
   // 遊戲子類型
-  string game_subtype = 3;
+  string game_subtype = 4;
   // 遊戲版本
-  string game_version = 4;
+  string game_version = 5;
   // 遊戲代碼
-  string game_code = 5;
+  string game_code = 6;
   // 桌代碼
-  string table_code = 6;
-  // 排班代碼
-  string shift_code = 7;
+  string table_code = 7;
+  // 班代碼
+  string shift_code = 8;
   // 此排班局數
-  int64 shift_round = 8;
-  // 局代碼
-  string round_code = 9;
+  int64 shift_round = 9;
   // 使用洗牌代碼
   string shoe_code = 10;
-  // 使用此洗牌第幾局，從1開始計算
+    // 使用此洗牌第幾局，從1開始計算
   int64 shoe_round = 11;
-  // 開始時間
-  google.protobuf.Timestamp ts_start = 12;
+  // 局代碼
+  string round_code = 12;
   // 標籤
-  repeated Tag tags = 15;
+  map<string, string> tags = 13;
+  // 開始時間
+  google.protobuf.Timestamp ts_start = 16;
 
 }
 
@@ -107,7 +113,7 @@ message RecordRoundStepsRequest {
   // 紀錄ID
   bytes record_id = 1;
   // 步驟
-  repeated Step steps = 5;
+  repeated Step steps = 26;
 
 }
 
@@ -116,7 +122,7 @@ message RecordRoundResultsRequest {
   // 紀錄ID
   bytes record_id = 1;
   // 判讀結果
-  repeated Result results = 6;
+  repeated Result results = 27;
   
 }
 
@@ -125,11 +131,11 @@ message RecordRoundBeCanceledRequest {
   // 紀錄ID
   bytes record_id = 1;
   // 時間
-  google.protobuf.Timestamp ts_cancel = 5;
+  google.protobuf.Timestamp ts_end = 19;
   // 取消代碼
-  string cancel_code = 6;
+  string cancel_code = 21;
   // 取消備註
-  string cancel_message = 7;
+  string cancel_message = 22;
 
 }
 
@@ -138,16 +144,7 @@ message RecordRoundFinishedRequest {
   // 紀錄ID
   bytes record_id = 1;
   // 時間
-  google.protobuf.Timestamp ts_finish = 5;
-
-}
-
-// 紀錄路紙
-message RecordRoadmapRequest {
-
-  // 班紀錄ID
-  bytes record_id = 1;
-  // TODO:
+  google.protobuf.Timestamp ts_end = 19;
 
 }
 
@@ -194,10 +191,10 @@ service RecorderService {
   // 結束此局
   rpc RecordRoundFinished(RecordRoundFinishedRequest) returns (RoundRecord);
 
-  // 紀錄路紙
-  rpc RecordRoadmap (RecordRoadmapRequest) returns (RoundRecord);
-
   // 紀錄回放
   rpc RecordRoundVideo(RecordRoundMediaRequest) returns (RoundRecord);
+
+  //捕獲單幀。玩家登入時使用
+  rpc RecordCaptureFrame(RecordRoundStartedRequest) returns (RoundRecord);
   
 }
