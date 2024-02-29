@@ -75,23 +75,23 @@ type RecordShiftStartedRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// 遊戲供應
-	Supplier string `protobuf:"bytes,2,opt,name=supplier,proto3" json:"supplier" yaml:"supplier" bson:"supplier"`
+	Supplier string `protobuf:"bytes,2,opt,name=supplier,proto3" json:"supplier" bson:"supplier" yaml:"supplier"`
 	// 遊戲類型
 	GameType string `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,5,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
+	GameVersion string `protobuf:"bytes,5,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" yaml:"gameVersion" bson:"gameVersion"`
 	// 遊戲代碼
 	GameCode string `protobuf:"bytes,6,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
-	TableCode string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3" json:"tableCode" yaml:"tableCode" bson:"tableCode"`
+	TableCode string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
 	ShiftCode string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
 	// 開始時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// 標籤
-	Tags map[string]string `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"tags" bson:"tags"`
+	Tags map[string]string `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"tags" yaml:"tags"`
 }
 
 func (x *RecordShiftStartedRequest) Reset() {
@@ -197,7 +197,7 @@ type RecordShiftEndedRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 結束時間
-	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd" yaml:"tsEnd"`
+	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" yaml:"tsEnd" bson:"tsEnd"`
 }
 
 func (x *RecordShiftEndedRequest) Reset() {
@@ -270,7 +270,7 @@ type RecordShoeStartedRequest struct {
 	// 此牌靴開始使用時間
 	TsStart *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
 	// cardList
-	Decks map[int32]*Deck `protobuf:"bytes,24,rep,name=decks,proto3" json:"decks" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"decks" yaml:"decks"`
+	Decks map[int32]*Deck `protobuf:"bytes,24,rep,name=decks,proto3" json:"decks" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" yaml:"decks" bson:"decks"`
 }
 
 func (x *RecordShoeStartedRequest) Reset() {
@@ -442,27 +442,27 @@ type RecordRoundStartedRequest struct {
 	// 遊戲類型
 	GameType string `protobuf:"bytes,3,opt,name=game_type,json=gameType,proto3" json:"gameType" bson:"gameType" yaml:"gameType"`
 	// 遊戲子類型
-	GameSubtype string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" yaml:"gameSubtype" bson:"gameSubtype"`
+	GameSubtype string `protobuf:"bytes,4,opt,name=game_subtype,json=gameSubtype,proto3" json:"gameSubtype" bson:"gameSubtype" yaml:"gameSubtype"`
 	// 遊戲版本
-	GameVersion string `protobuf:"bytes,5,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" yaml:"gameVersion" bson:"gameVersion"`
+	GameVersion string `protobuf:"bytes,5,opt,name=game_version,json=gameVersion,proto3" json:"gameVersion" bson:"gameVersion" yaml:"gameVersion"`
 	// 遊戲代碼
 	GameCode string `protobuf:"bytes,6,opt,name=game_code,json=gameCode,proto3" json:"gameCode" bson:"gameCode" yaml:"gameCode"`
 	// 桌代碼
 	TableCode string `protobuf:"bytes,7,opt,name=table_code,json=tableCode,proto3" json:"tableCode" bson:"tableCode" yaml:"tableCode"`
 	// 班代碼
-	ShiftCode string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" bson:"shiftCode" yaml:"shiftCode"`
+	ShiftCode string `protobuf:"bytes,8,opt,name=shift_code,json=shiftCode,proto3" json:"shiftCode" yaml:"shiftCode" bson:"shiftCode"`
 	// 此排班局數
 	ShiftRound int64 `protobuf:"varint,9,opt,name=shift_round,json=shiftRound,proto3" json:"shiftRound" bson:"shiftRound" yaml:"shiftRound"`
 	// 使用洗牌代碼
-	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" bson:"shoeCode" yaml:"shoeCode"`
+	ShoeCode string `protobuf:"bytes,10,opt,name=shoe_code,json=shoeCode,proto3" json:"shoeCode" yaml:"shoeCode" bson:"shoeCode"`
 	// 使用此洗牌第幾局，從1開始計算
-	ShoeRound int64 `protobuf:"varint,11,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" yaml:"shoeRound" bson:"shoeRound"`
+	ShoeRound int64 `protobuf:"varint,11,opt,name=shoe_round,json=shoeRound,proto3" json:"shoeRound" bson:"shoeRound" yaml:"shoeRound"`
 	// 局代碼
-	RoundCode string `protobuf:"bytes,12,opt,name=round_code,json=roundCode,proto3" json:"roundCode" bson:"roundCode" yaml:"roundCode"`
+	RoundCode string `protobuf:"bytes,12,opt,name=round_code,json=roundCode,proto3" json:"roundCode" yaml:"roundCode" bson:"roundCode"`
 	// 標籤
 	Tags map[string]string `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" bson:"tags" yaml:"tags"`
 	// 開始時間
-	TsStart *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" bson:"tsStart" yaml:"tsStart"`
+	TsStart *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=ts_start,json=tsStart,proto3" json:"tsStart" yaml:"tsStart" bson:"tsStart"`
 }
 
 func (x *RecordRoundStartedRequest) Reset() {
@@ -596,7 +596,7 @@ type RecordRoundStepsRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 步驟
-	Steps []*Step `protobuf:"bytes,26,rep,name=steps,proto3" json:"steps" yaml:"steps" bson:"steps"`
+	Steps []*Step `protobuf:"bytes,26,rep,name=steps,proto3" json:"steps" bson:"steps" yaml:"steps"`
 }
 
 func (x *RecordRoundStepsRequest) Reset() {
@@ -710,7 +710,7 @@ type RecordRoundBeCanceledRequest struct {
 	// 紀錄ID
 	RecordId []byte `protobuf:"bytes,1,opt,name=record_id,json=recordId,proto3" json:"recordId" bson:"recordId" yaml:"recordId"`
 	// 時間
-	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" bson:"tsEnd" yaml:"tsEnd"`
+	TsEnd *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=ts_end,json=tsEnd,proto3" json:"tsEnd" yaml:"tsEnd" bson:"tsEnd"`
 	// 取消代碼
 	CancelCode string `protobuf:"bytes,21,opt,name=cancel_code,json=cancelCode,proto3" json:"cancelCode" bson:"cancelCode" yaml:"cancelCode"`
 	// 取消備註
@@ -1072,7 +1072,7 @@ var file_recorder_recorder_proto_rawDesc = []byte{
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x28, 0x0a, 0x05, 0x76,
 	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x72, 0x65, 0x63,
 	0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x55, 0x52, 0x4c, 0x4d, 0x65, 0x64, 0x69, 0x61, 0x52, 0x05,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x32, 0xb7, 0x06, 0x0a, 0x0f, 0x52, 0x65,
+	0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x32, 0x89, 0x07, 0x0a, 0x0f, 0x52, 0x65,
 	0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x50, 0x0a,
 	0x12, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x53, 0x68, 0x69, 0x66, 0x74, 0x53, 0x74, 0x61, 0x72,
 	0x74, 0x65, 0x64, 0x12, 0x23, 0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x52,
@@ -1124,16 +1124,21 @@ var file_recorder_recorder_proto_rawDesc = []byte{
 	0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x6f, 0x75, 0x6e, 0x64,
 	0x4d, 0x65, 0x64, 0x69, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x72,
 	0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x6f, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x63,
-	0x6f, 0x72, 0x64, 0x42, 0x90, 0x01, 0x0a, 0x0c, 0x63, 0x6f, 0x6d, 0x2e, 0x72, 0x65, 0x63, 0x6f,
-	0x72, 0x64, 0x65, 0x72, 0x42, 0x0d, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x50, 0x72,
-	0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x77, 0x65, 0x67, 0x64, 0x65, 0x76, 0x69, 0x6f, 0x2f, 0x73, 0x6b, 0x79, 0x63, 0x61,
-	0x73, 0x69, 0x6e, 0x6f, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x62, 0x67, 0x6f, 0x2f,
-	0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0xa2, 0x02, 0x03, 0x52, 0x58, 0x58, 0xaa, 0x02,
-	0x08, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0xca, 0x02, 0x08, 0x52, 0x65, 0x63, 0x6f,
-	0x72, 0x64, 0x65, 0x72, 0xe2, 0x02, 0x14, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x5c,
-	0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x08, 0x52, 0x65,
-	0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x72, 0x64, 0x12, 0x50, 0x0a, 0x12, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x43, 0x61, 0x70,
+	0x74, 0x75, 0x72, 0x65, 0x46, 0x72, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x2e, 0x72, 0x65, 0x63, 0x6f,
+	0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x52, 0x6f, 0x75, 0x6e, 0x64,
+	0x53, 0x74, 0x61, 0x72, 0x74, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15,
+	0x2e, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x2e, 0x52, 0x6f, 0x75, 0x6e, 0x64, 0x52,
+	0x65, 0x63, 0x6f, 0x72, 0x64, 0x42, 0x90, 0x01, 0x0a, 0x0c, 0x63, 0x6f, 0x6d, 0x2e, 0x72, 0x65,
+	0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x42, 0x0d, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72,
+	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x77, 0x65, 0x67, 0x64, 0x65, 0x76, 0x69, 0x6f, 0x2f, 0x73, 0x6b, 0x79,
+	0x63, 0x61, 0x73, 0x69, 0x6e, 0x6f, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x62, 0x67,
+	0x6f, 0x2f, 0x72, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0xa2, 0x02, 0x03, 0x52, 0x58, 0x58,
+	0xaa, 0x02, 0x08, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0xca, 0x02, 0x08, 0x52, 0x65,
+	0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0xe2, 0x02, 0x14, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65,
+	0x72, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x08,
+	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1201,18 +1206,20 @@ var file_recorder_recorder_proto_depIdxs = []int32{
 	8,  // 23: recorder.RecorderService.RecordRoundBeCanceled:input_type -> recorder.RecordRoundBeCanceledRequest
 	9,  // 24: recorder.RecorderService.RecordRoundFinished:input_type -> recorder.RecordRoundFinishedRequest
 	10, // 25: recorder.RecorderService.RecordRoundVideo:input_type -> recorder.RecordRoundMediaRequest
-	20, // 26: recorder.RecorderService.RecordShiftStarted:output_type -> recorder.ShiftRecord
-	20, // 27: recorder.RecorderService.RecordShiftEnded:output_type -> recorder.ShiftRecord
-	21, // 28: recorder.RecorderService.RecordShoeStarted:output_type -> recorder.ShoeRecord
-	21, // 29: recorder.RecorderService.RecordShoeEnded:output_type -> recorder.ShoeRecord
-	22, // 30: recorder.RecorderService.RecordRoundStarted:output_type -> recorder.RoundRecord
-	22, // 31: recorder.RecorderService.RecordRoundSteps:output_type -> recorder.RoundRecord
-	22, // 32: recorder.RecorderService.RecordRoundResults:output_type -> recorder.RoundRecord
-	22, // 33: recorder.RecorderService.RecordRoundBeCanceled:output_type -> recorder.RoundRecord
-	22, // 34: recorder.RecorderService.RecordRoundFinished:output_type -> recorder.RoundRecord
-	22, // 35: recorder.RecorderService.RecordRoundVideo:output_type -> recorder.RoundRecord
-	26, // [26:36] is the sub-list for method output_type
-	16, // [16:26] is the sub-list for method input_type
+	5,  // 26: recorder.RecorderService.RecordCaptureFrame:input_type -> recorder.RecordRoundStartedRequest
+	20, // 27: recorder.RecorderService.RecordShiftStarted:output_type -> recorder.ShiftRecord
+	20, // 28: recorder.RecorderService.RecordShiftEnded:output_type -> recorder.ShiftRecord
+	21, // 29: recorder.RecorderService.RecordShoeStarted:output_type -> recorder.ShoeRecord
+	21, // 30: recorder.RecorderService.RecordShoeEnded:output_type -> recorder.ShoeRecord
+	22, // 31: recorder.RecorderService.RecordRoundStarted:output_type -> recorder.RoundRecord
+	22, // 32: recorder.RecorderService.RecordRoundSteps:output_type -> recorder.RoundRecord
+	22, // 33: recorder.RecorderService.RecordRoundResults:output_type -> recorder.RoundRecord
+	22, // 34: recorder.RecorderService.RecordRoundBeCanceled:output_type -> recorder.RoundRecord
+	22, // 35: recorder.RecorderService.RecordRoundFinished:output_type -> recorder.RoundRecord
+	22, // 36: recorder.RecorderService.RecordRoundVideo:output_type -> recorder.RoundRecord
+	22, // 37: recorder.RecorderService.RecordCaptureFrame:output_type -> recorder.RoundRecord
+	27, // [27:38] is the sub-list for method output_type
+	16, // [16:27] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
 	16, // [16:16] is the sub-list for extension extendee
 	0,  // [0:16] is the sub-list for field type_name

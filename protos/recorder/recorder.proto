@@ -193,5 +193,8 @@ service RecorderService {
 
   // 紀錄回放
   rpc RecordRoundVideo(RecordRoundMediaRequest) returns (RoundRecord);
+
+  //捕獲單幀。玩家登入時使用
+  rpc RecordCaptureFrame(RecordRoundStartedRequest) returns (RoundRecord);
   
 }
