@@ -246,6 +246,9 @@ enum GameProvideState {
   // 此局結束後關閉
   GAME_PROVIDE_CLOSE = 5;
 
+  // 此局結束後關閉
+  GAME_PROVIDE_AVAILABLE_AFTER_ROUND = 6;
+
 }
 
 // 直播資訊
@@ -390,18 +393,6 @@ message GetLiveStreamMediaRequest {
   // 直播參數
   LiveStreamParams live_stream_params = 2;
 
-  // IP
-  string ip = 3;
-
-  // IP City
-  string city = 4;
-
-  // IP Region
-  string region = 5;
-
-  // IP Country
-  string country = 6;
-
   // 平台
   string platform_code = 8;
 
@@ -430,7 +421,7 @@ service ProviderService {
   rpc FetchCurrentGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
 
   // 驗證
-  rpc VerifyGame(FetchCurrentGameRequest) returns (FetchCurrentGameResponse);
+  rpc VerifyGame(VerifyGameRequest) returns (FetchCurrentGameResponse);
 
   // 直播網址
   rpc GetLiveStreamMedia(GetLiveStreamMediaRequest) returns (GetLiveStreamMediaResponse);

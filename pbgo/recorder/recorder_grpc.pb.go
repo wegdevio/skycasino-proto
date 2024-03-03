@@ -57,7 +57,7 @@ type RecorderServiceClient interface {
 	RecordRoundFinished(ctx context.Context, in *RecordRoundFinishedRequest, opts ...grpc.CallOption) (*RoundRecord, error)
 	// 紀錄回放
 	RecordRoundVideo(ctx context.Context, in *RecordRoundMediaRequest, opts ...grpc.CallOption) (*RoundRecord, error)
-	//捕獲單幀。玩家登入時使用
+	// 捕獲單幀。玩家登入時使用
 	RecordCaptureFrame(ctx context.Context, in *RecordRoundStartedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
@@ -192,7 +192,7 @@ type RecorderServiceServer interface {
 	RecordRoundFinished(context.Context, *RecordRoundFinishedRequest) (*RoundRecord, error)
 	// 紀錄回放
 	RecordRoundVideo(context.Context, *RecordRoundMediaRequest) (*RoundRecord, error)
-	//捕獲單幀。玩家登入時使用
+	// 捕獲單幀。玩家登入時使用
 	RecordCaptureFrame(context.Context, *RecordRoundStartedRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedRecorderServiceServer()
 }

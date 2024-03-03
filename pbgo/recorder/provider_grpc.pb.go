@@ -324,7 +324,7 @@ type ProviderServiceClient interface {
 	// 讀即時遊戲桌資訊
 	FetchCurrentGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
 	// 驗證
-	VerifyGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
+	VerifyGame(ctx context.Context, in *VerifyGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error)
 	// 直播網址
 	GetLiveStreamMedia(ctx context.Context, in *GetLiveStreamMediaRequest, opts ...grpc.CallOption) (*GetLiveStreamMediaResponse, error)
 }
@@ -364,7 +364,7 @@ func (c *providerServiceClient) FetchCurrentGame(ctx context.Context, in *FetchC
 	return out, nil
 }
 
-func (c *providerServiceClient) VerifyGame(ctx context.Context, in *FetchCurrentGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error) {
+func (c *providerServiceClient) VerifyGame(ctx context.Context, in *VerifyGameRequest, opts ...grpc.CallOption) (*FetchCurrentGameResponse, error) {
 	out := new(FetchCurrentGameResponse)
 	err := c.cc.Invoke(ctx, ProviderService_VerifyGame_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -393,7 +393,7 @@ type ProviderServiceServer interface {
 	// 讀即時遊戲桌資訊
 	FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error)
 	// 驗證
-	VerifyGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error)
+	VerifyGame(context.Context, *VerifyGameRequest) (*FetchCurrentGameResponse, error)
 	// 直播網址
 	GetLiveStreamMedia(context.Context, *GetLiveStreamMediaRequest) (*GetLiveStreamMediaResponse, error)
 	mustEmbedUnimplementedProviderServiceServer()
@@ -412,7 +412,7 @@ func (UnimplementedProviderServiceServer) FetchGameProvide(context.Context, *Fet
 func (UnimplementedProviderServiceServer) FetchCurrentGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FetchCurrentGame not implemented")
 }
-func (UnimplementedProviderServiceServer) VerifyGame(context.Context, *FetchCurrentGameRequest) (*FetchCurrentGameResponse, error) {
+func (UnimplementedProviderServiceServer) VerifyGame(context.Context, *VerifyGameRequest) (*FetchCurrentGameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyGame not implemented")
 }
 func (UnimplementedProviderServiceServer) GetLiveStreamMedia(context.Context, *GetLiveStreamMediaRequest) (*GetLiveStreamMediaResponse, error) {
@@ -486,7 +486,7 @@ func _ProviderService_FetchCurrentGame_Handler(srv interface{}, ctx context.Cont
 }
 
 func _ProviderService_VerifyGame_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FetchCurrentGameRequest)
+	in := new(VerifyGameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -498,7 +498,7 @@ func _ProviderService_VerifyGame_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: ProviderService_VerifyGame_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServiceServer).VerifyGame(ctx, req.(*FetchCurrentGameRequest))
+		return srv.(ProviderServiceServer).VerifyGame(ctx, req.(*VerifyGameRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
