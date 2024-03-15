@@ -25,7 +25,6 @@ type GameRoundHandler func(context.Context, *pbRecorder.RoundRecord)
 type CasinoService struct {
 	tracer trace.Tracer
 
-	code     string
 	service  string
 	platform string
 
@@ -273,11 +272,10 @@ func (s *CasinoService) End() {
 	s.amqp.Close()
 }
 
-func NewCasinoService(code, service, platform string, provider pbRecorder.ProviderServiceClient, record pbRecorder.RecorderReadServiceClient, amqp *Client, exchange string) *CasinoService {
+func NewCasinoService(service, platform string, provider pbRecorder.ProviderServiceClient, record pbRecorder.RecorderReadServiceClient, amqp *Client, exchange string) *CasinoService {
 	tracerProvider := otel.GetTracerProvider()
 	return &CasinoService{
 		tracer:   tracerProvider.Tracer("casino-service"),
-		code:     code,
 		service:  service,
 		platform: platform,
 		provider: provider,
