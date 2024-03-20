@@ -60,7 +60,7 @@ enum StepActionType {
   READ_UNVISIBLE = 6;
   // 移轉資源
   TRANSFER = 7;
-  // 卡片正反面
+  // 卡片翻開
   VISIBLE = 8;
   // 卡牌狀態改變
   STATUS = 9;
@@ -312,7 +312,7 @@ message ShiftRecord {
 
   // 執行遊戲局
   repeated string round_codes = 24;
-  // 洗牌
+  // 執行遊戲靴
   repeated string shoe_codes = 25;
 
   // 結束

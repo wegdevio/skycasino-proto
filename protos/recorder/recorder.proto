@@ -60,9 +60,9 @@ message RecordShoeStartedRequest {
   string table_code = 7;
   // 班代碼
   string shift_code = 8;
-  // 使用洗牌代碼
+  // 靴代碼
   string shoe_code = 10;
-  // 此牌靴開始使用時間
+  // 開始時間
   google.protobuf.Timestamp ts_start = 16;
   // cardList
   map<int32, Deck> decks = 24;
@@ -73,7 +73,7 @@ message RecordShoeEndedRequest {
 
   // 紀錄ID
   bytes record_id = 1;
-  // 牌靴使用完畢時間
+  // 結束時間
   google.protobuf.Timestamp ts_end = 19;
 
 }
@@ -94,9 +94,9 @@ message RecordRoundStartedRequest {
   string table_code = 7;
   // 班代碼
   string shift_code = 8;
-  // 此排班局數
+  // 班局數
   int64 shift_round = 9;
-  // 使用洗牌代碼
+  // 靴代碼
   string shoe_code = 10;
     // 使用此洗牌第幾局，從1開始計算
   int64 shoe_round = 11;
